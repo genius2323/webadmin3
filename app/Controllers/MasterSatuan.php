@@ -1,7 +1,10 @@
 <?php
+
 namespace App\Controllers;
+
 use App\Models\MasterSatuanModel;
 use CodeIgniter\Controller;
+
 class MasterSatuan extends Controller
 {
     protected $masterSatuanModel;
@@ -13,12 +16,19 @@ class MasterSatuan extends Controller
     }
     public function index()
     {
-        $keyword = $this->request->getVar('keyword');
-        $data = [
-            'title' => 'Master Satuan',
-            'satuan' => $this->masterSatuanModel->getData($keyword),
-            'keyword' => $keyword
-        ];
+        $model = $this->masterSatuanModel;
+        $search = $this->request->getGet('search');
+        $perPage = (int)($this->request->getGet('perPage') ?? 10);
+        if ($perPage < 1) $perPage = 10;
+        $builder = $model->where('deleted_at', null);
+        if ($search) {
+            $builder = $builder->like('name', $search);
+        }
+        $data['satuan'] = $builder->paginate($perPage, 'default');
+        $data['pager'] = $model->pager;
+        $data['perPage'] = $perPage;
+        $data['search'] = $search;
+        $data['title'] = 'Master Satuan';
         return view('master_satuan/index', $data);
     }
     public function create()

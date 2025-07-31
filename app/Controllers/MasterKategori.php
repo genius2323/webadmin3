@@ -10,12 +10,16 @@ class MasterKategori extends BaseController
     {
         $model = new MasterKategoriModel();
         $search = $this->request->getGet('search');
+        $perPage = (int)($this->request->getGet('perPage') ?? 10);
+        if ($perPage < 1) $perPage = 10;
         $builder = $model->where('deleted_at', null);
         if ($search) {
             $builder = $builder->like('name', $search);
         }
-        $data['kategori'] = $builder->paginate(15);
+        $data['kategori'] = $builder->paginate($perPage);
         $data['pager'] = $model->pager;
+        $data['perPage'] = $perPage;
+        $data['search'] = $search;
         $data['title'] = 'Master Kategori';
         return view('master_kategori/index', $data);
     }

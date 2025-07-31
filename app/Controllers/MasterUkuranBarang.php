@@ -1,7 +1,10 @@
 <?php
+
 namespace App\Controllers;
+
 use App\Models\MasterUkuranBarangModel;
 use CodeIgniter\Controller;
+
 class MasterUkuranBarang extends Controller
 {
     protected $masterUkuranBarangModel;
@@ -13,12 +16,19 @@ class MasterUkuranBarang extends Controller
     }
     public function index()
     {
-        $keyword = $this->request->getVar('keyword');
-        $data = [
-            'title' => 'Master Ukuran Barang',
-            'ukuranbarang' => $this->masterUkuranBarangModel->getData($keyword),
-            'keyword' => $keyword
-        ];
+        $model = $this->masterUkuranBarangModel;
+        $search = $this->request->getGet('search');
+        $perPage = (int)($this->request->getGet('perPage') ?? 10);
+        if ($perPage < 1) $perPage = 10;
+        $builder = $model->where('deleted_at', null);
+        if ($search) {
+            $builder = $builder->like('name', $search);
+        }
+        $data['ukuranbarang'] = $builder->paginate($perPage, 'default');
+        $data['pager'] = $model->pager;
+        $data['perPage'] = $perPage;
+        $data['search'] = $search;
+        $data['title'] = 'Master Ukuran Barang';
         return view('master_ukuranbarang/index', $data);
     }
     public function create()

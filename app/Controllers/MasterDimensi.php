@@ -1,7 +1,10 @@
 <?php
+
 namespace App\Controllers;
+
 use App\Models\MasterDimensiModel;
 use CodeIgniter\Controller;
+
 class MasterDimensi extends Controller
 {
     protected $masterDimensiModel;
@@ -13,12 +16,18 @@ class MasterDimensi extends Controller
     }
     public function index()
     {
-        $keyword = $this->request->getVar('keyword');
-        $data = [
-            'title' => 'Master Dimensi',
-            'dimensi' => $this->masterDimensiModel->getData($keyword),
-            'keyword' => $keyword
-        ];
+        $search = $this->request->getGet('search');
+        $perPage = (int)($this->request->getGet('perPage') ?? 10);
+        if ($perPage < 1) $perPage = 10;
+        $builder = $this->masterDimensiModel->where('deleted_at', null);
+        if ($search) {
+            $builder = $builder->like('name', $search);
+        }
+        $data['dimensi'] = $builder->paginate($perPage);
+        $data['pager'] = $this->masterDimensiModel->pager;
+        $data['perPage'] = $perPage;
+        $data['search'] = $search;
+        $data['title'] = 'Master Dimensi';
         return view('master_dimensi/index', $data);
     }
     public function create()

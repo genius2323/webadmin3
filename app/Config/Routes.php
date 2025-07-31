@@ -194,4 +194,14 @@ $routes->group('', ['filter' => 'auth'], static function ($routes) {
     $routes->get('masterbarang/edit/(:num)', 'MasterBarang::edit/$1');
     $routes->post('masterbarang/update/(:num)', 'MasterBarang::update/$1');
     $routes->get('masterbarang/delete/(:num)', 'MasterBarang::delete/$1');
+
+    // Otorisasi Klasifikasi Kategori
+    $routes->get('otorisasi_klasifikasi/otorisasi_kategori', 'Otorisasi_klasifikasi\\OtorisasiKategori::index');
+    $routes->post('otorisasi_klasifikasi/otorisasi_kategori/setOtorisasiKategori', 'Otorisasi_klasifikasi\\OtorisasiKategori::setOtorisasiKategori');
+    // Otorisasi Klasifikasi Daya
+    $routes->get('otorisasi_klasifikasi/otorisasi_daya', 'Otorisasi_klasifikasi\\OtorisasiDaya::index');
+    $routes->post('otorisasi_klasifikasi/otorisasi_daya/setOtorisasiDaya', 'Otorisasi_klasifikasi\\OtorisasiDaya::setOtorisasiDaya');
+    // Otorisasi Klasifikasi Dimensi
+    $routes->get('otorisasi_klasifikasi/otorisasi_dimensi', 'Otorisasi_klasifikasi\\OtorisasiDimensi::index');
+    $routes->post('otorisasi_klasifikasi/otorisasi_dimensi/setOtorisasiDimensi', 'Otorisasi_klasifikasi\\OtorisasiDimensi::setOtorisasiDimensi');
 });

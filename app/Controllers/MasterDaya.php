@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controllers;
 
 use App\Models\MasterDayaModel;
@@ -8,19 +9,18 @@ class MasterDaya extends BaseController
     public function index()
     {
         $model = new MasterDayaModel();
-        $keyword = $this->request->getVar('keyword');
-
-        if ($keyword) {
-            $dayaData = $model->like('name', $keyword)->where('deleted_at', null)->findAll();
-        } else {
-            $dayaData = $model->where('deleted_at', null)->findAll();
+        $search = $this->request->getGet('search');
+        $perPage = (int)($this->request->getGet('perPage') ?? 10);
+        if ($perPage < 1) $perPage = 10;
+        $builder = $model->where('deleted_at', null);
+        if ($search) {
+            $builder = $builder->like('name', $search);
         }
-
-        $data = [
-            'title' => 'Master Daya',
-            'daya'  => $dayaData,
-            'keyword' => $keyword
-        ];
+        $data['daya'] = $builder->paginate($perPage);
+        $data['pager'] = $model->pager;
+        $data['perPage'] = $perPage;
+        $data['search'] = $search;
+        $data['title'] = 'Master Daya';
         return view('master_daya/index', $data);
     }
 

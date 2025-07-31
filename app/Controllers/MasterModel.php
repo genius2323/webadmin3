@@ -1,7 +1,10 @@
 <?php
+
 namespace App\Controllers;
+
 use App\Models\MasterModelModel;
 use CodeIgniter\Controller;
+
 class MasterModel extends Controller
 {
     protected $masterModelModel;
@@ -13,12 +16,19 @@ class MasterModel extends Controller
     }
     public function index()
     {
-        $keyword = $this->request->getVar('keyword');
-        $data = [
-            'title' => 'Master Model',
-            'model' => $this->masterModelModel->getData($keyword),
-            'keyword' => $keyword
-        ];
+        $model = $this->masterModelModel;
+        $search = $this->request->getGet('search');
+        $perPage = (int)($this->request->getGet('perPage') ?? 10);
+        if ($perPage < 1) $perPage = 10;
+        $builder = $model->where('deleted_at', null);
+        if ($search) {
+            $builder = $builder->like('name', $search);
+        }
+        $data['model'] = $builder->paginate($perPage, 'default');
+        $data['pager'] = $model->pager;
+        $data['perPage'] = $perPage;
+        $data['search'] = $search;
+        $data['title'] = 'Master Model';
         return view('master_model/index', $data);
     }
     public function create()

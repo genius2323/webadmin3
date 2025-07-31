@@ -1,84 +1,163 @@
 <?= $this->extend('layout/template') ?>
 <?= $this->section('content') ?>
 
-<div class="page-header" style="display:flex;align-items:center;gap:16px;margin-left:24px;margin-bottom:18px;">
-    <div class="page-header-icon" style="display:flex;align-items:center;">
-        <span class="material-symbols-outlined" style="font-size:2.2rem;">straighten</span>
-    </div>
-    <div>
-        <h1 class="page-header-title" style="margin:0;">Master Dimensi</h1>
-        <p class="page-header-subtitle" style="margin:0;">Kelola seluruh data dimensi di sini.</p>
-    </div>
-</div>
-<div class="content-card">
-    <div class="form-group" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 20px;">
-        <form method="get" style="display: flex; gap: 6px; align-items: center;">
-            <input type="text" name="keyword" class="input-m3-date" placeholder="Cari dimensi..." value="<?= esc($_GET['keyword'] ?? '') ?>" style="height:32px; font-size:0.95rem; padding:6px 10px; border-radius:8px;">
-            <button type="submit" class="btn-m3 btn-m3-sm" style="height:32px; min-width:32px; padding:6px 10px; border-radius:8px;" title="Cari"><span class="material-symbols-outlined" style="font-size:18px;">search</span></button>
-        </form>
-        <a href="<?= site_url('masterdimensi/create') ?>" class="btn-m3 btn-m3-sm" style="height:32px; min-width:32px; padding:6px 10px; border-radius:8px; text-decoration:none;">
-            <span class="material-symbols-outlined" style="vertical-align: middle; font-size:18px;">add</span>
-            <span style="font-size:0.95rem;">Tambah</span>
-        </a>
-    </div>
-    <?php if (session()->getFlashdata('success')): ?>
-        <div class="alert alert-success">
-            <span class="material-symbols-outlined alert-icon">check_circle</span>
-            <span><?= esc(session()->getFlashdata('success')) ?></span>
-            <button type="button" class="alert-close" onclick="this.parentElement.style.display='none'">&times;</button>
+<main>
+    <header class="page-header page-header-compact page-header-light border-bottom bg-white mb-4">
+        <div class="container-fluid px-4">
+            <div class="page-header-content">
+                <div class="row align-items-center justify-content-between pt-3">
+                    <div class="col-auto mb-3">
+                        <h1 class="page-header-title">
+                            <div class="page-header-icon"><i data-feather="maximize-2"></i></div>
+                            Master Dimensi
+                        </h1>
+                        <div class="small">Kelola seluruh data dimensi di sini.</div>
+                    </div>
+                    <div class="col-12 col-xl-auto mb-3">
+                        <a class="btn btn-sm btn-primary" href="<?= site_url('masterdimensi/create') ?>">
+                            <i class="me-1" data-feather="plus"></i> Tambah
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
-    <?php endif; ?>
-    <div class="table-responsive">
-        <table class="table-m3">
-            <thead>
-                <tr>
-                    <th style="text-align:center;">No</th>
-                    <th style="text-align:center;">Nama</th>
-                    <th style="text-align:center;">Deskripsi</th>
-                    <th style="text-align:center;">Otoritas</th>
-                    <th style="text-align:center;">Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php if (!empty($dimensi)): ?>
-                    <?php foreach ($dimensi as $i => $row): ?>
-                        <tr>
-                            <td style="text-align:center;"><?= $i + 1 ?></td>
-                            <td><?= esc($row['name']) ?></td>
-                            <td><?= esc($row['description']) ?></td>
-                            <td style="text-align:center;">
-                                <?php if ($row['otoritas'] === 'T'): ?>
-                                    <span class="badge-modern badge-success-modern">Sudah Otorisasi</span>
-                                <?php else: ?>
-                                    <span class="badge-modern badge-warning-modern">Belum Otorisasi</span>
-                                <?php endif; ?>
-                            </td>
-                            <td style="min-width:60px;display:flex;gap:4px;justify-content:center;align-items:center;">
-                                <?php if (!empty($row['otoritas']) && $row['otoritas'] === 'T'): ?>
-                                    <a href="<?= site_url('masterdimensi/edit/' . $row['id']) ?>" class="btn-m3 btn-m3-sm btn-m3-warning" style="height:28px; min-width:28px; padding:4px 8px; border-radius:8px; text-decoration:none; background:#FFD600; color:#333;">
-                                        <span class="material-symbols-outlined" style="font-size:16px;">edit</span>
-                                    </a>
-                                    <a href="<?= site_url('masterdimensi/delete/' . $row['id']) ?>" class="btn-m3 btn-m3-sm btn-m3-danger" style="height:28px; min-width:28px; padding:4px 8px; border-radius:8px; text-decoration:none; background:#e53935; color:#fff;" onclick="return confirm('Yakin ingin menghapus data ini?')">
-                                        <span class="material-symbols-outlined" style="font-size:16px;">delete</span>
-                                    </a>
-                                <?php else: ?>
-                                    <span class="btn-m3 btn-m3-sm btn-m3-warning" style="height:28px; min-width:28px; padding:4px 8px; border-radius:8px; background:#FFD600; color:#333; opacity:0.6; cursor:not-allowed; display:inline-flex; align-items:center; justify-content:center;">
-                                        <span class="material-symbols-outlined" style="font-size:16px;">edit</span>
-                                    </span>
-                                    <span class="btn-m3 btn-m3-sm btn-m3-danger" style="height:28px; min-width:28px; padding:4px 8px; border-radius:8px; background:#e53935; color:#fff; opacity:0.6; cursor:not-allowed; display:inline-flex; align-items:center; justify-content:center;">
-                                        <span class="material-symbols-outlined" style="font-size:16px;">delete</span>
-                                    </span>
-                                <?php endif; ?>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                <?php else: ?>
-                    <tr>
-                        <td colspan="5" style="text-align:center; color:var(--color-on-surface-variant);">Data tidak ditemukan</td>
-                    </tr>
+    </header>
+    <div class="container-fluid px-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-2">
+                    <form method="get" class="d-flex align-items-center gap-2 mb-0">
+                        <input type="text" name="search" class="form-control form-control-sm" placeholder="Cari dimensi..." value="<?= esc($_GET['search'] ?? '') ?>" style="max-width:180px;">
+                        <button type="submit" class="btn btn-sm btn-outline-primary d-flex align-items-center justify-content-center" title="Cari" style="height:32px; width:32px; padding:0;"><i data-feather="search"></i></button>
+                        <?php if (!empty($_GET['search'])): ?>
+                            <a href="<?= site_url('masterdimensi') ?>" class="btn btn-sm btn-outline-secondary d-flex align-items-center justify-content-center" title="Clear" style="height:32px; width:32px; padding:0;"><i data-feather="x"></i></a>
+                        <?php endif; ?>
+                    </form>
+                    <form method="get" class="d-flex align-items-center gap-2 mb-0">
+                        <select name="perPage" class="form-select form-select-sm" style="width:auto;" onchange="this.form.submit()">
+                            <?php $perPage = (int)($_GET['perPage'] ?? 10); ?>
+                            <?php foreach ([10, 25, 50, 100] as $opt): ?>
+                                <option value="<?= $opt ?>" <?= $perPage === $opt ? 'selected' : '' ?>><?= $opt ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                        <span class="small ms-1">Per Halaman</span>
+                    </form>
+                </div>
+                <?php if (session()->getFlashdata('success')): ?>
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <i data-feather="check-circle" class="me-1"></i>
+                        <?= esc(session()->getFlashdata('success')) ?>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
                 <?php endif; ?>
-            </tbody>
-        </table>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover align-middle mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th style="text-align:center;">No</th>
+                                <th style="text-align:center;">Nama</th>
+                                <th style="text-align:center;">Deskripsi</th>
+                                <th style="text-align:center;">Otoritas</th>
+                                <th style="text-align:center;">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php if (!empty($dimensi)): ?>
+                                <?php foreach ($dimensi as $i => $row): ?>
+                                    <tr>
+                                        <td style="text-align:center;"> <?= $i + 1 ?> </td>
+                                        <td><?= esc($row['name']) ?></td>
+                                        <td><?= esc($row['description']) ?></td>
+                                        <td style="text-align:center;">
+                                            <?php if ($row['otoritas'] === 'T'): ?>
+                                                <span class="badge bg-success">Sudah Otorisasi</span>
+                                            <?php else: ?>
+                                                <span class="badge bg-warning text-dark">Belum Otorisasi</span>
+                                            <?php endif; ?>
+                                        </td>
+                                        <td class="text-center" style="white-space: nowrap !important;">
+                                            <?php if (!empty($row['otoritas']) && $row['otoritas'] === 'T'): ?>
+                                                <a href="<?= site_url('masterdimensi/edit/' . $row['id']) ?>" class="btn btn-sm btn-warning"><i data-feather="edit"></i></a>
+                                                <a href="<?= site_url('masterdimensi/delete/' . $row['id']) ?>" class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin menghapus data ini?')"><i data-feather="trash-2"></i></a>
+                                            <?php else: ?>
+                                                <button class="btn btn-sm btn-warning" style="opacity:0.6;cursor:not-allowed; " disabled><i data-feather="edit"></i></button>
+                                                <button class="btn btn-sm btn-danger" style="opacity:0.6;cursor:not-allowed;" disabled><i data-feather="trash-2"></i></button>
+                                            <?php endif; ?>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            <?php else: ?>
+                                <tr>
+                                    <td colspan="5" class="text-center text-muted">Data tidak ditemukan</td>
+                                </tr>
+                            <?php endif; ?>
+                        </tbody>
+                    </table>
+                </div>
+                <?php if (!empty($pager)): ?>
+                    <div class="d-flex justify-content-center mt-4">
+                        <?= $pager->links('default', 'modern_pager') ?>
+                    </div>
+                <?php endif; ?>
+            </div>
+        </div>
     </div>
+</main>
+<?php if (session()->getFlashdata('success')): ?>
+    <div class="alert alert-success">
+        <span class="material-symbols-outlined alert-icon">check_circle</span>
+        <span><?= esc(session()->getFlashdata('success')) ?></span>
+        <button type="button" class="alert-close" onclick="this.parentElement.style.display='none'">&times;</button>
+    </div>
+<?php endif; ?>
+<?php if (!empty($pager)): ?>
+    <style>
+        .pagination-modern-container {
+            display: flex;
+            justify-content: center;
+            margin: 1.5rem 0 0.5rem 0;
+        }
+
+        .pagination-modern {
+            display: flex;
+            gap: 4px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            padding: 6px 16px;
+        }
+
+        .pagination-modern li {
+            list-style: none;
+        }
+
+        .pagination-modern a,
+        .pagination-modern span {
+            display: block;
+            min-width: 32px;
+            padding: 6px 10px;
+            border-radius: 6px;
+            color: #333;
+            background: none;
+            text-align: center;
+            text-decoration: none !important;
+            font-weight: 500;
+            transition: background 0.15s, color 0.15s;
+        }
+
+        .pagination-modern .active span,
+        .pagination-modern a:hover {
+            background: #4285F4;
+            color: #fff;
+        }
+
+        .pagination-modern .disabled span {
+            color: #bbb;
+            background: #f5f5f5;
+        }
+    </style>
+<?php endif; ?>
 </div>
+</div>
+
 <?= $this->endSection() ?>

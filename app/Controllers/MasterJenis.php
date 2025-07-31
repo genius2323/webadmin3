@@ -1,7 +1,10 @@
 <?php
+
 namespace App\Controllers;
+
 use App\Models\MasterJenisModel;
 use CodeIgniter\Controller;
+
 class MasterJenis extends Controller
 {
     protected $masterJenisModel;
@@ -13,12 +16,19 @@ class MasterJenis extends Controller
     }
     public function index()
     {
-        $keyword = $this->request->getVar('keyword');
-        $data = [
-            'title' => 'Master Jenis',
-            'jenis' => $this->masterJenisModel->getData($keyword),
-            'keyword' => $keyword
-        ];
+        $model = new \App\Models\MasterJenisModel();
+        $search = $this->request->getGet('search');
+        $perPage = (int)($this->request->getGet('perPage') ?? 10);
+        if ($perPage < 1) $perPage = 10;
+        $builder = $model->where('deleted_at', null);
+        if ($search) {
+            $builder = $builder->like('name', $search);
+        }
+        $data['jenis'] = $builder->paginate($perPage, 'default');
+        $data['pager'] = $model->pager;
+        $data['perPage'] = $perPage;
+        $data['search'] = $search;
+        $data['title'] = 'Master Jenis';
         return view('master_jenis/index', $data);
     }
     public function create()

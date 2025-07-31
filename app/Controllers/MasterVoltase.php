@@ -1,7 +1,10 @@
 <?php
+
 namespace App\Controllers;
+
 use App\Models\MasterVoltaseModel;
 use CodeIgniter\Controller;
+
 class MasterVoltase extends Controller
 {
     protected $masterVoltaseModel;
@@ -13,12 +16,19 @@ class MasterVoltase extends Controller
     }
     public function index()
     {
-        $keyword = $this->request->getVar('keyword');
-        $data = [
-            'title' => 'Master Voltase',
-            'voltase' => $this->masterVoltaseModel->getData($keyword),
-            'keyword' => $keyword
-        ];
+        $model = $this->masterVoltaseModel;
+        $search = $this->request->getGet('search');
+        $perPage = (int)($this->request->getGet('perPage') ?? 10);
+        if ($perPage < 1) $perPage = 10;
+        $builder = $model->where('deleted_at', null);
+        if ($search) {
+            $builder = $builder->like('name', $search);
+        }
+        $data['voltase'] = $builder->paginate($perPage, 'default');
+        $data['pager'] = $model->pager;
+        $data['perPage'] = $perPage;
+        $data['search'] = $search;
+        $data['title'] = 'Master Voltase';
         return view('master_voltase/index', $data);
     }
     public function create()
