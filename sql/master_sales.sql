@@ -1,0 +1,12 @@
+CREATE TABLE master_sales (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    kode VARCHAR(20) NOT NULL UNIQUE,
+    nama VARCHAR(100) NOT NULL,
+    alamat VARCHAR(255),
+    tempat_lahir VARCHAR(100),
+    no_hp VARCHAR(20),
+    no_ktp VARCHAR(30),
+    status ENUM('Menikah', 'Belum Menikah') NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
