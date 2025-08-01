@@ -45,6 +45,11 @@
                 </div>
             </li>
         </ul>
+        <div class="d-flex justify-content-end mb-2" style="padding: 10px 20px 0 0;">
+            <button id="darkModeToggle" class="btn btn-outline-secondary btn-sm">
+                <span id="darkModeIcon">🌙</span>
+            </button>
+        </div>
     </nav>
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
@@ -207,6 +212,338 @@
     <script>
         if (window.feather) {
             feather.replace();
+        }
+        // Dark mode logic
+
+        function setDarkMode(active) {
+            if (active) {
+                document.body.classList.add('dark');
+                localStorage.setItem('darkMode', '1');
+                var icon = document.getElementById('darkModeIcon');
+                if (icon) icon.textContent = '☀️';
+
+            } else {
+                document.body.classList.remove('dark');
+                localStorage.setItem('darkMode', '0');
+                var icon = document.getElementById('darkModeIcon');
+                if (icon) icon.textContent = '🌙';
+
+            }
+        }
+
+        // On page load
+        (function() {
+            var dark = localStorage.getItem('darkMode') === '1';
+            setDarkMode(dark);
+            var btn = document.getElementById('darkModeToggle');
+            if (btn) {
+                btn.onclick = function() {
+                    setDarkMode(!document.body.classList.contains('dark'));
+                };
+            }
+        })();
+    </script>
+    <style>
+        body.dark {
+            background: #23272b !important;
+        }
+
+        body.dark main,
+        body.dark .container-fluid,
+        body.dark .card-body,
+        body.dark .card {
+            background: #23272b !important;
+            color: #e0e0e0 !important;
+        }
+
+        body.dark .card-body {
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+        }
+
+        body.dark .navbar,
+        body.dark .topnav,
+        body.dark .sidenav,
+        body.dark .footer-admin {
+            background: #202225 !important;
+            color: #e0e0e0 !important;
+            border-color: #23272b !important;
+        }
+
+        body.dark .table-radius th,
+        body.dark .table-radius td {
+            background: #23272b !important;
+            color: #e0e0e0 !important;
+            border-color: #333 !important;
+        }
+
+        body.dark .table-light th,
+        body.dark .table-light {
+            background: #23272b !important;
+            color: #e0e0e0 !important;
+        }
+
+        body.dark .btn,
+        body.dark .btn-outline-secondary {
+            background: #23272b;
+            color: #e0e0e0;
+            border-color: #444;
+        }
+
+        body.dark .btn-primary,
+        body.dark .btn-success,
+        body.dark .btn-danger,
+        body.dark .btn-warning {
+            color: #fff !important;
+            border: none;
+        }
+
+        body.dark .btn-primary {
+            background: #4285F4 !important;
+        }
+
+        body.dark .btn-success {
+            background: #34c759 !important;
+        }
+
+        body.dark .btn-danger {
+            background: #e74c3c !important;
+        }
+
+        body.dark .btn-warning {
+            background: #fbbc05 !important;
+            color: #23272b !important;
+        }
+
+        body.dark .btn:hover,
+        body.dark .btn-outline-secondary:hover {
+            background: #333;
+            color: #fff;
+        }
+
+        body.dark .form-control,
+        body.dark .form-select {
+            background: #23272b;
+            color: #e0e0e0;
+            border-color: #444;
+        }
+
+        body.dark .form-control:focus,
+        body.dark .form-select:focus {
+            background: #23272b;
+            color: #fff;
+            border-color: #4285F4;
+            box-shadow: 0 0 0 2px #4285F488;
+        }
+
+        body.dark .alert-success {
+            background: #223322;
+            color: #b6fcb6;
+            border-color: #2e4d2e;
+        }
+
+        body.dark .alert-danger {
+            background: #332222;
+            color: #fcb6b6;
+            border-color: #4d2e2e;
+        }
+
+        body.dark .badge.bg-success {
+            background: #2e4d2e !important;
+            color: #b6fcb6 !important;
+        }
+
+        body.dark .badge.bg-secondary {
+            background: #444 !important;
+            color: #ccc !important;
+        }
+
+        body.dark .dropdown-menu {
+            background: #23272b !important;
+            color: #e0e0e0 !important;
+            border-color: #333 !important;
+        }
+
+        body.dark .dropdown-item {
+            color: #e0e0e0 !important;
+        }
+
+        body.dark .dropdown-item:hover,
+        body.dark .dropdown-item.active {
+            background: #333 !important;
+            color: #fff !important;
+        }
+
+        body.dark .pagination-modern {
+            background: #23272b !important;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+        }
+
+        body.dark .pagination-modern a,
+        body.dark .pagination-modern span {
+            color: #e0e0e0 !important;
+        }
+
+        body.dark .pagination-modern .active span,
+        body.dark .pagination-modern a:hover {
+            background: #4285F4 !important;
+            color: #fff !important;
+        }
+
+        body.dark .pagination-modern .disabled span {
+            color: #888 !important;
+            background: #23272b !important;
+        }
+
+        body.dark hr {
+            border-color: #fff !important;
+        }
+
+        body.dark .nav-link,
+        body.dark .sidenav-menu-heading {
+            color: #e0e0e0 !important;
+        }
+
+        body.dark .nav-link.active {
+            background: #333 !important;
+            color: #4285F4 !important;
+        }
+
+        body.dark .sidenav {
+            box-shadow: 2px 0 8px rgba(0, 0, 0, 0.18);
+        }
+
+        body.dark .footer-admin {
+            background: #23272b !important;
+            color: #b0b8c1 !important;
+            border-top: 1px solid #23272b !important;
+        }
+
+        /* Custom scrollbar for dark mode */
+        body.dark ::-webkit-scrollbar {
+            width: 10px;
+            background: #23272b;
+        }
+
+        body.dark ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 8px;
+        }
+
+        body.dark .container-fluid,
+        body.dark .card-body,
+        body.dark .card {
+            background: #23272b !important;
+            color: #e0e0e0 !important;
+        }
+
+        body.dark .navbar-brand,
+        body.dark .navbar-brand:visited {
+            color: #fff !important;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        body.dark .navbar-brand:hover {
+            color: #4285F4 !important;
+        }
+
+        /* Untuk card info, alert, dsb yang warnanya terlalu terang di dark mode */
+        body.dark .alert-info,
+        body.dark .bg-info,
+        body.dark .card-info {
+            background: #2d3a4a !important;
+            color: #b6e0fe !important;
+            border-color: #285680 !important;
+        }
+
+        body.dark .btn-info {
+            background: #4285F4 !important;
+            color: #fff !important;
+        }
+
+        /* Perbaiki input, select, dsb di dalam .container-fluid */
+        body.dark .container-fluid .form-control,
+        body.dark .container-fluid .form-select {
+            background: #23272b !important;
+            color: #e0e0e0 !important;
+            border-color: #444 !important;
+        }
+
+        body.dark h1,
+        body.dark h2,
+        body.dark h3,
+        body.dark h4,
+        body.dark h5,
+        body.dark h6,
+        body.dark .page-header-title {
+            color: #fff !important;
+        }
+
+        body.dark .page-header-title svg,
+        body.dark .page-header-title i,
+        body.dark h1 svg,
+        body.dark h2 svg,
+        body.dark h3 svg,
+        body.dark h4 svg,
+        body.dark h5 svg,
+        body.dark h6 svg {
+            color: #fff !important;
+            fill: #fff !important;
+        }
+
+        body.dark #sidebarToggle svg,
+        body.dark .btn-icon svg,
+        body.dark .btn-transparent-dark svg {
+            color: #fff !important;
+            stroke: #fff !important;
+            fill: none !important;
+        }
+
+        body.dark main {
+            background: #23272b !important;
+            color: #e0e0e0 !important;
+        }
+
+        body.dark .dropdown-user-details-name,
+        body.dark .dropdown-user-details-email {
+            color: #fff !important;
+        }
+    </style>
+    <script>
+        // Dark mode logic
+
+        function setDarkMode(active) {
+            if (active) {
+                document.body.classList.add('dark');
+                localStorage.setItem('darkMode', '1');
+                var icon = document.getElementById('darkModeIcon');
+                if (icon) icon.textContent = '☀️';
+
+            } else {
+                document.body.classList.remove('dark');
+                localStorage.setItem('darkMode', '0');
+                var icon = document.getElementById('darkModeIcon');
+                if (icon) icon.textContent = '🌙';
+
+            }
+        }
+
+        // On page load
+        (function() {
+            var dark = localStorage.getItem('darkMode') === '1';
+            setDarkMode(dark);
+            var btn = document.getElementById('darkModeToggle');
+            if (btn) {
+                btn.onclick = function() {
+                    setDarkMode(!document.body.classList.contains('dark'));
+                };
+            }
+        })();
+        if (window.feather) {
+            feather.replace({
+                color: document.body.classList.contains('dark') ? '#fff' : undefined,
+                stroke: document.body.classList.contains('dark') ? '#fff' : undefined
+            });
         }
     </script>
 </body>

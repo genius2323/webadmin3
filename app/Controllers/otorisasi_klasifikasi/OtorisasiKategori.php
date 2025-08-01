@@ -13,7 +13,8 @@ class OtorisasiKategori extends BaseController
         $categoryModel = new OtorisasiKategoriModel();
         $perPage = (int)($this->request->getGet('perPage') ?? 10);
         $keyword = $this->request->getGet('search');
-        $query = $categoryModel->select('id, name, description, otoritas');
+        $query = $categoryModel->select('id, name, description, otoritas')
+            ->where('deleted_at', null);
         if ($keyword) {
             $query = $query->like('name', $keyword);
         }

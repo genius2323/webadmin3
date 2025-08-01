@@ -10,17 +10,18 @@ class OtorisasiDimensi extends BaseController
     public function index()
     {
         $model = new MasterDimensiModel();
-        $perPage = $this->request->getGet('per_page') ?? 10;
-        $keyword = $this->request->getGet('q');
-        $query = $model->select('id, name, otoritas');
+        $perPage = (int)($this->request->getGet('perPage') ?? 10);
+        $keyword = $this->request->getGet('search');
+        $query = $model->select('id, name, otoritas')
+            ->where('deleted_at', null);
         if ($keyword) {
             $query = $query->like('name', $keyword);
         }
         $data = [
-            'dimensis' => $query->paginate($perPage),
+            'dimensi' => $query->paginate($perPage, 'default'),
             'pager' => $model->pager,
             'perPage' => $perPage,
-            'q' => $keyword,
+            'search' => $keyword,
         ];
         return view('otorisasi_klasifikasi/otorisasi_dimensi', $data);
     }

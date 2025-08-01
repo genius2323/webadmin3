@@ -51,7 +51,7 @@
                     </div>
                 <?php endif; ?>
                 <div class="table-responsive">
-                    <table class="table table-bordered table-hover align-middle mb-0">
+                    <table class="table table-bordered table-hover align-middle mb-0 table-radius">
                         <thead class="table-light">
                             <tr>
                                 <th style="text-align:center;">No</th>

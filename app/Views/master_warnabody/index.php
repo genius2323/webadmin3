@@ -27,9 +27,9 @@
             <div class="card-body">
                 <div class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-2">
                     <form method="get" class="d-flex align-items-center gap-2 mb-0">
-                        <input type="text" name="search" class="form-control form-control-sm" placeholder="Cari warna body..." value="<?= esc($search ?? $keyword ?? '') ?>" style="max-width:180px;">
+                        <input type="text" name="search" class="form-control form-control-sm" placeholder="Cari warna body..." value="<?= esc($search ?? '') ?>" style="max-width:180px;">
                         <button type="submit" class="btn btn-sm btn-outline-primary d-flex align-items-center justify-content-center" title="Cari" style="height:32px; width:32px; padding:0;"><i data-feather="search"></i></button>
-                        <?php if (!empty($search ?? $keyword)): ?>
+                        <?php if (!empty($search)): ?>
                             <a href="<?= site_url('masterwarnabody') ?>" class="btn btn-sm btn-outline-secondary d-flex align-items-center justify-content-center" title="Clear" style="height:32px; width:32px; padding:0;"><i data-feather="x"></i></a>
                         <?php endif; ?>
                     </form>
@@ -51,7 +51,63 @@
                     </div>
                 <?php endif; ?>
                 <div class="table-responsive">
-                    <table class="table table-bordered table-hover align-middle mb-0">
+                    <style>
+                        .table-radius {
+                            border-radius: 8px;
+                            border-collapse: separate !important;
+                            border-spacing: 0;
+                            overflow: hidden;
+                        }
+
+                        /* Sudut border tabel */
+                        .table-radius th:first-child {
+                            border-top-left-radius: 8px;
+                        }
+
+                        .table-radius th:last-child {
+                            border-top-right-radius: 8px;
+                        }
+
+                        .table-radius tr:last-child td:first-child {
+                            border-bottom-left-radius: 8px;
+                        }
+
+                        .table-radius tr:last-child td:last-child {
+                            border-bottom-right-radius: 8px;
+                        }
+
+                        /* Border pada th dan td agar radius terlihat */
+                        .table-radius th,
+                        .table-radius td {
+                            border: 1.5px solid #dee2e6;
+                        }
+
+                        /* Hilangkan border double di sudut */
+                        .table-radius th:first-child {
+                            border-left-width: 1.5px;
+                        }
+
+                        .table-radius th:last-child {
+                            border-right-width: 1.5px;
+                        }
+
+                        .table-radius tr:last-child td:first-child {
+                            border-left-width: 1.5px;
+                        }
+
+                        .table-radius tr:last-child td:last-child {
+                            border-right-width: 1.5px;
+                        }
+
+                        .table-radius tr:first-child th {
+                            border-top-width: 1.5px;
+                        }
+
+                        .table-radius tr:last-child td {
+                            border-bottom-width: 1.5px;
+                        }
+                    </style>
+                    <table class="table table-bordered table-hover align-middle mb-0 table-radius">
                         <thead class="table-light">
                             <tr>
                                 <th style="text-align:center;">No</th>
@@ -63,7 +119,10 @@
                         </thead>
                         <tbody>
                             <?php if (!empty($warnabody)) {
-                                $no = 1 + (($pager->getCurrentPage() - 1) * $pager->getPerPage());
+                                $no = 1;
+                                if (isset($pager) && $pager) {
+                                    $no = 1 + (($pager->getCurrentPage() - 1) * $pager->getPerPage());
+                                }
                                 foreach ($warnabody as $row) { ?>
                                     <tr>
                                         <td style="text-align:center;"> <?= $no++ ?> </td>

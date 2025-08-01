@@ -195,7 +195,6 @@ $routes->group('', ['filter' => 'auth'], static function ($routes) {
     $routes->post('masterbarang/update/(:num)', 'MasterBarang::update/$1');
     $routes->get('masterbarang/delete/(:num)', 'MasterBarang::delete/$1');
 
-    // Otorisasi Klasifikasi Kategori
     $routes->get('otorisasi_klasifikasi/otorisasi_kategori', 'Otorisasi_klasifikasi\\OtorisasiKategori::index');
     $routes->post('otorisasi_klasifikasi/otorisasi_kategori/setOtorisasiKategori', 'Otorisasi_klasifikasi\\OtorisasiKategori::setOtorisasiKategori');
     // Otorisasi Klasifikasi Daya
@@ -204,4 +203,46 @@ $routes->group('', ['filter' => 'auth'], static function ($routes) {
     // Otorisasi Klasifikasi Dimensi
     $routes->get('otorisasi_klasifikasi/otorisasi_dimensi', 'Otorisasi_klasifikasi\\OtorisasiDimensi::index');
     $routes->post('otorisasi_klasifikasi/otorisasi_dimensi/setOtorisasiDimensi', 'Otorisasi_klasifikasi\\OtorisasiDimensi::setOtorisasiDimensi');
+    // Otorisasi Klasifikasi Jenis
+    $routes->get('otorisasi_klasifikasi/otorisasi_jenis', 'Otorisasi_klasifikasi\\OtorisasiJenis::index');
+    $routes->post('otorisasi_klasifikasi/otorisasi_jenis/setOtorisasiJenis', 'Otorisasi_klasifikasi\\OtorisasiJenis::setOtorisasiJenis');
+    // Otorisasi Klasifikasi Fiting
+    $routes->get('otorisasi_klasifikasi/otorisasi_fiting', 'Otorisasi_klasifikasi\\OtorisasiFiting::index');
+    $routes->post('otorisasi_klasifikasi/otorisasi_fiting/setOtorisasiFiting', 'Otorisasi_klasifikasi\\OtorisasiFiting::setOtorisasiFiting');
+    // Otorisasi Klasifikasi Gondola
+    $routes->get('otorisasi_klasifikasi/otorisasi_gondola', 'Otorisasi_klasifikasi\\OtorisasiGondola::index');
+    $routes->post('otorisasi_klasifikasi/otorisasi_gondola/setOtorisasiGondola', 'Otorisasi_klasifikasi\\OtorisasiGondola::setOtorisasiGondola');
+    // Otorisasi Klasifikasi Jumlah Mata
+    $routes->get('otorisasi_klasifikasi/otorisasi_jumlahmata', 'Otorisasi_klasifikasi\OtorisasiJumlahMata::index');
+    $routes->post('otorisasi_klasifikasi/otorisasi_jumlahmata/setOtorisasiJumlahMata', 'Otorisasi_klasifikasi\OtorisasiJumlahMata::setOtorisasiJumlahMata');
+    // Otorisasi Klasifikasi Kaki
+    $routes->get('otorisasi_klasifikasi/otorisasi_kaki', 'Otorisasi_klasifikasi\OtorisasiKaki::index');
+    $routes->post('otorisasi_klasifikasi/otorisasi_kaki/setOtorisasiKaki', 'Otorisasi_klasifikasi\OtorisasiKaki::setOtorisasiKaki');
+    // Otorisasi Klasifikasi Merk
+    $routes->get('otorisasi_klasifikasi/otorisasi_merk', 'Otorisasi_klasifikasi\\OtorisasiMerk::index');
+    $routes->post('otorisasi_klasifikasi/otorisasi_merk/setOtorisasiMerk', 'Otorisasi_klasifikasi\\OtorisasiMerk::setOtorisasiMerk');
+    // Otorisasi Klasifikasi Model
+    $routes->get('otorisasi_klasifikasi/otorisasi_model', 'Otorisasi_klasifikasi\\OtorisasiModel::index');
+    $routes->post('otorisasi_klasifikasi/otorisasi_model/setOtorisasiModel', 'Otorisasi_klasifikasi\\OtorisasiModel::setOtorisasiModel');
+    // Otorisasi Klasifikasi Satuan
+    $routes->get('otorisasi_klasifikasi/otorisasi_satuan', 'Otorisasi_klasifikasi\\OtorisasiSatuan::index');
+    $routes->post('otorisasi_klasifikasi/otorisasi_satuan/setOtorisasiSatuan', 'Otorisasi_klasifikasi\\OtorisasiSatuan::setOtorisasiSatuan');
+    // Otorisasi Klasifikasi Pelengkap
+    $routes->get('otorisasi_klasifikasi/otorisasi_pelengkap', 'Otorisasi_klasifikasi\\OtorisasiPelengkap::index');
+    $routes->post('otorisasi_klasifikasi/otorisasi_pelengkap/setOtorisasiPelengkap', 'Otorisasi_klasifikasi\\OtorisasiPelengkap::setOtorisasiPelengkap');
+    // Otorisasi Klasifikasi Ukuran Barang
+    $routes->get('otorisasi_klasifikasi/otorisasi_ukuranbarang', 'Otorisasi_klasifikasi\\OtorisasiUkuranBarang::index');
+    $routes->post('otorisasi_klasifikasi/otorisasi_ukuranbarang/setOtorisasiUkuranBarang', 'Otorisasi_klasifikasi\\OtorisasiUkuranBarang::setOtorisasiUkuranBarang');
+    // Otorisasi Klasifikasi Voltase
+    $routes->get('otorisasi_klasifikasi/otorisasi_voltase', 'Otorisasi_klasifikasi\\OtorisasiVoltase::index');
+    $routes->post('otorisasi_klasifikasi/otorisasi_voltase/setOtorisasiVoltase', 'Otorisasi_klasifikasi\\OtorisasiVoltase::setOtorisasiVoltase');
+    // Otorisasi Klasifikasi Warna Bibir
+    $routes->get('otorisasi_klasifikasi/otorisasi_warnabibir', 'Otorisasi_klasifikasi\\OtorisasiWarnaBibir::index');
+    $routes->post('otorisasi_klasifikasi/otorisasi_warnabibir/setOtorisasiWarnaBibir', 'Otorisasi_klasifikasi\\OtorisasiWarnaBibir::setOtorisasiWarnaBibir');
+    // Otorisasi Klasifikasi Warna Body
+    $routes->get('otorisasi_klasifikasi/otorisasi_warnabody', 'Otorisasi_klasifikasi\\OtorisasiWarnaBody::index');
+    $routes->post('otorisasi_klasifikasi/otorisasi_warnabody/setOtorisasiWarnaBody', 'Otorisasi_klasifikasi\\OtorisasiWarnaBody::setOtorisasiWarnaBody');
+    // Otorisasi Klasifikasi Warna Sinar
+    $routes->get('otorisasi_klasifikasi/otorisasi_warnasinar', 'Otorisasi_klasifikasi\\OtorisasiWarnaSinar::index');
+    $routes->post('otorisasi_klasifikasi/otorisasi_warnasinar/setOtorisasiWarnaSinar', 'Otorisasi_klasifikasi\\OtorisasiWarnaSinar::setOtorisasiWarnaSinar');
 });

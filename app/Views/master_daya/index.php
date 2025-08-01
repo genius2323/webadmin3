@@ -52,7 +52,63 @@
                     </div>
                 <?php endif; ?>
                 <div class="table-responsive">
-                    <table class="table table-bordered table-hover align-middle mb-0">
+                    <style>
+                        .table-radius {
+                            border-radius: 8px;
+                            border-collapse: separate !important;
+                            border-spacing: 0;
+                            overflow: hidden;
+                        }
+
+                        /* Sudut border tabel */
+                        .table-radius th:first-child {
+                            border-top-left-radius: 8px;
+                        }
+
+                        .table-radius th:last-child {
+                            border-top-right-radius: 8px;
+                        }
+
+                        .table-radius tr:last-child td:first-child {
+                            border-bottom-left-radius: 8px;
+                        }
+
+                        .table-radius tr:last-child td:last-child {
+                            border-bottom-right-radius: 8px;
+                        }
+
+                        /* Border pada th dan td agar radius terlihat */
+                        .table-radius th,
+                        .table-radius td {
+                            border: 1.5px solid #dee2e6;
+                        }
+
+                        /* Hilangkan border double di sudut */
+                        .table-radius th:first-child {
+                            border-left-width: 1.5px;
+                        }
+
+                        .table-radius th:last-child {
+                            border-right-width: 1.5px;
+                        }
+
+                        .table-radius tr:last-child td:first-child {
+                            border-left-width: 1.5px;
+                        }
+
+                        .table-radius tr:last-child td:last-child {
+                            border-right-width: 1.5px;
+                        }
+
+                        .table-radius tr:first-child th {
+                            border-top-width: 1.5px;
+                        }
+
+                        .table-radius tr:last-child td {
+                            border-bottom-width: 1.5px;
+                        }
+                    </style>
+                    <table class="table table-bordered table-hover align-middle mb-0 table-radius">
                         <thead class="table-light">
                             <tr>
                                 <th style="text-align:center;">No</th>

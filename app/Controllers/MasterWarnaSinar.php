@@ -1,7 +1,10 @@
 <?php
+
 namespace App\Controllers;
+
 use App\Models\MasterWarnaSinarModel;
 use CodeIgniter\Controller;
+
 class MasterWarnaSinar extends Controller
 {
     protected $masterWarnaSinarModel;
@@ -13,12 +16,18 @@ class MasterWarnaSinar extends Controller
     }
     public function index()
     {
-        $keyword = $this->request->getVar('keyword');
-        $data = [
-            'title' => 'Master Warna Sinar',
-            'warnasinar' => $this->masterWarnaSinarModel->getData($keyword),
-            'keyword' => $keyword
-        ];
+        $search = $this->request->getGet('search') ?? $this->request->getGet('keyword');
+        $perPage = (int)($this->request->getGet('perPage') ?? 10);
+        if ($perPage < 1) $perPage = 10;
+        $builder = $this->masterWarnaSinarModel->where('deleted_at', null);
+        if ($search) {
+            $builder = $builder->like('name', $search);
+        }
+        $data['warnasinar'] = $builder->paginate($perPage);
+        $data['pager'] = $this->masterWarnaSinarModel->pager;
+        $data['perPage'] = $perPage;
+        $data['search'] = $search;
+        $data['title'] = 'Master Warna Sinar';
         return view('master_warnasinar/index', $data);
     }
     public function create()

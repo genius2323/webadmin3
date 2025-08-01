@@ -13,7 +13,8 @@ class OtorisasiDaya extends BaseController
         $dayaModel = new OtorisasiDayaModel();
         $perPage = (int)($this->request->getGet('perPage') ?? 10);
         $keyword = $this->request->getGet('search');
-        $query = $dayaModel->select('id, name, description, otoritas');
+        $query = $dayaModel->select('id, name, description, otoritas')
+            ->where('deleted_at', null);
         if ($keyword) {
             $query = $query->like('name', $keyword);
         }
