@@ -1,3 +1,4 @@
+
 <?php
 // View: app/Views/otorisasi_klasifikasi/otorisasi_dimensi.php
 ?>
@@ -41,21 +42,24 @@
     <div class="card mb-4">
         <div class="card-body">
             <h4 class="mb-3">Otorisasi Dimensi</h4>
-            <form class="row g-2 mb-3" method="get" action="">
-                <div class="col-auto">
-                    <input type="text" name="q" class="form-control" placeholder="Cari dimensi..." value="<?= esc($q ?? '') ?>">
-                </div>
-                <div class="col-auto">
-                    <select name="per_page" class="form-select">
-                        <?php foreach ([5, 10, 20, 50, 100] as $opt): ?>
-                            <option value="<?= $opt ?>" <?= (isset($perPage) && $perPage == $opt) ? ' selected' : '' ?>><?= $opt ?>/halaman</option>
+            <div class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-2">
+                <form method="get" class="d-flex align-items-center gap-2 mb-0">
+                    <input type="text" name="search" class="form-control form-control-sm" placeholder="Cari dimensi..." value="<?= esc($search ?? '') ?>" style="max-width:180px;">
+                    <button type="submit" class="btn btn-sm btn-outline-primary d-flex align-items-center justify-content-center" title="Cari" style="height:32px; width:32px; padding:0;"><i data-feather="search"></i></button>
+                    <?php if (!empty($search)): ?>
+                        <a href="<?= site_url('otorisasi_klasifikasi/otorisasi_dimensi') ?>" class="btn btn-sm btn-outline-secondary d-flex align-items-center justify-content-center" title="Clear" style="height:32px; width:32px; padding:0;"><i data-feather="x"></i></a>
+                    <?php endif; ?>
+                </form>
+                <form method="get" class="d-flex align-items-center gap-2 mb-0">
+                    <select name="perPage" class="form-select form-select-sm" style="width:auto;" onchange="this.form.submit()">
+                        <?php $perPage = (int)($_GET['perPage'] ?? 10); ?>
+                        <?php foreach ([10, 25, 50, 100] as $opt): ?>
+                            <option value="<?= $opt ?>" <?= $perPage === $opt ? 'selected' : '' ?>><?= $opt ?></option>
                         <?php endforeach; ?>
                     </select>
-                </div>
-                <div class="col-auto">
-                    <button type="submit" class="btn btn-secondary">Terapkan</button>
-                </div>
-            </form>
+                    <span class="small ms-1">Per Halaman</span>
+                </form>
+            </div>
             <div class="table-responsive">
                 <table class="table table-bordered table-hover align-middle mb-0">
                     <thead class="table-light">
@@ -67,13 +71,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php if (!empty($dimensis)): ?>
-                            <?php foreach ($dimensis as $i => $dimensi): ?>
+                        <?php if (!empty($dimensi)): ?>
+                            <?php foreach ($dimensi as $i => $d): ?>
                                 <tr>
                                     <td style="text-align:center;"> <?= ($pager->getCurrentPage() - 1) * $pager->getPerPage() + $i + 1 ?> </td>
-                                    <td><?= esc($dimensi['name']) ?></td>
+                                    <td><?= esc($d['name']) ?></td>
                                     <td style="text-align:center;">
-                                        <?php if (($dimensi['otoritas'] ?? null) === 'T'): ?>
+                                        <?php if (($d['otoritas'] ?? null) === 'T'): ?>
                                             <span class="badge bg-success">Sudah Diotorisasi</span>
                                         <?php else: ?>
                                             <span class="badge bg-secondary">Belum</span>
@@ -81,10 +85,10 @@
                                     </td>
                                     <td style="text-align:center;">
                                         <form method="post" action="<?= site_url('otorisasi_klasifikasi/otorisasi_dimensi/setOtorisasiDimensi') ?>">
-                                            <input type="hidden" name="dimensi_id" value="<?= $dimensi['id'] ?>">
-                                            <input type="hidden" name="otoritas" value="<?= ($dimensi['otoritas'] ?? null) === 'T' ? 'F' : 'T' ?>">
-                                            <button type="submit" class="btn btn-sm <?= ($dimensi['otoritas'] ?? null) === 'T' ? 'btn-danger' : 'btn-success' ?>">
-                                                <?= ($dimensi['otoritas'] ?? null) === 'T' ? 'Nonaktifkan' : 'Otorisasi' ?>
+                                            <input type="hidden" name="dimensi_id" value="<?= $d['id'] ?>">
+                                            <input type="hidden" name="otoritas" value="<?= ($d['otoritas'] ?? null) === 'T' ? 'F' : 'T' ?>">
+                                            <button type="submit" class="btn btn-sm <?= ($d['otoritas'] ?? null) === 'T' ? 'btn-danger' : 'btn-success' ?>">
+                                                <?= ($d['otoritas'] ?? null) === 'T' ? 'Nonaktifkan' : 'Otorisasi' ?>
                                             </button>
                                         </form>
                                     </td>
@@ -98,10 +102,69 @@
                     </tbody>
                 </table>
             </div>
-            <div class="mt-3">
-                <?= $pager->links() ?>
-            </div>
+            <?php if (!empty($pager)): ?>
+                <div class="d-flex justify-content-center mt-4">
+                    <?= $pager->links('default', 'modern_pager') ?>
+                </div>
+            <?php endif; ?>
         </div>
     </div>
 </div>
+<?php if (session()->getFlashdata('success')): ?>
+    <div class="alert alert-success">
+        <span class="material-symbols-outlined alert-icon">check_circle</span>
+        <span><?= esc(session()->getFlashdata('success')) ?></span>
+        <button type="button" class="alert-close" onclick="this.parentElement.style.display='none'">&times;</button>
+    </div>
+<?php endif; ?>
+<?php if (!empty($pager)): ?>
+    <style>
+        .pagination-modern-container {
+            display: flex;
+            justify-content: center;
+            margin: 1.5rem 0 0.5rem 0;
+        }
+
+        .pagination-modern {
+            display: flex;
+            gap: 4px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            padding: 6px 16px;
+        }
+
+        .pagination-modern li {
+            list-style: none;
+        }
+
+        .pagination-modern a,
+        .pagination-modern span {
+            display: block;
+            min-width: 32px;
+            padding: 6px 10px;
+            border-radius: 6px;
+            color: #333;
+            background: none;
+            text-align: center;
+            text-decoration: none !important;
+            font-weight: 500;
+            transition: background 0.15s, color 0.15s;
+        }
+
+        .pagination-modern .active span,
+        .pagination-modern a:hover {
+            background: #4285F4;
+            color: #fff;
+        }
+
+        .pagination-modern .disabled span {
+            color: #bbb;
+            background: #f5f5f5;
+        }
+    </style>
+<?php endif; ?>
+</div>
+</div>
+
 <?= $this->endSection() ?>
