@@ -61,8 +61,11 @@ class MasterSales extends BaseController
     {
         $model = new MasterSalesModel();
         $search = $this->request->getGet('search');
+        $perPage = (int)($this->request->getGet('perPage') ?? 10);
+        if ($perPage < 1) $perPage = 10;
+        $builder = $model->where('deleted_at', null);
         if ($search) {
-            $model->groupStart()
+            $builder = $builder->groupStart()
                 ->like('kode', $search)
                 ->orLike('nama', $search)
                 ->orLike('alamat', $search)
@@ -72,7 +75,10 @@ class MasterSales extends BaseController
                 ->orLike('status', $search)
             ->groupEnd();
         }
-        $data['sales'] = $model->findAll();
+        $data['sales'] = $builder->paginate($perPage);
+        $data['pager'] = $model->pager;
+        $data['perPage'] = $perPage;
+        $data['search'] = $search;
         $data['title'] = 'Data Sales / Pegawai';
         return view('mastersales/index', $data);
     }

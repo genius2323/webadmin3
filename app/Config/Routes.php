@@ -40,6 +40,7 @@ $routes->group('', ['filter' => 'auth'], static function ($routes) {
     $routes->get('dashboard', 'Dashboard::index');
 
     // Manajemen User
+    $routes->get('user/create', 'User::create');
     $routes->resource('user');
 
     // --- Rute Penjualan (CRUD Lengkap) ---

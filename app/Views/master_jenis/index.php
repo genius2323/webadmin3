@@ -159,13 +159,7 @@
         </div>
     </div>
 </main>
-<?php if (session()->getFlashdata('success')): ?>
-    <div class="alert alert-success">
-        <span class="material-symbols-outlined alert-icon">check_circle</span>
-        <span><?= esc(session()->getFlashdata('success')) ?></span>
-        <button type="button" class="alert-close" onclick="this.parentElement.style.display='none'">&times;</button>
-    </div>
-<?php endif; ?>
+
 <?php if (!empty($pager)): ?>
     <style>
         .pagination-modern-container {

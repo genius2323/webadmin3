@@ -9,6 +9,8 @@ class MasterBarang extends BaseController
     {
         $model = new MasterBarangModel();
         $search = $this->request->getGet('search');
+        $perPage = (int)($this->request->getGet('perPage') ?? 10);
+        if ($perPage < 1) $perPage = 10;
         $builder = $model
             ->select('products.*, categories.name as category_name, satuan.name as satuan_name, jenis.name as jenis_name, merk.name as merk_name, daya.name as daya_name, dimensi.name as dimensi_name, fiting.name as fiting_name, gondola.name as gondola_name, jumlah_mata.name as jumlah_mata_name, kaki.name as kaki_name, model.name as model_name, pelengkap.name as pelengkap_name, ukuran_barang.name as ukuran_barang_name, voltase.name as voltase_name, warna_bibir.name as warna_bibir_name, warna_body.name as warna_body_name, warna_sinar.name as warna_sinar_name')
             ->join('categories', 'categories.id = products.category_id', 'left')
@@ -37,9 +39,13 @@ class MasterBarang extends BaseController
                 ->orLike('jenis.name', $search)
                 ->groupEnd();
         }
-        $products = $builder->findAll();
+        $products = $builder->paginate($perPage);
+        $pager = $model->pager;
         return view('masterbarang/index', [
             'products' => $products,
+            'pager' => $pager,
+            'perPage' => $perPage,
+            'search' => $search,
             'title' => 'Master Barang',
         ]);
     }

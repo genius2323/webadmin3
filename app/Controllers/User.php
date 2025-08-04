@@ -8,8 +8,24 @@ class User extends BaseController
     public function index()
     {
         $userModel = new UserModel();
-        $users = $userModel->where('deleted_at', null)->findAll();
-        return view('user/index', ['users' => $users]);
+        $search = $this->request->getGet('search');
+        $perPage = (int)($this->request->getGet('perPage') ?? 10);
+        if ($perPage < 1) $perPage = 10;
+        $builder = $userModel->where('deleted_at', null);
+        if ($search) {
+            $builder = $builder->groupStart()
+                ->like('nama', $search)
+                ->orLike('username', $search)
+                ->orLike('alamat', $search)
+                ->orLike('noktp', $search)
+                ->groupEnd();
+        }
+        $data['users'] = $builder->paginate($perPage);
+        $data['pager'] = $userModel->pager;
+        $data['perPage'] = $perPage;
+        $data['search'] = $search;
+        $data['title'] = 'Manajemen User';
+        return view('user/index', $data);
     }
 
     public function create()

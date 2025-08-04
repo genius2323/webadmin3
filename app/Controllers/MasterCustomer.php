@@ -10,8 +10,11 @@ class MasterCustomer extends BaseController
     {
         $model = new MasterCustomerModel();
         $search = $this->request->getGet('search');
+        $perPage = (int)($this->request->getGet('perPage') ?? 10);
+        if ($perPage < 1) $perPage = 10;
+        $builder = $model->where('deleted_at', null);
         if ($search) {
-            $model->groupStart()
+            $builder = $builder->groupStart()
                 ->like('kode_customer', $search)
                 ->orLike('nama_customer', $search)
                 ->orLike('alamat', $search)
@@ -25,7 +28,10 @@ class MasterCustomer extends BaseController
                 ->orLike('npwp_alamat', $search)
                 ->groupEnd();
         }
-        $data['customers'] = $model->findAll();
+        $data['customers'] = $builder->paginate($perPage);
+        $data['pager'] = $model->pager;
+        $data['perPage'] = $perPage;
+        $data['search'] = $search;
         $data['title'] = 'Master Customer';
         return view('mastercustomer/index', $data);
     }

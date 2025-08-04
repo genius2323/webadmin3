@@ -7,7 +7,7 @@ class MasterSalesModel extends Model
     protected $table = 'mastersales';
     protected $primaryKey = 'id';
     protected $allowedFields = [
-        'kode', 'nama', 'alamat', 'tempat_lahir', 'no_hp', 'no_ktp', 'status',
+        'kode', 'nama', 'alamat', 'tempat_lahir', 'no_hp', 'no_ktp', 'status', 'otoritas',
     ];
     protected $useTimestamps = true;
     protected $useSoftDeletes = true;
