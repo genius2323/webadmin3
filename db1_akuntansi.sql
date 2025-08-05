@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 31, 2025 at 09:24 AM
+-- Generation Time: Aug 05, 2025 at 10:48 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -47,9 +47,9 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `kode_cat`, `name`, `description`, `otoritas`, `nama_ky`, `batas_tanggal_sistem`, `mode_batas_tanggal`, `created_at`, `updated_at`, `deleted_at`, `recovered_at`) VALUES
-(2, '', 'Mouse', '', 'F', NULL, NULL, NULL, '2025-07-07 06:44:40', '2025-07-31 15:16:59', '2025-07-07 07:08:19', NULL),
-(3, 'LAPT', 'LAPTOP', '', 'F', NULL, NULL, NULL, '2025-07-07 07:11:24', '2025-07-31 15:17:03', NULL, NULL),
-(4, '', 'Speaker', '', 'F', 'Genius Hartono', NULL, NULL, '2025-07-07 07:33:19', '2025-07-31 15:17:06', NULL, NULL),
+(2, '', 'Mouse', '', 'T', NULL, NULL, NULL, '2025-07-07 06:44:40', '2025-08-01 15:59:14', '2025-07-07 07:08:19', NULL),
+(3, 'LAPT', 'LAPTOP', '', 'T', NULL, NULL, NULL, '2025-07-07 07:11:24', '2025-08-01 16:38:44', NULL, NULL),
+(4, '', 'Speaker', '', 'T', 'Genius Hartono', NULL, NULL, '2025-07-07 07:33:19', '2025-08-01 16:38:48', NULL, NULL),
 (5, 'LACI', 'LACI', '', NULL, NULL, NULL, NULL, '2025-07-08 03:21:09', '2025-07-10 03:22:53', NULL, NULL),
 (6, '', 'LEMARI', '', NULL, NULL, NULL, 'automatic', '2025-07-08 03:21:33', '2025-07-08 03:21:33', NULL, NULL),
 (7, 'bat', 'baterai', '', NULL, NULL, NULL, 'automatic', '2025-07-09 07:24:10', '2025-07-09 07:24:10', NULL, NULL),
@@ -65,7 +65,8 @@ INSERT INTO `categories` (`id`, `kode_cat`, `name`, `description`, `otoritas`, `
 (17, 'BUKU', 'BUKU', '', NULL, 'Genius Hartono', NULL, 'automatic', '2025-07-25 10:32:51', '2025-07-25 10:32:51', NULL, NULL),
 (18, 'MOBI', 'MOBIL', '', NULL, 'Genius Hartono', NULL, 'automatic', '2025-07-25 10:33:20', '2025-07-25 10:33:20', NULL, NULL),
 (19, 'TEKO', 'TEKO', '', NULL, 'Genius Hartono', NULL, 'automatic', '2025-07-25 11:02:24', '2025-07-25 11:02:24', NULL, NULL),
-(20, 'HELM', 'HELM', '', NULL, 'Genius Hartono', NULL, 'automatic', '2025-07-26 15:35:46', '2025-07-26 15:35:46', NULL, NULL);
+(20, 'HELM', 'HELM', '', NULL, 'Genius Hartono', NULL, 'automatic', '2025-07-26 15:35:46', '2025-07-26 15:35:46', NULL, NULL),
+(21, 'Keyb', 'Keyboard', '', NULL, 'Genius Hartono', NULL, 'automatic', '2025-08-05 10:56:24', '2025-08-05 10:56:24', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -113,8 +114,8 @@ INSERT INTO `daya` (`id`, `name`, `description`, `otoritas`, `nama_ky`, `created
 (2, '200W', '', NULL, 'Genius Hartono', '2025-07-12 22:07:20', '2025-07-12 22:07:20', NULL, NULL, NULL, 'automatic'),
 (3, '300W', '', NULL, 'Genius Hartono', '2025-07-12 23:03:02', '2025-07-12 23:03:02', NULL, NULL, NULL, 'automatic'),
 (4, '250W', '', NULL, 'Genius Hartono', '2025-07-15 00:23:16', '2025-07-15 00:23:16', NULL, NULL, NULL, 'automatic'),
-(5, '28ur8892r93hr3h4f3h4f3uh4f3434r34r', '', NULL, 'Genius Hartono', '2025-07-24 10:50:33', '2025-07-24 10:50:33', NULL, NULL, NULL, 'automatic'),
-(6, 'fhewfhuewfh2u9hf29fh2938hf2398h29839823e982u39r823r923h9fuhu3fh92hf923h23r', '', NULL, 'Genius Hartono', '2025-07-24 10:50:51', '2025-07-24 10:50:51', NULL, NULL, NULL, 'automatic'),
+(5, '28ur8892r93hr3h4f3h4f3uh4f3434r34r', '', 'T', 'Genius Hartono', '2025-07-24 10:50:33', '2025-07-31 15:32:27', NULL, NULL, NULL, NULL),
+(6, 'fhewfhuewfh2u9hf29fh2938hf2398h29839823e982u39r823r923h9fuhu3fh92hf923h23r', '', 'T', 'Genius Hartono', '2025-07-24 10:50:51', '2025-08-05 11:40:42', '2025-08-05 03:40:42', NULL, NULL, NULL),
 (7, '700W', '', NULL, 'Genius Hartono', '2025-07-26 15:26:01', '2025-07-26 15:26:01', NULL, NULL, NULL, 'automatic');
 
 -- --------------------------------------------------------
@@ -166,7 +167,7 @@ CREATE TABLE `dimensi` (
 --
 
 INSERT INTO `dimensi` (`id`, `name`, `description`, `otoritas`, `nama_ky`, `created_at`, `updated_at`, `deleted_at`, `recovered_at`, `batas_tanggal_sistem`, `mode_batas_tanggal`) VALUES
-(3, '10M', NULL, NULL, 'Genius Hartono', '2025-07-14 00:14:40', '2025-07-14 00:14:40', NULL, NULL, NULL, 'automatic'),
+(3, '10M', NULL, NULL, 'Genius Hartono', '2025-07-14 00:14:40', '2025-08-05 11:45:37', NULL, NULL, NULL, 'automatic'),
 (6, '20M', NULL, NULL, 'Genius Hartono', '2025-07-14 00:27:38', '2025-07-14 00:27:38', NULL, NULL, NULL, 'automatic'),
 (7, '30M', NULL, NULL, 'Genius Hartono', '2025-07-14 00:35:37', '2025-07-14 00:35:37', NULL, NULL, NULL, 'automatic'),
 (8, '30M', NULL, NULL, 'Genius Hartono', '2025-07-14 00:37:10', '2025-07-14 00:37:10', NULL, NULL, NULL, 'automatic'),
@@ -199,7 +200,8 @@ CREATE TABLE `fiting` (
 --
 
 INSERT INTO `fiting` (`id`, `name`, `description`, `otoritas`, `nama_ky`, `created_at`, `updated_at`, `deleted_at`, `recovered_at`, `batas_tanggal_sistem`, `mode_batas_tanggal`) VALUES
-(1, 'KOTAK', NULL, NULL, 'Genius Hartono', '2025-07-15 00:24:25', '2025-07-15 00:24:25', NULL, NULL, NULL, 'automatic');
+(1, 'KOTAK', '', NULL, 'Genius Hartono', '2025-07-15 00:24:25', '2025-08-05 11:50:51', NULL, NULL, NULL, NULL),
+(2, 'Bulat', '', NULL, 'Genius Hartono', '2025-08-05 11:51:10', '2025-08-05 11:51:10', NULL, NULL, NULL, 'automatic');
 
 -- --------------------------------------------------------
 
@@ -254,7 +256,7 @@ CREATE TABLE `jenis` (
 --
 
 INSERT INTO `jenis` (`id`, `name`, `description`, `otoritas`, `nama_ky`, `batas_tanggal_sistem`, `mode_batas_tanggal`, `created_at`, `updated_at`, `deleted_at`, `recovered_at`) VALUES
-(1, '', NULL, NULL, 'Genius Hartono', NULL, 'automatic', '2025-07-15 00:25:26', '2025-07-15 00:25:26', NULL, NULL),
+(1, 'Speaker', NULL, NULL, 'Genius Hartono', NULL, 'automatic', '2025-07-15 00:25:26', '2025-08-05 12:45:43', NULL, NULL),
 (2, 'SPEAKER AKTIF', NULL, NULL, 'Genius Hartono', NULL, 'automatic', '2025-07-15 00:28:49', '2025-07-15 00:28:49', NULL, NULL);
 
 -- --------------------------------------------------------
@@ -282,7 +284,7 @@ CREATE TABLE `jumlah_mata` (
 --
 
 INSERT INTO `jumlah_mata` (`id`, `name`, `description`, `otoritas`, `nama_ky`, `created_at`, `updated_at`, `deleted_at`, `recovered_at`, `batas_tanggal_sistem`, `mode_batas_tanggal`) VALUES
-(1, 'TIGA MATA', '', NULL, NULL, '2025-07-10 01:33:09', '2025-07-10 01:33:09', NULL, NULL, NULL, 'automatic'),
+(1, 'SATU MATA', '', NULL, 'Genius Hartono', '2025-07-10 01:33:09', '2025-08-05 12:46:35', NULL, NULL, NULL, 'automatic'),
 (3, 'DUA MATA', NULL, NULL, 'Genius Hartono', '2025-07-15 00:40:26', '2025-07-15 00:40:26', NULL, NULL, NULL, 'automatic');
 
 -- --------------------------------------------------------
@@ -310,7 +312,7 @@ CREATE TABLE `kaki` (
 --
 
 INSERT INTO `kaki` (`id`, `name`, `description`, `otoritas`, `nama_ky`, `created_at`, `updated_at`, `deleted_at`, `recovered_at`, `batas_tanggal_sistem`, `mode_batas_tanggal`) VALUES
-(2, 'KAKI TIGA', NULL, NULL, 'Genius Hartono', '2025-07-15 00:43:12', '2025-07-15 00:43:12', NULL, NULL, NULL, 'automatic'),
+(2, 'KAKI TIGA', NULL, 'T', 'Genius Hartono', '2025-07-15 00:43:12', '2025-08-05 14:45:59', NULL, NULL, NULL, NULL),
 (3, 'KAKI EMPAT', NULL, NULL, 'Genius Hartono', '2025-07-15 09:33:03', '2025-07-15 09:33:03', NULL, NULL, NULL, 'automatic');
 
 -- --------------------------------------------------------
@@ -401,7 +403,9 @@ CREATE TABLE `merk` (
 --
 
 INSERT INTO `merk` (`id`, `name`, `description`, `otoritas`, `nama_ky`, `created_at`, `updated_at`, `deleted_at`, `recovered_at`, `batas_tanggal_sistem`, `mode_batas_tanggal`) VALUES
-(4, 'ASUS', NULL, NULL, 'Genius Hartono', '2025-07-15 09:56:40', '2025-07-15 09:56:40', NULL, NULL, NULL, 'automatic');
+(4, 'ASUS', NULL, NULL, 'Genius Hartono', '2025-07-15 09:56:40', '2025-07-15 09:56:40', NULL, NULL, NULL, 'automatic'),
+(5, 'HP', NULL, NULL, 'Genius Hartono', '2025-08-05 14:18:56', '2025-08-05 14:18:56', NULL, NULL, NULL, 'automatic'),
+(6, 'Logitech', '', NULL, 'Genius Hartono', '2025-08-05 15:40:41', '2025-08-05 15:40:41', NULL, NULL, NULL, 'automatic');
 
 -- --------------------------------------------------------
 
@@ -434,16 +438,18 @@ CREATE TABLE `model` (
   `created_at` datetime DEFAULT current_timestamp(),
   `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `deleted_at` datetime DEFAULT NULL,
-  `recovered_at` datetime DEFAULT NULL
+  `recovered_at` datetime DEFAULT NULL,
+  `batas_tanggal_sistem` date DEFAULT NULL,
+  `mode_batas_tanggal` varchar(20) DEFAULT 'automatic'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `model`
 --
 
-INSERT INTO `model` (`id`, `name`, `description`, `otoritas`, `nama_ky`, `created_at`, `updated_at`, `deleted_at`, `recovered_at`) VALUES
-(2, 'MODEL VINTAGE', NULL, NULL, 'Genius Hartono', '2025-07-15 10:06:48', '2025-07-15 10:06:48', NULL, NULL),
-(3, 'MODEL MODERN', NULL, NULL, 'Genius Hartono', '2025-07-15 10:08:29', '2025-07-15 10:08:29', NULL, NULL);
+INSERT INTO `model` (`id`, `name`, `description`, `otoritas`, `nama_ky`, `created_at`, `updated_at`, `deleted_at`, `recovered_at`, `batas_tanggal_sistem`, `mode_batas_tanggal`) VALUES
+(2, 'MODEL VINTAGE', NULL, NULL, 'Genius Hartono', '2025-07-15 10:06:48', '2025-07-15 10:06:48', NULL, NULL, NULL, 'automatic'),
+(3, 'MODEL MODERN', NULL, NULL, 'Genius Hartono', '2025-07-15 10:08:29', '2025-07-15 10:08:29', NULL, NULL, NULL, 'automatic');
 
 -- --------------------------------------------------------
 
@@ -519,7 +525,8 @@ INSERT INTO `products` (`id`, `category_id`, `satuan_id`, `jenis_id`, `pelengkap
 (3, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'LAPTOP Asus', 1242123.00, 12, '2025-07-10 05:42:42', '2025-07-22 11:38:27', '2025-07-22 03:38:27', NULL, NULL, 'automatic', NULL, 'Genius Hartono'),
 (4, 3, 4, 2, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 2, 0, 'Laptop HP Pavilion wefhiweufhiwuefhiuwefiuwe', 32000333.00, 12, '2025-07-22 10:30:21', '2025-07-24 10:49:54', NULL, NULL, NULL, 'automatic', NULL, 'Genius Hartono'),
 (5, 3, 4, 2, 1, 1, 4, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, NULL, 1, 'LAPTOP HP PAVILION', 99999999.99, 12, '2025-07-22 11:10:55', '2025-07-22 11:10:55', NULL, NULL, NULL, 'automatic', NULL, NULL),
-(6, 3, 4, 2, 1, 1, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 3, NULL, 'Notebook Asus', 12678456345.00, 12, '2025-07-22 12:22:14', '2025-07-22 12:22:14', NULL, NULL, NULL, 'automatic', NULL, 'Genius Hartono');
+(6, 3, 4, 2, 1, 1, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 3, NULL, 'Notebook Asus', 12678456345.00, 12, '2025-07-22 12:22:14', '2025-07-22 12:22:14', NULL, NULL, NULL, 'automatic', NULL, 'Genius Hartono'),
+(7, 4, 4, 1, NULL, NULL, NULL, 1, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Speaker Bass', 23000.00, 15, '2025-08-05 16:38:51', '2025-08-05 16:38:51', NULL, NULL, NULL, 'automatic', NULL, 'Genius Hartono');
 
 -- --------------------------------------------------------
 
@@ -613,7 +620,7 @@ CREATE TABLE `satuan` (
 INSERT INTO `satuan` (`id`, `name`, `description`, `otoritas`, `nama_ky`, `batas_tanggal_sistem`, `mode_batas_tanggal`, `created_at`, `updated_at`, `deleted_at`, `recovered_at`) VALUES
 (1, 'cms', '', NULL, NULL, NULL, 'automatic', '2025-07-08 01:42:42', '2025-07-08 04:02:02', '2025-07-08 04:02:02', NULL),
 (2, 'cm', '', NULL, NULL, NULL, 'automatic', '2025-07-08 04:02:25', '2025-07-08 04:02:25', NULL, NULL),
-(3, 'kg', '', NULL, NULL, NULL, 'automatic', '2025-07-08 04:02:33', '2025-07-08 04:02:33', NULL, NULL),
+(3, 'kg', '', NULL, 'Genius Hartono', NULL, NULL, '2025-07-08 04:02:33', '2025-08-05 15:53:32', NULL, NULL),
 (4, 'pcs', '', NULL, 'geni', NULL, 'automatic', '2025-07-10 04:54:01', '2025-07-10 04:54:01', NULL, NULL),
 (5, 'gram', NULL, NULL, 'Genius Hartono', NULL, 'automatic', '2025-07-15 10:16:18', '2025-07-15 10:16:18', NULL, NULL);
 
@@ -679,6 +686,8 @@ CREATE TABLE `users` (
   `nama` varchar(100) NOT NULL,
   `alamat` text DEFAULT NULL,
   `noktp` varchar(40) NOT NULL,
+  `profile_image` varchar(255) DEFAULT NULL,
+  `birthday` date DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   `recovered_at` datetime DEFAULT NULL,
   `otoritas` char(1) DEFAULT 'T',
@@ -690,17 +699,17 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `nama`, `alamat`, `noktp`, `deleted_at`, `recovered_at`, `otoritas`, `created_at`, `updated_at`) VALUES
-(234, 'delby', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'delby', NULL, '', '2025-07-07 05:46:54', '2025-07-07 05:46:46', 'T', '2025-07-05 14:20:16', '2025-07-07 05:46:54'),
-(909, 'geni1819', '$2y$10$yCVdmEq9i2kd62zm98/6X.I/ichcTL/s/ePbIL4zNAHrUJ9Sm6tOK', 'Genius Hartono', 'canggu', '32534535434534', NULL, NULL, NULL, '2025-07-05 14:20:16', '2025-07-12 19:14:47'),
-(910, 'test1819', 'Genius1819', 'test', 'Canggu', '9727312873218312', '2025-07-07 04:29:52', NULL, 'T', '2025-07-05 14:34:12', '2025-07-07 04:29:52'),
-(911, 'yono1819', '$2y$10$gRiHXmoawoyrbXpCeWcR.ObcuEAkH/TgbSy3IdxEYKl5xIIYzNrwu', 'yono', 'buduk', '', '2025-07-12 08:22:00', NULL, NULL, '2025-07-09 03:34:37', '2025-07-12 16:22:00'),
-(912, 'budi123', '$2y$10$kXkZA9UcGmuATZjoX5RpZuh6PO3xz/zyg3YuFJ/A4HaWfnzwUCKUG', 'budi', 'canggu', '', '2025-07-12 08:22:08', '2025-07-09 03:47:36', NULL, '2025-07-09 03:37:25', '2025-07-12 16:22:08'),
-(913, 'budis123', '$2y$10$y7HuCFphwIK.9mgwzLqSNOy0.CJCy2PzmEiPT9TvVVR/ny7s/Ja4y', 'budis', 'canggu', '', '2025-07-12 08:27:59', '2025-07-09 03:47:34', NULL, '2025-07-09 03:40:16', '2025-07-12 16:27:59'),
-(914, 'tono123', '$2y$10$JNP1mOPI1U.ZlA.HRXHOQOYfpHla3/n2OEWRlDHczcnbt47ouzruG', 'tono', 'sfewfwe', '', '2025-07-12 08:27:56', NULL, NULL, '2025-07-09 03:42:13', '2025-07-12 16:27:56'),
-(918, 'babi1819', '$2y$10$x9hUob.AJi82gLlO6ghRfeURyawWXWpoVCT5j6OLDqi50wmqojq6.', 'babi', 'canggu', '42372397843928742', '2025-07-12 06:43:31', NULL, NULL, '2025-07-12 14:38:01', '2025-07-12 14:43:31'),
-(919, 'babi1819', '$2y$10$tiXdrlRlGa5bxJNOiESQTeLSvSWOPbXjHBn1hEMNY6gmDsPJtCOcm', 'babi', 'canggu', '42372397843928742', '2025-07-12 06:43:31', NULL, NULL, '2025-07-12 14:38:02', '2025-07-12 14:49:45'),
-(920, 'test123', '$2y$10$.HqjCYLqGA87L7w6AkxUPOGY5xPtjGg.GvZw5U4Z6KRyaTYNuKMA2', 'Testing', 'canggu', '23949328492834', NULL, NULL, NULL, '2025-07-12 14:48:00', '2025-07-12 19:15:13');
+INSERT INTO `users` (`id`, `username`, `password`, `nama`, `alamat`, `noktp`, `profile_image`, `birthday`, `deleted_at`, `recovered_at`, `otoritas`, `created_at`, `updated_at`) VALUES
+(234, 'delby', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'delby', NULL, '', NULL, NULL, '2025-07-07 05:46:54', '2025-07-07 05:46:46', 'T', '2025-07-05 14:20:16', '2025-07-07 05:46:54'),
+(909, 'geni1819', '$2y$10$5RKKP5rjZ.5HLC9zfCnCa.0ut/80NkKLLEJast1qo16qZbb7lYjDm', 'Genius Hartono', 'canggu', '32534535434534', 'assets/img/profiles/1754360418_f8328bc9d08ca01b89ee.png', '2000-05-31', NULL, NULL, NULL, '2025-07-05 14:20:16', '2025-08-05 10:49:29'),
+(910, 'test1819', 'Genius1819', 'test', 'Canggu', '9727312873218312', NULL, NULL, '2025-07-07 04:29:52', NULL, 'T', '2025-07-05 14:34:12', '2025-07-07 04:29:52'),
+(911, 'yono1819', '$2y$10$gRiHXmoawoyrbXpCeWcR.ObcuEAkH/TgbSy3IdxEYKl5xIIYzNrwu', 'yono', 'buduk', '', NULL, NULL, '2025-07-12 08:22:00', NULL, NULL, '2025-07-09 03:34:37', '2025-07-12 16:22:00'),
+(912, 'budi123', '$2y$10$kXkZA9UcGmuATZjoX5RpZuh6PO3xz/zyg3YuFJ/A4HaWfnzwUCKUG', 'budi', 'canggu', '', NULL, NULL, '2025-07-12 08:22:08', '2025-07-09 03:47:36', NULL, '2025-07-09 03:37:25', '2025-07-12 16:22:08'),
+(913, 'budis123', '$2y$10$y7HuCFphwIK.9mgwzLqSNOy0.CJCy2PzmEiPT9TvVVR/ny7s/Ja4y', 'budis', 'canggu', '', NULL, NULL, '2025-07-12 08:27:59', '2025-07-09 03:47:34', NULL, '2025-07-09 03:40:16', '2025-07-12 16:27:59'),
+(914, 'tono123', '$2y$10$JNP1mOPI1U.ZlA.HRXHOQOYfpHla3/n2OEWRlDHczcnbt47ouzruG', 'tono', 'sfewfwe', '', NULL, NULL, '2025-07-12 08:27:56', NULL, NULL, '2025-07-09 03:42:13', '2025-07-12 16:27:56'),
+(918, 'babi1819', '$2y$10$x9hUob.AJi82gLlO6ghRfeURyawWXWpoVCT5j6OLDqi50wmqojq6.', 'babi', 'canggu', '42372397843928742', NULL, NULL, '2025-07-12 06:43:31', NULL, NULL, '2025-07-12 14:38:01', '2025-07-12 14:43:31'),
+(919, 'babi1819', '$2y$10$tiXdrlRlGa5bxJNOiESQTeLSvSWOPbXjHBn1hEMNY6gmDsPJtCOcm', 'babi', 'canggu', '42372397843928742', NULL, NULL, '2025-07-12 06:43:31', NULL, NULL, '2025-07-12 14:38:02', '2025-07-12 14:49:45'),
+(920, 'test123', '$2y$10$.HqjCYLqGA87L7w6AkxUPOGY5xPtjGg.GvZw5U4Z6KRyaTYNuKMA2', 'Testing', 'canggu', '23949328492834', NULL, NULL, NULL, NULL, NULL, '2025-07-12 14:48:00', '2025-07-12 19:15:13');
 
 -- --------------------------------------------------------
 
@@ -778,6 +787,13 @@ CREATE TABLE `warna_bibir` (
   `mode_batas_tanggal` varchar(20) DEFAULT 'automatic'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `warna_bibir`
+--
+
+INSERT INTO `warna_bibir` (`id`, `name`, `description`, `otoritas`, `nama_ky`, `created_at`, `updated_at`, `deleted_at`, `recovered_at`, `batas_tanggal_sistem`, `mode_batas_tanggal`) VALUES
+(1, 'Hitam', NULL, NULL, 'Genius Hartono', '2025-08-01 15:22:16', '2025-08-01 15:22:16', NULL, NULL, NULL, 'automatic');
+
 -- --------------------------------------------------------
 
 --
@@ -798,6 +814,13 @@ CREATE TABLE `warna_body` (
   `mode_batas_tanggal` varchar(20) DEFAULT 'automatic'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `warna_body`
+--
+
+INSERT INTO `warna_body` (`id`, `name`, `description`, `otoritas`, `nama_ky`, `created_at`, `updated_at`, `deleted_at`, `recovered_at`, `batas_tanggal_sistem`, `mode_batas_tanggal`) VALUES
+(1, 'Merah', NULL, NULL, 'Genius Hartono', '2025-08-01 15:23:37', '2025-08-01 15:23:37', NULL, NULL, NULL, 'automatic');
+
 -- --------------------------------------------------------
 
 --
@@ -817,6 +840,13 @@ CREATE TABLE `warna_sinar` (
   `batas_tanggal_sistem` date DEFAULT NULL,
   `mode_batas_tanggal` varchar(20) DEFAULT 'automatic'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `warna_sinar`
+--
+
+INSERT INTO `warna_sinar` (`id`, `name`, `description`, `otoritas`, `nama_ky`, `created_at`, `updated_at`, `deleted_at`, `recovered_at`, `batas_tanggal_sistem`, `mode_batas_tanggal`) VALUES
+(1, 'Kuning', NULL, NULL, 'Genius Hartono', '2025-08-01 15:24:04', '2025-08-01 15:24:04', NULL, NULL, NULL, 'automatic');
 
 --
 -- Indexes for dumped tables
@@ -1005,7 +1035,7 @@ ALTER TABLE `warna_sinar`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `customers`
@@ -1035,7 +1065,7 @@ ALTER TABLE `dimensi`
 -- AUTO_INCREMENT for table `fiting`
 --
 ALTER TABLE `fiting`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `gondola`
@@ -1077,7 +1107,7 @@ ALTER TABLE `mastersales`
 -- AUTO_INCREMENT for table `merk`
 --
 ALTER TABLE `merk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -1101,7 +1131,7 @@ ALTER TABLE `pelengkap`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `sales`
@@ -1155,19 +1185,19 @@ ALTER TABLE `voltase`
 -- AUTO_INCREMENT for table `warna_bibir`
 --
 ALTER TABLE `warna_bibir`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `warna_body`
 --
 ALTER TABLE `warna_body`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `warna_sinar`
 --
 ALTER TABLE `warna_sinar`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
