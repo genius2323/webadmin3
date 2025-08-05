@@ -98,11 +98,13 @@ class MasterKategori extends BaseController
         $nama_ky = session()->get('user_nama');
         $model->update($id, [
             'deleted_at' => date('Y-m-d H:i:s'),
-            'nama_ky' => $nama_ky
+            'nama_ky' => $nama_ky,
+            'otoritas' => null
         ]);
         $db2->table('categories')->where('id', $id)->update([
             'deleted_at' => date('Y-m-d H:i:s'),
-            'nama_ky' => $nama_ky
+            'nama_ky' => $nama_ky,
+            'otoritas' => null
         ]);
         return redirect()->to('masterkategori')->with('success', 'Kategori berhasil dihapus (soft delete) di dua database');
     }

@@ -3,20 +3,12 @@
 namespace App\Controllers;
 
 use App\Models\MasterMerkModel;
-use CodeIgniter\Controller;
 
-class MasterMerk extends Controller
+class MasterMerk extends BaseController
 {
-    protected $masterMerkModel;
-    protected $db2;
-    public function __construct()
-    {
-        $this->masterMerkModel = new MasterMerkModel();
-        $this->db2 = \Config\Database::connect('db2');
-    }
     public function index()
     {
-        $model = $this->masterMerkModel;
+        $model = new MasterMerkModel();
         $search = $this->request->getGet('search');
         $perPage = (int)($this->request->getGet('perPage') ?? 10);
         if ($perPage < 1) $perPage = 10;
@@ -24,67 +16,94 @@ class MasterMerk extends Controller
         if ($search) {
             $builder = $builder->like('name', $search);
         }
-        $data['merk'] = $builder->paginate($perPage, 'default');
+        $data['merk'] = $builder->paginate($perPage);
         $data['pager'] = $model->pager;
         $data['perPage'] = $perPage;
         $data['search'] = $search;
         $data['title'] = 'Master Merk';
         return view('master_merk/index', $data);
     }
+
     public function create()
     {
-        $data = [
-            'title' => 'Tambah Merk'
-        ];
+        $data['title'] = 'Tambah Merk';
         return view('master_merk/create', $data);
     }
+
     public function save()
     {
-        $session = session();
-        $nama_ky = $session->get('user_nama');
+        $model = new MasterMerkModel();
+        $db2 = \Config\Database::connect('db2');
+        $nama_ky = session()->get('user_nama');
         $data = [
-            'name' => $this->request->getVar('name'),
+            'name' => $this->request->getPost('name'),
+            'description' => $this->request->getPost('description'),
+            'otoritas' => null,
             'nama_ky' => $nama_ky,
-            'otoritas' => null
         ];
-        $this->masterMerkModel->insert($data);
-        $id = $this->masterMerkModel->getInsertID();
+        $model->insert($data);
+        $id = $model->getInsertID();
         $dataDb2 = $data;
         $dataDb2['id'] = $id;
-        $this->db2->table('merk')->insert($dataDb2);
-        return redirect()->to('/mastermerk')->with('success', 'Data berhasil ditambahkan.');
+        $db2->table('merk')->insert($dataDb2);
+        return redirect()->to('mastermerk')->with('success', 'Merk berhasil ditambahkan');
     }
+
     public function edit($id)
     {
+        $model = new MasterMerkModel();
+        $merk = $model->find($id);
+        if (!$merk || $merk['deleted_at']) {
+            return redirect()->to('mastermerk')->with('error', 'Merk tidak ditemukan.');
+        }
         $data = [
-            'merk' => $this->masterMerkModel->find($id),
-            'title' => 'Edit Merk'
+            'merk' => $merk,
+            'title' => 'Edit Merk',
         ];
         return view('master_merk/edit', $data);
     }
+
     public function update($id)
     {
-        $session = session();
-        $nama_ky = $session->get('user_nama');
+        $model = new MasterMerkModel();
+        $db2 = \Config\Database::connect('db2');
+        $merk = $model->find($id);
+        if (!$merk || $merk['deleted_at']) {
+            return redirect()->to('mastermerk')->with('error', 'Merk tidak ditemukan.');
+        }
+        $nama_ky = session()->get('user_nama');
         $data = [
-            'name' => $this->request->getVar('name'),
+            'name' => $this->request->getPost('name'),
+            'description' => $this->request->getPost('description'),
+            'otoritas' => null,
             'nama_ky' => $nama_ky,
-            'otoritas' => null
         ];
-        $this->masterMerkModel->update($id, $data);
-        $this->db2->table('merk')->where('id', $id)->update($data);
-        return redirect()->to('/mastermerk')->with('success', 'Data berhasil diubah.');
+        $model->update($id, $data);
+        $dataDb2 = $data;
+        $dataDb2['id'] = $id;
+        $db2->table('merk')->where('id', $id)->update($dataDb2);
+        return redirect()->to('mastermerk')->with('success', 'Merk berhasil diupdate');
     }
+
     public function delete($id)
     {
-        $session = session();
-        $nama_ky = $session->get('user_nama');
-        $data = [
+        $model = new MasterMerkModel();
+        $db2 = \Config\Database::connect('db2');
+        $merk = $model->find($id);
+        if (!$merk || $merk['deleted_at']) {
+            return redirect()->to('mastermerk')->with('error', 'Merk tidak ditemukan.');
+        }
+        $nama_ky = session()->get('user_nama');
+        $model->update($id, [
             'deleted_at' => date('Y-m-d H:i:s'),
-            'nama_ky' => $nama_ky
-        ];
-        $this->masterMerkModel->update($id, $data);
-        $this->db2->table('merk')->where('id', $id)->update($data);
-        return redirect()->to('/mastermerk')->with('success', 'Data berhasil dihapus.');
+            'otoritas' => null,
+            'nama_ky' => $nama_ky,
+        ]);
+        $db2->table('merk')->where('id', $id)->update([
+            'deleted_at' => date('Y-m-d H:i:s'),
+            'otoritas' => null,
+            'nama_ky' => $nama_ky,
+        ]);
+        return redirect()->to('mastermerk')->with('success', 'Merk berhasil dihapus');
     }
 }

@@ -120,12 +120,12 @@
                         <tbody>
                             <?php if (!empty($warnasinar)) {
                                 $no = 1;
-                                if (isset($pager) && $pager) {
-                                    $no = 1 + (($pager->getCurrentPage() - 1) * $pager->getPerPage());
-                                }
-                                foreach ($warnasinar as $row) { ?>
+                                $currentPage = (int)($pager->getCurrentPage('default') ?? 1);
+                                $perPage = (int)($perPageVal ?? 10);
+                                $startNumber = ($currentPage - 1) * $perPage + 1;
+                                foreach ($warnasinar as $i => $row) { ?>
                                     <tr>
-                                        <td style="text-align:center;"> <?= $no++ ?> </td>
+                                        <td style="text-align:center;"> <?= $startNumber + $i ?> </td>
                                         <td><?= esc($row['name']) ?></td>
                                         <td><?= esc($row['description'] ?? '-') ?></td>
                                         <td style="text-align:center;">

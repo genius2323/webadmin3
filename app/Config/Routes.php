@@ -20,6 +20,11 @@ $routes->get('/logout', 'Auth::logout');
 // RUTE TERPROTEKSI (WAJIB LOGIN)
 // =================================================================
 $routes->group('', ['filter' => 'auth'], static function ($routes) {
+    // Profile
+    $routes->get('profile', 'Profile::index');
+    $routes->post('profile/update', 'Profile::update');
+    $routes->get('profile/security', 'Profile::security');
+    $routes->post('profile/updateSecurity', 'Profile::updateSecurity');
     // Master Customer
     $routes->get('mastercustomer', 'MasterCustomer::index');
     $routes->get('mastercustomer/create', 'MasterCustomer::create');

@@ -56,14 +56,23 @@ class MasterSatuan extends Controller
     }
     public function edit($id)
     {
+        $satuan = $this->masterSatuanModel->find($id);
+        if (!$satuan || $satuan['deleted_at'] || ($satuan['otoritas'] ?? '') !== 'T') {
+            return redirect()->to('/mastersatuan')->with('error', 'Tidak memiliki otoritas untuk edit data ini.');
+        }
         $data = [
-            'satuan' => $this->masterSatuanModel->find($id),
+            'satuan' => $satuan,
             'title' => 'Edit Satuan'
         ];
         return view('master_satuan/edit', $data);
     }
+
     public function update($id)
     {
+        $satuan = $this->masterSatuanModel->find($id);
+        if (!$satuan || $satuan['deleted_at'] || ($satuan['otoritas'] ?? '') !== 'T') {
+            return redirect()->to('/mastersatuan')->with('error', 'Tidak memiliki otoritas untuk edit data ini.');
+        }
         $session = session();
         $nama_ky = $session->get('user_nama');
         $data = [
@@ -75,13 +84,18 @@ class MasterSatuan extends Controller
         $this->db2->table('satuan')->where('id', $id)->update($data);
         return redirect()->to('/mastersatuan')->with('success', 'Data berhasil diubah.');
     }
+
     public function delete($id)
     {
+        $satuan = $this->masterSatuanModel->find($id);
+        if (!$satuan || $satuan['deleted_at'] || ($satuan['otoritas'] ?? '') !== 'T') {
+            return redirect()->to('/mastersatuan')->with('error', 'Tidak memiliki otoritas untuk hapus data ini.');
+        }
         $session = session();
         $nama_ky = $session->get('user_nama');
         $data = [
             'deleted_at' => date('Y-m-d H:i:s'),
-            'nama_ky' => $nama_ky
+            'nama_ky' => $nama_ky,
         ];
         $this->masterSatuanModel->update($id, $data);
         $this->db2->table('satuan')->where('id', $id)->update($data);

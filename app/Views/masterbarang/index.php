@@ -57,17 +57,51 @@
                         border-spacing: 0;
                         overflow: hidden;
                     }
-                    .table-radius th:first-child { border-top-left-radius: 8px; }
-                    .table-radius th:last-child { border-top-right-radius: 8px; }
-                    .table-radius tr:last-child td:first-child { border-bottom-left-radius: 8px; }
-                    .table-radius tr:last-child td:last-child { border-bottom-right-radius: 8px; }
-                    .table-radius th, .table-radius td { border: 1.5px solid #dee2e6; }
-                    .table-radius th:first-child { border-left-width: 1.5px; }
-                    .table-radius th:last-child { border-right-width: 1.5px; }
-                    .table-radius tr:last-child td:first-child { border-left-width: 1.5px; }
-                    .table-radius tr:last-child td:last-child { border-right-width: 1.5px; }
-                    .table-radius tr:first-child th { border-top-width: 1.5px; }
-                    .table-radius tr:last-child td { border-bottom-width: 1.5px; }
+
+                    .table-radius th:first-child {
+                        border-top-left-radius: 8px;
+                    }
+
+                    .table-radius th:last-child {
+                        border-top-right-radius: 8px;
+                    }
+
+                    .table-radius tr:last-child td:first-child {
+                        border-bottom-left-radius: 8px;
+                    }
+
+                    .table-radius tr:last-child td:last-child {
+                        border-bottom-right-radius: 8px;
+                    }
+
+                    .table-radius th,
+                    .table-radius td {
+                        border: 1.5px solid #dee2e6;
+                    }
+
+                    .table-radius th:first-child {
+                        border-left-width: 1.5px;
+                    }
+
+                    .table-radius th:last-child {
+                        border-right-width: 1.5px;
+                    }
+
+                    .table-radius tr:last-child td:first-child {
+                        border-left-width: 1.5px;
+                    }
+
+                    .table-radius tr:last-child td:last-child {
+                        border-right-width: 1.5px;
+                    }
+
+                    .table-radius tr:first-child th {
+                        border-top-width: 1.5px;
+                    }
+
+                    .table-radius tr:last-child td {
+                        border-bottom-width: 1.5px;
+                    }
                 </style>
                 <table class="table table-bordered table-hover align-middle mb-0 table-radius">
                     <thead class="table-light">
@@ -84,10 +118,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php if (!empty($products)): ?>
-                            <?php foreach ($products as $i => $row): ?>
+                        <?php if (!empty($products)) {
+                            $no = 1;
+                            if (isset($pager) && $pager) {
+                                $no = 1 + (($pager->getCurrentPage() - 1) * $pager->getPerPage());
+                            }
+                            foreach ($products as $row) { ?>
                                 <tr>
-                                    <td style="text-align:center;"> <?= ($perPage * (($_GET['page'] ?? 1) - 1)) + $i + 1 ?> </td>
+                                    <td style="text-align:center;"> <?= $no++ ?> </td>
                                     <td><?= esc($row['name']) ?></td>
                                     <td><?= esc($row['category_name'] ?? '-') ?></td>
                                     <td style="text-align:center;"> <?= esc($row['satuan_name'] ?? '-') ?> </td>
@@ -104,19 +142,22 @@
                                     <td class="text-center" style="white-space: nowrap !important;">
                                         <?php if (!empty($row['otoritas']) && $row['otoritas'] === 'T'): ?>
                                             <a href="<?= site_url('masterbarang/edit/' . $row['id']) ?>" class="btn btn-sm btn-warning"><i data-feather="edit"></i></a>
-                                            <a href="<?= site_url('masterbarang/delete/' . $row['id']) ?>" class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin menghapus barang ini?')"><i data-feather="trash-2"></i></a>
+                                            <form action="<?= site_url('masterbarang/delete/' . $row['id']) ?>" method="post" style="display:inline;">
+                                                <?= csrf_field() ?>
+                                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin menghapus barang ini?')"><i data-feather="trash-2"></i></button>
+                                            </form>
                                         <?php else: ?>
-                                            <button class="btn btn-sm btn-warning" style="opacity:0.6;cursor:not-allowed; " disabled><i data-feather="edit"></i></button>
-                                            <button class="btn btn-sm btn-danger" style="opacity:0.6;cursor:not-allowed;" disabled><i data-feather="trash-2"></i></button>
+                                            <a href="#" class="btn btn-sm btn-warning" style="opacity:0.6;pointer-events:none;cursor:not-allowed;" tabindex="-1" aria-disabled="true"><i data-feather="edit"></i></a>
+                                            <button class="btn btn-sm btn-danger" style="opacity:0.6;pointer-events:none;cursor:not-allowed;" disabled><i data-feather="trash-2"></i></button>
                                         <?php endif; ?>
                                     </td>
                                 </tr>
-                            <?php endforeach; ?>
-                        <?php else: ?>
+                            <?php }
+                        } else { ?>
                             <tr>
                                 <td colspan="9" class="text-center text-muted">Data tidak ditemukan</td>
                             </tr>
-                        <?php endif; ?>
+                        <?php } ?>
                     </tbody>
                 </table>
             </div>

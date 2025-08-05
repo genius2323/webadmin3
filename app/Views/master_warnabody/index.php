@@ -143,8 +143,8 @@
                                                     <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Yakin hapus data ini?')"><i data-feather="trash-2"></i></button>
                                                 </form>
                                             <?php } else { ?>
-                                                <button class="btn btn-sm btn-warning" disabled><i data-feather="edit"></i></button>
-                                                <button class="btn btn-sm btn-danger" disabled><i data-feather="trash-2"></i></button>
+                                                <button class="btn btn-sm btn-warning" disabled style="pointer-events:none;"><i data-feather="edit"></i></button>
+                                                <button class="btn btn-sm btn-danger" disabled style="pointer-events:none;"><i data-feather="trash-2"></i></button>
                                             <?php } ?>
                                         </td>
                                     </tr>

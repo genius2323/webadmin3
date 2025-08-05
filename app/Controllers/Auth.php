@@ -28,7 +28,7 @@ class Auth extends BaseController
         $rules = [
             'username'     => 'required',
             'password'     => 'required',
-            'department_id'=> 'required|integer',
+            'department_id' => 'required|integer',
         ];
 
         if (!$this->validate($rules)) {
@@ -67,6 +67,8 @@ class Auth extends BaseController
                 'isLoggedIn'    => true,
             ];
             session()->set($sessionData);
+            // Set full user data agar halaman profile tidak redirect ke dashboard
+            session()->set('user', $user);
             log_message('debug', 'LOGIN DEBUG: sessionData=' . print_r($sessionData, true));
             return redirect()->to('/dashboard');
         } else {

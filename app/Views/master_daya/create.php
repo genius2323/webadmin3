@@ -1,40 +1,57 @@
 <?= $this->extend('layout/template') ?>
 <?= $this->section('content') ?>
-<div class="form-container" style="max-width: 480px; margin: 0 auto;">
-    <div class="page-header" style="display:flex;align-items:center;gap:16px;margin-left:24px;margin-bottom:18px;">
-        <div class="page-header-icon" style="display:flex;align-items:center;">
-            <span class="material-symbols-outlined" style="font-size:2.2rem;">bolt</span>
+<main>
+    <header class="page-header page-header-compact page-header-light border-bottom bg-white mb-4">
+        <div class="container-fluid px-4">
+            <div class="page-header-content">
+                <div class="row align-items-center justify-content-between pt-3">
+                    <div class="col-auto mb-3">
+                        <h1 class="page-header-title">
+                            <div class="page-header-icon"><i data-feather="zap"></i></div>
+                            Tambah Master Daya
+                        </h1>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div>
-            <h1 class="page-header-title" style="margin:0;">Master Daya</h1>
-            <p class="page-header-subtitle" style="margin:0;">Kelola seluruh data daya di sini.</p>
+    </header>
+    <div class="container-fluid px-4">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card mb-4 animate__animated animate__fadeInUp">
+                    <div class="card-body">
+                        <?php if (session('success')): ?>
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <i data-feather="check-circle" class="me-1"></i>
+                                <?= session('success') ?>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        <?php endif; ?>
+                        <form action="<?= site_url('masterdaya/save') ?>" method="post" autocomplete="off">
+                            <?= csrf_field() ?>
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Nama Daya <span class="text-danger">*</span></label>
+                                <input type="text" name="name" id="name" class="form-control" required placeholder="Nama Daya">
+                            </div>
+                            <div class="mb-3">
+                                <label for="description" class="form-label">Deskripsi</label>
+                                <textarea name="description" id="description" class="form-control" rows="3" placeholder="Deskripsi daya (opsional)"></textarea>
+                            </div>
+                            <div class="d-flex justify-content-end">
+                                <button type="submit" class="btn btn-primary">
+                                    <i data-feather="save" class="me-1"></i> Simpan Daya
+                                </button>
+                                <a href="<?= site_url('masterdaya') ?>" class="btn btn-danger ms-2">Batal</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="content-card">
-        <?php if (session('success')): ?>
-            <div class="alert alert-success">
-                <span class="material-symbols-outlined alert-icon">check_circle</span>
-                <span><?= session('success') ?></span>
-                <button type="button" class="alert-close" onclick="this.parentElement.style.display='none'">&times;</button>
-            </div>
-        <?php endif; ?>
-        <form action="<?= site_url('masterdaya/save') ?>" method="post" autocomplete="off">
-            <div class="form-group">
-                <label for="name" class="form-label">Nama Daya<span style="color:red">*</span></label>
-                <input type="text" name="name" id="name" class="form-m3-input input-m3-date" required placeholder="Nama Daya">
-            </div>
-            <div class="form-group">
-                <label for="description" class="form-label">Deskripsi</label>
-                <input type="text" name="description" id="description" class="form-m3-input input-m3-date" placeholder="Deskripsi">
-            </div>
-            <div class="form-actions" style="display:flex;justify-content:flex-end;margin-top:32px;gap:10px;">
-                <button type="submit" class="btn-m3 btn-primary-m3">
-                    <span class="material-symbols-outlined" style="vertical-align: middle;">save</span>
-                    Simpan
-                </button>
-                <a href="<?= site_url('masterdaya') ?>" class="btn-logout-modern" style="background:#e53935;color:#fff;">Batal</a>
-            </div>
-        </form>
-    </div>
-</div>
+</main>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+<script>
+    if (window.feather) feather.replace();
+</script>
 <?= $this->endSection() ?>

@@ -133,11 +133,16 @@
                                             <?php } ?>
                                         </td>
                                         <td class="text-center" style="white-space: nowrap !important;">
-                                            <a href="<?= site_url('masterukuranbarang/edit/' . $row['id']) ?>" class="btn btn-sm btn-warning"><i data-feather="edit"></i></a>
-                                            <form action="<?= site_url('masterukuranbarang/delete/' . $row['id']) ?>" method="post" style="display:inline;">
-                                                <?= csrf_field() ?>
-                                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Yakin hapus data ini?')"><i data-feather="trash-2"></i></button>
-                                            </form>
+                                            <?php if (($row['otoritas'] ?? '') === 'T') { ?>
+                                                <a href="<?= site_url('masterukuranbarang/edit/' . $row['id']) ?>" class="btn btn-sm btn-warning"><i data-feather="edit"></i></a>
+                                                <form action="<?= site_url('masterukuranbarang/delete/' . $row['id']) ?>" method="post" style="display:inline;">
+                                                    <?= csrf_field() ?>
+                                                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Yakin hapus data ini?')"><i data-feather="trash-2"></i></button>
+                                                </form>
+                                            <?php } else { ?>
+                                                <a class="btn btn-sm btn-warning disabled" tabindex="-1" aria-disabled="true" style="pointer-events:none;"><i data-feather="edit"></i></a>
+                                                <button class="btn btn-sm btn-danger disabled" tabindex="-1" aria-disabled="true" style="pointer-events:none;" disabled><i data-feather="trash-2"></i></button>
+                                            <?php } ?>
                                         </td>
                                     </tr>
                                 <?php }

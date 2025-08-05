@@ -115,10 +115,14 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php if (!empty($fiting)): ?>
-                                <?php foreach ($fiting as $i => $row): ?>
+                            <?php if (!empty($fiting)) {
+                                $no = 1;
+                                if (isset($pager) && $pager) {
+                                    $no = 1 + (($pager->getCurrentPage() - 1) * $pager->getPerPage());
+                                }
+                                foreach ($fiting as $row) { ?>
                                     <tr>
-                                        <td style="text-align:center;"> <?= $i + 1 ?> </td>
+                                        <td style="text-align:center;"> <?= $no++ ?> </td>
                                         <td><?= esc($row['name']) ?></td>
                                         <td><?= esc($row['description'] ?? '-') ?></td>
                                         <td style="text-align:center;">
@@ -138,12 +142,12 @@
                                             <?php endif; ?>
                                         </td>
                                     </tr>
-                                <?php endforeach; ?>
-                            <?php else: ?>
+                                <?php }
+                            } else { ?>
                                 <tr>
                                     <td colspan="5" class="text-center text-muted">Data tidak ditemukan</td>
                                 </tr>
-                            <?php endif; ?>
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>

@@ -53,13 +53,22 @@ class MasterUkuranBarang extends Controller
     }
     public function edit($id)
     {
+        $ukuranbarang = $this->masterUkuranBarangModel->find($id);
+        if (!$ukuranbarang || $ukuranbarang['deleted_at'] || ($ukuranbarang['otoritas'] ?? '') !== 'T') {
+            return redirect()->to('/masterukuranbarang')->with('error', 'Tidak memiliki otoritas untuk edit data ini.');
+        }
         $data = [
-            'ukuranbarang' => $this->masterUkuranBarangModel->find($id)
+            'ukuranbarang' => $ukuranbarang
         ];
         return view('master_ukuranbarang/edit', $data);
     }
+
     public function update($id)
     {
+        $ukuranbarang = $this->masterUkuranBarangModel->find($id);
+        if (!$ukuranbarang || $ukuranbarang['deleted_at'] || ($ukuranbarang['otoritas'] ?? '') !== 'T') {
+            return redirect()->to('/masterukuranbarang')->with('error', 'Tidak memiliki otoritas untuk edit data ini.');
+        }
         $session = session();
         $nama_ky = $session->get('user_nama');
         $data = [
@@ -71,8 +80,13 @@ class MasterUkuranBarang extends Controller
         $this->db2->table('ukuran_barang')->where('id', $id)->update($data);
         return redirect()->to('/masterukuranbarang')->with('success', 'Data berhasil diubah.');
     }
+
     public function delete($id)
     {
+        $ukuranbarang = $this->masterUkuranBarangModel->find($id);
+        if (!$ukuranbarang || $ukuranbarang['deleted_at'] || ($ukuranbarang['otoritas'] ?? '') !== 'T') {
+            return redirect()->to('/masterukuranbarang')->with('error', 'Tidak memiliki otoritas untuk hapus data ini.');
+        }
         $session = session();
         $nama_ky = $session->get('user_nama');
         $data = [

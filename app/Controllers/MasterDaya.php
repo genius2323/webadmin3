@@ -96,11 +96,13 @@ class MasterDaya extends BaseController
         $nama_ky = session()->get('user_nama');
         $model->update($id, [
             'deleted_at' => date('Y-m-d H:i:s'),
-            'nama_ky' => $nama_ky
+            'nama_ky' => $nama_ky,
+            'otoritas' => null
         ]);
         $db2->table('daya')->where('id', $id)->update([
             'deleted_at' => date('Y-m-d H:i:s'),
-            'nama_ky' => $nama_ky
+            'nama_ky' => $nama_ky,
+            'otoritas' => null
         ]);
         return redirect()->to('masterdaya')->with('success', 'Data berhasil dihapus.');
     }

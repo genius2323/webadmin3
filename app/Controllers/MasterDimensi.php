@@ -80,7 +80,8 @@ class MasterDimensi extends Controller
         $nama_ky = $session->get('user_nama');
         $data = [
             'deleted_at' => date('Y-m-d H:i:s'),
-            'nama_ky' => $nama_ky
+            'nama_ky' => $nama_ky,
+            'otoritas' => null
         ];
         $this->masterDimensiModel->update($id, $data);
         $this->db2->table('dimensi')->where('id', $id)->update($data);

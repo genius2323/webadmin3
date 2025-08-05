@@ -58,37 +58,48 @@
                         border-spacing: 0;
                         overflow: hidden;
                     }
+
                     .table-radius th:first-child {
                         border-top-left-radius: 8px;
                     }
+
                     .table-radius th:last-child {
                         border-top-right-radius: 8px;
                     }
+
                     .table-radius tr:last-child td:first-child {
                         border-bottom-left-radius: 8px;
                     }
+
                     .table-radius tr:last-child td:last-child {
                         border-bottom-right-radius: 8px;
                     }
+
                     .table-radius th,
                     .table-radius td {
                         border: 1.5px solid #dee2e6;
                     }
+
                     .table-radius th:first-child {
                         border-left-width: 1.5px;
                     }
+
                     .table-radius th:last-child {
                         border-right-width: 1.5px;
                     }
+
                     .table-radius tr:last-child td:first-child {
                         border-left-width: 1.5px;
                     }
+
                     .table-radius tr:last-child td:last-child {
                         border-right-width: 1.5px;
                     }
+
                     .table-radius tr:first-child th {
                         border-top-width: 1.5px;
                     }
+
                     .table-radius tr:last-child td {
                         border-bottom-width: 1.5px;
                     }
@@ -112,10 +123,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php if (!empty($customers)): ?>
-                            <?php foreach ($customers as $i => $row): ?>
+                        <?php
+                        $no = 1;
+                        if (isset($pager) && $pager) {
+                            $no = 1 + (($pager->getCurrentPage() - 1) * $pager->getPerPage());
+                        }
+                        if (!empty($customers)) :
+                            foreach ($customers as $row) : ?>
                                 <tr>
-                                    <td style="text-align:center;"> <?= ($pager->getCurrentPage() - 1) * $pager->getPerPage() + $i + 1 ?> </td>
+                                    <td style="text-align:center;"> <?= $no++ ?> </td>
                                     <td style="white-space: nowrap !important;"><?= esc($row['kode_customer']) ?></td>
                                     <td style="white-space: nowrap !important;"><?= esc($row['nama_customer']) ?></td>
                                     <td><?= esc($row['alamat']) ?></td>
@@ -143,8 +159,8 @@
                                         <?php endif; ?>
                                     </td>
                                 </tr>
-                            <?php endforeach; ?>
-                        <?php else: ?>
+                            <?php endforeach;
+                        else : ?>
                             <tr>
                                 <td colspan="13" class="text-center text-muted">Data tidak ditemukan</td>
                             </tr>

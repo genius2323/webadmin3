@@ -119,9 +119,14 @@
                         </thead>
                         <tbody>
                             <?php if (!empty($dimensi)): ?>
-                                <?php foreach ($dimensi as $i => $row): ?>
+                                <?php
+                                $currentPage = (int)($pager->getCurrentPage('default') ?? 1);
+                                $perPage = (int)($perPage ?? 10);
+                                $startNumber = ($currentPage - 1) * $perPage + 1;
+                                foreach ($dimensi as $i => $row):
+                                ?>
                                     <tr>
-                                        <td style="text-align:center;"> <?= $i + 1 ?> </td>
+                                        <td style="text-align:center;"> <?= $startNumber + $i ?> </td>
                                         <td><?= esc($row['name']) ?></td>
                                         <td><?= esc($row['description']) ?></td>
                                         <td style="text-align:center;">
@@ -134,7 +139,11 @@
                                         <td class="text-center" style="white-space: nowrap !important;">
                                             <?php if (!empty($row['otoritas']) && $row['otoritas'] === 'T'): ?>
                                                 <a href="<?= site_url('masterdimensi/edit/' . $row['id']) ?>" class="btn btn-sm btn-warning"><i data-feather="edit"></i></a>
-                                                <a href="<?= site_url('masterdimensi/delete/' . $row['id']) ?>" class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin menghapus data ini?')"><i data-feather="trash-2"></i></a>
+                                                <form action="<?= site_url('masterdimensi/delete/' . $row['id']) ?>" method="post" style="display:inline;">
+                                                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin menghapus data ini?')">
+                                                        <i data-feather="trash-2"></i>
+                                                    </button>
+                                                </form>
                                             <?php else: ?>
                                                 <button class="btn btn-sm btn-warning" style="opacity:0.6;cursor:not-allowed; " disabled><i data-feather="edit"></i></button>
                                                 <button class="btn btn-sm btn-danger" style="opacity:0.6;cursor:not-allowed;" disabled><i data-feather="trash-2"></i></button>

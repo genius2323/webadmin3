@@ -2,32 +2,32 @@
 
 namespace App\Controllers;
 
-use App\Models\MasterWarnaSinarModel;
+use App\Models\MasterWarnasinarModel;
 use CodeIgniter\Controller;
 
-class MasterWarnaSinar extends Controller
+class MasterWarnasinar extends Controller
 {
-    protected $masterWarnaSinarModel;
+    protected $warnasinarModel;
     protected $db2;
     public function __construct()
     {
-        $this->masterWarnaSinarModel = new MasterWarnaSinarModel();
+        $this->warnasinarModel = new MasterWarnasinarModel();
         $this->db2 = \Config\Database::connect('db2');
     }
     public function index()
     {
-        $search = $this->request->getGet('search') ?? $this->request->getGet('keyword');
-        $perPage = (int)($this->request->getGet('perPage') ?? 10);
-        if ($perPage < 1) $perPage = 10;
-        $builder = $this->masterWarnaSinarModel->where('deleted_at', null);
+        $search = $this->request->getGet('search');
+        $perPage = $this->request->getGet('perPage') ?? 10;
+        $model = $this->warnasinarModel;
         if ($search) {
-            $builder = $builder->like('name', $search);
+            $model = $model->like('name', $search);
         }
-        $data['warnasinar'] = $builder->paginate($perPage);
-        $data['pager'] = $this->masterWarnaSinarModel->pager;
-        $data['perPage'] = $perPage;
-        $data['search'] = $search;
-        $data['title'] = 'Master Warna Sinar';
+        $data = [
+            'warnasinar' => $model->where('deleted_at', null)->paginate($perPage, 'default'),
+            'pager' => $model->pager,
+            'search' => $search,
+            'perPage' => $perPage,
+        ];
         return view('master_warnasinar/index', $data);
     }
     public function create()
@@ -36,50 +36,41 @@ class MasterWarnaSinar extends Controller
     }
     public function save()
     {
-        $session = session();
-        $nama_ky = $session->get('user_nama');
         $data = [
-            'name' => $this->request->getVar('name'),
-            'nama_ky' => $nama_ky,
-            'otoritas' => null
+            'name' => $this->request->getPost('name'),
+            'otoritas' => null,
         ];
-        $this->masterWarnaSinarModel->insert($data);
-        $id = $this->masterWarnaSinarModel->getInsertID();
+        $id = $this->warnasinarModel->insert($data);
         $dataDb2 = $data;
         $dataDb2['id'] = $id;
-        $this->db2->table('warna_sinar')->insert($dataDb2);
-        return redirect()->to('/masterwarnasinar')->with('success', 'Data berhasil ditambahkan.');
+        $this->db2->table('master_warnasinar')->insert($dataDb2);
+        return redirect()->to('/masterwarnasinar')->with('success', 'Data berhasil ditambahkan');
     }
     public function edit($id)
     {
-        $data = [
-            'warnasinar' => $this->masterWarnaSinarModel->find($id)
-        ];
-        return view('master_warnasinar/edit', $data);
+        $warnasinar = $this->warnasinarModel->find($id);
+        if (!$warnasinar || $warnasinar['deleted_at']) {
+            return redirect()->to('/masterwarnasinar')->with('error', 'Data tidak ditemukan');
+        }
+        return view('master_warnasinar/edit', ['warnasinar' => $warnasinar]);
     }
     public function update($id)
     {
-        $session = session();
-        $nama_ky = $session->get('user_nama');
         $data = [
-            'name' => $this->request->getVar('name'),
-            'nama_ky' => $nama_ky,
-            'otoritas' => null
+            'name' => $this->request->getPost('name'),
         ];
-        $this->masterWarnaSinarModel->update($id, $data);
-        $this->db2->table('warna_sinar')->where('id', $id)->update($data);
-        return redirect()->to('/masterwarnasinar')->with('success', 'Data berhasil diubah.');
+        $this->warnasinarModel->update($id, $data);
+        $this->db2->table('master_warnasinar')->where('id', $id)->update($data);
+        return redirect()->to('/masterwarnasinar')->with('success', 'Data berhasil diubah');
     }
     public function delete($id)
     {
-        $session = session();
-        $nama_ky = $session->get('user_nama');
-        $data = [
-            'deleted_at' => date('Y-m-d H:i:s'),
-            'nama_ky' => $nama_ky
-        ];
-        $this->masterWarnaSinarModel->update($id, $data);
-        $this->db2->table('warna_sinar')->where('id', $id)->update($data);
-        return redirect()->to('/masterwarnasinar')->with('success', 'Data berhasil dihapus.');
+        $row = $this->warnasinarModel->find($id);
+        if (!$row || $row['deleted_at']) {
+            return redirect()->to('/masterwarnasinar')->with('error', 'Data tidak ditemukan');
+        }
+        $this->warnasinarModel->update($id, ['deleted_at' => date('Y-m-d H:i:s')]);
+        $this->db2->table('master_warnasinar')->where('id', $id)->update(['deleted_at' => date('Y-m-d H:i:s')]);
+        return redirect()->to('/masterwarnasinar')->with('success', 'Data berhasil dihapus');
     }
 }

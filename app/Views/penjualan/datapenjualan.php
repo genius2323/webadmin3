@@ -13,9 +13,9 @@
                 </div>
                 <div class="col-12 col-xl-auto mb-3">
                     <?php if (isset($canCreate) ? $canCreate : true): ?>
-                    <a class="btn btn-sm btn-primary" href="<?= site_url('penjualan') ?>">
-                        <i class="me-1" data-feather="plus"></i> Buat Nota Baru
-                    </a>
+                        <a class="btn btn-sm btn-primary" href="<?= site_url('penjualan') ?>">
+                            <i class="me-1" data-feather="plus"></i> Buat Nota Baru
+                        </a>
                     <?php endif; ?>
                 </div>
             </div>
@@ -58,17 +58,51 @@
                         border-spacing: 0;
                         overflow: hidden;
                     }
-                    .table-radius th:first-child { border-top-left-radius: 8px; }
-                    .table-radius th:last-child { border-top-right-radius: 8px; }
-                    .table-radius tr:last-child td:first-child { border-bottom-left-radius: 8px; }
-                    .table-radius tr:last-child td:last-child { border-bottom-right-radius: 8px; }
-                    .table-radius th, .table-radius td { border: 1.5px solid #dee2e6; }
-                    .table-radius th:first-child { border-left-width: 1.5px; }
-                    .table-radius th:last-child { border-right-width: 1.5px; }
-                    .table-radius tr:last-child td:first-child { border-left-width: 1.5px; }
-                    .table-radius tr:last-child td:last-child { border-right-width: 1.5px; }
-                    .table-radius tr:first-child th { border-top-width: 1.5px; }
-                    .table-radius tr:last-child td { border-bottom-width: 1.5px; }
+
+                    .table-radius th:first-child {
+                        border-top-left-radius: 8px;
+                    }
+
+                    .table-radius th:last-child {
+                        border-top-right-radius: 8px;
+                    }
+
+                    .table-radius tr:last-child td:first-child {
+                        border-bottom-left-radius: 8px;
+                    }
+
+                    .table-radius tr:last-child td:last-child {
+                        border-bottom-right-radius: 8px;
+                    }
+
+                    .table-radius th,
+                    .table-radius td {
+                        border: 1.5px solid #dee2e6;
+                    }
+
+                    .table-radius th:first-child {
+                        border-left-width: 1.5px;
+                    }
+
+                    .table-radius th:last-child {
+                        border-right-width: 1.5px;
+                    }
+
+                    .table-radius tr:last-child td:first-child {
+                        border-left-width: 1.5px;
+                    }
+
+                    .table-radius tr:last-child td:last-child {
+                        border-right-width: 1.5px;
+                    }
+
+                    .table-radius tr:first-child th {
+                        border-top-width: 1.5px;
+                    }
+
+                    .table-radius tr:last-child td {
+                        border-bottom-width: 1.5px;
+                    }
                 </style>
                 <table class="table table-bordered table-hover align-middle mb-0 table-radius">
                     <thead class="table-light">
@@ -84,11 +118,16 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php if (!empty($penjualan)): ?>
-                            <?php foreach ($penjualan as $i => $row): ?>
-                                <?php $otoritas = $row['otoritas'] ?? 'T'; ?>
+                        <?php
+                        $no = 1;
+                        if (isset($pager) && $pager) {
+                            $no = 1 + (($pager->getCurrentPage() - 1) * $pager->getPerPage());
+                        }
+                        if (!empty($penjualan)) :
+                            foreach ($penjualan as $row) :
+                                $otoritas = $row['otoritas'] ?? 'T'; ?>
                                 <tr>
-                                    <td style="text-align:center;"> <?= ($perPage * (($_GET['page'] ?? 1) - 1)) + $i + 1 ?> </td>
+                                    <td style="text-align:center;"> <?= $no++ ?> </td>
                                     <td style="text-align:center;white-space:nowrap;"> <?= esc($row['nomor_nota']) ?> </td>
                                     <td style="text-align:center;white-space:nowrap;"> <?= esc(date('d/m/Y', strtotime($row['tanggal_nota']))) ?> </td>
                                     <td style="text-align:center;white-space:nowrap;"> <?= esc($row['customer']) ?> </td>
@@ -110,8 +149,8 @@
                                         <?php endif; ?>
                                     </td>
                                 </tr>
-                            <?php endforeach; ?>
-                        <?php else: ?>
+                            <?php endforeach;
+                        else : ?>
                             <tr>
                                 <td colspan="8" class="text-center text-muted">Data tidak ditemukan</td>
                             </tr>

@@ -77,11 +77,16 @@
                                             <?php } ?>
                                         </td>
                                         <td class="text-center" style="white-space: nowrap !important;">
-                                            <a href="<?= site_url('mastermerk/edit/' . $row['id']) ?>" class="btn btn-sm btn-warning"><i data-feather="edit"></i></a>
-                                            <form action="<?= site_url('mastermerk/delete/' . $row['id']) ?>" method="post" style="display:inline;">
-                                                <?= csrf_field() ?>
-                                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Yakin hapus data ini?')"><i data-feather="trash-2"></i></button>
-                                            </form>
+                                            <?php if (!empty($row['otoritas']) && $row['otoritas'] === 'T'): ?>
+                                                <a href="<?= site_url('mastermerk/edit/' . $row['id']) ?>" class="btn btn-sm btn-warning"><i data-feather="edit"></i></a>
+                                                <form action="<?= site_url('mastermerk/delete/' . $row['id']) ?>" method="post" style="display:inline;">
+                                                    <?= csrf_field() ?>
+                                                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Yakin hapus data ini?')"><i data-feather="trash-2"></i></button>
+                                                </form>
+                                            <?php else: ?>
+                                                <button class="btn btn-sm btn-warning" style="opacity:0.6;cursor:not-allowed;" disabled><i data-feather="edit"></i></button>
+                                                <button class="btn btn-sm btn-danger" style="opacity:0.6;cursor:not-allowed;" disabled><i data-feather="trash-2"></i></button>
+                                            <?php endif; ?>
                                         </td>
                                     </tr>
                                 <?php }

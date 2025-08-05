@@ -1,31 +1,58 @@
 <?= $this->extend('layout/template') ?>
 <?= $this->section('content') ?>
-<div class="app-page-title">
-    <div class="page-title-wrapper">
-        <div class="page-title-heading">
-            <div class="page-title-icon">
-                <i class="fa fa-edit"></i>
+
+<main>
+    <header class="page-header page-header-compact page-header-light border-bottom bg-white mb-4">
+        <div class="container-fluid px-4">
+            <div class="page-header-content">
+                <div class="row align-items-center justify-content-between pt-3">
+                    <div class="col-auto mb-3">
+                        <h1 class="page-header-title">
+                            <div class="page-header-icon"><i data-feather="layers"></i></div>
+                            Edit Master Pelengkap
+                        </h1>
+                    </div>
+                </div>
             </div>
-            <div>Edit Pelengkap
-                <div class="page-title-subheading">Form untuk mengedit data pelengkap.</div>
+        </div>
+    </header>
+    <div class="container-fluid px-4">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card mb-4 animate__animated animate__fadeInUp">
+                    <div class="card-body">
+                        <?php if (session('success')): ?>
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <i data-feather="check-circle" class="me-1"></i>
+                                <?= session('success') ?>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        <?php endif; ?>
+                        <form action="<?= site_url('masterpelengkap/update/' . $pelengkap['id']) ?>" method="post" autocomplete="off">
+                            <?= csrf_field() ?>
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Nama Pelengkap <span class="text-danger">*</span></label>
+                                <input type="text" name="name" id="name" class="form-control" required placeholder="Nama Pelengkap" value="<?= esc($pelengkap['name']) ?>">
+                            </div>
+                            <div class="mb-3">
+                                <label for="description" class="form-label">Deskripsi</label>
+                                <textarea name="description" id="description" class="form-control" rows="3" placeholder="Deskripsi pelengkap (opsional)"><?= esc($pelengkap['description'] ?? '') ?></textarea>
+                            </div>
+                            <div class="d-flex justify-content-end">
+                                <button type="submit" class="btn btn-primary">
+                                    <i data-feather="save" class="me-1"></i> Simpan Perubahan
+                                </button>
+                                <a href="<?= site_url('masterpelengkap') ?>" class="btn btn-danger ms-2">Batal</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<div class="main-card mb-3 card">
-    <div class="card-body">
-        <form action="<?= site_url('masterpelengkap/update/' . $pelengkap['id']) ?>" method="post">
-            <div class="form-group">
-                <label>Nama</label>
-                <input type="text" name="name" class="form-control" value="<?= esc($pelengkap['name']) ?>" required>
-            </div>
-            <div class="form-group">
-                <label>Deskripsi</label>
-                <input type="text" name="description" class="form-control" value="<?= esc($pelengkap['description'] ?? '') ?>">
-            </div>
-            <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Simpan Perubahan</button>
-            <a href="<?= site_url('masterpelengkap') ?>" class="btn btn-secondary">Batal</a>
-        </form>
-    </div>
-</div>
+</main>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+<script>
+    if (window.feather) feather.replace();
+</script>
 <?= $this->endSection() ?>
