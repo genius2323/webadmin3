@@ -20,6 +20,10 @@ $routes->get('/logout', 'Auth::logout');
 // RUTE TERPROTEKSI (WAJIB LOGIN)
 // =================================================================
 $routes->group('', ['filter' => 'auth'], static function ($routes) {
+    // Otorisasi Master Barang
+    $routes->get('otorisasi/otorisasi_masterbarang', 'Otorisasi\OtorisasiMasterBarang::index');
+    // Tambahkan POST/aksi lain jika diperlukan, contoh:
+    $routes->post('otorisasi/otorisasi_masterbarang/setOtorisasiMasterBarang', 'Otorisasi\OtorisasiMasterBarang::setOtorisasiMasterBarang');
     // Profile
     $routes->get('profile', 'Profile::index');
     $routes->post('profile/update', 'Profile::update');

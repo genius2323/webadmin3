@@ -157,13 +157,14 @@
             },
             allowClear: true
         });
-        $('.toggle-klasifikasi').on('change', function() {
+        $('.toggle-klasifikasi').off('change').on('change', function() {
             var key = $(this).attr('id').replace('cb-', '');
+            var $box = $('#box-' + key);
             if ($(this).is(':checked')) {
-                $('#box-' + key).removeClass('d-none');
+                $box.removeClass('d-none');
             } else {
-                $('#box-' + key).addClass('d-none');
-                $('#box-' + key + ' select').val('').trigger('change');
+                $box.addClass('d-none');
+                $box.find('select').val('').trigger('change');
             }
         });
     });
