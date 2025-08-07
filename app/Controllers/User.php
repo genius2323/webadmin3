@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controllers;
 
 use App\Models\UserModel;
@@ -8,6 +9,8 @@ class User extends BaseController
     public function index()
     {
         $userModel = new UserModel();
+        $userDepartmentModel = new \App\Models\UserDepartmentModel();
+        $departmentModel = new \App\Models\DepartmentModel();
         $search = $this->request->getGet('search');
         $perPage = (int)($this->request->getGet('perPage') ?? 10);
         if ($perPage < 1) $perPage = 10;
@@ -25,6 +28,24 @@ class User extends BaseController
         $data['perPage'] = $perPage;
         $data['search'] = $search;
         $data['title'] = 'Manajemen User';
+        // Ambil departemen untuk setiap user
+        $userIds = array_column($data['users'], 'id');
+        $userDepartments = [];
+        if (!empty($userIds)) {
+            $relations = $userDepartmentModel->whereIn('user_id', $userIds)->where('deleted_at', null)->findAll();
+            $deptIds = array_unique(array_column($relations, 'department_id'));
+            $departments = [];
+            if (!empty($deptIds)) {
+                $departmentsRaw = $departmentModel->whereIn('id', $deptIds)->where('deleted_at', null)->findAll();
+                foreach ($departmentsRaw as $dept) {
+                    $departments[$dept['id']] = isset($dept['nama']) ? $dept['nama'] : (isset($dept['name']) ? $dept['name'] : '');
+                }
+            }
+            foreach ($relations as $rel) {
+                $userDepartments[$rel['user_id']][] = $departments[$rel['department_id']] ?? '';
+            }
+        }
+        $data['userDepartments'] = $userDepartments;
         return view('user/index', $data);
     }
 
@@ -117,6 +138,7 @@ class User extends BaseController
             'username' => $this->request->getPost('username'),
             'alamat' => $this->request->getPost('alamat'),
             'noktp' => $this->request->getPost('noktp'),
+            'otoritas' => null,
         ];
         $password = $this->request->getPost('password');
         if ($password) {

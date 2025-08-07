@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Controllers;
+
 use App\Controllers\BaseController;
 use App\Models\MasterBarangModel;
 
@@ -96,8 +98,20 @@ class MasterBarang extends BaseController
             'nama_ky' => $nama_ky,
         ];
         $klasifikasi = [
-            'pelengkap_id', 'gondola_id', 'merk_id', 'warna_sinar_id', 'ukuran_barang_id', 'voltase_id', 'dimensi_id',
-            'warna_body_id', 'warna_bibir_id', 'kaki_id', 'model_id', 'fiting_id', 'daya_id', 'jumlah_mata_id'
+            'pelengkap_id',
+            'gondola_id',
+            'merk_id',
+            'warna_sinar_id',
+            'ukuran_barang_id',
+            'voltase_id',
+            'dimensi_id',
+            'warna_body_id',
+            'warna_bibir_id',
+            'kaki_id',
+            'model_id',
+            'fiting_id',
+            'daya_id',
+            'jumlah_mata_id'
         ];
         foreach ($klasifikasi as $field) {
             $val = $this->request->getPost($field);
@@ -188,10 +202,23 @@ class MasterBarang extends BaseController
             'price' => $this->request->getPost('price'),
             'stock' => $this->request->getPost('stock'),
             'nama_ky' => $nama_ky,
+            'otoritas' => null,
         ];
         $klasifikasi = [
-            'pelengkap_id', 'gondola_id', 'merk_id', 'warna_sinar_id', 'ukuran_barang_id', 'voltase_id', 'dimensi_id',
-            'warna_body_id', 'warna_bibir_id', 'kaki_id', 'model_id', 'fiting_id', 'daya_id', 'jumlah_mata_id'
+            'pelengkap_id',
+            'gondola_id',
+            'merk_id',
+            'warna_sinar_id',
+            'ukuran_barang_id',
+            'voltase_id',
+            'dimensi_id',
+            'warna_body_id',
+            'warna_bibir_id',
+            'kaki_id',
+            'model_id',
+            'fiting_id',
+            'daya_id',
+            'jumlah_mata_id'
         ];
         foreach ($klasifikasi as $field) {
             $val = $this->request->getPost($field);
@@ -204,6 +231,7 @@ class MasterBarang extends BaseController
         $db2 = \Config\Database::connect('db2');
         $dataDb2 = $data;
         $dataDb2['id'] = $id;
+        $dataDb2['otoritas'] = null;
         $exists = $db2->table('products')->where('id', $id)->get()->getRow();
         if ($exists) {
             $db2->table('products')->where('id', $id)->update($dataDb2);

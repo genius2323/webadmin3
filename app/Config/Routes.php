@@ -24,6 +24,12 @@ $routes->group('', ['filter' => 'auth'], static function ($routes) {
     $routes->get('otorisasi/otorisasi_masterbarang', 'Otorisasi\OtorisasiMasterBarang::index');
     // Tambahkan POST/aksi lain jika diperlukan, contoh:
     $routes->post('otorisasi/otorisasi_masterbarang/setOtorisasiMasterBarang', 'Otorisasi\OtorisasiMasterBarang::setOtorisasiMasterBarang');
+    // Otorisasi User
+    $routes->get('otorisasi/otorisasi_user', 'Otorisasi\OtorisasiUser::index');
+    $routes->post('otorisasi/otorisasi_user/setOtorisasiUser', 'Otorisasi\OtorisasiUser::setOtorisasiUser');
+    // Otorisasi Customer
+    $routes->get('otorisasi/otorisasi_customer', 'Otorisasi\OtorisasiCustomer::index');
+    $routes->post('otorisasi/otorisasi_customer/setOtorisasiCustomer', 'Otorisasi\OtorisasiCustomer::setOtorisasiCustomer');
     // Profile
     $routes->get('profile', 'Profile::index');
     $routes->post('profile/update', 'Profile::update');
@@ -49,8 +55,12 @@ $routes->group('', ['filter' => 'auth'], static function ($routes) {
     $routes->get('dashboard', 'Dashboard::index');
 
     // Manajemen User
+    $routes->get('user', 'User::index');
+    $routes->post('user/store', 'User::store');
     $routes->get('user/create', 'User::create');
-    $routes->resource('user');
+    $routes->get('user/edit/(:num)', 'User::edit/$1');
+    $routes->post('user/update/(:num)', 'User::update/$1');
+    $routes->get('user/delete/(:num)', 'User::delete/$1');
 
     // --- Rute Penjualan (CRUD Lengkap) ---
     $routes->get('penjualan/edit/(:num)', 'Penjualan::edit/$1'); // Edit penjualan

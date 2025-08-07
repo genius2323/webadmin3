@@ -65,6 +65,7 @@ class MasterCustomer extends BaseController
             'npwp_nomor' => $npwpNomor,
             'npwp_atas_nama' => $this->request->getPost('npwp_atas_nama'),
             'npwp_alamat' => $this->request->getPost('npwp_alamat'),
+            'otoritas' => null,
         ];
         $model->insert($data);
         $id = $model->getInsertID();
@@ -112,6 +113,7 @@ class MasterCustomer extends BaseController
             'npwp_nomor' => $npwpNomor,
             'npwp_atas_nama' => $this->request->getPost('npwp_atas_nama'),
             'npwp_alamat' => $this->request->getPost('npwp_alamat'),
+            'otoritas' => null,
         ];
         $model->update($id, $data);
         // Sync ke database kedua (db2)
@@ -130,11 +132,12 @@ class MasterCustomer extends BaseController
     public function delete($id)
     {
         $model = new MasterCustomerModel();
+        $model->update($id, ['otoritas' => null]); // null-kan otoritas sebelum soft delete di database utama
         $model->delete($id); // soft delete di database utama
         // Soft delete di database kedua (db2)
         $db2 = \Config\Database::connect('db2');
         $deletedAt = date('Y-m-d H:i:s');
-        $db2->table('mastercustomer')->where('id', $id)->update(['deleted_at' => $deletedAt]);
+        $db2->table('mastercustomer')->where('id', $id)->update(['otoritas' => null, 'deleted_at' => $deletedAt]);
         return redirect()->to(site_url('mastercustomer'))->with('success', 'Customer berhasil dihapus di dua database.');
     }
 }

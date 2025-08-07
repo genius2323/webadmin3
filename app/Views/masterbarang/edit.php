@@ -1,6 +1,10 @@
 <?= $this->extend('layout/template') ?>
 <?= $this->section('content') ?>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css">
+<!-- jQuery harus di-load sebelum Select2 dan script custom -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
 <style>
     .select2-container .select2-selection--single {
         height: 38px;
@@ -30,7 +34,7 @@
                     <div class="col-auto mb-3">
                         <h1 class="page-header-title">
                             <div class="page-header-icon"><i data-feather="archive"></i></div>
-                            Edit Master Barang
+                            Tambah Master Barang
                         </h1>
                     </div>
                 </div>
@@ -55,14 +59,14 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="name" class="form-label">Nama Barang <span class="text-danger">*</span></label>
-                                        <input type="text" name="name" id="name" class="form-control" required placeholder="Nama Barang" value="<?= esc($barang['name']) ?>">
+                                        <input type="text" name="name" id="name" class="form-control" required placeholder="Nama Barang" value="<?= old('name', $barang['name']) ?>">
                                     </div>
                                     <div class="mb-3">
                                         <label for="category_id" class="form-label">Kategori <span class="text-danger">*</span></label>
                                         <select name="category_id" id="category_id" class="form-select" required>
                                             <option value="">- Pilih Kategori -</option>
                                             <?php foreach ($categoryList as $cat): ?>
-                                                <option value="<?= $cat['id'] ?>" <?= $cat['id'] == $barang['category_id'] ? 'selected' : '' ?>><?= esc($cat['name']) ?></option>
+                                                <option value="<?= $cat['id'] ?>" <?= old('category_id', $barang['category_id']) == $cat['id'] ? 'selected' : '' ?>><?= esc($cat['name']) ?></option>
                                             <?php endforeach; ?>
                                         </select>
                                     </div>
@@ -71,7 +75,7 @@
                                         <select name="satuan_id" id="satuan_id" class="form-select" required>
                                             <option value="">- Pilih Satuan -</option>
                                             <?php foreach ($satuanList as $sat): ?>
-                                                <option value="<?= $sat['id'] ?>" <?= $sat['id'] == $barang['satuan_id'] ? 'selected' : '' ?>><?= esc($sat['name']) ?></option>
+                                                <option value="<?= $sat['id'] ?>" <?= old('satuan_id', $barang['satuan_id']) == $sat['id'] ? 'selected' : '' ?>><?= esc($sat['name']) ?></option>
                                             <?php endforeach; ?>
                                         </select>
                                     </div>
@@ -80,17 +84,17 @@
                                         <select name="jenis_id" id="jenis_id" class="form-select" required>
                                             <option value="">- Pilih Jenis -</option>
                                             <?php foreach ($jenisList as $jen): ?>
-                                                <option value="<?= $jen['id'] ?>" <?= $jen['id'] == $barang['jenis_id'] ? 'selected' : '' ?>><?= esc($jen['name']) ?></option>
+                                                <option value="<?= $jen['id'] ?>" <?= old('jenis_id', $barang['jenis_id']) == $jen['id'] ? 'selected' : '' ?>><?= esc($jen['name']) ?></option>
                                             <?php endforeach; ?>
                                         </select>
                                     </div>
                                     <div class="mb-3">
                                         <label for="price" class="form-label">Harga <span class="text-danger">*</span></label>
-                                        <input type="text" name="price" id="price" class="form-control" required pattern="^Rp\s\d{1,3}(\.\d{3})*$" inputmode="numeric" autocomplete="off" placeholder="Rp 0" value="<?= 'Rp ' . number_format((float)$barang['price'], 0, ',', '.') ?>">
+                                        <input type="text" name="price" id="price" class="form-control" inputmode="numeric" autocomplete="off" placeholder="Rp 0" required value="<?= old('price', 'Rp ' . number_format((float)$barang['price'], 0, ',', '.')) ?>">
                                     </div>
                                     <div class="mb-3">
                                         <label for="stock" class="form-label">Stok <span class="text-danger">*</span></label>
-                                        <input type="number" name="stock" id="stock" class="form-control" required min="0" placeholder="Stok Barang" value="<?= esc($barang['stock']) ?>">
+                                        <input type="number" name="stock" id="stock" class="form-control" required min="0" placeholder="Stok Barang" value="<?= old('stock', $barang['stock']) ?>">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -114,18 +118,20 @@
                                                 'jumlah_mata' => 'Jumlah Mata',
                                             ];
                                             foreach ($klasifikasi as $key => $label): ?>
-                                                <div class="form-check mb-2">
-                                                    <input class="form-check-input toggle-klasifikasi" type="checkbox" value="1" id="cb-<?= $key ?>" <?= !empty($barang[$key . '_id']) ? 'checked' : '' ?>>
-                                                    <label class="form-check-label" for="cb-<?= $key ?>">Tambah <?= $label ?></label>
-                                                </div>
-                                                <div class="mb-3<?= empty($barang[$key . '_id']) ? ' d-none' : '' ?>" id="box-<?= $key ?>">
-                                                    <label for="<?= $key ?>_id" class="form-label"><?= $label ?></label>
-                                                    <select class="form-select" id="<?= $key ?>_id" name="<?= $key ?>_id">
-                                                        <option value="">- Pilih <?= $label ?> -</option>
-                                                        <?php foreach ($klasifikasiData[$key] as $item): ?>
-                                                            <option value="<?= $item['id'] ?>" <?= $item['id'] == $barang[$key . '_id'] ? 'selected' : '' ?>><?= esc($item['name']) ?></option>
-                                                        <?php endforeach; ?>
-                                                    </select>
+                                                <div class="mb-2">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input toggle-klasifikasi" type="checkbox" value="1" id="cb-<?= $key ?>" <?= !empty(old($key . '_id', $barang[$key . '_id'])) ? 'checked' : '' ?>>
+                                                        <label class="form-check-label" for="cb-<?= $key ?>">Tambah <?= $label ?></label>
+                                                    </div>
+                                                    <div class="mb-3<?= empty(old($key . '_id', $barang[$key . '_id'])) ? ' d-none' : '' ?>" id="box-<?= $key ?>">
+                                                        <label for="<?= $key ?>_id" class="form-label">Pilih <?= $label ?></label>
+                                                        <select class="form-select" id="<?= $key ?>_id" name="<?= $key ?>_id">
+                                                            <option value="">- Pilih <?= $label ?> -</option>
+                                                            <?php foreach ($klasifikasiData[$key] as $item): ?>
+                                                                <option value="<?= $item['id'] ?>" <?= old($key . '_id', $barang[$key . '_id']) == $item['id'] ? 'selected' : '' ?>><?= esc($item['name']) ?></option>
+                                                            <?php endforeach; ?>
+                                                        </select>
+                                                    </div>
                                                 </div>
                                             <?php endforeach; ?>
                                         </div>
@@ -134,7 +140,7 @@
                             </div>
                             <div class="d-flex justify-content-end mt-3">
                                 <button type="submit" class="btn btn-primary">
-                                    <i data-feather="save" class="me-1"></i> Simpan Perubahan
+                                    <i data-feather="save" class="me-1"></i> Simpan Barang
                                 </button>
                                 <a href="<?= site_url('masterbarang') ?>" class="btn btn-danger ms-2">Batal</a>
                             </div>
@@ -147,8 +153,8 @@
 </main>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 <script>
-    if (window.feather) feather.replace();
-    $(function() {
+    $(document).ready(function() {
+        if (window.feather) feather.replace();
         $('.form-select').select2({
             theme: 'default',
             width: '100%',
@@ -157,6 +163,22 @@
             },
             allowClear: true
         });
+        // Format input Harga Barang ke format Rupiah
+        var priceInput = document.getElementById('price');
+        if (priceInput) {
+            priceInput.addEventListener('input', function(e) {
+                let value = this.value.replace(/[^\d]/g, '');
+                if (value.length > 15) value = value.slice(0, 15);
+                let formatted = value ? 'Rp ' + value.replace(/\B(?=(\d{3})+(?!\d))/g, ".") : '';
+                this.value = formatted;
+            });
+            priceInput.addEventListener('blur', function() {
+                if (!this.value) this.value = 'Rp 0';
+            });
+            priceInput.addEventListener('focus', function() {
+                if (this.value === 'Rp 0') this.value = '';
+            });
+        }
         $('.toggle-klasifikasi').off('change').on('change', function() {
             var key = $(this).attr('id').replace('cb-', '');
             var $box = $('#box-' + key);
@@ -167,36 +189,12 @@
                 $box.find('select').val('').trigger('change');
             }
         });
+        // Convert harga ke angka sebelum submit
+        $('form').on('submit', function(e) {
+            var priceMasked = $('#price').val();
+            var priceUnmasked = priceMasked.replace(/[^\d]/g, '');
+            $('#price').val(priceUnmasked);
+        });
     });
-
-    // Native JS input masking for price field
-    const priceInput = document.getElementById('price');
-    if (priceInput) {
-        priceInput.addEventListener('input', function(e) {
-            let value = this.value.replace(/[^\d]/g, '');
-            if (value === '') {
-                this.value = 'Rp 0';
-                return;
-            }
-            let formatted = '';
-            let rev = value.split('').reverse().join('');
-            for (let i = 0; i < rev.length; i++) {
-                if (i > 0 && i % 3 === 0) formatted = '.' + formatted;
-                formatted = rev[i] + formatted;
-            }
-            this.value = 'Rp ' + formatted;
-        });
-        priceInput.addEventListener('focus', function() {
-            if (this.value === '') this.value = 'Rp 0';
-        });
-        priceInput.addEventListener('blur', function() {
-            if (this.value === '' || this.value === 'Rp') this.value = 'Rp 0';
-        });
-        // Convert to plain number on submit
-        priceInput.form.addEventListener('submit', function(e) {
-            let val = priceInput.value.replace(/[^\d]/g, '');
-            priceInput.value = val;
-        });
-    }
 </script>
 <?= $this->endSection() ?>

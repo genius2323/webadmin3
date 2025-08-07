@@ -1,62 +1,95 @@
 <?= $this->extend('layout/template') ?>
 <?= $this->section('content') ?>
-<div class="page-header-modern">
-    <div>
-        <h2 class="page-title">Tambah User</h2>
-        <div class="page-subtitle">Form untuk menambah user baru dan memilih banyak departemen.</div>
-    </div>
-</div>
-<div class="card-modern">
-    <form action="<?= site_url('user/store') ?>" method="post">
-        <div class="form-group-modern">
-            <label>Nama</label>
-            <input type="text" name="nama" class="input-modern" required>
-        </div>
-        <div class="form-group-modern">
-            <label>Username</label>
-            <input type="text" name="username" class="input-modern" required>
-        </div>
-        <div class="form-group-modern">
-            <label>Password</label>
-            <input type="password" name="password" class="input-modern" required>
-        </div>
-        <div class="form-group-modern">
-            <label>No KTP</label>
-            <input type="text" name="noktp" class="input-modern" required>
-        </div>
-        <div class="form-group-modern">
-            <label>Alamat</label>
-            <input type="text" name="alamat" class="input-modern" required>
-        </div>
-        <div class="form-group-modern">
-            <label>Pilih Departemen</label>
-            <div class="switch-group-modern">
-                <?php foreach ($departments as $dept): ?>
-                    <label class="switch-modern">
-                        <input type="checkbox" name="departments[]" value="<?= $dept['id'] ?>">
-                        <span class="slider-modern"></span>
-                        <span class="switch-label-modern"><?= esc(isset($dept['nama']) ? $dept['nama'] : $dept['name']) ?></span>
-                    </label>
-                <?php endforeach; ?>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+<main>
+    <header class="page-header page-header-compact page-header-light border-bottom bg-white mb-4">
+        <div class="container-fluid px-4">
+            <div class="page-header-content">
+                <div class="row align-items-center justify-content-between pt-3">
+                    <div class="col-auto mb-3">
+                        <h1 class="page-header-title">
+                            <div class="page-header-icon"><i data-feather="user-plus"></i></div>
+                            Tambah User
+                        </h1>
+                        <div class="small">Form untuk menambah user baru dan memilih banyak departemen.</div>
+                    </div>
+                </div>
             </div>
-            <small class="form-text-modern">Pilih Satu atau Lebih Departemen</small>
         </div>
-        <div class="form-group-modern text-right">
-            <button type="submit" class="btn-modern btn-primary-modern"><svg width="16" height="16" fill="none" viewBox="0 0 24 24">
-                    <path d="M5 12h14M12 5v14" stroke="#fff" stroke-width="2" stroke-linecap="round" />
-                </svg> Simpan</button>
-            <a href="<?= site_url('user') ?>" class="btn-modern btn-secondary-modern">Kembali</a>
+    </header>
+    <div class="container-fluid px-4">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card mb-4 animate__animated animate__fadeInUp">
+                    <div class="card-body">
+                        <?php if (session('success')): ?>
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <i data-feather="check-circle" class="me-1"></i>
+                                <?= session('success') ?>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        <?php endif; ?>
+                        <form action="<?= site_url('user/store') ?>" method="post" autocomplete="off">
+                            <?= csrf_field() ?>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="nama" class="form-label">Nama <span class="text-danger">*</span></label>
+                                        <input type="text" name="nama" id="nama" class="form-control" required placeholder="Nama User">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="username" class="form-label">Username <span class="text-danger">*</span></label>
+                                        <input type="text" name="username" id="username" class="form-control" required placeholder="Username">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
+                                        <input type="password" name="password" id="password" class="form-control" required placeholder="Password">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="noktp" class="form-label">No KTP <span class="text-danger">*</span></label>
+                                        <input type="text" name="noktp" id="noktp" class="form-control" required placeholder="No KTP">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="alamat" class="form-label">Alamat <span class="text-danger">*</span></label>
+                                        <input type="text" name="alamat" id="alamat" class="form-control" required placeholder="Alamat">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Pilih Departemen <span class="text-danger">*</span></label>
+                                        <div class="switch-group-modern">
+                                            <?php foreach ($departments as $dept): ?>
+                                                <label class="switch-modern">
+                                                    <input type="checkbox" name="departments[]" value="<?= $dept['id'] ?>">
+                                                    <span class="slider-modern"></span>
+                                                    <span class="switch-label-modern"><?= esc(isset($dept['nama']) ? $dept['nama'] : $dept['name']) ?></span>
+                                                </label>
+                                            <?php endforeach; ?>
+                                        </div>
+                                        <small class="form-text text-muted">Pilih satu atau lebih departemen dengan tombol on/off.</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-end mt-3">
+                                <button type="submit" class="btn btn-primary">
+                                    <i data-feather="save" class="me-1"></i> Simpan User
+                                </button>
+                                <a href="<?= site_url('user') ?>" class="btn btn-danger ms-2">Batal</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-    </form>
-</div>
+    </div>
+</main>
+<script>
+    $(document).ready(function() {
+        if (window.feather) feather.replace();
+    });
+</script>
+<?= $this->endSection() ?>
 <style>
-    .form-group-modern {
-        margin-bottom: 1.3em;
-        display: flex;
-        flex-direction: column;
-        gap: 0.3em;
-    }
-
     .input-modern {
         border: 1px solid #e9edf5;
         border-radius: 8px;
@@ -75,16 +108,14 @@
     .switch-group-modern {
         display: flex;
         flex-wrap: wrap;
-        gap: 1.2em 1.5em;
-        margin-top: 0.3em;
+        gap: 1em;
     }
 
     .switch-modern {
         display: flex;
         align-items: center;
         gap: 0.5em;
-        font-size: 1em;
-        font-weight: 500;
+        margin-bottom: 0.5em;
     }
 
     .switch-modern input[type="checkbox"] {
@@ -92,14 +123,17 @@
     }
 
     .slider-modern {
-        width: 36px;
-        height: 20px;
-        background: #e9edf5;
-        border-radius: 12px;
+        width: 40px;
+        height: 22px;
+        background: #e4e4e4;
+        border-radius: 22px;
         position: relative;
-        transition: background 0.18s;
+        transition: background 0.3s;
         cursor: pointer;
-        margin-right: 0.2em;
+    }
+
+    .switch-modern input[type="checkbox"]:checked+.slider-modern {
+        background: #0d6efd;
     }
 
     .slider-modern:before {
@@ -107,31 +141,20 @@
         position: absolute;
         left: 3px;
         top: 3px;
-        width: 14px;
-        height: 14px;
+        width: 16px;
+        height: 16px;
         background: #fff;
         border-radius: 50%;
-        transition: transform 0.18s;
-        box-shadow: 0 1px 4px 0 rgba(44, 62, 80, 0.08);
-    }
-
-    .switch-modern input[type="checkbox"]:checked+.slider-modern {
-        background: #4fc3f7;
+        transition: left 0.3s;
     }
 
     .switch-modern input[type="checkbox"]:checked+.slider-modern:before {
-        transform: translateX(16px);
-        background: #232946;
+        left: 21px;
     }
 
     .switch-label-modern {
-        margin-left: 0.2em;
-    }
-
-    .form-text-modern {
-        color: #6c7a89;
-        font-size: 0.97em;
-        margin-top: 0.2em;
+        font-size: 1em;
+        color: #333;
     }
 
     .btn-secondary-modern {
@@ -154,4 +177,3 @@
         }
     }
 </style>
-<?= $this->endSection() ?>

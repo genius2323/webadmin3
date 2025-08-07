@@ -107,19 +107,19 @@
                 <table class="table table-bordered table-hover align-middle mb-0 table-radius">
                     <thead class="table-light">
                         <tr>
-                            <th style="text-align:center;">No</th>
-                            <th style="text-align:center;">Kode</th>
-                            <th style="text-align:center;">Nama</th>
-                            <th style="text-align:center;">Alamat</th>
-                            <th style="text-align:center;">Contact Person</th>
-                            <th style="text-align:center;">Kota</th>
-                            <th style="text-align:center;">Provinsi</th>
-                            <th style="text-align:center;">Sales</th>
-                            <th style="text-align:center;">No HP</th>
-                            <th style="text-align:center;">Batas Piutang</th>
-                            <th style="text-align:center;">NPWP</th>
-                            <th style="text-align:center;">Otoritas</th>
-                            <th style="text-align:center;">Aksi</th>
+                            <th style="text-align:center;white-space:nowrap;">No</th>
+                            <th style="text-align:center;white-space:nowrap;">Kode</th>
+                            <th style="text-align:center;white-space:nowrap;">Nama</th>
+                            <th style="text-align:center;white-space:nowrap;">Alamat</th>
+                            <th style="text-align:center;white-space:nowrap;">Contact Person</th>
+                            <th style="text-align:center;white-space:nowrap;">Kota</th>
+                            <th style="text-align:center;white-space:nowrap;">Provinsi</th>
+                            <th style="text-align:center;white-space:nowrap;">Sales</th>
+                            <th style="text-align:center;white-space:nowrap;">No HP</th>
+                            <th style="text-align:center;white-space:nowrap;">Batas Piutang</th>
+                            <th style="text-align:center;white-space:nowrap;">NPWP</th>
+                            <th style="text-align:center;white-space:nowrap;">Otoritas</th>
+                            <th style="text-align:center;white-space:nowrap;">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -138,7 +138,7 @@
                                     <td style="white-space: nowrap !important;"><?= esc($row['contact_person']) ?></td>
                                     <td><?= esc($row['kota']) ?></td>
                                     <td><?= esc($row['provinsi']) ?></td>
-                                    <td><?= esc($row['sales']) ?></td>
+                                    <td style="white-space:nowrap;"><?= esc($row['sales']) ?></td>
                                     <td><?= esc($row['no_hp']) ?></td>
                                     <td style="white-space: nowrap !important;text-align:right;">Rp <?= number_format($row['batas_piutang'], 0, ',', '.') ?></td>
                                     <td><?= esc($row['npwp_nomor']) ?></td>
@@ -152,13 +152,50 @@
                                     <td class="text-center" style="white-space: nowrap !important;">
                                         <?php if (!empty($row['otoritas']) && $row['otoritas'] === 'T'): ?>
                                             <a href="<?= site_url('mastercustomer/edit/' . $row['id']) ?>" class="btn btn-sm btn-warning"><i data-feather="edit"></i></a>
-                                            <a href="<?= site_url('mastercustomer/delete/' . $row['id']) ?>" class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin menghapus data ini?')"><i data-feather="trash-2"></i></a>
+                                            <button type="button" class="btn btn-sm btn-danger btn-hapus-customer" data-id="<?= $row['id'] ?>" data-nama="<?= esc($row['nama_customer']) ?>"><i data-feather="trash-2"></i></button>
                                         <?php else: ?>
                                             <button class="btn btn-sm btn-warning" style="opacity:0.6;cursor:not-allowed; " disabled><i data-feather="edit"></i></button>
                                             <button class="btn btn-sm btn-danger" style="opacity:0.6;cursor:not-allowed;" disabled><i data-feather="trash-2"></i></button>
                                         <?php endif; ?>
                                     </td>
                                 </tr>
+                                <!-- Modal Hapus Customer SBAdmin -->
+                                <div class="modal fade" id="modalHapusCustomer" tabindex="-1" aria-labelledby="modalHapusCustomerLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header bg-danger text-white">
+                                                <h5 class="modal-title" id="modalHapusCustomerLabel"><i data-feather="trash-2"></i> Konfirmasi Hapus Customer</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Apakah Anda yakin ingin menghapus customer <span id="hapusCustomerNama" class="fw-bold text-danger"></span>?</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                                <a href="#" id="btnConfirmHapusCustomer" class="btn btn-danger">Hapus</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <script>
+                                    document.addEventListener('DOMContentLoaded', function() {
+                                        let hapusId = null;
+                                        let hapusNama = '';
+                                        const modalEl = document.getElementById('modalHapusCustomer');
+                                        const hapusCustomerNama = document.getElementById('hapusCustomerNama');
+                                        const btnConfirmHapusCustomer = document.getElementById('btnConfirmHapusCustomer');
+                                        document.querySelectorAll('.btn-hapus-customer').forEach(function(btn) {
+                                            btn.addEventListener('click', function() {
+                                                hapusId = this.getAttribute('data-id');
+                                                hapusNama = this.getAttribute('data-nama');
+                                                hapusCustomerNama.textContent = hapusNama;
+                                                btnConfirmHapusCustomer.setAttribute('href', '<?= site_url('mastercustomer/delete/') ?>' + hapusId);
+                                                var modal = new bootstrap.Modal(modalEl);
+                                                modal.show();
+                                            });
+                                        });
+                                    });
+                                </script>
                             <?php endforeach;
                         else : ?>
                             <tr>

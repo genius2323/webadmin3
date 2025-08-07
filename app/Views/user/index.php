@@ -112,6 +112,7 @@
                             <th style="text-align:center;">Username</th>
                             <th style="text-align:center;">Alamat</th>
                             <th style="text-align:center;">No KTP</th>
+                            <th style="text-align:center;">Departemen</th>
                             <th style="text-align:center;">Otoritas</th>
                             <th style="text-align:center;">Aksi</th>
                         </tr>
@@ -126,10 +127,19 @@
                             foreach ($users as $user) : ?>
                                 <tr>
                                     <td style="text-align:center;"> <?= $no++ ?> </td>
-                                    <td><?= esc($user['nama']) ?></td>
+                                    <td style="white-space:nowrap;"><?= esc($user['nama']) ?></td>
                                     <td><?= esc($user['username']) ?></td>
                                     <td><?= esc($user['alamat']) ?></td>
                                     <td><?= esc($user['noktp']) ?></td>
+                                    <td style="text-align:center;">
+                                        <?php if (!empty($userDepartments[$user['id']])): ?>
+                                            <?php foreach ($userDepartments[$user['id']] as $deptName): ?>
+                                                <span class="badge bg-info text-dark" style="margin:2px;"><?= esc($deptName) ?></span>
+                                            <?php endforeach; ?>
+                                        <?php else: ?>
+                                            <span class="badge bg-secondary">-</span>
+                                        <?php endif; ?>
+                                    </td>
                                     <td style="text-align:center;">
                                         <?php if (!empty($user['otoritas']) && $user['otoritas'] === 'T'): ?>
                                             <span class="badge bg-success">Sudah Otorisasi</span>

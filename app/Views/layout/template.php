@@ -184,6 +184,8 @@
                                 <nav class="sidenav-menu-nested nav">
                                     <a class="nav-link<?= $uri->getSegment(1) == 'otorisasi_klasifikasi' ? ' active' : '' ?>" href="<?= site_url('otorisasi_klasifikasi/otorisasi_kategori') ?>">Otorisasi Klasifikasi</a>
                                     <a class="nav-link<?= $uri->getSegment(1) == 'otorisasi' && $uri->getSegment(2) == 'otorisasi_masterbarang' ? ' active' : '' ?>" href="<?= site_url('otorisasi/otorisasi_masterbarang') ?>">Otorisasi Master Barang</a>
+                                    <a class="nav-link<?= $uri->getSegment(1) == 'otorisasi' && $uri->getSegment(2) == 'otorisasi_user' ? ' active' : '' ?>" href="<?= site_url('otorisasi/otorisasi_user') ?>">Otorisasi User</a>
+                                    <a class="nav-link<?= $uri->getSegment(1) == 'otorisasi' && $uri->getSegment(2) == 'otorisasi_customer' ? ' active' : '' ?>" href="<?= site_url('otorisasi/otorisasi_customer') ?>">Otorisasi Customer</a>
                                 </nav>
                             </div>
                             <a class="nav-link<?= $uri->getSegment(1) == 'batas-tanggal' ? ' active' : '' ?>" href="<?= site_url('batas-tanggal') ?>">
