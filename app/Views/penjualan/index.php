@@ -3,7 +3,7 @@
 <?= $this->section('content') ?>
 <div class="row justify-content-center">
   <div class="col-md-7">
-    <div class="card shadow-sm border-0 mt-4">
+    <div class="card animate__animated animate__fadeInUp mb-4 shadow-sm border-0 mt-4">
       <div class="card-header bg-primary text-white">
         <h4 class="mb-0"><i class="fa fa-shopping-cart me-2"></i> Tambah Penjualan</h4>
       </div>

@@ -79,8 +79,8 @@
                             <th style="text-align:center;">Kode</th>
                             <th style="text-align:center;">Nama Barang</th>
                             <th style="text-align:center;">Kategori</th>
-                            <th style="text-align:center;">Status Otorisasi</th>
-                            <th style="text-align:center;">Aksi Otorisasi</th>
+                            <th style="text-align:center;">Status</th>
+                            <th style="text-align:center;">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>

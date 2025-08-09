@@ -30,6 +30,9 @@ $routes->group('', ['filter' => 'auth'], static function ($routes) {
     // Otorisasi Customer
     $routes->get('otorisasi/otorisasi_customer', 'Otorisasi\OtorisasiCustomer::index');
     $routes->post('otorisasi/otorisasi_customer/setOtorisasiCustomer', 'Otorisasi\OtorisasiCustomer::setOtorisasiCustomer');
+    // Otorisasi Sales
+    $routes->get('otorisasi/otorisasi_sales', 'OtorisasiSales::index');
+    $routes->post('otorisasi/otorisasi_sales/setOtorisasiSales', 'OtorisasiSales::setOtorisasiSales');
     // Profile
     $routes->get('profile', 'Profile::index');
     $routes->post('profile/update', 'Profile::update');

@@ -22,7 +22,7 @@
     </div>
 </header>
 <div class="container-fluid px-4">
-    <div class="card">
+    <div class="card animate__animated animate__fadeInUp mb-4">
         <div class="card-body">
             <div class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-2">
                 <form method="get" class="d-flex align-items-center gap-2 mb-0">
@@ -107,7 +107,7 @@
                     <thead class="table-light">
                         <tr>
                             <th style="text-align:center;">No</th>
-                            <th style="text-align:center;">Nama Barang</th>
+                            <th style="white-space:nowrap;text-align:center;">Nama Barang</th>
                             <th style="text-align:center;">Kategori</th>
                             <th style="text-align:center;">Satuan</th>
                             <th style="text-align:center;">Jenis</th>
@@ -126,7 +126,7 @@
                             foreach ($products as $row) { ?>
                                 <tr>
                                     <td style="text-align:center;"> <?= $no++ ?> </td>
-                                    <td><?= esc($row['name']) ?></td>
+                                    <td style="white-space:nowrap;"><?= esc($row['name']) ?></td>
                                     <td><?= esc($row['category_name'] ?? '-') ?></td>
                                     <td style="text-align:center;"> <?= esc($row['satuan_name'] ?? '-') ?> </td>
                                     <td style="text-align:center;white-space:nowrap;"> <?= esc($row['jenis_name'] ?? '-') ?> </td>

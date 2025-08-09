@@ -12,7 +12,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     <?php endif; ?>
-    <div class="card mb-4">
+    <div class="card animate__animated animate__fadeInUp mb-4">
         <div class="card-body">
             <h4 class="mb-3">Otorisasi Warna Sinar</h4>
             <div class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-2">

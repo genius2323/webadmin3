@@ -75,29 +75,29 @@
                 <table class="table table-bordered table-radius align-middle mb-0">
                     <thead class="table-light">
                         <tr>
-                            <th>Username</th>
-                            <th>Nama</th>
-                            <th>Alamat</th>
-                            <th>No. KTP</th>
-                            <th>Otoritas</th>
-                            <th>Aksi</th>
+                            <th style="text-align:center;">Username</th>
+                            <th style="text-align:center;">Nama</th>
+                            <th style="text-align:center;">Alamat</th>
+                            <th style="text-align:center;">No. KTP</th>
+                            <th style="text-align:center;">Otoritas</th>
+                            <th style="text-align:center;">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php foreach ($list as $user): ?>
                             <tr>
                                 <td><?= esc($user['username'] ?? '') ?></td>
-                                <td><?= esc($user['nama'] ?? '') ?></td>
-                                <td><?= esc($user['alamat'] ?? '') ?></td>
+                                <td style="white-space:nowrap;"><?= esc($user['nama'] ?? '') ?></td>
+                                <td style="white-space:nowrap; overflow-x:auto; max-width:220px;"><?= esc($user['alamat'] ?? '') ?></td>
                                 <td><?= esc($user['noktp'] ?? '') ?></td>
-                                <td>
+                                <td style="text-align:center;">
                                     <?php if ($user['otoritas'] === 'T'): ?>
                                         <span class="badge bg-success">Sudah Otorisasi</span>
                                     <?php else: ?>
                                         <span class="badge bg-secondary">Belum</span>
                                     <?php endif; ?>
                                 </td>
-                                <td>
+                                <td style="text-align:center;">
                                     <form action="<?= site_url('otorisasi/otorisasi_user/setOtorisasiUser') ?>" method="post" class="d-inline">
                                         <?= csrf_field() ?>
                                         <input type="hidden" name="user_id" value="<?= $user['id'] ?>">

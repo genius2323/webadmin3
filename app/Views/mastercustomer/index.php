@@ -23,7 +23,7 @@
     </div>
 </header>
 <div class="container-fluid px-4">
-    <div class="card">
+    <div class="card animate__animated animate__fadeInUp mb-4">
         <div class="card-body">
             <div class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-2">
                 <form method="get" class="d-flex align-items-center gap-2 mb-0">
@@ -134,7 +134,7 @@
                                     <td style="text-align:center;"> <?= $no++ ?> </td>
                                     <td style="white-space: nowrap !important;"><?= esc($row['kode_customer']) ?></td>
                                     <td style="white-space: nowrap !important;"><?= esc($row['nama_customer']) ?></td>
-                                    <td><?= esc($row['alamat']) ?></td>
+                                    <td style="white-space:nowrap; overflow-x:auto; max-width:150px;"><?= esc($row['alamat']) ?></td>
                                     <td style="white-space: nowrap !important;"><?= esc($row['contact_person']) ?></td>
                                     <td><?= esc($row['kota']) ?></td>
                                     <td><?= esc($row['provinsi']) ?></td>
@@ -155,47 +155,10 @@
                                             <button type="button" class="btn btn-sm btn-danger btn-hapus-customer" data-id="<?= $row['id'] ?>" data-nama="<?= esc($row['nama_customer']) ?>"><i data-feather="trash-2"></i></button>
                                         <?php else: ?>
                                             <button class="btn btn-sm btn-warning" style="opacity:0.6;cursor:not-allowed; " disabled><i data-feather="edit"></i></button>
-                                            <button class="btn btn-sm btn-danger" style="opacity:0.6;cursor:not-allowed;" disabled><i data-feather="trash-2"></i></button>
+                                            <button class="btn btn-sm btn-danger" style="opacity:0.6;pointer-events:none;cursor:not-allowed;" disabled><i data-feather="trash-2"></i></button>
                                         <?php endif; ?>
                                     </td>
                                 </tr>
-                                <!-- Modal Hapus Customer SBAdmin -->
-                                <div class="modal fade" id="modalHapusCustomer" tabindex="-1" aria-labelledby="modalHapusCustomerLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content">
-                                            <div class="modal-header bg-danger text-white">
-                                                <h5 class="modal-title" id="modalHapusCustomerLabel"><i data-feather="trash-2"></i> Konfirmasi Hapus Customer</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <p>Apakah Anda yakin ingin menghapus customer <span id="hapusCustomerNama" class="fw-bold text-danger"></span>?</p>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                                                <a href="#" id="btnConfirmHapusCustomer" class="btn btn-danger">Hapus</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <script>
-                                    document.addEventListener('DOMContentLoaded', function() {
-                                        let hapusId = null;
-                                        let hapusNama = '';
-                                        const modalEl = document.getElementById('modalHapusCustomer');
-                                        const hapusCustomerNama = document.getElementById('hapusCustomerNama');
-                                        const btnConfirmHapusCustomer = document.getElementById('btnConfirmHapusCustomer');
-                                        document.querySelectorAll('.btn-hapus-customer').forEach(function(btn) {
-                                            btn.addEventListener('click', function() {
-                                                hapusId = this.getAttribute('data-id');
-                                                hapusNama = this.getAttribute('data-nama');
-                                                hapusCustomerNama.textContent = hapusNama;
-                                                btnConfirmHapusCustomer.setAttribute('href', '<?= site_url('mastercustomer/delete/') ?>' + hapusId);
-                                                var modal = new bootstrap.Modal(modalEl);
-                                                modal.show();
-                                            });
-                                        });
-                                    });
-                                </script>
                             <?php endforeach;
                         else : ?>
                             <tr>

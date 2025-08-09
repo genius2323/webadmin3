@@ -12,7 +12,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     <?php endif; ?>
-    <div class="card">
+    <div class="card animate__animated animate__fadeInUp mb-4">
         <div class="card-body">
             <div class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-2">
                 <form method="get" class="d-flex align-items-center gap-2 mb-0">

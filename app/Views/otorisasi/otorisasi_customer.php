@@ -75,29 +75,29 @@
                 <table class="table table-bordered table-radius align-middle mb-0">
                     <thead class="table-light">
                         <tr>
-                            <th>Kode Customer</th>
-                            <th>Nama</th>
-                            <th>Alamat</th>
-                            <th>Sales</th>
-                            <th>Otoritas</th>
-                            <th>Aksi</th>
+                            <th style="text-align:center;">Kode</th>
+                            <th style="text-align:center;">Nama</th>
+                            <th style="text-align:center;">Alamat</th>
+                            <th style="text-align:center;">Sales</th>
+                            <th style="text-align:center;">Otoritas</th>
+                            <th style="text-align:center;">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php foreach ($list as $customer): ?>
                             <tr>
                                 <td><?= esc($customer['kode_customer'] ?? '') ?></td>
-                                <td><?= esc($customer['nama_customer'] ?? '') ?></td>
-                                <td><?= esc($customer['alamat'] ?? '') ?></td>
-                                <td><?= esc($customer['sales'] ?? '') ?></td>
-                                <td>
+                                <td style="white-space:nowrap;"><?= esc($customer['nama_customer'] ?? '') ?></td>
+                                <td style="white-space:nowrap; overflow-x:auto; max-width:220px;"><?= esc($customer['alamat'] ?? '') ?></td>
+                                <td style="white-space:nowrap;"><?= esc($customer['sales'] ?? '') ?></td>
+                                <td style="text-align:center;">
                                     <?php if (($customer['otoritas'] ?? '') === 'T'): ?>
                                         <span class="badge bg-success">Sudah Otorisasi</span>
                                     <?php else: ?>
                                         <span class="badge bg-secondary">Belum</span>
                                     <?php endif; ?>
                                 </td>
-                                <td>
+                                <td style="text-align:center;">
                                     <form action="<?= site_url('otorisasi/otorisasi_customer/setOtorisasiCustomer') ?>" method="post" class="d-inline">
                                         <?= csrf_field() ?>
                                         <input type="hidden" name="customer_id" value="<?= $customer['id'] ?>">

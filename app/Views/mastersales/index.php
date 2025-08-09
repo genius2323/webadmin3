@@ -23,7 +23,7 @@
     </div>
 </header>
 <div class="container-fluid px-4">
-    <div class="card">
+    <div class="card animate__animated animate__fadeInUp mb-4">
         <div class="card-body">
             <div class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-2">
                 <form method="get" class="d-flex align-items-center gap-2 mb-0">
@@ -111,7 +111,7 @@
                             <th style="text-align:center;">Kode</th>
                             <th style="text-align:center;">Nama</th>
                             <th style="text-align:center;">Alamat</th>
-                            <th style="text-align:center;">Tempat Lahir</th>
+                            <th style="text-align:center;white-space:nowrap;">Tempat Lahir</th>
                             <th style="text-align:center;">No HP</th>
                             <th style="text-align:center;">No KTP</th>
                             <th style="text-align:center;">Status</th>
@@ -127,11 +127,11 @@
                                     <td style="text-align:center;"> <?= $no++ ?> </td>
                                     <td style="text-align:center;"><?= esc($row['kode']) ?></td>
                                     <td><?= esc($row['nama']) ?></td>
-                                    <td><?= esc($row['alamat']) ?></td>
+                                    <td style="white-space:nowrap; overflow-x:auto; max-width:220px;"><?= esc($row['alamat']) ?></td>
                                     <td><?= esc($row['tempat_lahir']) ?></td>
                                     <td><?= esc($row['no_hp']) ?></td>
                                     <td><?= esc($row['no_ktp']) ?></td>
-                                    <td><?= esc($row['status']) ?></td>
+                                    <td style="text-align:center;"><?= esc($row['status']) ?></td>
                                     <td style="text-align:center;">
                                         <?php if (!empty($row['otoritas']) && $row['otoritas'] === 'T'): ?>
                                             <span class="badge bg-success">Sudah Otorisasi</span>

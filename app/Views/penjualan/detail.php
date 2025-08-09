@@ -4,7 +4,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-12">
-      <div class="card">
+      <div class="card animate__animated animate__fadeInUp mb-4">
         <div class="card-header">
           <h3 class="card-title">Detail Penjualan: <?= esc($penjualan['nomor_nota']); ?></h3>
         </div>

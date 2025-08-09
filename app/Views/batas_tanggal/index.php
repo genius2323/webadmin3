@@ -19,7 +19,7 @@
     <div class="container-fluid px-4">
         <div class="row justify-content-center">
             <div class="col-lg-8">
-                <div class="card mb-4">
+                <div class="card animate__animated animate__fadeInUp mb-4">
                     <div class="card-body">
                         <?php if (session('success')): ?>
                             <div class="alert alert-success alert-dismissible fade show" role="alert">

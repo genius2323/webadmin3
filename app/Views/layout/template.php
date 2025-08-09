@@ -10,6 +10,7 @@
     <link rel="icon" type="image/x-icon" href="<?= base_url('assets/img/favicon.png') ?>" />
     <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 </head>
 
 <body class="nav-fixed">
@@ -186,6 +187,7 @@
                                     <a class="nav-link<?= $uri->getSegment(1) == 'otorisasi' && $uri->getSegment(2) == 'otorisasi_masterbarang' ? ' active' : '' ?>" href="<?= site_url('otorisasi/otorisasi_masterbarang') ?>">Otorisasi Master Barang</a>
                                     <a class="nav-link<?= $uri->getSegment(1) == 'otorisasi' && $uri->getSegment(2) == 'otorisasi_user' ? ' active' : '' ?>" href="<?= site_url('otorisasi/otorisasi_user') ?>">Otorisasi User</a>
                                     <a class="nav-link<?= $uri->getSegment(1) == 'otorisasi' && $uri->getSegment(2) == 'otorisasi_customer' ? ' active' : '' ?>" href="<?= site_url('otorisasi/otorisasi_customer') ?>">Otorisasi Customer</a>
+                                    <a class="nav-link<?= $uri->getSegment(1) == 'otorisasi' && $uri->getSegment(2) == 'otorisasi_sales' ? ' active' : '' ?>" href="<?= site_url('otorisasi/otorisasi_sales') ?>">Otorisasi Sales</a>
                                 </nav>
                             </div>
                             <a class="nav-link<?= $uri->getSegment(1) == 'batas-tanggal' ? ' active' : '' ?>" href="<?= site_url('batas-tanggal') ?>">
