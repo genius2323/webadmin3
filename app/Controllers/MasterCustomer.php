@@ -77,7 +77,7 @@ class MasterCustomer extends BaseController
         } else {
             $db2->table('mastercustomer')->insert($dataDb2);
         }
-        return redirect()->to(site_url('mastercustomer'))->with('success', 'Customer berhasil ditambahkan di dua database.');
+        return redirect()->to(site_url('mastercustomer'))->with('success', 'Customer berhasil ditambahkan.');
     }
 
     public function edit($id)
@@ -126,7 +126,7 @@ class MasterCustomer extends BaseController
         } else {
             $db2->table('mastercustomer')->insert($dataDb2);
         }
-        return redirect()->to(site_url('mastercustomer'))->with('success', 'Customer berhasil diupdate di dua database.');
+        return redirect()->to(site_url('mastercustomer'))->with('success', 'Customer berhasil diupdate.');
     }
 
     public function delete($id)
@@ -138,6 +138,6 @@ class MasterCustomer extends BaseController
         $db2 = \Config\Database::connect('db2');
         $deletedAt = date('Y-m-d H:i:s');
         $db2->table('mastercustomer')->where('id', $id)->update(['otoritas' => null, 'deleted_at' => $deletedAt]);
-        return redirect()->to(site_url('mastercustomer'))->with('success', 'Customer berhasil dihapus di dua database.');
+        return redirect()->to(site_url('mastercustomer'))->with('success', 'Customer berhasil dihapus.');
     }
 }

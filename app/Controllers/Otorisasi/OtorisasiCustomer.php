@@ -26,6 +26,6 @@ class OtorisasiCustomer extends BaseController
         // Update juga di database kedua (db2)
         $db2 = \Config\Database::connect('db2');
         $db2->table('mastercustomer')->where('id', $customer_id)->update(['otoritas' => $otoritas]);
-        return redirect()->to(site_url('otorisasi/otorisasi_customer'))->with('success', 'Status otorisasi customer berhasil diubah di dua database.');
+        return redirect()->to(site_url('otorisasi/otorisasi_customer'))->with('success', 'Status otorisasi customer berhasil diubah.');
     }
 }

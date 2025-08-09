@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Controllers;
+
 use App\Models\MasterSalesModel;
 use CodeIgniter\HTTP\RedirectResponse;
 
@@ -9,11 +11,13 @@ class MasterSales extends BaseController
     {
         $model = new MasterSalesModel();
         $model->delete($id); // soft delete di database utama
-        // Soft delete di database kedua (db2)
+        // Soft delete di database kedua (db2) dan set otoritas null
         $db2 = \Config\Database::connect('db2');
         $deletedAt = date('Y-m-d H:i:s');
-        $db2->table('mastersales')->where('id', $id)->update(['deleted_at' => $deletedAt]);
-        return redirect()->to(site_url('mastersales'))->with('success', 'Data sales berhasil dihapus di dua database.');
+        $db2->table('mastersales')->where('id', $id)->update(['deleted_at' => $deletedAt, 'otoritas' => null]);
+        // Set otoritas null di database utama juga
+        $model->update($id, ['otoritas' => null]);
+        return redirect()->to(site_url('mastersales'))->with('success', 'Data sales berhasil dihapus.');
     }
 
     public function edit($id)
@@ -39,18 +43,19 @@ class MasterSales extends BaseController
             'no_ktp' => $this->request->getPost('no_ktp'),
             'status' => $this->request->getPost('status'),
         ];
-        $model->update($id, $data);
-        // Sync ke database kedua (db2)
+        $model->update($id, $data + ['otoritas' => null]);
+        // Sync ke database kedua (db2) dan set otoritas null
         $db2 = \Config\Database::connect('db2');
         $dataDb2 = $data;
         $dataDb2['id'] = $id;
+        $dataDb2['otoritas'] = null;
         $exists = $db2->table('mastersales')->where('id', $id)->get()->getRow();
         if ($exists) {
             $db2->table('mastersales')->where('id', $id)->update($dataDb2);
         } else {
             $db2->table('mastersales')->insert($dataDb2);
         }
-        return redirect()->to(site_url('mastersales'))->with('success', 'Data sales berhasil diupdate di dua database.');
+        return redirect()->to(site_url('mastersales'))->with('success', 'Data sales berhasil diupdate.');
     }
     public function create()
     {
@@ -73,7 +78,7 @@ class MasterSales extends BaseController
                 ->orLike('no_hp', $search)
                 ->orLike('no_ktp', $search)
                 ->orLike('status', $search)
-            ->groupEnd();
+                ->groupEnd();
         }
         $data['sales'] = $builder->paginate($perPage);
         $data['pager'] = $model->pager;
@@ -96,16 +101,17 @@ class MasterSales extends BaseController
             'no_ktp' => $this->request->getPost('no_ktp'),
             'status' => $this->request->getPost('status'),
         ];
-        $model->insert($data);
+        $model->insert($data + ['otoritas' => null]);
         $id = $model->getInsertID();
         $dataDb2 = $data;
         $dataDb2['id'] = $id;
+        $dataDb2['otoritas'] = null;
         $exists = $db2->table('mastersales')->where('id', $id)->get()->getRow();
         if ($exists) {
             $db2->table('mastersales')->where('id', $id)->update($dataDb2);
         } else {
             $db2->table('mastersales')->insert($dataDb2);
         }
-        return redirect()->to(site_url('mastersales'))->with('success', 'Data sales berhasil ditambahkan/diupdate di dua database.');
+        return redirect()->to(site_url('mastersales'))->with('success', 'Data sales berhasil ditambahkan/diupdate.');
     }
 }

@@ -106,6 +106,6 @@ class MasterKategori extends BaseController
             'nama_ky' => $nama_ky,
             'otoritas' => null
         ]);
-        return redirect()->to('masterkategori')->with('success', 'Kategori berhasil dihapus (soft delete) di dua database');
+        return redirect()->to('masterkategori')->with('success', 'Kategori berhasil dihapus (soft delete)');
     }
 }

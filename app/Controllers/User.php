@@ -93,7 +93,7 @@ class User extends BaseController
             ]);
         }
 
-        return redirect()->to('user')->with('success', 'User berhasil ditambahkan di dua database');
+        return redirect()->to('user')->with('success', 'User berhasil ditambahkan');
     }
 
     public function edit($id)
@@ -198,7 +198,7 @@ class User extends BaseController
             }
         }
 
-        return redirect()->to('user')->with('success', 'User berhasil diupdate di dua database');
+        return redirect()->to('user')->with('success', 'User berhasil diupdate');
     }
 
     public function delete($id)
@@ -217,6 +217,6 @@ class User extends BaseController
         $db2->table('users')->where('id', $id)->update(['deleted_at' => $now]);
         $db2->table('user_departments')->where('user_id', $id)->update(['deleted_at' => $now]);
 
-        return redirect()->to('user')->with('success', 'User berhasil dihapus (soft delete di dua database)');
+        return redirect()->to('user')->with('success', 'User berhasil dihapus (soft delete)');
     }
 }

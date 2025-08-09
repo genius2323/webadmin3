@@ -131,7 +131,7 @@ class MasterBarang extends BaseController
         } else {
             $db2->table('products')->insert($dataDb2);
         }
-        return redirect()->to(site_url('masterbarang'))->with('success', 'Barang berhasil ditambahkan di dua database.');
+        return redirect()->to(site_url('masterbarang'))->with('success', 'Barang berhasil ditambahkan.');
     }
 
     public function edit($id)
@@ -238,7 +238,7 @@ class MasterBarang extends BaseController
         } else {
             $db2->table('products')->insert($dataDb2);
         }
-        return redirect()->to(site_url('masterbarang'))->with('success', 'Barang berhasil diupdate di dua database.');
+        return redirect()->to(site_url('masterbarang'))->with('success', 'Barang berhasil diupdate.');
     }
 
     public function delete($id)
@@ -255,6 +255,6 @@ class MasterBarang extends BaseController
             'deleted_at' => $deletedAt,
             'nama_ky' => $nama_ky
         ]);
-        return redirect()->to(site_url('masterbarang'))->with('success', 'Barang berhasil dihapus di dua database.');
+        return redirect()->to(site_url('masterbarang'))->with('success', 'Barang berhasil dihapus.');
     }
 }

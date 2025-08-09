@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
@@ -34,7 +35,8 @@ class Penjualan extends BaseController
         try {
             $db2 = \Config\Database::connect('db2');
             $db2->table('sales')->where('id', $id)->update($updateData);
-        } catch (\Throwable $e) {}
+        } catch (\Throwable $e) {
+        }
         return $this->response->setJSON(['success' => true]);
     }
 
@@ -45,7 +47,7 @@ class Penjualan extends BaseController
         // Soft delete di database kedua
         $db2 = \Config\Database::connect('db2');
         $db2->table('sales')->where('id', $id)->update(['deleted_at' => date('Y-m-d H:i:s')]);
-        session()->setFlashdata('success', 'Data penjualan berhasil dihapus (soft delete) di dua database.');
+        session()->setFlashdata('success', 'Data penjualan berhasil dihapus (soft delete).');
         return redirect()->to('/datapenjualan');
     }
     public function datapenjualan()
@@ -135,7 +137,7 @@ class Penjualan extends BaseController
             $dataDb2['id'] = $penjualanId;
             $db2->table('sales')->insert($dataDb2);
 
-            session()->setFlashdata('success', 'Data penjualan berhasil dibuat di dua database. Silakan tambahkan rincian barang.');
+            session()->setFlashdata('success', 'Data penjualan berhasil dibuat. Silakan tambahkan rincian barang.');
             return redirect()->to('/penjualan/detail/' . $penjualanId);
         }
 
