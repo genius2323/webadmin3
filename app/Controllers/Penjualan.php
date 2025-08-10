@@ -7,8 +7,6 @@ use App\Models\PenjualanModel;
 
 class Penjualan extends BaseController
 {
-    // ...existing code...
-
     // AJAX endpoint untuk pembayaran tunai
     public function paymentTunai($id)
     {
@@ -186,5 +184,79 @@ class Penjualan extends BaseController
         }
 
         return redirect()->to('/penjualan/detail/' . $penjualanId);
+    }
+
+    // --- POS SBAdmin ---
+    public function pos()
+    {
+        // Ambil data sales, customer, barang, dan batas tanggal
+        $salesList = model('App\\Models\\MasterSalesModel')->where('deleted_at', null)->findAll();
+        $customerList = model('App\\Models\\MasterCustomerModel')->where('deleted_at', null)->findAll();
+        $barangList = model('App\\Models\\MasterBarangModel')->where('deleted_at', null)->findAll();
+        $batasTanggal = model('App\\Models\\SystemDateLimitsModel')->getBatasTanggal();
+        return view('penjualan/pos', [
+            'salesList' => $salesList,
+            'customerList' => $customerList,
+            'barangList' => $barangList,
+            'batasTanggal' => $batasTanggal,
+        ]);
+    }
+
+    public function posBooking()
+    {
+        $db = \Config\Database::connect();
+        $db2 = \Config\Database::connect('db2');
+        $session = session();
+        $nama_ky = $session->get('user_nama') ?? $session->get('user_username') ?? $session->get('nama') ?? $session->get('username') ?? 'unknown';
+        $data = [
+            'nomor_nota'   => $this->request->getPost('nomor_nota'),
+            'tanggal_nota' => $this->request->getPost('tanggal_nota'),
+            'sales'        => $this->request->getPost('sales_id'),
+            'customer'     => $this->request->getPost('customer_id'),
+            'payment_system' => $this->request->getPost('metode_bayar'),
+            'status'       => 'booking',
+            'otoritas'     => null,
+            'nama_ky'      => $nama_ky,
+        ];
+        $salesModel = new \App\Models\SalesModel();
+        $salesId = $salesModel->insert($data, true);
+        if (!$salesId) {
+            return redirect()->back()->with('error', 'Gagal menyimpan data penjualan.');
+        }
+        // Simpan ke db2
+        $dataDb2 = $data;
+        $dataDb2['id'] = $salesId;
+        $db2->table('sales')->insert($dataDb2);
+
+        // Simpan item hanya jika salesId valid
+        $barangIds = $this->request->getPost('barang_id');
+        $qtys = $this->request->getPost('qty');
+        $barangModel = new \App\Models\MasterBarangModel();
+        $salesItemModel = new \App\Models\SalesItemsModel();
+        for ($i = 0; $i < count($barangIds); $i++) {
+            $barang = $barangModel->find($barangIds[$i]);
+            if (!$barang) continue;
+            $item = [
+                'sales_id'     => $salesId,
+                'product_id'   => $barang['id'],
+                'product_code' => $barang['kode_barang'] ?? '',
+                'product_name' => $barang['name'],
+                'qty'          => $qtys[$i],
+                'unit'         => $barang['satuan_name'] ?? '',
+                'price'        => $barang['price'],
+                'discount'     => 0,
+                'total'        => $barang['price'] * $qtys[$i],
+                'nama_ky'      => $nama_ky,
+            ];
+            $itemId = $salesItemModel->insert($item, true);
+            if ($itemId) {
+                // Simpan ke db2 dengan id item yang sama (opsional, atau biarkan auto-increment di db2)
+                $itemDb2 = $item;
+                $itemDb2['id'] = $itemId;
+                $itemDb2['sales_id'] = $salesId; // asumsikan id sales sama di db2
+                $db2->table('sales_items')->insert($itemDb2);
+            }
+        }
+        return redirect()->to('penjualan/detail/' . $salesId)->with('success', 'Nota berhasil dibooking!');
     }
 }

@@ -70,7 +70,8 @@ $routes->group('', ['filter' => 'auth'], static function ($routes) {
     $routes->get('penjualan/delete/(:num)', 'Penjualan::delete/$1'); // Soft delete penjualan
     $routes->get('datapenjualan', 'Penjualan::datapenjualan'); // Halaman Data Penjualan
     $routes->get('penjualan', 'Penjualan::index'); // Daftar semua penjualan
-    $routes->get('penjualan/new', 'Penjualan::new'); // Form tambah penjualan baru
+    $routes->get('penjualan/pos', 'Penjualan::pos'); // Form POS SBAdmin
+    $routes->post('penjualan/posBooking', 'Penjualan::posBooking'); // Proses booking nota POS
     $routes->post('penjualan/create', 'Penjualan::create'); // Proses pembuatan penjualan baru
     $routes->get('penjualan/detail/(:num)', 'Penjualan::detail/$1'); // Lihat detail penjualan
     $routes->post('penjualan/addItem/(:num)', 'Penjualan::addItem/$1'); // Tambah item ke penjualan

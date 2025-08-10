@@ -13,7 +13,7 @@
                 </div>
                 <div class="col-12 col-xl-auto mb-3">
                     <?php if (isset($canCreate) ? $canCreate : true): ?>
-                        <a class="btn btn-sm btn-primary" href="<?= site_url('penjualan') ?>">
+                        <a class="btn btn-sm btn-primary" href="<?= site_url('penjualan/pos') ?>">
                             <i class="me-1" data-feather="plus"></i> Buat Nota Baru
                         </a>
                     <?php endif; ?>
