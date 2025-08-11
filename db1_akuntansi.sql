@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 05, 2025 at 10:48 AM
+-- Generation Time: Aug 11, 2025 at 10:41 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -67,23 +67,6 @@ INSERT INTO `categories` (`id`, `kode_cat`, `name`, `description`, `otoritas`, `
 (19, 'TEKO', 'TEKO', '', NULL, 'Genius Hartono', NULL, 'automatic', '2025-07-25 11:02:24', '2025-07-25 11:02:24', NULL, NULL),
 (20, 'HELM', 'HELM', '', NULL, 'Genius Hartono', NULL, 'automatic', '2025-07-26 15:35:46', '2025-07-26 15:35:46', NULL, NULL),
 (21, 'Keyb', 'Keyboard', '', NULL, 'Genius Hartono', NULL, 'automatic', '2025-08-05 10:56:24', '2025-08-05 10:56:24', NULL, NULL);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `customers`
---
-
-CREATE TABLE `customers` (
-  `id` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `alamat` varchar(255) DEFAULT NULL,
-  `telepon` varchar(50) DEFAULT NULL,
-  `email` varchar(100) DEFAULT NULL,
-  `created_at` datetime DEFAULT current_timestamp(),
-  `updated_at` datetime DEFAULT NULL ON UPDATE current_timestamp(),
-  `deleted_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -329,7 +312,8 @@ CREATE TABLE `mastercustomer` (
   `contact_person` varchar(100) DEFAULT NULL,
   `kota` varchar(100) DEFAULT NULL,
   `provinsi` varchar(100) DEFAULT NULL,
-  `sales` varchar(100) DEFAULT NULL,
+  `sales_id` int(11) DEFAULT NULL,
+  `otoritas` char(1) DEFAULT NULL,
   `no_hp` varchar(30) DEFAULT NULL,
   `batas_piutang` decimal(18,2) DEFAULT 0.00,
   `npwp_nomor` varchar(50) DEFAULT NULL,
@@ -344,10 +328,11 @@ CREATE TABLE `mastercustomer` (
 -- Dumping data for table `mastercustomer`
 --
 
-INSERT INTO `mastercustomer` (`id`, `kode_customer`, `nama_customer`, `alamat`, `contact_person`, `kota`, `provinsi`, `sales`, `no_hp`, `batas_piutang`, `npwp_nomor`, `npwp_atas_nama`, `npwp_alamat`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'TOYOTA', 'TOYOTA', 'Jl Gunung Sanghyang No 10', 'Genius Hartono', 'Badung', 'Bali', 'TONO - HARUN', '081906426886', 19902212.00, '232443455443233', 'TOYOTA', 'Jl Gunung Sanghyang No 10', '2025-07-16 16:06:27', '2025-07-25 13:54:42', NULL),
-(2, 'DAIHATSU', 'DAIHATSU', 'Jl Gunung Sanghyang No 10', 'Genius Hartono', 'Badung', 'Bali', 'BONO - BONU', '081906426886', 1000000000.00, '235351268768656', 'DAIHATSU', 'Canggu', '2025-07-19 11:23:07', '2025-07-22 11:32:42', NULL),
-(3, 'Jayfen', 'Jayfen Dashiell Glorious Liem', 'Jl Gunung Sanghyang No 10', 'Genius Hartono', 'Badung', 'Bali', 'BONO - BONU', '081906426886', 1000000000.00, '948759348759348', 'Jayfen', 'Canggu', '2025-07-25 13:10:03', '2025-07-25 13:53:16', NULL);
+INSERT INTO `mastercustomer` (`id`, `kode_customer`, `nama_customer`, `alamat`, `contact_person`, `kota`, `provinsi`, `sales_id`, `otoritas`, `no_hp`, `batas_piutang`, `npwp_nomor`, `npwp_atas_nama`, `npwp_alamat`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'TOYOTA', 'TOYOTA', 'Jl Gunung Sanghyang No 10', 'Genius Hartono', 'Badung', 'Bali', 0, NULL, '081906426886', 93948949940000.00, '232443455443233', 'TOYOTA', 'Jl Gunung Sanghyang No 10', '2025-07-16 16:06:27', '2025-08-11 16:35:01', NULL),
+(2, 'DAIHATSU', 'DAIHATSU', 'Jl Gunung Sanghyang No 10', 'Genius Hartono', 'Badung', 'Bali', 0, NULL, '081906426886', 1000000000000000.00, '235351268768656', 'DAIHATSU', 'Canggu', '2025-07-19 11:23:07', '2025-08-11 16:28:39', NULL),
+(3, 'Jayfen', 'Jayfen Dashiell Glorious Liem', 'Jl Gunung Sanghyang No 10', 'Genius Hartono', 'Badung', 'Bali', NULL, 'T', '081906426886', 1000000000.00, '948759348759348', 'Jayfen', 'Canggu', '2025-07-25 13:10:03', '2025-08-11 15:59:57', NULL),
+(4, 'Budiarto', 'Budiarto', 'Denpasar', 'Tono', 'Denpasar', 'Bali', NULL, 'T', '09128932323', 300000000.00, '123019280923984', 'Budiarto', 'Denpasar', '2025-08-07 15:15:18', '2025-08-11 16:00:03', NULL);
 
 -- --------------------------------------------------------
 
@@ -364,6 +349,7 @@ CREATE TABLE `mastersales` (
   `no_hp` varchar(20) DEFAULT NULL,
   `no_ktp` varchar(30) DEFAULT NULL,
   `status` enum('Menikah','Belum Menikah') NOT NULL,
+  `otoritas` varchar(2) DEFAULT 'F',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `deleted_at` datetime DEFAULT NULL
@@ -373,10 +359,10 @@ CREATE TABLE `mastersales` (
 -- Dumping data for table `mastersales`
 --
 
-INSERT INTO `mastersales` (`id`, `kode`, `nama`, `alamat`, `tempat_lahir`, `no_hp`, `no_ktp`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(4, 'BONO', 'BONU', 'CANGGU', 'DPS', '0819292331312', '82124124128313', 'Menikah', '2025-07-16 07:21:56', '2025-07-16 07:24:09', NULL),
-(5, 'CACA', 'COCO', 'DENPASAR', 'DPS', '01934928374982', '273473246238', 'Menikah', '2025-07-16 07:24:44', '2025-07-16 07:24:48', '2025-07-16 07:24:48'),
-(6, 'TONO', 'HARUN', 'CANGGU', 'DENPASAR', '081263612361', '237486327468723234234243', 'Menikah', '2025-07-16 07:34:32', '2025-07-21 01:49:07', NULL);
+INSERT INTO `mastersales` (`id`, `kode`, `nama`, `alamat`, `tempat_lahir`, `no_hp`, `no_ktp`, `status`, `otoritas`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(4, 'BONO', 'BONU', 'CANGGU', 'Denpasar', '0819292331312', '82124124128313', 'Menikah', NULL, '2025-07-16 07:21:56', '2025-08-09 08:20:30', NULL),
+(5, 'CACA', 'COCO', 'DENPASAR', 'DPS', '01934928374982', '273473246238', 'Menikah', 'F', '2025-07-16 07:24:44', '2025-07-16 07:24:48', '2025-07-16 07:24:48'),
+(6, 'TONO', 'HARUN', 'CANGGU', 'DENPASAR', '081263612361', '237486327468723234234243', 'Menikah', 'F', '2025-07-16 07:34:32', '2025-07-21 01:49:07', NULL);
 
 -- --------------------------------------------------------
 
@@ -523,10 +509,11 @@ CREATE TABLE `products` (
 
 INSERT INTO `products` (`id`, `category_id`, `satuan_id`, `jenis_id`, `pelengkap_id`, `gondola_id`, `merk_id`, `warna_sinar_id`, `ukuran_barang_id`, `voltase_id`, `dimensi_id`, `warna_body_id`, `warna_bibir_id`, `kaki_id`, `model_id`, `fiting_id`, `daya_id`, `jumlah_mata_id`, `name`, `price`, `stock`, `created_at`, `updated_at`, `deleted_at`, `recovered_at`, `batas_tanggal_sistem`, `mode_batas_tanggal`, `otoritas`, `nama_ky`) VALUES
 (3, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'LAPTOP Asus', 1242123.00, 12, '2025-07-10 05:42:42', '2025-07-22 11:38:27', '2025-07-22 03:38:27', NULL, NULL, 'automatic', NULL, 'Genius Hartono'),
-(4, 3, 4, 2, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 2, 0, 'Laptop HP Pavilion wefhiweufhiwuefhiuwefiuwe', 32000333.00, 12, '2025-07-22 10:30:21', '2025-07-24 10:49:54', NULL, NULL, NULL, 'automatic', NULL, 'Genius Hartono'),
+(4, 3, 4, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 3, 0, 'Laptop HP Pavilion G', 8787676.00, 13, '2025-07-22 10:30:21', '2025-08-09 14:37:51', NULL, NULL, NULL, 'automatic', NULL, 'Genius Hartono'),
 (5, 3, 4, 2, 1, 1, 4, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, NULL, 1, 'LAPTOP HP PAVILION', 99999999.99, 12, '2025-07-22 11:10:55', '2025-07-22 11:10:55', NULL, NULL, NULL, 'automatic', NULL, NULL),
 (6, 3, 4, 2, 1, 1, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 3, NULL, 'Notebook Asus', 12678456345.00, 12, '2025-07-22 12:22:14', '2025-07-22 12:22:14', NULL, NULL, NULL, 'automatic', NULL, 'Genius Hartono'),
-(7, 4, 4, 1, NULL, NULL, NULL, 1, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Speaker Bass', 23000.00, 15, '2025-08-05 16:38:51', '2025-08-05 16:38:51', NULL, NULL, NULL, 'automatic', NULL, 'Genius Hartono');
+(7, 4, 4, 1, NULL, NULL, NULL, 1, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Speaker Bass', 23000.00, 15, '2025-08-05 16:38:51', '2025-08-05 16:38:51', NULL, NULL, NULL, 'automatic', NULL, 'Genius Hartono'),
+(8, 3, 4, 2, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 3, NULL, 'Laptop HP Pavilion G', 5654455.00, 12, '2025-08-07 12:49:22', '2025-08-07 12:49:22', NULL, NULL, NULL, 'automatic', NULL, 'Genius Hartono');
 
 -- --------------------------------------------------------
 
@@ -701,7 +688,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `username`, `password`, `nama`, `alamat`, `noktp`, `profile_image`, `birthday`, `deleted_at`, `recovered_at`, `otoritas`, `created_at`, `updated_at`) VALUES
 (234, 'delby', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'delby', NULL, '', NULL, NULL, '2025-07-07 05:46:54', '2025-07-07 05:46:46', 'T', '2025-07-05 14:20:16', '2025-07-07 05:46:54'),
-(909, 'geni1819', '$2y$10$5RKKP5rjZ.5HLC9zfCnCa.0ut/80NkKLLEJast1qo16qZbb7lYjDm', 'Genius Hartono', 'canggu', '32534535434534', 'assets/img/profiles/1754360418_f8328bc9d08ca01b89ee.png', '2000-05-31', NULL, NULL, NULL, '2025-07-05 14:20:16', '2025-08-05 10:49:29'),
+(909, 'geni1819', '$2y$10$5RKKP5rjZ.5HLC9zfCnCa.0ut/80NkKLLEJast1qo16qZbb7lYjDm', 'Genius Hartono', 'Canggu', '32534535434534', 'assets/img/profiles/1754360418_f8328bc9d08ca01b89ee.png', '2000-05-31', NULL, NULL, NULL, '2025-07-05 14:20:16', '2025-08-07 14:48:00'),
 (910, 'test1819', 'Genius1819', 'test', 'Canggu', '9727312873218312', NULL, NULL, '2025-07-07 04:29:52', NULL, 'T', '2025-07-05 14:34:12', '2025-07-07 04:29:52'),
 (911, 'yono1819', '$2y$10$gRiHXmoawoyrbXpCeWcR.ObcuEAkH/TgbSy3IdxEYKl5xIIYzNrwu', 'yono', 'buduk', '', NULL, NULL, '2025-07-12 08:22:00', NULL, NULL, '2025-07-09 03:34:37', '2025-07-12 16:22:00'),
 (912, 'budi123', '$2y$10$kXkZA9UcGmuATZjoX5RpZuh6PO3xz/zyg3YuFJ/A4HaWfnzwUCKUG', 'budi', 'canggu', '', NULL, NULL, '2025-07-12 08:22:08', '2025-07-09 03:47:36', NULL, '2025-07-09 03:37:25', '2025-07-12 16:22:08'),
@@ -709,7 +696,8 @@ INSERT INTO `users` (`id`, `username`, `password`, `nama`, `alamat`, `noktp`, `p
 (914, 'tono123', '$2y$10$JNP1mOPI1U.ZlA.HRXHOQOYfpHla3/n2OEWRlDHczcnbt47ouzruG', 'tono', 'sfewfwe', '', NULL, NULL, '2025-07-12 08:27:56', NULL, NULL, '2025-07-09 03:42:13', '2025-07-12 16:27:56'),
 (918, 'babi1819', '$2y$10$x9hUob.AJi82gLlO6ghRfeURyawWXWpoVCT5j6OLDqi50wmqojq6.', 'babi', 'canggu', '42372397843928742', NULL, NULL, '2025-07-12 06:43:31', NULL, NULL, '2025-07-12 14:38:01', '2025-07-12 14:43:31'),
 (919, 'babi1819', '$2y$10$tiXdrlRlGa5bxJNOiESQTeLSvSWOPbXjHBn1hEMNY6gmDsPJtCOcm', 'babi', 'canggu', '42372397843928742', NULL, NULL, '2025-07-12 06:43:31', NULL, NULL, '2025-07-12 14:38:02', '2025-07-12 14:49:45'),
-(920, 'test123', '$2y$10$.HqjCYLqGA87L7w6AkxUPOGY5xPtjGg.GvZw5U4Z6KRyaTYNuKMA2', 'Testing', 'canggu', '23949328492834', NULL, NULL, NULL, NULL, NULL, '2025-07-12 14:48:00', '2025-07-12 19:15:13');
+(920, 'test123', '$2y$10$.HqjCYLqGA87L7w6AkxUPOGY5xPtjGg.GvZw5U4Z6KRyaTYNuKMA2', 'Testing', 'canggu', '23949328492834', NULL, NULL, NULL, NULL, 'F', '2025-07-12 14:48:00', '2025-08-07 13:28:54'),
+(921, 'tono123', '$2y$10$GV8i5I5uk7Mo4CCRqyOSq.JoeeF06xnfJ3bWO8jiVbsTluHHhdAoe', 'Tono', 'Denpasar', '27498374928742', NULL, NULL, NULL, NULL, NULL, '2025-08-07 14:16:29', '2025-08-07 14:16:29');
 
 -- --------------------------------------------------------
 
@@ -733,12 +721,14 @@ INSERT INTO `user_departments` (`id`, `user_id`, `department_id`, `deleted_at`) 
 (8, 920, 2, '2025-07-12 08:04:39'),
 (9, 920, 3, '2025-07-12 08:04:39'),
 (10, 909, 1, NULL),
-(11, 909, 2, '2025-07-12 08:21:48'),
+(11, 909, 2, NULL),
 (12, 909, 3, NULL),
 (13, 920, 1, NULL),
 (14, 920, 2, NULL),
 (15, 920, 3, NULL),
-(16, 909, 2, NULL);
+(16, 909, 2, '2025-08-07 06:10:51'),
+(17, 921, 2, NULL),
+(18, 921, 3, NULL);
 
 -- --------------------------------------------------------
 
@@ -856,12 +846,6 @@ INSERT INTO `warna_sinar` (`id`, `name`, `description`, `otoritas`, `nama_ky`, `
 -- Indexes for table `categories`
 --
 ALTER TABLE `categories`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `customers`
---
-ALTER TABLE `customers`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1038,12 +1022,6 @@ ALTER TABLE `categories`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
--- AUTO_INCREMENT for table `customers`
---
-ALTER TABLE `customers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `daya`
 --
 ALTER TABLE `daya`
@@ -1095,7 +1073,7 @@ ALTER TABLE `kaki`
 -- AUTO_INCREMENT for table `mastercustomer`
 --
 ALTER TABLE `mastercustomer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `mastersales`
@@ -1131,7 +1109,7 @@ ALTER TABLE `pelengkap`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `sales`
@@ -1167,13 +1145,13 @@ ALTER TABLE `ukuran_barang`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=921;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=922;
 
 --
 -- AUTO_INCREMENT for table `user_departments`
 --
 ALTER TABLE `user_departments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `voltase`

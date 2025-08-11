@@ -138,7 +138,17 @@
                                     <td style="white-space: nowrap !important;"><?= esc($row['contact_person']) ?></td>
                                     <td><?= esc($row['kota']) ?></td>
                                     <td><?= esc($row['provinsi']) ?></td>
-                                    <td style="white-space:nowrap;"><?= esc($row['sales']) ?></td>
+                                    <td style="white-space:nowrap;">
+                                        <?php
+                                        $salesName = '';
+                                        if (!empty($row['sales_id'])) {
+                                            $db = \Config\Database::connect();
+                                            $sales = $db->table('mastersales')->where('id', $row['sales_id'])->get()->getRowArray();
+                                            $salesName = $sales ? esc($sales['nama']) : '';
+                                        }
+                                        echo $salesName;
+                                        ?>
+                                    </td>
                                     <td><?= esc($row['no_hp']) ?></td>
                                     <td style="white-space: nowrap !important;text-align:right;">Rp <?= number_format($row['batas_piutang'], 0, ',', '.') ?></td>
                                     <td><?= esc($row['npwp_nomor']) ?></td>

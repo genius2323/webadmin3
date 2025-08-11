@@ -64,7 +64,8 @@
                   <div class="mb-3">
                     <label for="sales" class="form-label">Sales</label>
                     <div style="display:flex;gap:8px;align-items:flex-start;">
-                      <input type="text" name="sales" id="salesInput" class="form-control" readonly placeholder="Pilih Sales..." style="flex:1;min-width:0;">
+                      <input type="hidden" name="sales_id" id="salesIdInput" value="<?= $customer['sales_id'] ?? '' ?>">
+                      <input type="text" id="salesNameInput" class="form-control" readonly placeholder="Pilih Sales..." style="flex:1;min-width:0;height:calc(2.25rem + 2px);">
                       <button type="button" class="btn btn-primary" style="height:calc(2.25rem + 2px);padding:0 18px;min-width:unset;display:flex;align-items:center;" data-bs-toggle="modal" data-bs-target="#modalSalesSBAdmin">Pilih Sales</button>
                     </div>
                   </div>
@@ -221,7 +222,8 @@
     if (e.target.classList.contains('pilih-sales-btn')) {
       const kode = e.target.getAttribute('data-kode');
       const nama = e.target.getAttribute('data-nama');
-      document.getElementById('salesInput').value = kode + ' - ' + nama;
+      document.getElementById('salesIdInput').value = kode;
+      document.getElementById('salesNameInput').value = nama;
       var modal = bootstrap.Modal.getInstance(document.getElementById('modalSalesSBAdmin'));
       if (modal) {
         modal.hide();

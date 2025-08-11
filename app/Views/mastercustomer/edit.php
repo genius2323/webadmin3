@@ -65,7 +65,12 @@
                   <div class="mb-3">
                     <label for="sales" class="form-label">Sales</label>
                     <div style="display:flex;gap:8px;align-items:flex-start;">
-                      <input type="text" name="sales" id="salesInput" class="form-control" readonly placeholder="Pilih Sales..." style="flex:1;min-width:0;" value="<?= $customer['sales'] ?? '' ?>">
+                      <input type="hidden" name="sales_id" id="salesIdInput" value="<?= $customer['sales_id'] ?? '' ?>">
+                      <input type="text" id="salesNameInput" class="form-control" readonly placeholder="Pilih Sales..." style="flex:1;min-width:0;height:calc(2.25rem + 2px);" value="<?php if (isset($customer['sales_id'])) {
+                                                                                                                                                                                        $db = \Config\Database::connect();
+                                                                                                                                                                                        $sales = $db->table('mastersales')->where('id', $customer['sales_id'])->get()->getRowArray();
+                                                                                                                                                                                        echo $sales ? esc($sales['nama']) : '';
+                                                                                                                                                                                      } ?>">
                       <button type="button" class="btn btn-primary" style="height:calc(2.25rem + 2px);padding:0 18px;min-width:unset;display:flex;align-items:center;" data-bs-toggle="modal" data-bs-target="#modalSalesSBAdmin">Pilih Sales</button>
                     </div>
                   </div>
@@ -209,7 +214,7 @@
             tr.innerHTML = `
                             <td>${row.kode}</td>
                             <td>${row.nama}</td>
-                            <td class="align-items-center"><button type="button" class="btn btn-success btn-sm pilih-sales-btn" data-kode="${row.kode}" data-nama="${row.nama}">Pilih</button></td>
+                            <td class="align-items-center"><button type="button" class="btn btn-success btn-sm pilih-sales-btn" data-id="${row.id}" data-nama="${row.nama}">Pilih</button></td>
                         `;
             tbody.appendChild(tr);
           });
@@ -220,9 +225,10 @@
   // Pilih sales dari modal
   document.body.addEventListener('click', function(e) {
     if (e.target.classList.contains('pilih-sales-btn')) {
-      const kode = e.target.getAttribute('data-kode');
+      const id = e.target.getAttribute('data-id');
       const nama = e.target.getAttribute('data-nama');
-      document.getElementById('salesInput').value = kode + ' - ' + nama;
+      document.getElementById('salesIdInput').value = id;
+      document.getElementById('salesNameInput').value = nama;
       var modal = bootstrap.Modal.getInstance(document.getElementById('modalSalesSBAdmin'));
       if (modal) {
         modal.hide();

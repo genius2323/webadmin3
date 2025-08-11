@@ -52,6 +52,7 @@ class MasterCustomer extends BaseController
         $batasPiutangInput = $this->request->getPost('batas_piutang');
         $batasPiutang = preg_replace('/[^0-9]/', '', $batasPiutangInput);
         $batasPiutang = $batasPiutang === '' ? 0 : (int)$batasPiutang;
+        $salesId = $this->request->getPost('sales_id');
         $data = [
             'kode_customer' => $this->request->getPost('kode_customer'),
             'nama_customer' => $this->request->getPost('nama_customer'),
@@ -59,7 +60,7 @@ class MasterCustomer extends BaseController
             'contact_person' => $this->request->getPost('contact_person'),
             'kota' => $this->request->getPost('kota'),
             'provinsi' => $this->request->getPost('provinsi'),
-            'sales' => $this->request->getPost('sales'),
+            'sales_id' => ($salesId === '' || $salesId === null) ? null : $salesId,
             'no_hp' => $this->request->getPost('no_hp'),
             'batas_piutang' => $batasPiutang,
             'npwp_nomor' => $npwpNomor,
@@ -100,6 +101,7 @@ class MasterCustomer extends BaseController
         $batasPiutangInput = $this->request->getPost('batas_piutang');
         $batasPiutang = preg_replace('/[^0-9]/', '', $batasPiutangInput);
         $batasPiutang = $batasPiutang === '' ? 0 : (int)$batasPiutang;
+        $salesId = $this->request->getPost('sales_id');
         $data = [
             'kode_customer' => $this->request->getPost('kode_customer'),
             'nama_customer' => $this->request->getPost('nama_customer'),
@@ -107,7 +109,7 @@ class MasterCustomer extends BaseController
             'contact_person' => $this->request->getPost('contact_person'),
             'kota' => $this->request->getPost('kota'),
             'provinsi' => $this->request->getPost('provinsi'),
-            'sales' => $this->request->getPost('sales'),
+            'sales_id' => ($salesId === '' || $salesId === null) ? null : $salesId,
             'no_hp' => $this->request->getPost('no_hp'),
             'batas_piutang' => $batasPiutang,
             'npwp_nomor' => $npwpNomor,

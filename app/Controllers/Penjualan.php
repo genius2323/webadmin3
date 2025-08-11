@@ -68,8 +68,13 @@ class Penjualan extends BaseController
     public function index()
     {
         $nomor_nota = 'INV-' . date('Ymd') . '-' . strtoupper(substr(md5(uniqid(rand(), true)), 0, 5));
-        $customerModel = new \App\Models\MasterCustomerModel();
-        $salesModel = new \App\Models\MasterSalesModel();
+        $db = \Config\Database::connect();
+        $customerList = $db->table('mastercustomer c')
+            ->select('c.*, s.id as sales_id, s.nama as sales_nama')
+            ->join('mastersales s', 's.id = c.sales', 'left')
+            ->where('c.deleted_at', null)
+            ->get()->getResultArray();
+        $salesList = $db->table('mastersales')->where('deleted_at', null)->get()->getResultArray();
         $systemDateLimitsModel = new \App\Models\SystemDateLimitsModel();
         $batas = $systemDateLimitsModel->where('menu', 'penjualan')->orderBy('id', 'desc')->first();
         $batas_tanggal_sistem = $batas['batas_tanggal'] ?? '';
@@ -78,12 +83,12 @@ class Penjualan extends BaseController
             'title' => 'Daftar Penjualan',
             'penjualan' => $this->penjualanModel->findAll(),
             'nomor_nota' => $nomor_nota,
-            'customers' => $customerModel->findAll(),
-            'sales' => $salesModel->findAll(),
+            'customerList' => $customerList,
+            'salesList' => $salesList,
             'batas_tanggal_sistem' => $batas_tanggal_sistem,
             'mode_batas_tanggal' => $mode_batas_tanggal,
         ];
-        return view('penjualan/index', $data);
+        return view('penjualan/pos', $data);
     }
 
     public function new()
@@ -190,10 +195,15 @@ class Penjualan extends BaseController
     public function pos()
     {
         // Ambil data sales, customer, barang, dan batas tanggal
-        $salesList = model('App\\Models\\MasterSalesModel')->where('deleted_at', null)->findAll();
-        $customerList = model('App\\Models\\MasterCustomerModel')->where('deleted_at', null)->findAll();
-        $barangList = model('App\\Models\\MasterBarangModel')->where('deleted_at', null)->findAll();
-        $batasTanggal = model('App\\Models\\SystemDateLimitsModel')->getBatasTanggal();
+        $db = \Config\Database::connect();
+        $salesList = $db->table('mastersales')->where('deleted_at', null)->get()->getResultArray();
+        $customerList = $db->table('mastercustomer c')
+            ->select('c.*, s.id as sales_id, s.nama as sales_nama')
+            ->join('mastersales s', 's.kode = c.sales', 'left')
+            ->where('c.deleted_at', null)
+            ->get()->getResultArray();
+        $barangList = $db->table('products')->where('deleted_at', null)->get()->getResultArray();
+        $batasTanggal = model('App\Models\SystemDateLimitsModel')->getBatasTanggal();
         return view('penjualan/pos', [
             'salesList' => $salesList,
             'customerList' => $customerList,
