@@ -133,6 +133,34 @@
   }
 }
 
+.table-radius {
+  border-radius: 8px;
+  border-collapse: separate !important;
+  border-spacing: 0;
+  overflow: hidden;
+}
+
+.table-radius th:first-child {
+  border-top-left-radius: 8px;
+}
+
+.table-radius th:last-child {
+  border-top-right-radius: 8px;
+}
+
+.table-radius tr:last-child td:first-child {
+  border-bottom-left-radius: 8px;
+}
+
+.table-radius tr:last-child td:last-child {
+  border-bottom-right-radius: 8px;
+}
+
+.table-radius th,
+.table-radius td {
+  border: 1.5px solid #dee2e6;
+}
+
 body {
   margin: 0;
   font-family: var(--bs-body-font-family);

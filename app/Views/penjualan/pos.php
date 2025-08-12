@@ -1,5 +1,19 @@
 <?= $this->extend('layout/template'); ?>
 <?= $this->section('content'); ?>
+<header class="page-header page-header-compact page-header-light border-bottom bg-white mb-4">
+    <div class="container-fluid px-4">
+        <div class="page-header-content">
+            <div class="row align-items-center justify-content-between pt-3">
+                <div class="col-auto mb-3">
+                    <h1 class="page-header-title">
+                        <div class="page-header-icon"><i data-feather="shopping-cart"></i></div>
+                        POS
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
 <div class="container-fluid px-4">
     <div class="row justify-content-center">
         <div class="col-lg-10">
@@ -13,11 +27,59 @@
                         <div class="row g-3 mb-3">
                             <div class="col-md-3">
                                 <label class="form-label">Nomor Nota</label>
-                                <input type="text" name="nomor_nota" class="form-control" required autocomplete="off">
+                                <input type="text" name="nomor_nota" class="form-control" value="<?= esc($nomor_nota ?? (isset($nomor_nota) ? $nomor_nota : 'INV-' . date('Ymd') . '-' . strtoupper(substr(md5(uniqid(rand(), true)), 0, 5)))) ?>" readonly required autocomplete="off">
                             </div>
                             <div class="col-md-3">
                                 <label class="form-label">Tanggal</label>
-                                <input type="date" name="tanggal_nota" class="form-control" required id="tanggalNota">
+                                <?php
+                                $modeBatas = $mode_batas_tanggal ?? 'manual';
+                                $today = date('Y-m-d');
+                                if ($modeBatas === 'automatic') {
+                                    $minDate = date('Y-m-d', strtotime('-2 days'));
+                                } else {
+                                    $minDate = !empty($batasTanggal['min']) ? $batasTanggal['min'] : $today;
+                                }
+                                $maxDate = $today;
+                                ?>
+                                <input type="text" name="tanggal_nota" id="tanggal_nota" class="form-control border-primary" style="background:#f8f9fa; cursor:pointer; color:#212529;" value="<?= date('d/m/Y') ?>" required readonly>
+                                <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+                                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+                                <script>
+                                    document.addEventListener('DOMContentLoaded', function() {
+                                        flatpickr('#tanggal_nota', {
+                                            dateFormat: 'd/m/Y',
+                                            disableMobile: true,
+                                            minDate: <?= $minDate ? "'" . date('d/m/Y', strtotime($minDate)) . "'" : 'null' ?>,
+                                            maxDate: <?= $maxDate ? "'" . date('d/m/Y', strtotime($maxDate)) . "'" : 'null' ?>,
+                                            allowInput: false
+                                        });
+                                    });
+                                </script>
+                                <input type="hidden" id="mode_batas_tanggal" name="mode_batas_tanggal" value="<?= esc($mode_batas_tanggal ?? 'manual') ?>">
+                                <input type="hidden" id="batas_tanggal_sistem" name="batas_tanggal_sistem" value="<?= esc($batasTanggal['min'] ?? '') ?>">
+                                <style>
+                                    @keyframes fadeIn {
+                                        from {
+                                            opacity: 0;
+                                            transform: translateY(-10px);
+                                        }
+
+                                        to {
+                                            opacity: 1;
+                                            transform: translateY(0);
+                                        }
+                                    }
+
+                                    .input-group-text.bg-primary {
+                                        border-top-left-radius: .375rem;
+                                        border-bottom-left-radius: .375rem;
+                                    }
+
+                                    .form-control.border-primary:focus {
+                                        border-color: #0d6efd;
+                                        box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, .25);
+                                    }
+                                </style>
                             </div>
                             <div class="col-md-3">
                                 <label class="form-label">Customer</label>
@@ -48,26 +110,17 @@
                             <!-- Kolom Jenis Tunai dihapus karena tidak diperlukan dan tidak ada di tabel sales -->
                         </div>
                         <hr>
-                        <div class="mb-3">
-                            <label class="form-label">Tambah Barang</label>
-                            <div class="input-group">
-                                <input type="text" id="barangName" class="form-control" placeholder="Pilih Barang" readonly>
-                                <input type="hidden" id="barangId">
-                                <input type="number" min="1" class="form-control" id="qtyInput" placeholder="Qty" style="max-width:90px;">
-                                <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalBarang"><i class="fas fa-search"></i></button>
-                                <button type="button" class="btn btn-success" id="addBarangBtn"><i class="fas fa-plus"></i> Tambah</button>
-                            </div>
-                        </div>
                         <div class="table-responsive mb-3 animate__animated animate__fadeInUp">
+
                             <table class="table table-bordered align-middle" id="tableBarang">
                                 <thead class="table-light">
                                     <tr>
-                                        <th>Gambar</th>
-                                        <th>Nama Barang</th>
-                                        <th>Harga</th>
-                                        <th>Qty</th>
-                                        <th>Subtotal</th>
-                                        <th>Aksi</th>
+                                        <th style="text-align:center;">Gambar</th>
+                                        <th style="text-align:center;">Nama Barang</th>
+                                        <th style="min-width:160px;text-align:center;">Harga</th>
+                                        <th style="text-align:center;">Qty</th>
+                                        <th style="min-width:160px;text-align:center;">Subtotal</th>
+                                        <th style="text-align:center;">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -81,6 +134,11 @@
                                     </tr>
                                 </tfoot>
                             </table>
+                            <div class="mb-3">
+                                <div class="input-group">
+                                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalBarang" id="btnPilihBarang">Pilih Barang</button>
+                                </div>
+                            </div>
                         </div>
                         <div class="d-flex justify-content-end">
                             <button type="submit" class="btn btn-primary btn-lg animate__animated animate__pulse animate__infinite">Simpan & Booking Nota</button>
@@ -246,14 +304,57 @@
         });
     };
     // Modal interaksi barang
-    document.querySelectorAll('.pilih-barang').forEach(btn => {
-        btn.onclick = function() {
-            document.getElementById('barangId').value = this.dataset.id;
-            document.getElementById('barangName').value = this.dataset.nama;
-            document.getElementById('qtyInput').focus();
-            var modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('modalBarang'));
-            modal.hide();
-        };
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.pilih-barang').forEach(btn => {
+            btn.onclick = function() {
+                var barangId = btn.getAttribute('data-id');
+                var barangName = btn.getAttribute('data-nama');
+                var barangPrice = btn.getAttribute('data-harga');
+                var modalEl = document.getElementById('modalBarang');
+                if (modalEl) {
+                    var modalInstance = bootstrap.Modal.getOrCreateInstance(modalEl);
+                    modalInstance.hide();
+                }
+                // Cek apakah barang sudah ada di tabel
+                var exists = false;
+                document.querySelectorAll('#tableBarang tbody tr').forEach(function(tr) {
+                    if (tr.dataset.barangId == barangId) exists = true;
+                });
+                if (exists) {
+                    alert('Barang sudah ada di daftar!');
+                    return;
+                }
+                // Tambahkan baris baru ke tabel item
+                var tbody = document.querySelector('#tableBarang tbody');
+                var trs = tbody.querySelectorAll('tr[data-barang-id]');
+                var no = trs.length + 1;
+                var newRow = document.createElement('tr');
+                newRow.setAttribute('data-barang-id', barangId);
+                newRow.innerHTML = `
+                    <td><img src='/public/assets/img/no-image.png' style='width:40px;height:40px;object-fit:cover;border-radius:6px;'></td>
+                    <td>${barangName}</td>
+                    <td>Rp ${parseInt(barangPrice).toLocaleString('id-ID')}</td>
+                    <td><input type="number" name="qty[]" value="1" min="1" class="form-control form-control-sm jumlah-input" style="width:70px;display:inline-block;"><input type="hidden" name="barang_id[]" value="${barangId}"></td>
+                    <td class="subtotal" data-value="${barangPrice}">Rp ${parseInt(barangPrice).toLocaleString('id-ID')}</td>
+                    <td><button type="button" class="btn btn-danger btn-sm btn-hapus-barang"><i class="fas fa-trash"></i></button></td>`;
+                newRow.querySelector('.btn-hapus-barang').onclick = function() {
+                    newRow.remove();
+                    updateGrandTotal();
+                };
+                // Qty inline edit
+                newRow.querySelector('.jumlah-input').addEventListener('input', function() {
+                    var jumlah = parseInt(this.value) || 1;
+                    var harga = parseInt(barangPrice);
+                    var subtotal = jumlah * harga;
+                    newRow.querySelector('.subtotal').dataset.value = subtotal;
+                    newRow.querySelector('.subtotal').innerText = 'Rp ' + subtotal.toLocaleString('id-ID');
+                    newRow.querySelector('input[name="qty[]"]').value = jumlah;
+                    updateGrandTotal();
+                });
+                tbody.appendChild(newRow);
+                updateGrandTotal();
+            };
+        });
     });
     document.getElementById('searchBarang').oninput = function() {
         let val = this.value.toLowerCase();
@@ -285,20 +386,32 @@
         document.getElementById('grandTotal').innerText = 'Rp ' + total.toLocaleString('id-ID');
     }
     document.getElementById('addBarangBtn').onclick = function() {
-        let barangData = document.getElementById('barangSelect').value;
+        let barangId = document.getElementById('barangId').value;
+        let barangName = document.getElementById('barangName').value;
         let qty = parseInt(document.getElementById('qtyInput').value);
-        if (!barangData || !qty || qty < 1) return;
-        let barang = JSON.parse(barangData);
+        if (!barangId || !qty || qty < 1) return;
+        let barang = barangList.find(b => b.id == barangId);
+        if (!barang) return;
         let subtotal = barang.price * qty;
         let row = document.createElement('tr');
         row.innerHTML = `<td><img src='${barang.image_url || '/public/assets/img/no-image.png'}' style='width:40px;height:40px;object-fit:cover;border-radius:6px;'></td>
         <td>${barang.name}</td>
         <td>Rp ${parseInt(barang.price).toLocaleString('id-ID')}</td>
-        <td>${qty}<input type='hidden' name='barang_id[]' value='${barang.id}'><input type='hidden' name='qty[]' value='${qty}'></td>
+        <td><input type='number' name='qty[]' value='${qty}' min='1' class='form-control form-control-sm qty-table-input' style='width:70px;display:inline-block;'><input type='hidden' name='barang_id[]' value='${barang.id}'></td>
         <td class='subtotal' data-value='${subtotal}'>Rp ${subtotal.toLocaleString('id-ID')}</td>
         <td><button type='button' class='btn btn-danger btn-sm btn-hapus-barang'><i class='fas fa-trash'></i></button></td>`;
         row.querySelector('.btn-hapus-barang').onclick = function() {
             row.remove();
+            updateGrandTotal();
+        };
+        // Qty inline edit
+        row.querySelector('.qty-table-input').oninput = function() {
+            let newQty = parseInt(this.value);
+            if (!newQty || newQty < 1) this.value = 1;
+            let newSubtotal = barang.price * parseInt(this.value);
+            row.querySelector('.subtotal').dataset.value = newSubtotal;
+            row.querySelector('.subtotal').innerText = 'Rp ' + newSubtotal.toLocaleString('id-ID');
+            row.querySelector('input[name="qty[]"]').value = this.value;
             updateGrandTotal();
         };
         tableBody.appendChild(row);

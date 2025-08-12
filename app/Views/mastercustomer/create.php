@@ -206,10 +206,15 @@
         } else {
           data.forEach(row => {
             const tr = document.createElement('tr');
+            // Pada JS modal sales
+            // Ubah tombol 'Pilih' agar menggunakan data-id
             tr.innerHTML = `
                             <td>${row.kode}</td>
                             <td>${row.nama}</td>
-                            <td class="align-items-center"><button type="button" class="btn btn-success btn-sm pilih-sales-btn" data-kode="${row.kode}" data-nama="${row.nama}">Pilih</button></td>
+                            <td class="align-items-center">
+                              <button type="button" class="btn btn-success btn-sm pilih-sales-btn" data-id="${row.id ? row.id : ''}" data-nama="${row.nama}">Pilih</button>
+                              ${!row.id ? '<span style="color:red;font-size:10px;">ID sales tidak valid</span>' : ''}
+                            </td>
                         `;
             tbody.appendChild(tr);
           });
@@ -220,10 +225,12 @@
   // Pilih sales dari modal
   document.body.addEventListener('click', function(e) {
     if (e.target.classList.contains('pilih-sales-btn')) {
-      const kode = e.target.getAttribute('data-kode');
-      const nama = e.target.getAttribute('data-nama');
-      document.getElementById('salesIdInput').value = kode;
-      document.getElementById('salesNameInput').value = nama;
+      let id = e.target.getAttribute('data-id');
+      let nama = e.target.getAttribute('data-nama');
+      console.log('DEBUG pilih sales, id:', id, 'nama:', nama);
+      if (!id || id === 'undefined') id = '';
+      document.getElementById('salesIdInput').value = id;
+      document.getElementById('salesNameInput').value = nama || '';
       var modal = bootstrap.Modal.getInstance(document.getElementById('modalSalesSBAdmin'));
       if (modal) {
         modal.hide();

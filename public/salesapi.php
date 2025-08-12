@@ -10,7 +10,7 @@ if ($mysqli->connect_errno) {
 }
 
 $search = isset($_GET['search']) ? trim($_GET['search']) : '';
-$sql = "SELECT kode, nama FROM mastersales WHERE deleted_at IS NULL";
+$sql = "SELECT id, kode, nama FROM mastersales WHERE deleted_at IS NULL";
 if ($search !== '') {
     $search = $mysqli->real_escape_string($search);
     $sql .= " AND (kode LIKE '%$search%' OR nama LIKE '%$search%')";

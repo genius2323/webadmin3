@@ -21,7 +21,8 @@ class MasterCustomer extends BaseController
                 ->orLike('contact_person', $search)
                 ->orLike('kota', $search)
                 ->orLike('provinsi', $search)
-                ->orLike('sales', $search)
+                // Ganti pencarian dari field lama 'sales' ke 'sales_id'
+                ->orLike('sales_id', $search)
                 ->orLike('no_hp', $search)
                 ->orLike('npwp_nomor', $search)
                 ->orLike('npwp_atas_nama', $search)
@@ -53,6 +54,8 @@ class MasterCustomer extends BaseController
         $batasPiutang = preg_replace('/[^0-9]/', '', $batasPiutangInput);
         $batasPiutang = $batasPiutang === '' ? 0 : (int)$batasPiutang;
         $salesId = $this->request->getPost('sales_id');
+        // DEBUG: cek value sales_id yang diterima
+        error_log('DEBUG sales_id: ' . print_r($this->request->getPost('sales_id'), true));
         $data = [
             'kode_customer' => $this->request->getPost('kode_customer'),
             'nama_customer' => $this->request->getPost('nama_customer'),
@@ -102,6 +105,12 @@ class MasterCustomer extends BaseController
         $batasPiutang = preg_replace('/[^0-9]/', '', $batasPiutangInput);
         $batasPiutang = $batasPiutang === '' ? 0 : (int)$batasPiutang;
         $salesId = $this->request->getPost('sales_id');
+        // DEBUG: cek value sales_id yang diterima
+        error_log('DEBUG sales_id: ' . print_r($this->request->getPost('sales_id'), true));
+        // DEBUG: tampilkan value sales_id di browser
+        if (isset($_POST['sales_id'])) {
+            echo '<pre style="background:#fff;color:#d00;padding:8px;border:2px solid #d00;">DEBUG sales_id: ' . htmlspecialchars($_POST['sales_id']) . '</pre>';
+        }
         $data = [
             'kode_customer' => $this->request->getPost('kode_customer'),
             'nama_customer' => $this->request->getPost('nama_customer'),

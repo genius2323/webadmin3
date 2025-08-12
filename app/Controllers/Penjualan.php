@@ -71,7 +71,7 @@ class Penjualan extends BaseController
         $db = \Config\Database::connect();
         $customerList = $db->table('mastercustomer c')
             ->select('c.*, s.id as sales_id, s.nama as sales_nama')
-            ->join('mastersales s', 's.id = c.sales', 'left')
+            ->join('mastersales s', 's.id = c.sales_id', 'left')
             ->where('c.deleted_at', null)
             ->get()->getResultArray();
         $salesList = $db->table('mastersales')->where('deleted_at', null)->get()->getResultArray();
@@ -199,7 +199,7 @@ class Penjualan extends BaseController
         $salesList = $db->table('mastersales')->where('deleted_at', null)->get()->getResultArray();
         $customerList = $db->table('mastercustomer c')
             ->select('c.*, s.id as sales_id, s.nama as sales_nama')
-            ->join('mastersales s', 's.kode = c.sales', 'left')
+            ->join('mastersales s', 's.id = c.sales_id', 'left')
             ->where('c.deleted_at', null)
             ->get()->getResultArray();
         $barangList = $db->table('products')->where('deleted_at', null)->get()->getResultArray();
