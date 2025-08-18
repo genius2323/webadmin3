@@ -31,11 +31,11 @@ class Database extends Config
      */
     public array $default = [
         'DSN'      => '',
-        'hostname' => 'localhost',
-        'username' => 'root',
-        'password' => '',
-        'database' => 'db_akuntansi', // Akan ditimpa oleh .env
-        'DBDriver' => 'MySQLi',
+        'hostname' => '192.168.18.23',
+        'username' => 'postgres',
+        'password' => 'Genius1819', // isi password PostgreSQL Anda
+        'database' => 'db_akuntansi',
+        'DBDriver' => 'Postgre',
         'DBPrefix' => '',
         'pConnect' => false,
         'DBDebug'  => true,
@@ -46,7 +46,7 @@ class Database extends Config
         'compress' => false,
         'strictOn' => false,
         'failover' => [],
-        'port'     => 3306,
+        'port'     => 5432,
     ];
 
     /**
@@ -59,11 +59,11 @@ class Database extends Config
      */
     public array $db2 = [
         'DSN'      => '',
-        'hostname' => 'localhost',
-        'username' => 'root',
-        'password' => '',
-        'database' => 'db1_akuntansi', // Akan ditimpa oleh .env
-        'DBDriver' => 'MySQLi',
+        'hostname' => '192.168.18.23',
+        'username' => 'postgres',
+        'password' => 'Genius1819', // isi password PostgreSQL Anda
+        'database' => 'db1_akuntansi',
+        'DBDriver' => 'Postgre',
         'DBPrefix' => '',
         'pConnect' => false,
         'DBDebug'  => true,
@@ -74,7 +74,7 @@ class Database extends Config
         'compress' => false,
         'strictOn' => false,
         'failover' => [],
-        'port'     => 3306,
+        'port'     => 5432,
     ];
 
     public function __construct()

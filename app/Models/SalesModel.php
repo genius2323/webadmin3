@@ -31,7 +31,9 @@ class SalesModel extends Model
         'metode_bayar',
         'tenor',
         'dp',
-        'catatan_kredit'
+        'catatan_kredit',
+        'status',
+        'nama_ky'
     ];
 
     // Dates

@@ -105,6 +105,24 @@ class Penjualan extends BaseController
 
     public function create()
     {
+        $nomor_nota = 'INV-' . date('Ymd') . '-' . strtoupper(substr(md5(uniqid(rand(), true)), 0, 5));
+        $tanggal_nota = date('Y-m-d');
+        // Insert nomor nota ke database dengan status draft
+        $salesModel = new \App\Models\SalesModel();
+        $draftData = [
+            'nomor_nota' => $nomor_nota,
+            'tanggal_nota' => $tanggal_nota,
+            'status' => 'draft',
+        ];
+        // Simpan draft nota ke database tanpa validasi field wajib
+        $salesModel->skipValidation(true);
+        $draftId = $salesModel->insert($draftData);
+        $salesModel->skipValidation(false);
+        if (!$draftId) {
+            $errorMsg = $salesModel->errors() ? json_encode($salesModel->errors()) : 'Gagal insert draft nota.';
+            file_put_contents(ROOTPATH . 'writable/logs/penjualan_status.log', "CREATE-ERROR: " . $errorMsg . "\n", FILE_APPEND);
+            return redirect()->back()->with('error', 'Gagal menyimpan draft nota: ' . $errorMsg);
+        }
         $db = \Config\Database::connect();
         $db2 = \Config\Database::connect('db2');
         $session = session();
@@ -148,21 +166,40 @@ class Penjualan extends BaseController
         $barang_valid = is_array($barangIds) && count(array_filter($barangIds)) > 0;
         $status = (!empty($nomor_nota) && !empty($tanggal_nota) && !empty($sales_id) && !empty($customer_id) && !empty($metode_bayar) && $barang_valid) ? 'selesai' : 'draft';
         $data = [
-            'nomor_nota'      => $nomor_nota,
-            'tanggal_nota'    => $tanggal_nota,
-            'sales'           => $sales_id,
-            'customer'        => $customer_id,
+            'nomor_nota'      => !empty($nomor_nota) ? $nomor_nota : null,
+            'tanggal_nota'    => !empty($tanggal_nota) ? $tanggal_nota : null,
+            'sales'           => !empty($sales_id) ? $sales_id : null,
+            'customer'        => !empty($customer_id) ? $customer_id : null,
             'payment_system'  => $metode_bayar,
             'metode_bayar'    => $metode_bayar,
-            'tenor'           => $this->request->getPost('tenor'),
-            'dp'              => $this->request->getPost('dp'),
+            'tenor'           => !empty($this->request->getPost('tenor')) ? $this->request->getPost('tenor') : null,
+            'dp'              => !empty($this->request->getPost('dp')) ? $this->request->getPost('dp') : null,
             'catatan_kredit'  => $this->request->getPost('catatan_kredit'),
-            'total'           => $total,
-            'grand_total'     => $grand_total,
+            'total'           => !empty($total) ? $total : null,
+            'grand_total'     => !empty($grand_total) ? $grand_total : null,
             'status'          => $status,
             'otoritas'        => null,
             'nama_ky'         => $nama_ky,
         ];
+        // Patch otomatis untuk semua field integer dan tanggal di item
+        foreach ($items as &$item) {
+            $item['product_id'] = !empty($item['product_id']) ? $item['product_id'] : null;
+            $item['qty'] = !empty($item['qty']) ? $item['qty'] : null;
+            $item['price'] = !empty($item['price']) ? $item['price'] : null;
+            $item['discount'] = !empty($item['discount']) ? $item['discount'] : null;
+            $item['total'] = !empty($item['total']) ? $item['total'] : null;
+            if (isset($item['tanggal']) && $item['tanggal'] === '') {
+                $item['tanggal'] = null;
+            }
+        }
+        // Patch otomatis untuk semua field integer di item
+        foreach ($items as &$item) {
+            $item['product_id'] = !empty($item['product_id']) ? $item['product_id'] : null;
+            $item['qty'] = !empty($item['qty']) ? $item['qty'] : null;
+            $item['price'] = !empty($item['price']) ? $item['price'] : null;
+            $item['discount'] = !empty($item['discount']) ? $item['discount'] : null;
+            $item['total'] = !empty($item['total']) ? $item['total'] : null;
+        }
         // Logging untuk debug status
         file_put_contents(ROOTPATH . 'writable/logs/penjualan_status.log', "DB1: " . json_encode($data) . "\n", FILE_APPEND);
         $salesModel = new \App\Models\SalesModel();
@@ -260,6 +297,15 @@ class Penjualan extends BaseController
 
     public function posBooking()
     {
+        $nomor_nota = 'INV-' . date('Ymd') . '-' . strtoupper(substr(md5(uniqid(rand(), true)), 0, 5));
+        $tanggal_nota = date('Y-m-d');
+        // Insert nomor nota ke database dengan status draft
+        $salesModel = new \App\Models\SalesModel();
+        $draftData = [
+            'nomor_nota' => $nomor_nota,
+            'tanggal_nota' => $tanggal_nota,
+            'status' => 'draft',
+        ];
         $db = \Config\Database::connect();
         $db2 = \Config\Database::connect('db2');
         $session = session();
@@ -300,25 +346,41 @@ class Penjualan extends BaseController
         $barang_valid = is_array($barangIds) && count($barangIds) > 0;
         $status = (!empty($nomor_nota) && !empty($tanggal_nota) && !empty($sales_id) && !empty($customer_id) && !empty($metode_bayar) && $barang_valid) ? 'selesai' : 'draft';
         $data = [
-            'nomor_nota'      => $nomor_nota,
-            'tanggal_nota'    => $tanggal_nota,
-            'sales'           => $sales_id,
-            'customer'        => $customer_id,
+            'nomor_nota'      => !empty($nomor_nota) ? $nomor_nota : null,
+            'tanggal_nota'    => !empty($tanggal_nota) ? $tanggal_nota : null,
+            'sales'           => !empty($sales_id) ? $sales_id : null,
+            'customer'        => !empty($customer_id) ? $customer_id : null,
             'payment_system'  => $metode_bayar,
             'metode_bayar'    => $metode_bayar,
-            'tenor'           => $this->request->getPost('tenor'),
-            'dp'              => $this->request->getPost('dp'),
+            'tenor'           => !empty($this->request->getPost('tenor')) ? $this->request->getPost('tenor') : null,
+            'dp'              => !empty($this->request->getPost('dp')) ? $this->request->getPost('dp') : null,
             'catatan_kredit'  => $this->request->getPost('catatan_kredit'),
-            'total'           => $total,
-            'grand_total'     => $grand_total,
+            'total'           => !empty($total) ? $total : null,
+            'grand_total'     => !empty($grand_total) ? $grand_total : null,
             'status'          => $status,
             'otoritas'        => null,
             'nama_ky'         => $nama_ky,
         ];
+        // Patch otomatis untuk semua field integer dan tanggal di item
+        foreach ($items as &$item) {
+            $item['product_id'] = !empty($item['product_id']) ? $item['product_id'] : null;
+            $item['qty'] = !empty($item['qty']) ? $item['qty'] : null;
+            $item['price'] = !empty($item['price']) ? $item['price'] : null;
+            $item['discount'] = !empty($item['discount']) ? $item['discount'] : null;
+            $item['total'] = !empty($item['total']) ? $item['total'] : null;
+            if (isset($item['tanggal']) && $item['tanggal'] === '') {
+                $item['tanggal'] = null;
+            }
+        }
         // Logging untuk debug status
         file_put_contents(ROOTPATH . 'writable/logs/penjualan_status.log', "POS-DB1: " . json_encode($data) . "\n", FILE_APPEND);
         $salesModel = new \App\Models\SalesModel();
         $salesId = $salesModel->insert($data, true);
+        if (!$salesId) {
+            $errorMsg = $salesModel->errors() ? json_encode($salesModel->errors()) : 'Gagal insert draft nota.';
+            file_put_contents(ROOTPATH . 'writable/logs/penjualan_status.log', "POS-ERROR: " . $errorMsg . "\n", FILE_APPEND);
+            return redirect()->back()->with('error', 'Gagal menyimpan draft nota: ' . $errorMsg);
+        }
         // Pastikan status di DB1 benar
         if ($data['status'] === 'selesai') {
             $db->table('sales')->where('id', $salesId)->update(['status' => 'selesai']);
