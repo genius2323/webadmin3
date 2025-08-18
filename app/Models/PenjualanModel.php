@@ -32,15 +32,18 @@ class PenjualanModel extends Model
     protected $deletedField  = 'deleted_at';
     public function getData($keyword = null)
     {
+        $builder = $this->db->table('sales')
+            ->select('sales.*, mastercustomer.nama_customer, mastersales.nama as nama_sales')
+            ->join('mastercustomer', 'mastercustomer.id = sales.customer', 'left')
+            ->join('mastersales', 'mastersales.id = sales.sales', 'left')
+            ->where('sales.deleted_at', null);
         if ($keyword) {
-            return $this->where('deleted_at', null)
-                ->groupStart()
-                    ->like('nomor_nota', $keyword)
-                    ->orLike('customer', $keyword)
-                    ->orLike('sales', $keyword)
-                ->groupEnd()
-                ->findAll();
+            $builder->groupStart()
+                ->like('sales.nomor_nota', $keyword)
+                ->orLike('mastercustomer.nama_customer', $keyword)
+                ->orLike('mastersales.nama', $keyword)
+                ->groupEnd();
         }
-        return $this->where('deleted_at', null)->findAll();
+        return $builder->get()->getResultArray();
     }
 }

@@ -1,0 +1,22 @@
+Patch gagal otomatis karena ada perubahan manual. Berikut instruksi update agar status selalu sinkron dan lowercase di kedua database:
+
+1. Pada semua proses simpan (insert) penjualan:
+   - Ganti 'status' => 'DRAFT' menjadi 'status' => 'draft'
+   - Ganti 'status' => 'SELESAI' menjadi 'status' => 'selesai'
+   - Ganti 'status' => 'COMPLETED' menjadi 'status' => 'selesai'
+
+2. Pada proses finalize penjualan:
+   - Setelah update status di db1, tambahkan juga update status di db2:
+     $db2 = \Config\Database::connect('db2');
+     $db2->table('sales')->where('id', $penjualanId)->update(['status' => 'selesai']);
+
+3. Pada proses pembayaran tunai:
+   - Tambahkan 'status' => 'selesai' pada array updateData
+   - Pastikan update status ke db1 dan db2
+
+4. Untuk validasi dan sinkronisasi status:
+   - Jika ingin memastikan status sama, tambahkan pengecekan di datapenjualan() dan update jika berbeda.
+
+Pastikan semua proses update/insert status di kedua database menggunakan format lowercase ('draft', 'selesai').
+
+Jika ingin patch otomatis, pastikan file tidak diedit manual sebelum patch dijalankan.

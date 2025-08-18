@@ -112,10 +112,6 @@
     <script src="<?= base_url('assets/js/scripts.js') ?>"></script>
 </body>
 
-</html>
-</div>
-
-
 <!-- Menampilkan pesan error jika login gagal -->
 <?php if (session()->getFlashdata('error')): ?>
     <div class="alert alert-danger" role="alert">
@@ -133,56 +129,6 @@
         </ul>
     </div>
 <?php endif; ?>
-
-<!-- Form akan dikirim ke route /login/process -->
-<form method="post" action="<?= site_url('login/process') ?>">
-    <?= csrf_field() ?>
-    <div class="form-row">
-        <div class="col-md-12">
-            <div class="position-relative form-group">
-                <input name="username" id="exampleUsername" placeholder="Username" type="text" class="form-control" required value="<?= old('username') ?>">
-            </div>
-        </div>
-        <div class="col-md-12">
-            <div class="position-relative form-group">
-                <input name="password" id="examplePassword" placeholder="Password" type="password" class="form-control" required>
-            </div>
-        </div>
-        <div class="col-md-12">
-            <div class="position-relative form-group">
-                <select name="department_id" class="form-control" required>
-                    <option value="">Pilih Departemen</option>
-                    <?php
-                    $departments = model('App\\Models\\DepartmentModel')->findAll();
-                    $oldDept = old('department_id');
-                    foreach ($departments as $dept): ?>
-                        <option value="<?= $dept['id'] ?>" <?= $oldDept == $dept['id'] ? 'selected' : '' ?>><?= $dept['name'] ?></option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
-        </div>
-    </div>
-    <div class="position-relative form-check">
-        <input name="remember" id="exampleCheck" type="checkbox" class="form-check-input">
-        <label for="exampleCheck" class="form-check-label">Keep me logged in</label>
-    </div>
-
-    </div>
-    <div class="modal-footer clearfix">
-        <div class="float-right">
-            <button type="submit" class="btn btn-primary btn-lg">Login to Dashboard</button>
-        </div>
-    </div>
-</form>
-</div>
-</div>
-<div class="text-center text-white opacity-8 mt-3">Copyright © Your Company 2025</div>
-</div>
-</div>
-</div>
-</div>
-</div>
 <script type="text/javascript" src="<?= base_url('assets/scripts/main.js') ?>"></script>
-</body>
 
 </html>

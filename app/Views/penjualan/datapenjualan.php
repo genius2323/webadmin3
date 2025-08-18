@@ -130,13 +130,18 @@
                                     <td style="text-align:center;"> <?= $no++ ?> </td>
                                     <td style="text-align:center;white-space:nowrap;"> <?= esc($row['nomor_nota']) ?> </td>
                                     <td style="text-align:center;white-space:nowrap;"> <?= esc(date('d/m/Y', strtotime($row['tanggal_nota']))) ?> </td>
-                                    <td style="text-align:center;white-space:nowrap;"> <?= esc($row['customer']) ?> </td>
-                                    <td style="text-align:center;white-space:nowrap;"> <?= esc($row['sales']) ?> </td>
+                                    <td style="text-align:center;white-space:nowrap;"> <?= esc($row['nama_customer']) ?> </td>
+                                    <td style="text-align:center;white-space:nowrap;"> <?= esc($row['nama_sales']) ?> </td>
                                     <td style="text-align:right;white-space:nowrap;">Rp <?= number_format($row['grand_total'], 0, ',', '.') ?> </td>
                                     <td style="text-align:center;">
-                                        <span class="badge <?= $row['status'] == 'completed' ? 'bg-success' : 'bg-warning text-dark' ?>" style="border-radius:8px;">
-                                            <?= esc(ucfirst($row['status'])) ?>
-                                        </span>
+                                        <?php
+                                        $status = strtolower(trim($row['status']));
+                                        $badgeClass = 'secondary';
+                                        if ($status === 'draft') $badgeClass = 'warning';
+                                        elseif ($status === 'selesai') $badgeClass = 'success';
+                                        elseif ($status === 'batal') $badgeClass = 'danger';
+                                        ?>
+                                        <span class="badge bg-<?= $badgeClass ?>"><?= ucfirst($status) ?></span>
                                     </td>
                                     <td class="text-center" style="white-space: nowrap !important;">
                                         <a href="<?= site_url('penjualan/detail/' . $row['id']) ?>" class="btn btn-sm btn-info" title="Detail"><i data-feather="eye"></i></a>

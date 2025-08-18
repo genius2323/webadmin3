@@ -58,6 +58,41 @@
                                 <input type="hidden" id="mode_batas_tanggal" name="mode_batas_tanggal" value="<?= esc($mode_batas_tanggal ?? 'manual') ?>">
                                 <input type="hidden" id="batas_tanggal_sistem" name="batas_tanggal_sistem" value="<?= esc($batasTanggal['min'] ?? '') ?>">
                                 <style>
+                                    /* DARK MODE TABLE TEXT OVERRIDES - versi ringkas */
+                                    body.dark-mode #tableBarang td.td-nama-barang,
+                                    body.dark-mode #tableBarang td.td-nama-barang *,
+                                    body.dark-mode .table td.td-nama-barang,
+                                    body.dark-mode .table td.td-nama-barang * {
+                                        color: #fff !important;
+                                        font-weight: 600 !important;
+                                        opacity: 1 !important;
+                                    }
+
+                                    body.dark-mode #tableBarang *,
+                                    body.dark-mode .table *,
+                                    body.dark-mode .sales-modal-table *,
+                                    body.dark-mode .form-control,
+                                    body.dark-mode .table .form-control {
+                                        color: #fff !important;
+                                        background-color: #222 !important;
+                                        border-color: #26334d !important;
+                                    }
+
+                                    body.dark-mode .btn-danger {
+                                        background-color: #d9534f !important;
+                                        color: #fff !important;
+                                        border-color: #d9534f !important;
+                                    }
+
+                                    body.dark-mode .table,
+                                    body.dark-mode .table th,
+                                    body.dark-mode .table td,
+                                    body.dark-mode .table tfoot th,
+                                    body.dark-mode .table tfoot td {
+                                        border-color: #26334d !important;
+                                        background-color: #181f2a !important;
+                                    }
+
                                     @keyframes fadeIn {
                                         from {
                                             opacity: 0;
@@ -103,15 +138,28 @@
                                 <label class="form-label">Metode Pembayaran</label>
                                 <select name="metode_bayar" class="form-select" required id="metodeBayar">
                                     <option value="">Pilih Metode</option>
-                                    <option value="Tunai">Tunai</option>
+                                    <option value="Cash">Cash</option>
+                                    <option value="Transfer">Transfer</option>
                                     <option value="Kredit">Kredit</option>
                                 </select>
                             </div>
-                            <!-- Kolom Jenis Tunai dihapus karena tidak diperlukan dan tidak ada di tabel sales -->
+                            <div id="kreditFields" class="row g-2 mb-2 d-none">
+                                <div class="col-md-4">
+                                    <label class="form-label">Tenor (bulan)</label>
+                                    <input type="number" name="tenor" class="form-control" min="1" max="36" placeholder="Contoh: 12">
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">DP (Down Payment)</label>
+                                    <input type="number" name="dp" class="form-control" min="0" placeholder="Contoh: 1000000">
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Catatan Kredit</label>
+                                    <input type="text" name="catatan_kredit" class="form-control" placeholder="Opsional">
+                                </div>
+                            </div>
                         </div>
                         <hr>
                         <div class="table-responsive mb-3 animate__animated animate__fadeInUp">
-
                             <table class="table table-bordered align-middle" id="tableBarang">
                                 <thead class="table-light">
                                     <tr>
@@ -142,6 +190,28 @@
                         </div>
                         <div class="d-flex justify-content-end">
                             <button type="submit" class="btn btn-primary btn-lg animate__animated animate__pulse animate__infinite">Simpan & Booking Nota</button>
+                            <script>
+                                document.getElementById('form-pos').onsubmit = function(e) {
+                                    var barangRows = document.querySelectorAll('#tableBarang tbody tr');
+                                    var customerId = document.getElementById('customerId').value;
+                                    var salesId = document.getElementById('salesId').value;
+                                    if (!customerId) {
+                                        alert('Customer harus dipilih!');
+                                        e.preventDefault();
+                                        return false;
+                                    }
+                                    if (!salesId) {
+                                        alert('Sales harus dipilih!');
+                                        e.preventDefault();
+                                        return false;
+                                    }
+                                    if (barangRows.length === 0) {
+                                        alert('Minimal 1 barang harus dipilih!');
+                                        e.preventDefault();
+                                        return false;
+                                    }
+                                };
+                            </script>
                         </div>
                     </form>
                 </div>
@@ -219,21 +289,21 @@
 </div>
 <!-- Modal Barang -->
 <div class="modal fade" id="modalBarang" tabindex="-1" aria-labelledby="modalBarangLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalBarangLabel">Pilih Barang</h5>
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content sales-modal-content bg-white text-dark bg-dark-mode">
+            <div class="modal-header sales-modal-header bg-primary text-white bg-dark-mode-header">
+                <h5 class="modal-title sales-modal-title text-white" id="modalBarangLabel"><i data-feather="package" class="me-2"></i> Pilih Barang</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <input type="text" class="form-control mb-2" id="searchBarang" placeholder="Cari barang...">
-                <div class="table-responsive" style="max-height:400px;overflow-y:auto;">
-                    <table class="table table-bordered table-hover align-middle" id="tableBarangModal">
-                        <thead class="table-light">
+            <div class="modal-body sales-modal-body bg-white text-dark bg-dark-mode-body">
+                <input type="text" id="searchBarang" class="form-control mb-3 sales-modal-input bg-white text-dark bg-dark-mode-input" placeholder="Cari Barang...">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover align-middle mb-0 sales-modal-table bg-white text-dark bg-dark-mode-table" id="tableBarangModal">
+                        <thead class="sales-modal-thead bg-light text-dark bg-dark-mode-thead">
                             <tr>
-                                <th>Nama</th>
-                                <th>Harga</th>
-                                <th>Aksi</th>
+                                <th class="text-center">Nama</th>
+                                <th class="text-center">Harga</th>
+                                <th class="text-center">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -241,12 +311,17 @@
                                 <tr>
                                     <td><?= esc($barang['name']) ?></td>
                                     <td>Rp <?= number_format($barang['price'], 0, ',', '.') ?></td>
-                                    <td><button type="button" class="btn btn-sm btn-primary pilih-barang" data-id="<?= $barang['id'] ?>" data-nama="<?= esc($barang['name']) ?>" data-harga="<?= $barang['price'] ?>">Pilih</button></td>
+                                    <td class="align-items-center">
+                                        <button type="button" class="btn btn-success btn-sm pilih-barang" data-id="<?= $barang['id'] ?>" data-nama="<?= esc($barang['name']) ?>" data-harga="<?= $barang['price'] ?>">Pilih</button>
+                                    </td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>
+            </div>
+            <div class="modal-footer sales-modal-footer bg-white text-dark bg-dark-mode-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Tutup</button>
             </div>
         </div>
     </div>
@@ -304,75 +379,80 @@
         });
     };
     // Modal interaksi barang
-    document.addEventListener('DOMContentLoaded', function() {
-        document.querySelectorAll('.pilih-barang').forEach(btn => {
-            btn.onclick = function() {
-                var barangId = btn.getAttribute('data-id');
-                var barangName = btn.getAttribute('data-nama');
-                var barangPrice = btn.getAttribute('data-harga');
-                var modalEl = document.getElementById('modalBarang');
-                if (modalEl) {
-                    var modalInstance = bootstrap.Modal.getOrCreateInstance(modalEl);
-                    modalInstance.hide();
-                }
-                // Cek apakah barang sudah ada di tabel
-                var exists = false;
-                document.querySelectorAll('#tableBarang tbody tr').forEach(function(tr) {
-                    if (tr.dataset.barangId == barangId) exists = true;
-                });
-                if (exists) {
-                    alert('Barang sudah ada di daftar!');
-                    return;
-                }
-                // Tambahkan baris baru ke tabel item
-                var tbody = document.querySelector('#tableBarang tbody');
-                var trs = tbody.querySelectorAll('tr[data-barang-id]');
-                var no = trs.length + 1;
-                var newRow = document.createElement('tr');
-                newRow.setAttribute('data-barang-id', barangId);
-                newRow.innerHTML = `
+    // Event delegation agar tombol 'Pilih' barang tetap berfungsi meski modal diubah
+    document.getElementById('tableBarangModal').addEventListener('click', function(e) {
+        if (e.target.classList.contains('pilih-barang')) {
+            var btn = e.target;
+            var barangId = btn.getAttribute('data-id');
+            var barangName = btn.getAttribute('data-nama');
+            var barangPrice = btn.getAttribute('data-harga');
+            var modalEl = document.getElementById('modalBarang');
+            if (modalEl) {
+                var modalInstance = bootstrap.Modal.getOrCreateInstance(modalEl);
+                modalInstance.hide();
+            }
+            // Cek apakah barang sudah ada di tabel
+            var exists = false;
+            document.querySelectorAll('#tableBarang tbody tr').forEach(function(tr) {
+                if (tr.dataset.barangId == barangId) exists = true;
+            });
+            if (exists) {
+                alert('Barang sudah ada di daftar!');
+                return;
+            }
+            // Tambahkan baris baru ke tabel item
+            var tbody = document.querySelector('#tableBarang tbody');
+            var trs = tbody.querySelectorAll('tr[data-barang-id]');
+            var no = trs.length + 1;
+            var newRow = document.createElement('tr');
+            newRow.setAttribute('data-barang-id', barangId);
+            newRow.innerHTML = `
+                    
                     <td><img src='/public/assets/img/no-image.png' style='width:40px;height:40px;object-fit:cover;border-radius:6px;'></td>
-                    <td>${barangName}</td>
+                    <td class="td-nama-barang">${barangName}</td>
                     <td>Rp ${parseInt(barangPrice).toLocaleString('id-ID')}</td>
                     <td><input type="number" name="qty[]" value="1" min="1" class="form-control form-control-sm jumlah-input" style="width:70px;display:inline-block;"><input type="hidden" name="barang_id[]" value="${barangId}"></td>
                     <td class="subtotal" data-value="${barangPrice}">Rp ${parseInt(barangPrice).toLocaleString('id-ID')}</td>
                     <td><button type="button" class="btn btn-danger btn-sm btn-hapus-barang"><i class="fas fa-trash"></i></button></td>`;
-                newRow.querySelector('.btn-hapus-barang').onclick = function() {
-                    newRow.remove();
-                    updateGrandTotal();
-                };
-                // Qty inline edit
-                newRow.querySelector('.jumlah-input').addEventListener('input', function() {
-                    var jumlah = parseInt(this.value) || 1;
-                    var harga = parseInt(barangPrice);
-                    var subtotal = jumlah * harga;
-                    newRow.querySelector('.subtotal').dataset.value = subtotal;
-                    newRow.querySelector('.subtotal').innerText = 'Rp ' + subtotal.toLocaleString('id-ID');
-                    newRow.querySelector('input[name="qty[]"]').value = jumlah;
-                    updateGrandTotal();
-                });
-                tbody.appendChild(newRow);
+            newRow.querySelector('.btn-hapus-barang').onclick = function() {
+                newRow.remove();
                 updateGrandTotal();
             };
-        });
+            // Qty inline edit
+            newRow.querySelector('.jumlah-input').addEventListener('input', function() {
+                var jumlah = parseInt(this.value) || 1;
+                var harga = parseInt(barangPrice);
+                var subtotal = jumlah * harga;
+                newRow.querySelector('.subtotal').dataset.value = subtotal;
+                newRow.querySelector('.subtotal').innerText = 'Rp ' + subtotal.toLocaleString('id-ID');
+                newRow.querySelector('input[name="qty[]"]').value = jumlah;
+                updateGrandTotal();
+            });
+            tbody.appendChild(newRow);
+            updateGrandTotal();
+        }
     });
-    document.getElementById('searchBarang').oninput = function() {
+    // Modal animasi dan search barang ala SBAdmin
+    document.getElementById('modalBarang').addEventListener('show.bs.modal', function() {
+        document.getElementById('searchBarang').value = '';
+    });
+    document.getElementById('searchBarang').addEventListener('input', function() {
         let val = this.value.toLowerCase();
         document.querySelectorAll('#tableBarangModal tbody tr').forEach(tr => {
             let nama = tr.children[0].innerText.toLowerCase();
             let harga = tr.children[1].innerText.toLowerCase();
             tr.style.display = (nama.includes(val) || harga.includes(val)) ? '' : 'none';
         });
-    };
-    // SBAdmin animasi dan interaksi POS
-    const metodeBayar = document.getElementById('metodeBayar');
-    const opsiTunai = document.getElementById('opsiTunai');
-    if (metodeBayar) {
-        metodeBayar.addEventListener('change', function() {
-            if (this.value === 'Tunai') opsiTunai.classList.remove('d-none');
-            else opsiTunai.classList.add('d-none');
-        });
-    }
+    });
+    // Logic untuk menampilkan field kredit jika metode pembayaran dipilih Kredit
+    document.getElementById('metodeBayar').addEventListener('change', function() {
+        var kreditFields = document.getElementById('kreditFields');
+        if (this.value === 'Kredit') {
+            kreditFields.classList.remove('d-none');
+        } else {
+            kreditFields.classList.add('d-none');
+        }
+    });
     // Barang table interaktif
     let barangList = <?php echo json_encode($barangList); ?>;
     let tableBody = document.querySelector('#tableBarang tbody');

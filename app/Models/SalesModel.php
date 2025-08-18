@@ -13,10 +13,25 @@ class SalesModel extends Model
     protected $useSoftDeletes   = true;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'nomor_nota', 'tanggal_nota', 'customer', 'sales', 
-        'total', 'discount', 'tax', 'grand_total', 
-        'payment_a', 'payment_b', 'account_receivable', 'payment_system',
-        'otoritas', 'batas_tanggal_sistem', 'mode_batas_tanggal'
+        'nomor_nota',
+        'tanggal_nota',
+        'customer',
+        'sales',
+        'total',
+        'discount',
+        'tax',
+        'grand_total',
+        'payment_a',
+        'payment_b',
+        'account_receivable',
+        'payment_system',
+        'otoritas',
+        'batas_tanggal_sistem',
+        'mode_batas_tanggal',
+        'metode_bayar',
+        'tenor',
+        'dp',
+        'catatan_kredit'
     ];
 
     // Dates
