@@ -16,6 +16,13 @@
                         <a class="btn btn-sm btn-primary" href="<?= site_url('penjualan/pos') ?>">
                             <i class="me-1" data-feather="plus"></i> Buat Nota Baru
                         </a>
+                        <form id="form-buat-nota-baru" method="post" action="<?= site_url('penjualan/create') ?>" style="display:none;"></form>
+                        <script>
+                            document.querySelector('.btn-primary').onclick = function(e) {
+                                e.preventDefault();
+                                document.getElementById('form-buat-nota-baru').submit();
+                            };
+                        </script>
                     <?php endif; ?>
                 </div>
             </div>

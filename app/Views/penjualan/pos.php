@@ -24,6 +24,8 @@
                 </div>
                 <div class="card-body">
                     <form id="form-pos" method="post" action="<?= site_url('penjualan/posBooking') ?>">
+                        <input type="hidden" name="total" id="totalInput">
+                        <input type="hidden" name="grand_total" id="grandTotalInput">
                         <div class="row g-3 mb-3">
                             <div class="col-md-3">
                                 <label class="form-label">Nomor Nota</label>
@@ -134,29 +136,7 @@
                             </div>
                         </div>
                         <div class="row g-3 mb-3">
-                            <div class="col-md-3">
-                                <label class="form-label">Metode Pembayaran</label>
-                                <select name="metode_bayar" class="form-select" required id="metodeBayar">
-                                    <option value="">Pilih Metode</option>
-                                    <option value="Cash">Cash</option>
-                                    <option value="Transfer">Transfer</option>
-                                    <option value="Kredit">Kredit</option>
-                                </select>
-                            </div>
-                            <div id="kreditFields" class="row g-2 mb-2 d-none">
-                                <div class="col-md-4">
-                                    <label class="form-label">Tenor (bulan)</label>
-                                    <input type="number" name="tenor" class="form-control" min="1" max="36" placeholder="Contoh: 12">
-                                </div>
-                                <div class="col-md-4">
-                                    <label class="form-label">DP (Down Payment)</label>
-                                    <input type="number" name="dp" class="form-control" min="0" placeholder="Contoh: 1000000">
-                                </div>
-                                <div class="col-md-4">
-                                    <label class="form-label">Catatan Kredit</label>
-                                    <input type="text" name="catatan_kredit" class="form-control" placeholder="Opsional">
-                                </div>
-                            </div>
+                            <!-- Metode Pembayaran dan Kredit Fields dihapus sesuai permintaan, JS tetap utuh -->
                         </div>
                         <hr>
                         <div class="table-responsive mb-3 animate__animated animate__fadeInUp">
@@ -180,6 +160,35 @@
                                         <th id="grandTotal">Rp 0</th>
                                         <th></th>
                                     </tr>
+                                    <tr>
+                                        <td colspan="4" class="text-end">Pembayaran</td>
+                                        <td colspan="2">
+                                            <input type="number" min="0" class="form-control" id="paymentAInput" name="payment_a" placeholder="Masukkan pembayaran customer">
+                                            <span id="badgeStatus" class="badge ms-2"></span>
+                                        </td>
+                                    </tr>
+                                    <tr id="rowMetodeBayar" style="display:none;">
+                                        <td colspan="4" class="text-end">Metode Pembayaran</td>
+                                        <td colspan="2">
+                                            <select class="form-select" id="paymentSystemInput" name="payment_system">
+                                                <option value="Cash">Cash</option>
+                                                <option value="Transfer">Transfer</option>
+                                                <option value="Debit">Debit</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr id="rowTenor" style="display:none;">
+                                        <td colspan="4" class="text-end">Tenor (hari)</td>
+                                        <td colspan="2">
+                                            <input type="number" min="1" class="form-control" id="tenorInput" name="tenor" placeholder="Jumlah hari kredit">
+                                        </td>
+                                    </tr>
+                                    <tr id="rowJatuhTempo" style="display:none;">
+                                        <td colspan="4" class="text-end">Tanggal Jatuh Tempo</td>
+                                        <td colspan="2">
+                                            <input type="text" class="form-control" id="jatuhTempoInput" name="jatuh_tempo" readonly>
+                                        </td>
+                                    </tr>
                                 </tfoot>
                             </table>
                             <div class="mb-3">
@@ -189,7 +198,7 @@
                             </div>
                         </div>
                         <div class="d-flex justify-content-end">
-                            <button type="submit" class="btn btn-primary btn-lg animate__animated animate__pulse animate__infinite">Simpan & Booking Nota</button>
+                            <button type="submit" class="btn btn-primary btn-lg animate__animated animate__pulse animate__infinite">Simpan Nota</button>
                             <script>
                                 document.getElementById('form-pos').onsubmit = function(e) {
                                     var barangRows = document.querySelectorAll('#tableBarang tbody tr');
@@ -214,6 +223,65 @@
                             </script>
                         </div>
                     </form>
+                    <script>
+                        // Helper ambil nilai tanggal nota
+                        function getTanggalNotaYmd() {
+                            let tgl = document.getElementById('tanggal_nota').value;
+                            if (!tgl) return null;
+                            let parts = tgl.split('/');
+                            if (parts.length === 3) {
+                                return parts[2] + '-' + parts[1].padStart(2, '0') + '-' + parts[0].padStart(2, '0');
+                            }
+                            return tgl;
+                        }
+                        // Update badge dan field pembayaran
+                        function updatePaymentStatus() {
+                            let paymentA = parseInt(document.getElementById('paymentAInput').value) || 0;
+                            let grandTotal = parseInt(document.getElementById('grandTotalInput').value) || 0;
+                            let badge = document.getElementById('badgeStatus');
+                            let rowMetode = document.getElementById('rowMetodeBayar');
+                            let rowTenor = document.getElementById('rowTenor');
+                            let rowJatuhTempo = document.getElementById('rowJatuhTempo');
+                            if (paymentA >= grandTotal && grandTotal > 0) {
+                                badge.textContent = 'LUNAS';
+                                badge.className = 'badge bg-success ms-2';
+                                rowMetode.style.display = '';
+                                rowTenor.style.display = 'none';
+                                rowJatuhTempo.style.display = 'none';
+                            } else if (paymentA > 0 && paymentA < grandTotal) {
+                                badge.textContent = 'KREDIT';
+                                badge.className = 'badge bg-warning text-dark ms-2';
+                                rowMetode.style.display = 'none';
+                                rowTenor.style.display = '';
+                                rowJatuhTempo.style.display = '';
+                            } else {
+                                badge.textContent = '';
+                                badge.className = 'badge ms-2';
+                                rowMetode.style.display = 'none';
+                                rowTenor.style.display = 'none';
+                                rowJatuhTempo.style.display = 'none';
+                            }
+                            updateJatuhTempo();
+                        }
+                        // Hitung tanggal jatuh tempo
+                        function updateJatuhTempo() {
+                            let tenor = parseInt(document.getElementById('tenorInput').value) || 0;
+                            let tglNota = getTanggalNotaYmd();
+                            if (tenor > 0 && tglNota) {
+                                let tgl = new Date(tglNota);
+                                tgl.setDate(tgl.getDate() + tenor);
+                                let jatuhTempo = tgl.getFullYear() + '-' + String(tgl.getMonth() + 1).padStart(2, '0') + '-' + String(tgl.getDate()).padStart(2, '0');
+                                document.getElementById('jatuhTempoInput').value = jatuhTempo;
+                            } else {
+                                document.getElementById('jatuhTempoInput').value = '';
+                            }
+                        }
+                        document.getElementById('paymentAInput').addEventListener('input', updatePaymentStatus);
+                        document.getElementById('tenorInput').addEventListener('input', updateJatuhTempo);
+                        document.getElementById('tanggal_nota').addEventListener('change', updateJatuhTempo);
+                        // Pastikan status awal
+                        setTimeout(updatePaymentStatus, 500);
+                    </script>
                 </div>
             </div>
         </div>
@@ -407,13 +475,12 @@
             var newRow = document.createElement('tr');
             newRow.setAttribute('data-barang-id', barangId);
             newRow.innerHTML = `
-                    
-                    <td><img src='/public/assets/img/no-image.png' style='width:40px;height:40px;object-fit:cover;border-radius:6px;'></td>
-                    <td class="td-nama-barang">${barangName}</td>
-                    <td>Rp ${parseInt(barangPrice).toLocaleString('id-ID')}</td>
-                    <td><input type="number" name="qty[]" value="1" min="1" class="form-control form-control-sm jumlah-input" style="width:70px;display:inline-block;"><input type="hidden" name="barang_id[]" value="${barangId}"></td>
-                    <td class="subtotal" data-value="${barangPrice}">Rp ${parseInt(barangPrice).toLocaleString('id-ID')}</td>
-                    <td><button type="button" class="btn btn-danger btn-sm btn-hapus-barang"><i class="fas fa-trash"></i></button></td>`;
+                <td><img src='/public/assets/img/no-image.png' style='width:40px;height:40px;object-fit:cover;border-radius:6px;'></td>
+                <td class="td-nama-barang">${barangName}</td>
+                <td>Rp ${parseInt(barangPrice).toLocaleString('id-ID')}</td>
+                <td><input type="number" name="qty[]" value="1" min="1" class="form-control form-control-sm jumlah-input" style="width:70px;display:inline-block;"><input type="hidden" name="barang_id[]" value="${barangId}"></td>
+                <td class="subtotal" data-value="${barangPrice}">Rp ${parseInt(barangPrice).toLocaleString('id-ID')}</td>
+                <td><button type="button" class="btn btn-danger btn-sm btn-hapus-barang"><i class="fas fa-trash"></i></button></td>`;
             newRow.querySelector('.btn-hapus-barang').onclick = function() {
                 newRow.remove();
                 updateGrandTotal();
@@ -453,55 +520,79 @@
             kreditFields.classList.add('d-none');
         }
     });
-    // Barang table interaktif
-    let barangList = <?php echo json_encode($barangList); ?>;
-    let tableBody = document.querySelector('#tableBarang tbody');
-    let grandTotal = 0;
+    (function() {
+        // Barang table interaktif
+        let barangList = <?php echo json_encode($barangList); ?>;
+        let tableBody = document.querySelector('#tableBarang tbody');
+        let grandTotal = 0;
 
-    function updateGrandTotal() {
-        let total = 0;
-        tableBody.querySelectorAll('tr').forEach(tr => {
-            total += parseInt(tr.querySelector('.subtotal').dataset.value || 0);
+        function updateGrandTotal() {
+            let total = 0;
+            let rows = tableBody.querySelectorAll('tr[data-barang-id]');
+            rows.forEach(tr => {
+                let val = parseInt(tr.querySelector('.subtotal').dataset.value || 0);
+                total += val;
+            });
+            document.getElementById('grandTotal').innerText = 'Rp ' + total.toLocaleString('id-ID');
+            document.getElementById('totalInput').value = total;
+            document.getElementById('grandTotalInput').value = total;
+        }
+
+        // Handler tombol tambah barang dari modal
+        document.getElementById('tableBarangModal').addEventListener('click', function(e) {
+            if (e.target.classList.contains('pilih-barang')) {
+                var btn = e.target;
+                var barangId = btn.getAttribute('data-id');
+                var barangName = btn.getAttribute('data-nama');
+                var barangPrice = btn.getAttribute('data-harga');
+                var modalEl = document.getElementById('modalBarang');
+                if (modalEl) {
+                    var modalInstance = bootstrap.Modal.getOrCreateInstance(modalEl);
+                    modalInstance.hide();
+                }
+                // Cek apakah barang sudah ada di tabel
+                var exists = false;
+                document.querySelectorAll('#tableBarang tbody tr').forEach(function(tr) {
+                    if (tr.dataset.barangId == barangId) exists = true;
+                });
+                if (exists) {
+                    alert('Barang sudah ada di daftar!');
+                    return;
+                }
+                // Tambahkan baris baru ke tabel item
+                var tbody = document.querySelector('#tableBarang tbody');
+                var trs = tbody.querySelectorAll('tr[data-barang-id]');
+                var no = trs.length + 1;
+                var newRow = document.createElement('tr');
+                newRow.setAttribute('data-barang-id', barangId);
+                newRow.innerHTML = `
+                    <td><img src='/public/assets/img/no-image.png' style='width:40px;height:40px;object-fit:cover;border-radius:6px;'></td>
+                    <td class="td-nama-barang">${barangName}</td>
+                    <td>Rp ${parseInt(barangPrice).toLocaleString('id-ID')}</td>
+                    <td><input type="number" name="qty[]" value="1" min="1" class="form-control form-control-sm jumlah-input" style="width:70px;display:inline-block;"><input type="hidden" name="barang_id[]" value="${barangId}"></td>
+                    <td class="subtotal" data-value="${barangPrice}">Rp ${parseInt(barangPrice).toLocaleString('id-ID')}</td>
+                    <td><button type="button" class="btn btn-danger btn-sm btn-hapus-barang"><i class="fas fa-trash"></i></button></td>`;
+                newRow.querySelector('.btn-hapus-barang').onclick = function() {
+                    newRow.remove();
+                    updateGrandTotal();
+                };
+                // Qty inline edit
+                newRow.querySelector('.jumlah-input').addEventListener('input', function() {
+                    var jumlah = parseInt(this.value) || 1;
+                    var harga = parseInt(barangPrice);
+                    var subtotal = jumlah * harga;
+                    newRow.querySelector('.subtotal').dataset.value = subtotal;
+                    newRow.querySelector('.subtotal').innerText = 'Rp ' + subtotal.toLocaleString('id-ID');
+                    newRow.querySelector('input[name="qty[]"]').value = jumlah;
+                    updateGrandTotal();
+                });
+                tbody.appendChild(newRow);
+                updateGrandTotal();
+            }
         });
-        document.getElementById('grandTotal').innerText = 'Rp ' + total.toLocaleString('id-ID');
-    }
-    document.getElementById('addBarangBtn').onclick = function() {
-        let barangId = document.getElementById('barangId').value;
-        let barangName = document.getElementById('barangName').value;
-        let qty = parseInt(document.getElementById('qtyInput').value);
-        if (!barangId || !qty || qty < 1) return;
-        let barang = barangList.find(b => b.id == barangId);
-        if (!barang) return;
-        let subtotal = barang.price * qty;
-        let row = document.createElement('tr');
-        row.innerHTML = `<td><img src='${barang.image_url || '/public/assets/img/no-image.png'}' style='width:40px;height:40px;object-fit:cover;border-radius:6px;'></td>
-        <td>${barang.name}</td>
-        <td>Rp ${parseInt(barang.price).toLocaleString('id-ID')}</td>
-        <td><input type='number' name='qty[]' value='${qty}' min='1' class='form-control form-control-sm qty-table-input' style='width:70px;display:inline-block;'><input type='hidden' name='barang_id[]' value='${barang.id}'></td>
-        <td class='subtotal' data-value='${subtotal}'>Rp ${subtotal.toLocaleString('id-ID')}</td>
-        <td><button type='button' class='btn btn-danger btn-sm btn-hapus-barang'><i class='fas fa-trash'></i></button></td>`;
-        row.querySelector('.btn-hapus-barang').onclick = function() {
-            row.remove();
-            updateGrandTotal();
-        };
-        // Qty inline edit
-        row.querySelector('.qty-table-input').oninput = function() {
-            let newQty = parseInt(this.value);
-            if (!newQty || newQty < 1) this.value = 1;
-            let newSubtotal = barang.price * parseInt(this.value);
-            row.querySelector('.subtotal').dataset.value = newSubtotal;
-            row.querySelector('.subtotal').innerText = 'Rp ' + newSubtotal.toLocaleString('id-ID');
-            row.querySelector('input[name="qty[]"]').value = this.value;
-            updateGrandTotal();
-        };
-        tableBody.appendChild(row);
+
+        // Hitung total saat halaman pertama kali load
         updateGrandTotal();
-    };
-    // Validasi tanggal dengan batas tanggal
-    const tanggalNota = document.getElementById('tanggalNota');
-    <?php if (isset($batasTanggal)): ?>
-        tanggalNota.setAttribute('min', '<?= $batasTanggal['min'] ?>');
-        tanggalNota.setAttribute('max', '<?= $batasTanggal['max'] ?>');
-    <?php endif; ?>
+    })();
 </script>
 <?= $this->endSection(); ?>

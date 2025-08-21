@@ -34,7 +34,7 @@ class PenjualanModel extends Model
     {
         $builder = $this->db->table('sales')
             ->select('sales.*, mastercustomer.nama_customer, mastersales.nama as nama_sales')
-            // Join tanpa type cast, asumsikan kolom sales.customer dan sales.sales bertipe integer
+            // Join tetap left agar nota draft tanpa customer/sales tetap tampil
             ->join('mastercustomer', 'mastercustomer.id = sales.customer', 'left')
             ->join('mastersales', 'mastersales.id = sales.sales', 'left')
             ->where('sales.deleted_at', null);
