@@ -111,14 +111,44 @@
                             </a>
                         <?php elseif ($departmentId == 3): // General 
                         ?>
-                            <div class="sidenav-menu-heading">General Menu</div>
+                            <div class="sidenav-menu-heading">Dashboard</div>
                             <a class="nav-link<?= $uri->getSegment(1) == '' ? ' active' : '' ?>" href="<?= site_url('/') ?>">
                                 <div class="nav-link-icon"><i data-feather="activity"></i></div>
-                                Dashboard
+                                Sumary
                             </a>
+                            <div class="sidenav-menu-heading">Penerimaan</div>
                             <a class="nav-link<?= $uri->getSegment(1) == 'datapenjualan' ? ' active' : '' ?>" href="<?= site_url('datapenjualan') ?>">
                                 <div class="nav-link-icon"><i data-feather="file-text"></i></div>
                                 Data Penjualan
+                            </a>
+                            <a class="nav-link<?= $uri->getSegment(1) == 'kas-masuk' ? ' active' : '' ?>" href="<?= site_url('kas-masuk') ?>">
+                                <div class="nav-link-icon"><i data-feather="arrow-down-circle"></i></div>
+                                Kas Masuk
+                            </a>
+                            <a class="nav-link<?= $uri->getSegment(1) == 'pelunasan-piutang' ? ' active' : '' ?>" href="<?= site_url('pelunasan-piutang') ?>">
+                                <div class="nav-link-icon"><i data-feather="check-circle"></i></div>
+                                Pelunasan Piutang Dagang
+                            </a>
+                            <a class="nav-link<?= $uri->getSegment(1) == 'pelunasan-piutang-lain-lain' ? ' active' : '' ?>" href="<?= site_url('pelunasan-piutang-lain-lain') ?>">
+                                <div class="nav-link-icon"><i data-feather="check-circle"></i></div>
+                                Pelunasan Piutang Lain-Lain
+                            </a>
+                            <div class="sidenav-menu-heading">Pengeluaran</div>
+                            <a class="nav-link<?= $uri->getSegment(1) == 'data-pembelian' ? ' active' : '' ?>" href="<?= site_url('data-pembelian') ?>">
+                                <div class="nav-link-icon"><i data-feather="file-text"></i></div>
+                                Data Pembelian
+                            </a>
+                            <a class="nav-link<?= $uri->getSegment(1) == 'kas-keluar' ? ' active' : '' ?>" href="<?= site_url('kas-keluar') ?>">
+                                <div class="nav-link-icon"><i data-feather="arrow-up-circle"></i></div>
+                                Kas Keluar
+                            </a>
+                            <a class="nav-link<?= $uri->getSegment(1) == 'pelunasan-hutang-dagang' ? ' active' : '' ?>" href="<?= site_url('pelunasan-hutang-dagang') ?>">
+                                <div class="nav-link-icon"><i data-feather="check-circle"></i></div>
+                                Pelunasan Hutang Dagang
+                            </a>
+                            <a class="nav-link<?= $uri->getSegment(1) == 'pelunasan-hutang-lain-lain' ? ' active' : '' ?>" href="<?= site_url('pelunasan-hutang-lain-lain') ?>">
+                                <div class="nav-link-icon"><i data-feather="check-circle"></i></div>
+                                Pelunasan Hutang Lain-Lain
                             </a>
                             <div class="sidenav-menu-heading">Master</div>
                             <a class="nav-link<?= $uri->getSegment(1) == 'mastersales' ? ' active' : '' ?>" href="<?= base_url('mastersales') ?>">
