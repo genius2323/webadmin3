@@ -20,16 +20,16 @@
             <div class="card shadow-sm border-0 mb-4 animate__animated animate__fadeInDown">
                 <div class="card-header bg-primary text-white d-flex align-items-center">
                     <i class="fas fa-cash-register me-2"></i>
-                    <h5 class="mb-0" style="color: white;">Input Nota Baru (POS)</h5>
+                    <h5 class="mb-0" style="color: white;">Edit Nota Penjualan</h5>
                 </div>
                 <div class="card-body">
-                    <form id="form-pos" method="post" action="<?= site_url('penjualan/posBooking') ?>">
-                        <input type="hidden" name="total" id="totalInput">
-                        <input type="hidden" name="grand_total" id="grandTotalInput">
+                    <form id="form-edit-pos" method="post" action="<?= site_url('penjualan/update/' . $penjualan['id']) ?>">
+                        <input type="hidden" name="total" id="totalInput" value="<?= esc($penjualan['total'] ?? '') ?>">
+                        <input type="hidden" name="grand_total" id="grandTotalInput" value="<?= esc($penjualan['grand_total'] ?? '') ?>">
                         <div class="row g-3 mb-3">
                             <div class="col-md-3">
                                 <label class="form-label">Nomor Nota</label>
-                                <input type="text" name="nomor_nota" class="form-control" value="<?= esc($nomor_nota ?? (isset($nomor_nota) ? $nomor_nota : 'INV-' . date('Ymd') . '-' . strtoupper(substr(md5(uniqid(rand(), true)), 0, 5)))) ?>" readonly required autocomplete="off">
+                                <input type="text" name="nomor_nota" class="form-control" value="<?= esc($penjualan['nomor_nota'] ?? '') ?>" readonly required autocomplete="off">
                             </div>
                             <div class="col-md-3">
                                 <label class="form-label">Tanggal</label>
@@ -43,7 +43,7 @@
                                 }
                                 $maxDate = $today;
                                 ?>
-                                <input type="text" name="tanggal_nota" id="tanggal_nota" class="form-control border-primary" style="background:#f8f9fa; cursor:pointer; color:#212529;" value="<?= date('d/m/Y') ?>" required readonly>
+                                <input type="text" name="tanggal_nota" id="tanggal_nota" class="form-control border-primary" style="background:#f8f9fa; cursor:pointer; color:#212529;" value="<?= isset($penjualan['tanggal_nota']) ? date('d/m/Y', strtotime($penjualan['tanggal_nota'])) : date('d/m/Y') ?>" required readonly>
                                 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
                                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
                                 <script>
@@ -121,16 +121,16 @@
                             <div class="col-md-3">
                                 <label class="form-label">Customer</label>
                                 <div class="input-group">
-                                    <input type="text" id="customerName" class="form-control" placeholder="Pilih Customer" readonly required>
-                                    <input type="hidden" name="customer_id" id="customerId" required>
+                                    <input type="text" id="customerName" class="form-control" value="<?= esc($penjualan['customer_nama'] ?? '') ?>" placeholder="Pilih Customer" readonly required>
+                                    <input type="hidden" name="customer_id" id="customerId" value="<?= esc($penjualan['customer'] ?? '') ?>" required>
                                     <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalCustomer"><i class="fas fa-search"></i></button>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <label class="form-label">Sales</label>
                                 <div class="input-group">
-                                    <input type="text" id="salesName" class="form-control" placeholder="Pilih Sales" readonly required>
-                                    <input type="hidden" name="sales_id" id="salesId" required>
+                                    <input type="text" id="salesName" class="form-control" value="<?= esc($penjualan['sales_nama'] ?? '') ?>" placeholder="Pilih Sales" readonly required>
+                                    <input type="hidden" name="sales_id" id="salesId" value="<?= esc($penjualan['sales'] ?? '') ?>" required>
                                     <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalSales"><i class="fas fa-search"></i></button>
                                 </div>
                             </div>
@@ -166,7 +166,33 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <!-- Item akan di-generate JS -->
+                                    <?php if (!empty($items)): ?>
+                                        <?php foreach ($items as $item): ?>
+                                            <tr data-barang-id="<?= esc($item['barang_id']) ?>">
+                                                <td style="text-align:center;">
+                                                    <?php if (!empty($item['gambar'])): ?>
+                                                        <img src="<?= base_url($item['gambar']) ?>" alt="Gambar" style="width:48px;height:48px;object-fit:cover;">
+                                                    <?php endif; ?>
+                                                </td>
+                                                <td class="td-nama-barang"><?= esc($item['nama_barang'] ?? '') ?></td>
+                                                <td style="text-align:right; vertical-align:middle;">
+                                                    <span class="harga-text">Rp <?= number_format($item['harga'] ?? 0, 0, ',', '.') ?></span>
+                                                    <input type="hidden" name="harga[]" value="<?= esc($item['harga'] ?? 0) ?>">
+                                                </td>
+                                                <td style="text-align:center; vertical-align:middle;">
+                                                    <input type="number" name="qty[]" class="form-control qty-input" value="<?= esc($item['qty'] ?? 1) ?>" min="1" data-harga="<?= esc($item['harga'] ?? 0) ?>">
+                                                </td>
+                                                <td style="text-align:right; vertical-align:middle;">
+                                                    <span class="subtotal-text">Rp <?= number_format($item['subtotal'] ?? 0, 0, ',', '.') ?></span>
+                                                    <input type="hidden" name="subtotal[]" value="<?= esc($item['subtotal'] ?? 0) ?>">
+                                                </td>
+                                                <td style="text-align:center;">
+                                                    <!-- Tombol hapus item jika diperlukan -->
+                                                </td>
+                                                <input type="hidden" name="barang_id[]" value="<?= esc($item['barang_id'] ?? '') ?>">
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>
                                 </tbody>
                                 <tfoot>
                                     <tr>
@@ -177,7 +203,7 @@
                                     <tr>
                                         <td colspan="4" class="text-end">Pembayaran</td>
                                         <td colspan="2">
-                                            <input type="number" min="0" class="form-control" id="paymentAInput" name="payment_a" placeholder="Masukkan pembayaran customer">
+                                            <input type="number" min="0" class="form-control" id="paymentAInput" name="payment_a" placeholder="Masukkan pembayaran customer" value="<?= esc($penjualan['payment_a'] ?? '') ?>">
                                             <span id="badgeStatus" class="badge ms-2"></span>
                                         </td>
                                     </tr>

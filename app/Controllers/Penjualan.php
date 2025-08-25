@@ -7,6 +7,80 @@ use App\Models\PenjualanModel;
 
 class Penjualan extends BaseController
 {
+    public function update($id)
+    {
+        $salesModel = new \App\Models\SalesModel();
+        $data = [
+            'tanggal_nota' => $this->request->getPost('tanggal_nota'),
+            'customer' => $this->request->getPost('customer_id'),
+            'sales' => $this->request->getPost('sales_id'),
+            'payment_a' => $this->request->getPost('payment_a'),
+            'payment_system' => $this->request->getPost('payment_system'),
+            'metode_bayar' => $this->request->getPost('metode_bayar'),
+            'tenor' => $this->request->getPost('tenor'),
+            'jatuh_tempo' => $this->request->getPost('jatuh_tempo'),
+            'dp' => $this->request->getPost('dp'),
+            'catatan_kredit' => $this->request->getPost('catatan_kredit'),
+            'total' => $this->request->getPost('total'),
+            'grand_total' => $this->request->getPost('grand_total'),
+            'status' => 'selesai',
+        ];
+        $salesModel->update($id, $data);
+        // Update juga di database kedua (db2)
+        $db2 = \Config\Database::connect('db2');
+        $db2->table('sales')->where('id', $id)->update($data);
+        // TODO: update sales_items jika ada perubahan barang
+        return redirect()->to('/penjualan/datapenjualan')->with('success', 'Nota penjualan berhasil diupdate di kedua database!');
+    }
+    public function edit($id)
+    {
+        $penjualanModel = new \App\Models\PenjualanModel();
+        $salesModel = new \App\Models\SalesModel();
+        $penjualan = $salesModel->find($id);
+        if (!$penjualan) {
+            return redirect()->to('/penjualan/datapenjualan')->with('error', 'Data penjualan tidak ditemukan.');
+        }
+        // Ambil data customer, sales, barang, dll
+        $db = \Config\Database::connect();
+        $customerId = $penjualan['customer_id'] ?? $penjualan['customer'] ?? null;
+        $customer = $db->table('mastercustomer')->where('id', $customerId)->get()->getRowArray();
+        $salesId = $penjualan['sales_id'] ?? $penjualan['sales'] ?? null;
+        $sales = $db->table('mastersales')->where('id', $salesId)->get()->getRowArray();
+        $penjualan['customer_nama'] = $customer['nama_customer'] ?? '';
+        $penjualan['sales_nama'] = $sales['nama'] ?? '';
+        $customerList = $db->table('mastercustomer c')
+            ->select('c.*, s.id as sales_id, s.nama as sales_nama')
+            ->join('mastersales s', 's.id = c.sales_id', 'left')
+            ->where('c.deleted_at', null)
+            ->get()->getResultArray();
+        $salesList = $db->table('mastersales')->where('deleted_at', null)->get()->getResultArray();
+        $barangList = $db->table('products')->where('deleted_at', null)->get()->getResultArray();
+        // Ambil item barang dari sales_items dan join ke products
+        $salesItemModel = new \App\Models\SalesItemsModel();
+        $itemsRaw = $salesItemModel->where('sales_id', $id)->findAll();
+        $productModel = new \App\Models\MasterBarangModel();
+        $items = [];
+        foreach ($itemsRaw as $item) {
+            $barang = $productModel->find($item['product_id']);
+            $items[] = [
+                'barang_id' => $item['product_id'],
+                'nama_barang' => $barang['name'] ?? '',
+                'harga' => $item['price'],
+                'qty' => $item['qty'],
+                'subtotal' => $item['qty'] * $item['price'],
+                'gambar' => $barang['gambar'] ?? '',
+            ];
+        }
+        $data = [
+            'title' => 'Edit Nota Penjualan',
+            'penjualan' => $penjualan,
+            'customerList' => $customerList,
+            'salesList' => $salesList,
+            'barangList' => $barangList,
+            'items' => $items,
+        ];
+        return view('penjualan/editpos', $data);
+    }
     // AJAX endpoint untuk pembayaran tunai
     public function paymentTunai($id)
     {

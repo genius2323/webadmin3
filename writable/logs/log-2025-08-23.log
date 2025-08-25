@@ -1,0 +1,432 @@
+DEBUG - 2025-08-23 03:00:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 03:00:55 --> LOGIN DEBUG: user=Array
+(
+    [id] => 909
+    [username] => geni1819
+    [password] => $2y$10$5RKKP5rjZ.5HLC9zfCnCa.0ut/80NkKLLEJast1qo16qZbb7lYjDm
+    [nama] => Genius Hartono
+    [alamat] => Canggu
+    [noktp] => 32534535434534
+    [profile_image] => assets/img/profiles/1754360418_f8328bc9d08ca01b89ee.png
+    [birthday] => 2000-05-31
+    [deleted_at] => 
+    [recovered_at] => 
+    [otoritas] => T
+    [created_at] => 2025-07-05 14:20:16
+    [updated_at] => 2025-08-07 14:48:00
+)
+
+DEBUG - 2025-08-23 03:00:55 --> LOGIN DEBUG: userDept=Array
+(
+    [id] => 5
+    [user_id] => 909
+    [department_id] => 3
+    [deleted_at] => 
+)
+
+DEBUG - 2025-08-23 03:00:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 03:00:55 --> LOGIN DEBUG: sessionData=Array
+(
+    [user_id] => 909
+    [user_username] => geni1819
+    [user_nama] => Genius Hartono
+    [department_id] => 3
+    [isLoggedIn] => 1
+)
+
+DEBUG - 2025-08-23 03:00:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 03:01:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-08-23 03:01:02 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\penjualan\datapenjualan.php on line 142.
+ 1 APPPATH\Views\penjualan\datapenjualan.php(142): number_format(null, 0, ',', '.')
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\webadmin3\\app\\Views\\penjualan\\datapenjualan.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('penjualan/datapenjualan', [], true)
+ 5 APPPATH\Controllers\Penjualan.php(60): view('penjualan/datapenjualan', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Penjualan->datapenjualan()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-08-23 03:01:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 03:01:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 03:05:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 03:08:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 03:09:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 04:11:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 04:11:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 04:11:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-08-23 04:11:45 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\penjualan\datapenjualan.php on line 142.
+ 1 APPPATH\Views\penjualan\datapenjualan.php(142): number_format(null, 0, ',', '.')
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\webadmin3\\app\\Views\\penjualan\\datapenjualan.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('penjualan/datapenjualan', [], true)
+ 5 APPPATH\Controllers\Penjualan.php(60): view('penjualan/datapenjualan', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Penjualan->datapenjualan()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2025-08-23 04:11:45 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\penjualan\datapenjualan.php on line 142.
+ 1 APPPATH\Views\penjualan\datapenjualan.php(142): number_format(null, 0, ',', '.')
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\webadmin3\\app\\Views\\penjualan\\datapenjualan.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('penjualan/datapenjualan', [], true)
+ 5 APPPATH\Controllers\Penjualan.php(60): view('penjualan/datapenjualan', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Penjualan->datapenjualan()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-08-23 04:16:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-08-23 04:16:36 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\penjualan\datapenjualan.php on line 142.
+ 1 APPPATH\Views\penjualan\datapenjualan.php(142): number_format(null, 0, ',', '.')
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\webadmin3\\app\\Views\\penjualan\\datapenjualan.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('penjualan/datapenjualan', [], true)
+ 5 APPPATH\Controllers\Penjualan.php(90): view('penjualan/datapenjualan', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Penjualan->datapenjualan()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2025-08-23 04:16:36 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\penjualan\datapenjualan.php on line 142.
+ 1 APPPATH\Views\penjualan\datapenjualan.php(142): number_format(null, 0, ',', '.')
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\webadmin3\\app\\Views\\penjualan\\datapenjualan.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('penjualan/datapenjualan', [], true)
+ 5 APPPATH\Controllers\Penjualan.php(90): view('penjualan/datapenjualan', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Penjualan->datapenjualan()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-08-23 04:16:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 04:18:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 04:18:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 04:18:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 04:21:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 04:21:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 04:22:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 04:26:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 04:27:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 04:27:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 04:28:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 04:28:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 04:28:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 04:28:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 04:28:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 04:29:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 04:29:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 04:29:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 04:29:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 04:30:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 04:32:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 04:33:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 04:33:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 04:46:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 04:46:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 04:46:38 --> LOGIN DEBUG: user=Array
+(
+    [id] => 909
+    [username] => geni1819
+    [password] => $2y$10$5RKKP5rjZ.5HLC9zfCnCa.0ut/80NkKLLEJast1qo16qZbb7lYjDm
+    [nama] => Genius Hartono
+    [alamat] => Canggu
+    [noktp] => 32534535434534
+    [profile_image] => assets/img/profiles/1754360418_f8328bc9d08ca01b89ee.png
+    [birthday] => 2000-05-31
+    [deleted_at] => 
+    [recovered_at] => 
+    [otoritas] => T
+    [created_at] => 2025-07-05 14:20:16
+    [updated_at] => 2025-08-07 14:48:00
+)
+
+DEBUG - 2025-08-23 04:46:38 --> LOGIN DEBUG: userDept=Array
+(
+    [id] => 5
+    [user_id] => 909
+    [department_id] => 3
+    [deleted_at] => 
+)
+
+DEBUG - 2025-08-23 04:46:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 04:46:38 --> LOGIN DEBUG: sessionData=Array
+(
+    [user_id] => 909
+    [user_username] => geni1819
+    [user_nama] => Genius Hartono
+    [department_id] => 3
+    [isLoggedIn] => 1
+)
+
+DEBUG - 2025-08-23 04:46:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 04:46:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 05:41:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 05:42:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 05:42:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 05:42:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 05:44:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 05:47:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 05:48:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 05:48:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 05:48:42 --> LOGIN DEBUG: user=Array
+(
+    [id] => 909
+    [username] => geni1819
+    [password] => $2y$10$5RKKP5rjZ.5HLC9zfCnCa.0ut/80NkKLLEJast1qo16qZbb7lYjDm
+    [nama] => Genius Hartono
+    [alamat] => Canggu
+    [noktp] => 32534535434534
+    [profile_image] => assets/img/profiles/1754360418_f8328bc9d08ca01b89ee.png
+    [birthday] => 2000-05-31
+    [deleted_at] => 
+    [recovered_at] => 
+    [otoritas] => T
+    [created_at] => 2025-07-05 14:20:16
+    [updated_at] => 2025-08-07 14:48:00
+)
+
+DEBUG - 2025-08-23 05:48:42 --> LOGIN DEBUG: userDept=Array
+(
+    [id] => 5
+    [user_id] => 909
+    [department_id] => 3
+    [deleted_at] => 
+)
+
+DEBUG - 2025-08-23 05:48:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 05:48:42 --> LOGIN DEBUG: sessionData=Array
+(
+    [user_id] => 909
+    [user_username] => geni1819
+    [user_nama] => Genius Hartono
+    [department_id] => 3
+    [isLoggedIn] => 1
+)
+
+DEBUG - 2025-08-23 05:48:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 05:48:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 05:48:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 05:48:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 05:49:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 06:01:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 06:01:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 06:04:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 06:04:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 06:07:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 06:08:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 06:08:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 06:08:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 06:10:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-08-23 06:10:04 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\penjualan\datapenjualan.php on line 142.
+ 1 APPPATH\Views\penjualan\datapenjualan.php(142): number_format(null, 0, ',', '.')
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\webadmin3\\app\\Views\\penjualan\\datapenjualan.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('penjualan/datapenjualan', [], true)
+ 5 APPPATH\Controllers\Penjualan.php(132): view('penjualan/datapenjualan', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Penjualan->datapenjualan()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-08-23 06:10:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 06:10:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-08-23 06:10:40 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\penjualan\datapenjualan.php on line 142.
+ 1 APPPATH\Views\penjualan\datapenjualan.php(142): number_format(null, 0, ',', '.')
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\webadmin3\\app\\Views\\penjualan\\datapenjualan.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('penjualan/datapenjualan', [], true)
+ 5 APPPATH\Controllers\Penjualan.php(132): view('penjualan/datapenjualan', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Penjualan->datapenjualan()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-08-23 06:10:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 06:10:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 06:11:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 06:12:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 06:13:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 06:13:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-08-23 06:13:48 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\penjualan\datapenjualan.php on line 142.
+ 1 APPPATH\Views\penjualan\datapenjualan.php(142): number_format(null, 0, ',', '.')
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\webadmin3\\app\\Views\\penjualan\\datapenjualan.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('penjualan/datapenjualan', [], true)
+ 5 APPPATH\Controllers\Penjualan.php(134): view('penjualan/datapenjualan', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Penjualan->datapenjualan()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-08-23 06:13:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 06:13:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-08-23 06:13:56 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\penjualan\datapenjualan.php on line 142.
+ 1 APPPATH\Views\penjualan\datapenjualan.php(142): number_format(null, 0, ',', '.')
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\webadmin3\\app\\Views\\penjualan\\datapenjualan.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('penjualan/datapenjualan', [], true)
+ 5 APPPATH\Controllers\Penjualan.php(134): view('penjualan/datapenjualan', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Penjualan->datapenjualan()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-08-23 06:14:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 06:14:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 06:14:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 06:29:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 06:47:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-08-23 06:47:06 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\penjualan\datapenjualan.php on line 142.
+ 1 APPPATH\Views\penjualan\datapenjualan.php(142): number_format(null, 0, ',', '.')
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\webadmin3\\app\\Views\\penjualan\\datapenjualan.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('penjualan/datapenjualan', [], true)
+ 5 APPPATH\Controllers\Penjualan.php(134): view('penjualan/datapenjualan', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Penjualan->datapenjualan()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-08-23 06:47:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 06:47:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 06:50:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 06:50:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 06:50:25 --> LOGIN DEBUG: user=Array
+(
+    [id] => 909
+    [username] => geni1819
+    [password] => $2y$10$5RKKP5rjZ.5HLC9zfCnCa.0ut/80NkKLLEJast1qo16qZbb7lYjDm
+    [nama] => Genius Hartono
+    [alamat] => Canggu
+    [noktp] => 32534535434534
+    [profile_image] => assets/img/profiles/1754360418_f8328bc9d08ca01b89ee.png
+    [birthday] => 2000-05-31
+    [deleted_at] => 
+    [recovered_at] => 
+    [otoritas] => T
+    [created_at] => 2025-07-05 14:20:16
+    [updated_at] => 2025-08-07 14:48:00
+)
+
+DEBUG - 2025-08-23 06:50:25 --> LOGIN DEBUG: userDept=Array
+(
+    [id] => 5
+    [user_id] => 909
+    [department_id] => 3
+    [deleted_at] => 
+)
+
+DEBUG - 2025-08-23 06:50:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 06:50:25 --> LOGIN DEBUG: sessionData=Array
+(
+    [user_id] => 909
+    [user_username] => geni1819
+    [user_nama] => Genius Hartono
+    [department_id] => 3
+    [isLoggedIn] => 1
+)
+
+DEBUG - 2025-08-23 06:50:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 06:50:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-08-23 06:50:32 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\penjualan\datapenjualan.php on line 142.
+ 1 APPPATH\Views\penjualan\datapenjualan.php(142): number_format(null, 0, ',', '.')
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\webadmin3\\app\\Views\\penjualan\\datapenjualan.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('penjualan/datapenjualan', [], true)
+ 5 APPPATH\Controllers\Penjualan.php(134): view('penjualan/datapenjualan', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Penjualan->datapenjualan()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2025-08-23 06:50:32 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\penjualan\datapenjualan.php on line 142.
+ 1 APPPATH\Views\penjualan\datapenjualan.php(142): number_format(null, 0, ',', '.')
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\webadmin3\\app\\Views\\penjualan\\datapenjualan.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('penjualan/datapenjualan', [], true)
+ 5 APPPATH\Controllers\Penjualan.php(134): view('penjualan/datapenjualan', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Penjualan->datapenjualan()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-08-23 06:51:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 06:53:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 06:53:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-08-23 06:53:07 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\penjualan\datapenjualan.php on line 142.
+ 1 APPPATH\Views\penjualan\datapenjualan.php(142): number_format(null, 0, ',', '.')
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\webadmin3\\app\\Views\\penjualan\\datapenjualan.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('penjualan/datapenjualan', [], true)
+ 5 APPPATH\Controllers\Penjualan.php(134): view('penjualan/datapenjualan', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Penjualan->datapenjualan()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2025-08-23 06:53:07 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\penjualan\datapenjualan.php on line 142.
+ 1 APPPATH\Views\penjualan\datapenjualan.php(142): number_format(null, 0, ',', '.')
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\webadmin3\\app\\Views\\penjualan\\datapenjualan.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('penjualan/datapenjualan', [], true)
+ 5 APPPATH\Controllers\Penjualan.php(134): view('penjualan/datapenjualan', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Penjualan->datapenjualan()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-08-23 06:53:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 06:56:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 07:01:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 07:12:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 07:15:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 07:21:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 07:45:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 07:45:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 07:45:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 07:46:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 07:51:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 07:51:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-08-23 07:51:28 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\penjualan\datapenjualan.php on line 142.
+ 1 APPPATH\Views\penjualan\datapenjualan.php(142): number_format(null, 0, ',', '.')
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\webadmin3\\app\\Views\\penjualan\\datapenjualan.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('penjualan/datapenjualan', [], true)
+ 5 APPPATH\Controllers\Penjualan.php(134): view('penjualan/datapenjualan', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Penjualan->datapenjualan()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2025-08-23 07:51:28 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\penjualan\datapenjualan.php on line 142.
+ 1 APPPATH\Views\penjualan\datapenjualan.php(142): number_format(null, 0, ',', '.')
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\webadmin3\\app\\Views\\penjualan\\datapenjualan.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('penjualan/datapenjualan', [], true)
+ 5 APPPATH\Controllers\Penjualan.php(134): view('penjualan/datapenjualan', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Penjualan->datapenjualan()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-08-23 07:51:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 07:51:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-23 07:51:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
