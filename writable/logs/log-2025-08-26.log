@@ -1,0 +1,1287 @@
+DEBUG - 2025-08-26 01:26:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 01:26:33 --> LOGIN DEBUG: user=Array
+(
+    [id] => 909
+    [username] => geni1819
+    [password] => $2y$10$5RKKP5rjZ.5HLC9zfCnCa.0ut/80NkKLLEJast1qo16qZbb7lYjDm
+    [nama] => Genius Hartono
+    [alamat] => Canggu
+    [noktp] => 32534535434534
+    [profile_image] => assets/img/profiles/1754360418_f8328bc9d08ca01b89ee.png
+    [birthday] => 2000-05-31
+    [deleted_at] => 
+    [recovered_at] => 
+    [otoritas] => T
+    [created_at] => 2025-07-05 14:20:16
+    [updated_at] => 2025-08-07 14:48:00
+)
+
+DEBUG - 2025-08-26 01:26:33 --> LOGIN DEBUG: userDept=Array
+(
+    [id] => 5
+    [user_id] => 909
+    [department_id] => 3
+    [deleted_at] => 
+)
+
+DEBUG - 2025-08-26 01:26:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 01:26:33 --> LOGIN DEBUG: sessionData=Array
+(
+    [user_id] => 909
+    [user_username] => geni1819
+    [user_nama] => Genius Hartono
+    [department_id] => 3
+    [isLoggedIn] => 1
+)
+
+DEBUG - 2025-08-26 01:26:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 01:26:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-08-26 01:26:39 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\penjualan\datapenjualan.php on line 142.
+ 1 APPPATH\Views\penjualan\datapenjualan.php(142): number_format(null, 0, ',', '.')
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\webadmin3\\app\\Views\\penjualan\\datapenjualan.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('penjualan/datapenjualan', [], true)
+ 5 APPPATH\Controllers\Penjualan.php(134): view('penjualan/datapenjualan', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Penjualan->datapenjualan()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2025-08-26 01:26:39 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\penjualan\datapenjualan.php on line 142.
+ 1 APPPATH\Views\penjualan\datapenjualan.php(142): number_format(null, 0, ',', '.')
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\webadmin3\\app\\Views\\penjualan\\datapenjualan.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('penjualan/datapenjualan', [], true)
+ 5 APPPATH\Controllers\Penjualan.php(134): view('penjualan/datapenjualan', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Penjualan->datapenjualan()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-08-26 01:26:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 01:26:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-08-26 01:27:00 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\penjualan\datapenjualan.php on line 142.
+ 1 APPPATH\Views\penjualan\datapenjualan.php(142): number_format(null, 0, ',', '.')
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\webadmin3\\app\\Views\\penjualan\\datapenjualan.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('penjualan/datapenjualan', [], true)
+ 5 APPPATH\Controllers\Penjualan.php(134): view('penjualan/datapenjualan', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Penjualan->datapenjualan()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2025-08-26 01:27:00 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\penjualan\datapenjualan.php on line 142.
+ 1 APPPATH\Views\penjualan\datapenjualan.php(142): number_format(null, 0, ',', '.')
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\webadmin3\\app\\Views\\penjualan\\datapenjualan.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('penjualan/datapenjualan', [], true)
+ 5 APPPATH\Controllers\Penjualan.php(134): view('penjualan/datapenjualan', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Penjualan->datapenjualan()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-08-26 01:27:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 01:28:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-08-26 01:28:26 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\penjualan\datapenjualan.php on line 142.
+ 1 APPPATH\Views\penjualan\datapenjualan.php(142): number_format(null, 0, ',', '.')
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\webadmin3\\app\\Views\\penjualan\\datapenjualan.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('penjualan/datapenjualan', [], true)
+ 5 APPPATH\Controllers\Penjualan.php(134): view('penjualan/datapenjualan', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Penjualan->datapenjualan()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2025-08-26 01:28:26 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\penjualan\datapenjualan.php on line 142.
+ 1 APPPATH\Views\penjualan\datapenjualan.php(142): number_format(null, 0, ',', '.')
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\webadmin3\\app\\Views\\penjualan\\datapenjualan.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('penjualan/datapenjualan', [], true)
+ 5 APPPATH\Controllers\Penjualan.php(134): view('penjualan/datapenjualan', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Penjualan->datapenjualan()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-08-26 01:34:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-08-26 01:34:41 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\penjualan\datapenjualan.php on line 142.
+ 1 APPPATH\Views\penjualan\datapenjualan.php(142): number_format(null, 0, ',', '.')
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\webadmin3\\app\\Views\\penjualan\\datapenjualan.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('penjualan/datapenjualan', [], true)
+ 5 APPPATH\Controllers\Penjualan.php(134): view('penjualan/datapenjualan', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Penjualan->datapenjualan()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2025-08-26 01:34:41 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\penjualan\datapenjualan.php on line 142.
+ 1 APPPATH\Views\penjualan\datapenjualan.php(142): number_format(null, 0, ',', '.')
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\webadmin3\\app\\Views\\penjualan\\datapenjualan.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('penjualan/datapenjualan', [], true)
+ 5 APPPATH\Controllers\Penjualan.php(134): view('penjualan/datapenjualan', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Penjualan->datapenjualan()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-08-26 01:34:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 01:34:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 01:38:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 01:38:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 01:41:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 01:41:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-08-26 01:41:32 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\penjualan\datapenjualan.php on line 142.
+ 1 APPPATH\Views\penjualan\datapenjualan.php(142): number_format(null, 0, ',', '.')
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\webadmin3\\app\\Views\\penjualan\\datapenjualan.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('penjualan/datapenjualan', [], true)
+ 5 APPPATH\Controllers\Penjualan.php(134): view('penjualan/datapenjualan', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Penjualan->datapenjualan()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2025-08-26 01:41:32 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\penjualan\datapenjualan.php on line 142.
+ 1 APPPATH\Views\penjualan\datapenjualan.php(142): number_format(null, 0, ',', '.')
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\webadmin3\\app\\Views\\penjualan\\datapenjualan.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('penjualan/datapenjualan', [], true)
+ 5 APPPATH\Controllers\Penjualan.php(134): view('penjualan/datapenjualan', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Penjualan->datapenjualan()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-08-26 01:41:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 01:41:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 01:41:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 01:49:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 01:49:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 01:49:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 02:04:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-08-26 02:04:18 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\penjualan\datapenjualan.php on line 142.
+ 1 APPPATH\Views\penjualan\datapenjualan.php(142): number_format(null, 0, ',', '.')
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\webadmin3\\app\\Views\\penjualan\\datapenjualan.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('penjualan/datapenjualan', [], true)
+ 5 APPPATH\Controllers\Penjualan.php(134): view('penjualan/datapenjualan', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Penjualan->datapenjualan()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-08-26 02:04:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 02:06:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 02:06:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 02:06:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 02:06:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 02:06:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 02:11:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 02:11:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 02:11:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 02:11:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 02:13:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 02:13:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 02:13:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 02:34:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 02:41:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 02:42:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 02:43:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 02:43:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 02:43:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 02:44:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 02:44:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 02:45:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 02:46:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 02:47:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 02:48:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 02:49:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 02:50:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 02:51:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 02:56:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 02:57:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 02:58:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 02:59:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 03:13:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 03:16:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 03:16:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 03:16:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 03:16:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 03:32:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 03:35:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 03:35:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 03:37:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 03:39:13 --> LOGIN DEBUG: user=Array
+(
+    [id] => 909
+    [username] => geni1819
+    [password] => $2y$10$5RKKP5rjZ.5HLC9zfCnCa.0ut/80NkKLLEJast1qo16qZbb7lYjDm
+    [nama] => Genius Hartono
+    [alamat] => Canggu
+    [noktp] => 32534535434534
+    [profile_image] => assets/img/profiles/1754360418_f8328bc9d08ca01b89ee.png
+    [birthday] => 2000-05-31
+    [deleted_at] => 
+    [recovered_at] => 
+    [otoritas] => T
+    [created_at] => 2025-07-05 14:20:16
+    [updated_at] => 2025-08-07 14:48:00
+)
+
+DEBUG - 2025-08-26 03:39:13 --> LOGIN DEBUG: userDept=Array
+(
+    [id] => 5
+    [user_id] => 909
+    [department_id] => 3
+    [deleted_at] => 
+)
+
+DEBUG - 2025-08-26 03:39:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 03:39:13 --> LOGIN DEBUG: sessionData=Array
+(
+    [user_id] => 909
+    [user_username] => geni1819
+    [user_nama] => Genius Hartono
+    [department_id] => 3
+    [isLoggedIn] => 1
+)
+
+DEBUG - 2025-08-26 03:39:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 03:39:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 03:40:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 03:43:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 03:43:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 03:43:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 03:44:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 03:48:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 03:48:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 03:48:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 03:48:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 03:48:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 03:49:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 03:49:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 03:49:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 04:12:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 04:12:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 04:12:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 04:12:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 04:12:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 04:12:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 04:12:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 04:30:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 04:30:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 04:30:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 04:30:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 04:30:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 04:30:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 04:30:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 04:30:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 04:33:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 04:33:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 04:33:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 04:34:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 04:34:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 04:34:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 04:43:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 05:10:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 05:10:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-08-26 05:10:09 --> ErrorException: pg_query(): Query failed: ERROR:  date/time field value out of range: &quot;26/08/2025&quot;
+LINE 1: UPDATE &quot;sales&quot; SET &quot;tanggal_nota&quot; = '26/08/2025', &quot;customer&quot;...
+                                            ^
+HINT:  Perhaps you need a different &quot;datestyle&quot; setting. in C:\xampp\htdocs\webadmin3\system\Database\Postgre\Connection.php:206
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'pg_query(): Que...', 'C:\\xampp\\htdocs...', 206)
+#1 C:\xampp\htdocs\webadmin3\system\Database\Postgre\Connection.php(206): pg_query(Object(PgSql\Connection), 'UPDATE "sales" ...')
+#2 C:\xampp\htdocs\webadmin3\system\Database\BaseConnection.php(738): CodeIgniter\Database\Postgre\Connection->execute('UPDATE "sales" ...')
+#3 C:\xampp\htdocs\webadmin3\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE "sales" ...')
+#4 C:\xampp\htdocs\webadmin3\system\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE "sales" ...', Array, false)
+#5 C:\xampp\htdocs\webadmin3\app\Controllers\Penjualan.php(73): CodeIgniter\Database\BaseBuilder->update(Array)
+#6 C:\xampp\htdocs\webadmin3\system\CodeIgniter.php(933): App\Controllers\Penjualan->update('24')
+#7 C:\xampp\htdocs\webadmin3\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+#8 C:\xampp\htdocs\webadmin3\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\webadmin3\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\webadmin3\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\xampp\htdocs\webadmin3\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2025-08-26 05:10:09 --> CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  date/time field value out of range: &quot;26/08/2025&quot;
+LINE 1: UPDATE &quot;sales&quot; SET &quot;tanggal_nota&quot; = '26/08/2025', &quot;customer&quot;...
+                                            ^
+HINT:  Perhaps you need a different &quot;datestyle&quot; setting.
+[Method: POST, Route: penjualan/update/24]
+in SYSTEMPATH\Database\BaseConnection.php on line 692.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE "sales" SET "tanggal_nota" = :tanggal_nota:, "customer" = :customer:, "sales" = :sales:, "payment_a" = :payment_a:, "payment_system" = :payment_system:, "metode_bayar" = :metode_bayar:, "tenor" = :tenor:, "jatuh_tempo" = :jatuh_tempo:, "dp" = :dp:, "catatan_kredit" = :catatan_kredit:, "total" = :total:, "grand_total" = :grand_total:, "status" = :status:, "status_pembayaran" = :status_pembayaran:
+WHERE "id" = :id:', [...], false)
+ 2 APPPATH\Controllers\Penjualan.php(73): CodeIgniter\Database\BaseBuilder->update([...])
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Penjualan->update('24')
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-26 05:10:09 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  date/time field value out of range: &quot;26/08/2025&quot;
+LINE 1: UPDATE &quot;sales&quot; SET &quot;tanggal_nota&quot; = '26/08/2025', &quot;customer&quot;...
+                                            ^
+HINT:  Perhaps you need a different &quot;datestyle&quot; setting.
+in SYSTEMPATH\Database\Postgre\Connection.php on line 211.
+ 1 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\Postgre\Connection->execute('UPDATE "sales" SET "tanggal_nota" = \'26/08/2025\', "customer" = \'\', "sales" = \'\', "payment_a" = \'3000000\', "payment_system" = \'Tunai\', "metode_bayar" = NULL, "tenor" = \'30\', "jatuh_tempo" = \'2025-09-25\', "dp" = \'\', "catatan_kredit" = \'\', "total" = \'3726369.00\', "grand_total" = \'3726369.00\', "status" = \'selesai\', "status_pembayaran" = \'Kredit\'
+WHERE "id" = \'24\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE "sales" SET "tanggal_nota" = \'26/08/2025\', "customer" = \'\', "sales" = \'\', "payment_a" = \'3000000\', "payment_system" = \'Tunai\', "metode_bayar" = NULL, "tenor" = \'30\', "jatuh_tempo" = \'2025-09-25\', "dp" = \'\', "catatan_kredit" = \'\', "total" = \'3726369.00\', "grand_total" = \'3726369.00\', "status" = \'selesai\', "status_pembayaran" = \'Kredit\'
+WHERE "id" = \'24\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE "sales" SET "tanggal_nota" = :tanggal_nota:, "customer" = :customer:, "sales" = :sales:, "payment_a" = :payment_a:, "payment_system" = :payment_system:, "metode_bayar" = :metode_bayar:, "tenor" = :tenor:, "jatuh_tempo" = :jatuh_tempo:, "dp" = :dp:, "catatan_kredit" = :catatan_kredit:, "total" = :total:, "grand_total" = :grand_total:, "status" = :status:, "status_pembayaran" = :status_pembayaran:
+WHERE "id" = :id:', [...], false)
+ 4 APPPATH\Controllers\Penjualan.php(73): CodeIgniter\Database\BaseBuilder->update([...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Penjualan->update('24')
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-26 05:10:09 --> [Caused by] ErrorException: pg_query(): Query failed: ERROR:  date/time field value out of range: &quot;26/08/2025&quot;
+LINE 1: UPDATE &quot;sales&quot; SET &quot;tanggal_nota&quot; = '26/08/2025', &quot;customer&quot;...
+                                            ^
+HINT:  Perhaps you need a different &quot;datestyle&quot; setting.
+in SYSTEMPATH\Database\Postgre\Connection.php on line 206.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'pg_query(): Query failed: ERROR:  date/time field value out of range: &quot;26/08/2025&quot;
+LINE 1: UPDATE &quot;sales&quot; SET &quot;tanggal_nota&quot; = \'26/08/2025\', &quot;customer&quot;...
+                                            ^
+HINT:  Perhaps you need a different &quot;datestyle&quot; setting.', 'C:\\xampp\\htdocs\\webadmin3\\system\\Database\\Postgre\\Connection.php', 206)
+ 2 SYSTEMPATH\Database\Postgre\Connection.php(206): pg_query(Object(PgSql\Connection), 'UPDATE "sales" SET "tanggal_nota" = \'26/08/2025\', "customer" = \'\', "sales" = \'\', "payment_a" = \'3000000\', "payment_system" = \'Tunai\', "metode_bayar" = NULL, "tenor" = \'30\', "jatuh_tempo" = \'2025-09-25\', "dp" = \'\', "catatan_kredit" = \'\', "total" = \'3726369.00\', "grand_total" = \'3726369.00\', "status" = \'selesai\', "status_pembayaran" = \'Kredit\'
+WHERE "id" = \'24\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\Postgre\Connection->execute('UPDATE "sales" SET "tanggal_nota" = \'26/08/2025\', "customer" = \'\', "sales" = \'\', "payment_a" = \'3000000\', "payment_system" = \'Tunai\', "metode_bayar" = NULL, "tenor" = \'30\', "jatuh_tempo" = \'2025-09-25\', "dp" = \'\', "catatan_kredit" = \'\', "total" = \'3726369.00\', "grand_total" = \'3726369.00\', "status" = \'selesai\', "status_pembayaran" = \'Kredit\'
+WHERE "id" = \'24\'')
+ 4 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE "sales" SET "tanggal_nota" = \'26/08/2025\', "customer" = \'\', "sales" = \'\', "payment_a" = \'3000000\', "payment_system" = \'Tunai\', "metode_bayar" = NULL, "tenor" = \'30\', "jatuh_tempo" = \'2025-09-25\', "dp" = \'\', "catatan_kredit" = \'\', "total" = \'3726369.00\', "grand_total" = \'3726369.00\', "status" = \'selesai\', "status_pembayaran" = \'Kredit\'
+WHERE "id" = \'24\'')
+ 5 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE "sales" SET "tanggal_nota" = :tanggal_nota:, "customer" = :customer:, "sales" = :sales:, "payment_a" = :payment_a:, "payment_system" = :payment_system:, "metode_bayar" = :metode_bayar:, "tenor" = :tenor:, "jatuh_tempo" = :jatuh_tempo:, "dp" = :dp:, "catatan_kredit" = :catatan_kredit:, "total" = :total:, "grand_total" = :grand_total:, "status" = :status:, "status_pembayaran" = :status_pembayaran:
+WHERE "id" = :id:', [...], false)
+ 6 APPPATH\Controllers\Penjualan.php(73): CodeIgniter\Database\BaseBuilder->update([...])
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Penjualan->update('24')
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-08-26 05:20:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 05:20:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-08-26 05:20:50 --> ErrorException: pg_query(): Query failed: ERROR:  invalid input syntax for type integer: &quot;&quot;
+LINE 1: ...&quot; SET &quot;tanggal_nota&quot; = '2025-08-26', &quot;customer&quot; = '', &quot;sales...
+                                                             ^ in C:\xampp\htdocs\webadmin3\system\Database\Postgre\Connection.php:206
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'pg_query(): Que...', 'C:\\xampp\\htdocs...', 206)
+#1 C:\xampp\htdocs\webadmin3\system\Database\Postgre\Connection.php(206): pg_query(Object(PgSql\Connection), 'UPDATE "sales" ...')
+#2 C:\xampp\htdocs\webadmin3\system\Database\BaseConnection.php(738): CodeIgniter\Database\Postgre\Connection->execute('UPDATE "sales" ...')
+#3 C:\xampp\htdocs\webadmin3\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE "sales" ...')
+#4 C:\xampp\htdocs\webadmin3\system\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE "sales" ...', Array, false)
+#5 C:\xampp\htdocs\webadmin3\app\Controllers\Penjualan.php(78): CodeIgniter\Database\BaseBuilder->update(Array)
+#6 C:\xampp\htdocs\webadmin3\system\CodeIgniter.php(933): App\Controllers\Penjualan->update('24')
+#7 C:\xampp\htdocs\webadmin3\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+#8 C:\xampp\htdocs\webadmin3\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\webadmin3\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\webadmin3\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\xampp\htdocs\webadmin3\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2025-08-26 05:20:50 --> CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  invalid input syntax for type integer: &quot;&quot;
+LINE 1: ...&quot; SET &quot;tanggal_nota&quot; = '2025-08-26', &quot;customer&quot; = '', &quot;sales...
+                                                             ^
+[Method: POST, Route: penjualan/update/24]
+in SYSTEMPATH\Database\BaseConnection.php on line 692.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE "sales" SET "tanggal_nota" = :tanggal_nota:, "customer" = :customer:, "sales" = :sales:, "payment_a" = :payment_a:, "payment_system" = :payment_system:, "metode_bayar" = :metode_bayar:, "tenor" = :tenor:, "jatuh_tempo" = :jatuh_tempo:, "dp" = :dp:, "catatan_kredit" = :catatan_kredit:, "total" = :total:, "grand_total" = :grand_total:, "status" = :status:, "status_pembayaran" = :status_pembayaran:
+WHERE "id" = :id:', [...], false)
+ 2 APPPATH\Controllers\Penjualan.php(78): CodeIgniter\Database\BaseBuilder->update([...])
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Penjualan->update('24')
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-26 05:20:50 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  invalid input syntax for type integer: &quot;&quot;
+LINE 1: ...&quot; SET &quot;tanggal_nota&quot; = '2025-08-26', &quot;customer&quot; = '', &quot;sales...
+                                                             ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 211.
+ 1 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\Postgre\Connection->execute('UPDATE "sales" SET "tanggal_nota" = \'2025-08-26\', "customer" = \'\', "sales" = \'\', "payment_a" = \'3000000\', "payment_system" = \'Tunai\', "metode_bayar" = NULL, "tenor" = \'30\', "jatuh_tempo" = \'2025-09-25\', "dp" = \'\', "catatan_kredit" = \'\', "total" = \'3726369.00\', "grand_total" = \'3726369.00\', "status" = \'selesai\', "status_pembayaran" = \'Kredit\'
+WHERE "id" = \'24\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE "sales" SET "tanggal_nota" = \'2025-08-26\', "customer" = \'\', "sales" = \'\', "payment_a" = \'3000000\', "payment_system" = \'Tunai\', "metode_bayar" = NULL, "tenor" = \'30\', "jatuh_tempo" = \'2025-09-25\', "dp" = \'\', "catatan_kredit" = \'\', "total" = \'3726369.00\', "grand_total" = \'3726369.00\', "status" = \'selesai\', "status_pembayaran" = \'Kredit\'
+WHERE "id" = \'24\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE "sales" SET "tanggal_nota" = :tanggal_nota:, "customer" = :customer:, "sales" = :sales:, "payment_a" = :payment_a:, "payment_system" = :payment_system:, "metode_bayar" = :metode_bayar:, "tenor" = :tenor:, "jatuh_tempo" = :jatuh_tempo:, "dp" = :dp:, "catatan_kredit" = :catatan_kredit:, "total" = :total:, "grand_total" = :grand_total:, "status" = :status:, "status_pembayaran" = :status_pembayaran:
+WHERE "id" = :id:', [...], false)
+ 4 APPPATH\Controllers\Penjualan.php(78): CodeIgniter\Database\BaseBuilder->update([...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Penjualan->update('24')
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-26 05:20:50 --> [Caused by] ErrorException: pg_query(): Query failed: ERROR:  invalid input syntax for type integer: &quot;&quot;
+LINE 1: ...&quot; SET &quot;tanggal_nota&quot; = '2025-08-26', &quot;customer&quot; = '', &quot;sales...
+                                                             ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 206.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'pg_query(): Query failed: ERROR:  invalid input syntax for type integer: &quot;&quot;
+LINE 1: ...&quot; SET &quot;tanggal_nota&quot; = \'2025-08-26\', &quot;customer&quot; = \'\', &quot;sales...
+                                                             ^', 'C:\\xampp\\htdocs\\webadmin3\\system\\Database\\Postgre\\Connection.php', 206)
+ 2 SYSTEMPATH\Database\Postgre\Connection.php(206): pg_query(Object(PgSql\Connection), 'UPDATE "sales" SET "tanggal_nota" = \'2025-08-26\', "customer" = \'\', "sales" = \'\', "payment_a" = \'3000000\', "payment_system" = \'Tunai\', "metode_bayar" = NULL, "tenor" = \'30\', "jatuh_tempo" = \'2025-09-25\', "dp" = \'\', "catatan_kredit" = \'\', "total" = \'3726369.00\', "grand_total" = \'3726369.00\', "status" = \'selesai\', "status_pembayaran" = \'Kredit\'
+WHERE "id" = \'24\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\Postgre\Connection->execute('UPDATE "sales" SET "tanggal_nota" = \'2025-08-26\', "customer" = \'\', "sales" = \'\', "payment_a" = \'3000000\', "payment_system" = \'Tunai\', "metode_bayar" = NULL, "tenor" = \'30\', "jatuh_tempo" = \'2025-09-25\', "dp" = \'\', "catatan_kredit" = \'\', "total" = \'3726369.00\', "grand_total" = \'3726369.00\', "status" = \'selesai\', "status_pembayaran" = \'Kredit\'
+WHERE "id" = \'24\'')
+ 4 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE "sales" SET "tanggal_nota" = \'2025-08-26\', "customer" = \'\', "sales" = \'\', "payment_a" = \'3000000\', "payment_system" = \'Tunai\', "metode_bayar" = NULL, "tenor" = \'30\', "jatuh_tempo" = \'2025-09-25\', "dp" = \'\', "catatan_kredit" = \'\', "total" = \'3726369.00\', "grand_total" = \'3726369.00\', "status" = \'selesai\', "status_pembayaran" = \'Kredit\'
+WHERE "id" = \'24\'')
+ 5 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE "sales" SET "tanggal_nota" = :tanggal_nota:, "customer" = :customer:, "sales" = :sales:, "payment_a" = :payment_a:, "payment_system" = :payment_system:, "metode_bayar" = :metode_bayar:, "tenor" = :tenor:, "jatuh_tempo" = :jatuh_tempo:, "dp" = :dp:, "catatan_kredit" = :catatan_kredit:, "total" = :total:, "grand_total" = :grand_total:, "status" = :status:, "status_pembayaran" = :status_pembayaran:
+WHERE "id" = :id:', [...], false)
+ 6 APPPATH\Controllers\Penjualan.php(78): CodeIgniter\Database\BaseBuilder->update([...])
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Penjualan->update('24')
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-08-26 05:23:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 05:23:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-08-26 05:23:40 --> ErrorException: pg_query(): Query failed: ERROR:  invalid input syntax for type bigint: &quot;&quot;
+LINE 1: ...nor&quot; = '30', &quot;jatuh_tempo&quot; = '2025-09-25', &quot;dp&quot; = '', &quot;catat...
+                                                             ^ in C:\xampp\htdocs\webadmin3\system\Database\Postgre\Connection.php:206
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'pg_query(): Que...', 'C:\\xampp\\htdocs...', 206)
+#1 C:\xampp\htdocs\webadmin3\system\Database\Postgre\Connection.php(206): pg_query(Object(PgSql\Connection), 'UPDATE "sales" ...')
+#2 C:\xampp\htdocs\webadmin3\system\Database\BaseConnection.php(738): CodeIgniter\Database\Postgre\Connection->execute('UPDATE "sales" ...')
+#3 C:\xampp\htdocs\webadmin3\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE "sales" ...')
+#4 C:\xampp\htdocs\webadmin3\system\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE "sales" ...', Array, false)
+#5 C:\xampp\htdocs\webadmin3\app\Controllers\Penjualan.php(80): CodeIgniter\Database\BaseBuilder->update(Array)
+#6 C:\xampp\htdocs\webadmin3\system\CodeIgniter.php(933): App\Controllers\Penjualan->update('24')
+#7 C:\xampp\htdocs\webadmin3\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+#8 C:\xampp\htdocs\webadmin3\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\webadmin3\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\webadmin3\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\xampp\htdocs\webadmin3\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2025-08-26 05:23:40 --> CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  invalid input syntax for type bigint: &quot;&quot;
+LINE 1: ...nor&quot; = '30', &quot;jatuh_tempo&quot; = '2025-09-25', &quot;dp&quot; = '', &quot;catat...
+                                                             ^
+[Method: POST, Route: penjualan/update/24]
+in SYSTEMPATH\Database\BaseConnection.php on line 692.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE "sales" SET "tanggal_nota" = :tanggal_nota:, "customer" = :customer:, "sales" = :sales:, "payment_a" = :payment_a:, "payment_system" = :payment_system:, "metode_bayar" = :metode_bayar:, "tenor" = :tenor:, "jatuh_tempo" = :jatuh_tempo:, "dp" = :dp:, "catatan_kredit" = :catatan_kredit:, "total" = :total:, "grand_total" = :grand_total:, "status" = :status:, "status_pembayaran" = :status_pembayaran:
+WHERE "id" = :id:', [...], false)
+ 2 APPPATH\Controllers\Penjualan.php(80): CodeIgniter\Database\BaseBuilder->update([...])
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Penjualan->update('24')
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-26 05:23:40 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  invalid input syntax for type bigint: &quot;&quot;
+LINE 1: ...nor&quot; = '30', &quot;jatuh_tempo&quot; = '2025-09-25', &quot;dp&quot; = '', &quot;catat...
+                                                             ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 211.
+ 1 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\Postgre\Connection->execute('UPDATE "sales" SET "tanggal_nota" = \'2025-08-26\', "customer" = NULL, "sales" = NULL, "payment_a" = \'3000000\', "payment_system" = \'Tunai\', "metode_bayar" = NULL, "tenor" = \'30\', "jatuh_tempo" = \'2025-09-25\', "dp" = \'\', "catatan_kredit" = \'\', "total" = \'3726369.00\', "grand_total" = \'3726369.00\', "status" = \'selesai\', "status_pembayaran" = \'Kredit\'
+WHERE "id" = \'24\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE "sales" SET "tanggal_nota" = \'2025-08-26\', "customer" = NULL, "sales" = NULL, "payment_a" = \'3000000\', "payment_system" = \'Tunai\', "metode_bayar" = NULL, "tenor" = \'30\', "jatuh_tempo" = \'2025-09-25\', "dp" = \'\', "catatan_kredit" = \'\', "total" = \'3726369.00\', "grand_total" = \'3726369.00\', "status" = \'selesai\', "status_pembayaran" = \'Kredit\'
+WHERE "id" = \'24\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE "sales" SET "tanggal_nota" = :tanggal_nota:, "customer" = :customer:, "sales" = :sales:, "payment_a" = :payment_a:, "payment_system" = :payment_system:, "metode_bayar" = :metode_bayar:, "tenor" = :tenor:, "jatuh_tempo" = :jatuh_tempo:, "dp" = :dp:, "catatan_kredit" = :catatan_kredit:, "total" = :total:, "grand_total" = :grand_total:, "status" = :status:, "status_pembayaran" = :status_pembayaran:
+WHERE "id" = :id:', [...], false)
+ 4 APPPATH\Controllers\Penjualan.php(80): CodeIgniter\Database\BaseBuilder->update([...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Penjualan->update('24')
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-26 05:23:40 --> [Caused by] ErrorException: pg_query(): Query failed: ERROR:  invalid input syntax for type bigint: &quot;&quot;
+LINE 1: ...nor&quot; = '30', &quot;jatuh_tempo&quot; = '2025-09-25', &quot;dp&quot; = '', &quot;catat...
+                                                             ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 206.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'pg_query(): Query failed: ERROR:  invalid input syntax for type bigint: &quot;&quot;
+LINE 1: ...nor&quot; = \'30\', &quot;jatuh_tempo&quot; = \'2025-09-25\', &quot;dp&quot; = \'\', &quot;catat...
+                                                             ^', 'C:\\xampp\\htdocs\\webadmin3\\system\\Database\\Postgre\\Connection.php', 206)
+ 2 SYSTEMPATH\Database\Postgre\Connection.php(206): pg_query(Object(PgSql\Connection), 'UPDATE "sales" SET "tanggal_nota" = \'2025-08-26\', "customer" = NULL, "sales" = NULL, "payment_a" = \'3000000\', "payment_system" = \'Tunai\', "metode_bayar" = NULL, "tenor" = \'30\', "jatuh_tempo" = \'2025-09-25\', "dp" = \'\', "catatan_kredit" = \'\', "total" = \'3726369.00\', "grand_total" = \'3726369.00\', "status" = \'selesai\', "status_pembayaran" = \'Kredit\'
+WHERE "id" = \'24\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\Postgre\Connection->execute('UPDATE "sales" SET "tanggal_nota" = \'2025-08-26\', "customer" = NULL, "sales" = NULL, "payment_a" = \'3000000\', "payment_system" = \'Tunai\', "metode_bayar" = NULL, "tenor" = \'30\', "jatuh_tempo" = \'2025-09-25\', "dp" = \'\', "catatan_kredit" = \'\', "total" = \'3726369.00\', "grand_total" = \'3726369.00\', "status" = \'selesai\', "status_pembayaran" = \'Kredit\'
+WHERE "id" = \'24\'')
+ 4 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE "sales" SET "tanggal_nota" = \'2025-08-26\', "customer" = NULL, "sales" = NULL, "payment_a" = \'3000000\', "payment_system" = \'Tunai\', "metode_bayar" = NULL, "tenor" = \'30\', "jatuh_tempo" = \'2025-09-25\', "dp" = \'\', "catatan_kredit" = \'\', "total" = \'3726369.00\', "grand_total" = \'3726369.00\', "status" = \'selesai\', "status_pembayaran" = \'Kredit\'
+WHERE "id" = \'24\'')
+ 5 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE "sales" SET "tanggal_nota" = :tanggal_nota:, "customer" = :customer:, "sales" = :sales:, "payment_a" = :payment_a:, "payment_system" = :payment_system:, "metode_bayar" = :metode_bayar:, "tenor" = :tenor:, "jatuh_tempo" = :jatuh_tempo:, "dp" = :dp:, "catatan_kredit" = :catatan_kredit:, "total" = :total:, "grand_total" = :grand_total:, "status" = :status:, "status_pembayaran" = :status_pembayaran:
+WHERE "id" = :id:', [...], false)
+ 6 APPPATH\Controllers\Penjualan.php(80): CodeIgniter\Database\BaseBuilder->update([...])
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Penjualan->update('24')
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-08-26 05:26:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 05:26:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 05:26:26 --> POST barang_id: ["2"]
+DEBUG - 2025-08-26 05:26:26 --> POST qty: ["3.00"]
+DEBUG - 2025-08-26 05:26:26 --> Barang ditemukan: {"id":"2","category_id":"3","satuan_id":null,"jenis_id":null,"pelengkap_id":null,"gondola_id":null,"merk_id":null,"warna_sinar_id":null,"ukuran_barang_id":null,"voltase_id":null,"dimensi_id":null,"warna_body_id":null,"warna_bibir_id":null,"kaki_id":null,"model_id":null,"fiting_id":null,"daya_id":null,"jumlah_mata_id":null,"name":"LAPTOP Asus","price":"1242123.00","stock":"12","created_at":"2025-07-10 05:42:42","updated_at":"2025-07-22 11:38:27","deleted_at":null,"recovered_at":null,"batas_tanggal_sistem":null,"mode_batas_tanggal":"automatic","otoritas":null,"nama_ky":"geni"}
+DEBUG - 2025-08-26 05:28:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 05:28:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 05:28:16 --> POST barang_id: ["2"]
+DEBUG - 2025-08-26 05:28:16 --> POST qty: ["3.00"]
+DEBUG - 2025-08-26 05:28:16 --> Barang ditemukan: {"id":"2","category_id":"3","satuan_id":null,"jenis_id":null,"pelengkap_id":null,"gondola_id":null,"merk_id":null,"warna_sinar_id":null,"ukuran_barang_id":null,"voltase_id":null,"dimensi_id":null,"warna_body_id":null,"warna_bibir_id":null,"kaki_id":null,"model_id":null,"fiting_id":null,"daya_id":null,"jumlah_mata_id":null,"name":"LAPTOP Asus","price":"1242123.00","stock":"12","created_at":"2025-07-10 05:42:42","updated_at":"2025-07-22 11:38:27","deleted_at":null,"recovered_at":null,"batas_tanggal_sistem":null,"mode_batas_tanggal":"automatic","otoritas":null,"nama_ky":"geni"}
+DEBUG - 2025-08-26 05:28:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 05:28:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 05:28:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 05:28:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 05:28:37 --> POST barang_id: ["2"]
+DEBUG - 2025-08-26 05:28:37 --> POST qty: ["3.00"]
+DEBUG - 2025-08-26 05:28:37 --> Barang ditemukan: {"id":"2","category_id":"3","satuan_id":null,"jenis_id":null,"pelengkap_id":null,"gondola_id":null,"merk_id":null,"warna_sinar_id":null,"ukuran_barang_id":null,"voltase_id":null,"dimensi_id":null,"warna_body_id":null,"warna_bibir_id":null,"kaki_id":null,"model_id":null,"fiting_id":null,"daya_id":null,"jumlah_mata_id":null,"name":"LAPTOP Asus","price":"1242123.00","stock":"12","created_at":"2025-07-10 05:42:42","updated_at":"2025-07-22 11:38:27","deleted_at":null,"recovered_at":null,"batas_tanggal_sistem":null,"mode_batas_tanggal":"automatic","otoritas":null,"nama_ky":"geni"}
+DEBUG - 2025-08-26 05:28:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 05:28:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 05:28:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 05:31:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 05:31:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 05:31:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 05:31:40 --> POST barang_id: ["2"]
+DEBUG - 2025-08-26 05:31:40 --> POST qty: ["3.00"]
+DEBUG - 2025-08-26 05:31:40 --> Barang ditemukan: {"id":"2","category_id":"3","satuan_id":null,"jenis_id":null,"pelengkap_id":null,"gondola_id":null,"merk_id":null,"warna_sinar_id":null,"ukuran_barang_id":null,"voltase_id":null,"dimensi_id":null,"warna_body_id":null,"warna_bibir_id":null,"kaki_id":null,"model_id":null,"fiting_id":null,"daya_id":null,"jumlah_mata_id":null,"name":"LAPTOP Asus","price":"1242123.00","stock":"12","created_at":"2025-07-10 05:42:42","updated_at":"2025-07-22 11:38:27","deleted_at":null,"recovered_at":null,"batas_tanggal_sistem":null,"mode_batas_tanggal":"automatic","otoritas":null,"nama_ky":"geni"}
+DEBUG - 2025-08-26 05:31:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 05:31:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 05:34:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 05:36:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 05:36:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 05:37:03 --> LOGIN DEBUG: user=Array
+(
+    [id] => 909
+    [username] => geni1819
+    [password] => $2y$10$5RKKP5rjZ.5HLC9zfCnCa.0ut/80NkKLLEJast1qo16qZbb7lYjDm
+    [nama] => Genius Hartono
+    [alamat] => Canggu
+    [noktp] => 32534535434534
+    [profile_image] => assets/img/profiles/1754360418_f8328bc9d08ca01b89ee.png
+    [birthday] => 2000-05-31
+    [deleted_at] => 
+    [recovered_at] => 
+    [otoritas] => T
+    [created_at] => 2025-07-05 14:20:16
+    [updated_at] => 2025-08-07 14:48:00
+)
+
+DEBUG - 2025-08-26 05:37:03 --> LOGIN DEBUG: userDept=Array
+(
+    [id] => 5
+    [user_id] => 909
+    [department_id] => 3
+    [deleted_at] => 
+)
+
+DEBUG - 2025-08-26 05:37:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 05:37:03 --> LOGIN DEBUG: sessionData=Array
+(
+    [user_id] => 909
+    [user_username] => geni1819
+    [user_nama] => Genius Hartono
+    [department_id] => 3
+    [isLoggedIn] => 1
+)
+
+DEBUG - 2025-08-26 05:37:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 05:37:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 05:38:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 05:38:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 05:38:50 --> POST barang_id: ["2"]
+DEBUG - 2025-08-26 05:38:50 --> POST qty: ["3.00"]
+DEBUG - 2025-08-26 05:38:50 --> Barang ditemukan: {"id":"2","category_id":"3","satuan_id":null,"jenis_id":null,"pelengkap_id":null,"gondola_id":null,"merk_id":null,"warna_sinar_id":null,"ukuran_barang_id":null,"voltase_id":null,"dimensi_id":null,"warna_body_id":null,"warna_bibir_id":null,"kaki_id":null,"model_id":null,"fiting_id":null,"daya_id":null,"jumlah_mata_id":null,"name":"LAPTOP Asus","price":"1242123.00","stock":"12","created_at":"2025-07-10 05:42:42","updated_at":"2025-07-22 11:38:27","deleted_at":null,"recovered_at":null,"batas_tanggal_sistem":null,"mode_batas_tanggal":"automatic","otoritas":null,"nama_ky":"geni"}
+DEBUG - 2025-08-26 05:38:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 05:38:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 05:39:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 05:45:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 05:45:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 05:45:51 --> POST barang_id: ["2"]
+DEBUG - 2025-08-26 05:45:51 --> POST qty: ["3.00"]
+DEBUG - 2025-08-26 05:45:51 --> Barang ditemukan: {"id":"2","category_id":"3","satuan_id":null,"jenis_id":null,"pelengkap_id":null,"gondola_id":null,"merk_id":null,"warna_sinar_id":null,"ukuran_barang_id":null,"voltase_id":null,"dimensi_id":null,"warna_body_id":null,"warna_bibir_id":null,"kaki_id":null,"model_id":null,"fiting_id":null,"daya_id":null,"jumlah_mata_id":null,"name":"LAPTOP Asus","price":"1242123.00","stock":"12","created_at":"2025-07-10 05:42:42","updated_at":"2025-07-22 11:38:27","deleted_at":null,"recovered_at":null,"batas_tanggal_sistem":null,"mode_batas_tanggal":"automatic","otoritas":null,"nama_ky":"geni"}
+DEBUG - 2025-08-26 05:45:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 05:45:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 05:47:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 05:47:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 05:47:31 --> POST barang_id: ["2"]
+DEBUG - 2025-08-26 05:47:31 --> POST qty: ["3.00"]
+DEBUG - 2025-08-26 05:47:31 --> Barang ditemukan: {"id":"2","category_id":"3","satuan_id":null,"jenis_id":null,"pelengkap_id":null,"gondola_id":null,"merk_id":null,"warna_sinar_id":null,"ukuran_barang_id":null,"voltase_id":null,"dimensi_id":null,"warna_body_id":null,"warna_bibir_id":null,"kaki_id":null,"model_id":null,"fiting_id":null,"daya_id":null,"jumlah_mata_id":null,"name":"LAPTOP Asus","price":"1242123.00","stock":"12","created_at":"2025-07-10 05:42:42","updated_at":"2025-07-22 11:38:27","deleted_at":null,"recovered_at":null,"batas_tanggal_sistem":null,"mode_batas_tanggal":"automatic","otoritas":null,"nama_ky":"geni"}
+DEBUG - 2025-08-26 05:47:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 05:47:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 05:48:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 05:48:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 05:48:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 05:49:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 05:49:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 05:50:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 05:50:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 05:51:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 05:51:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 05:51:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 05:52:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 05:52:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 05:53:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 05:58:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 05:59:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 06:00:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 06:00:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 06:00:29 --> POST barang_id: ["2"]
+DEBUG - 2025-08-26 06:00:29 --> POST qty: ["3.00"]
+DEBUG - 2025-08-26 06:00:29 --> Barang ditemukan: {"id":"2","category_id":"3","satuan_id":null,"jenis_id":null,"pelengkap_id":null,"gondola_id":null,"merk_id":null,"warna_sinar_id":null,"ukuran_barang_id":null,"voltase_id":null,"dimensi_id":null,"warna_body_id":null,"warna_bibir_id":null,"kaki_id":null,"model_id":null,"fiting_id":null,"daya_id":null,"jumlah_mata_id":null,"name":"LAPTOP Asus","price":"1242123.00","stock":"12","created_at":"2025-07-10 05:42:42","updated_at":"2025-07-22 11:38:27","deleted_at":null,"recovered_at":null,"batas_tanggal_sistem":null,"mode_batas_tanggal":"automatic","otoritas":null,"nama_ky":"geni"}
+DEBUG - 2025-08-26 06:00:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 06:00:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 06:00:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 06:00:52 --> POST barang_id: ["2"]
+DEBUG - 2025-08-26 06:00:52 --> POST qty: ["3.00"]
+DEBUG - 2025-08-26 06:00:52 --> Barang ditemukan: {"id":"2","category_id":"3","satuan_id":null,"jenis_id":null,"pelengkap_id":null,"gondola_id":null,"merk_id":null,"warna_sinar_id":null,"ukuran_barang_id":null,"voltase_id":null,"dimensi_id":null,"warna_body_id":null,"warna_bibir_id":null,"kaki_id":null,"model_id":null,"fiting_id":null,"daya_id":null,"jumlah_mata_id":null,"name":"LAPTOP Asus","price":"1242123.00","stock":"12","created_at":"2025-07-10 05:42:42","updated_at":"2025-07-22 11:38:27","deleted_at":null,"recovered_at":null,"batas_tanggal_sistem":null,"mode_batas_tanggal":"automatic","otoritas":null,"nama_ky":"geni"}
+DEBUG - 2025-08-26 06:00:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 06:05:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 06:05:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 06:05:40 --> POST barang_id: ["2"]
+DEBUG - 2025-08-26 06:05:40 --> POST qty: ["3.00"]
+DEBUG - 2025-08-26 06:05:40 --> Barang ditemukan: {"id":"2","category_id":"3","satuan_id":null,"jenis_id":null,"pelengkap_id":null,"gondola_id":null,"merk_id":null,"warna_sinar_id":null,"ukuran_barang_id":null,"voltase_id":null,"dimensi_id":null,"warna_body_id":null,"warna_bibir_id":null,"kaki_id":null,"model_id":null,"fiting_id":null,"daya_id":null,"jumlah_mata_id":null,"name":"LAPTOP Asus","price":"1242123.00","stock":"12","created_at":"2025-07-10 05:42:42","updated_at":"2025-07-22 11:38:27","deleted_at":null,"recovered_at":null,"batas_tanggal_sistem":null,"mode_batas_tanggal":"automatic","otoritas":null,"nama_ky":"geni"}
+DEBUG - 2025-08-26 06:05:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 06:05:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 06:05:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-08-26 06:05:48 --> ErrorException: pg_query(): Query failed: ERROR:  numeric field overflow
+DETAIL:  A field with precision 18, scale 2 must round to an absolute value less than 10^16. in C:\xampp\htdocs\webadmin3\system\Database\Postgre\Connection.php:206
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'pg_query(): Que...', 'C:\\xampp\\htdocs...', 206)
+#1 C:\xampp\htdocs\webadmin3\system\Database\Postgre\Connection.php(206): pg_query(Object(PgSql\Connection), 'UPDATE "sales" ...')
+#2 C:\xampp\htdocs\webadmin3\system\Database\BaseConnection.php(738): CodeIgniter\Database\Postgre\Connection->execute('UPDATE "sales" ...')
+#3 C:\xampp\htdocs\webadmin3\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE "sales" ...')
+#4 C:\xampp\htdocs\webadmin3\system\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE "sales" ...', Array, false)
+#5 C:\xampp\htdocs\webadmin3\system\Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+#6 C:\xampp\htdocs\webadmin3\system\BaseModel.php(1031): CodeIgniter\Model->doUpdate(Array, Array)
+#7 C:\xampp\htdocs\webadmin3\system\Model.php(863): CodeIgniter\BaseModel->update(Array, Array)
+#8 C:\xampp\htdocs\webadmin3\app\Controllers\Penjualan.php(90): CodeIgniter\Model->update('24', Array)
+#9 C:\xampp\htdocs\webadmin3\system\CodeIgniter.php(933): App\Controllers\Penjualan->update('24')
+#10 C:\xampp\htdocs\webadmin3\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+#11 C:\xampp\htdocs\webadmin3\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\webadmin3\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#13 C:\xampp\htdocs\webadmin3\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#14 C:\xampp\htdocs\webadmin3\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#15 {main}
+CRITICAL - 2025-08-26 06:05:48 --> CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  numeric field overflow
+DETAIL:  A field with precision 18, scale 2 must round to an absolute value less than 10^16.
+[Method: POST, Route: penjualan/update/24]
+in SYSTEMPATH\Database\BaseConnection.php on line 692.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE "sales" SET "tanggal_nota" = :tanggal_nota:, "customer" = :customer:, "sales" = :sales:, "payment_a" = :payment_a:, "payment_b" = :payment_b:, "payment_system" = :payment_system:, "metode_bayar" = :metode_bayar:, "tenor" = :tenor:, "dp" = :dp:, "catatan_kredit" = :catatan_kredit:, "total" = :total:, "grand_total" = :grand_total:, "status" = :status:, "updated_at" = :updated_at:
+WHERE "sales"."id" IN :sales.id:', [...], false)
+ 2 SYSTEMPATH\Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(1031): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH\Model.php(863): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH\Controllers\Penjualan.php(90): CodeIgniter\Model->update('24', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Penjualan->update('24')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-26 06:05:48 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  numeric field overflow
+DETAIL:  A field with precision 18, scale 2 must round to an absolute value less than 10^16.
+in SYSTEMPATH\Database\Postgre\Connection.php on line 211.
+ 1 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\Postgre\Connection->execute('UPDATE "sales" SET "tanggal_nota" = \'2025-08-26\', "customer" = \'2\', "sales" = \'2\', "payment_a" = 2385000, "payment_b" = 1341369, "payment_system" = \'Tunai\', "metode_bayar" = NULL, "tenor" = 25, "dp" = NULL, "catatan_kredit" = \'\', "total" = 37263690000000000, "grand_total" = 3726369, "status" = \'selesai\', "updated_at" = \'2025-08-26 06:05:48\'
+WHERE "sales"."id" IN (\'24\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE "sales" SET "tanggal_nota" = \'2025-08-26\', "customer" = \'2\', "sales" = \'2\', "payment_a" = 2385000, "payment_b" = 1341369, "payment_system" = \'Tunai\', "metode_bayar" = NULL, "tenor" = 25, "dp" = NULL, "catatan_kredit" = \'\', "total" = 37263690000000000, "grand_total" = 3726369, "status" = \'selesai\', "updated_at" = \'2025-08-26 06:05:48\'
+WHERE "sales"."id" IN (\'24\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE "sales" SET "tanggal_nota" = :tanggal_nota:, "customer" = :customer:, "sales" = :sales:, "payment_a" = :payment_a:, "payment_b" = :payment_b:, "payment_system" = :payment_system:, "metode_bayar" = :metode_bayar:, "tenor" = :tenor:, "dp" = :dp:, "catatan_kredit" = :catatan_kredit:, "total" = :total:, "grand_total" = :grand_total:, "status" = :status:, "updated_at" = :updated_at:
+WHERE "sales"."id" IN :sales.id:', [...], false)
+ 4 SYSTEMPATH\Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+ 5 SYSTEMPATH\BaseModel.php(1031): CodeIgniter\Model->doUpdate([...], [...])
+ 6 SYSTEMPATH\Model.php(863): CodeIgniter\BaseModel->update([...], [...])
+ 7 APPPATH\Controllers\Penjualan.php(90): CodeIgniter\Model->update('24', [...])
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Penjualan->update('24')
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-26 06:05:48 --> [Caused by] ErrorException: pg_query(): Query failed: ERROR:  numeric field overflow
+DETAIL:  A field with precision 18, scale 2 must round to an absolute value less than 10^16.
+in SYSTEMPATH\Database\Postgre\Connection.php on line 206.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'pg_query(): Query failed: ERROR:  numeric field overflow
+DETAIL:  A field with precision 18, scale 2 must round to an absolute value less than 10^16.', 'C:\\xampp\\htdocs\\webadmin3\\system\\Database\\Postgre\\Connection.php', 206)
+ 2 SYSTEMPATH\Database\Postgre\Connection.php(206): pg_query(Object(PgSql\Connection), 'UPDATE "sales" SET "tanggal_nota" = \'2025-08-26\', "customer" = \'2\', "sales" = \'2\', "payment_a" = 2385000, "payment_b" = 1341369, "payment_system" = \'Tunai\', "metode_bayar" = NULL, "tenor" = 25, "dp" = NULL, "catatan_kredit" = \'\', "total" = 37263690000000000, "grand_total" = 3726369, "status" = \'selesai\', "updated_at" = \'2025-08-26 06:05:48\'
+WHERE "sales"."id" IN (\'24\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\Postgre\Connection->execute('UPDATE "sales" SET "tanggal_nota" = \'2025-08-26\', "customer" = \'2\', "sales" = \'2\', "payment_a" = 2385000, "payment_b" = 1341369, "payment_system" = \'Tunai\', "metode_bayar" = NULL, "tenor" = 25, "dp" = NULL, "catatan_kredit" = \'\', "total" = 37263690000000000, "grand_total" = 3726369, "status" = \'selesai\', "updated_at" = \'2025-08-26 06:05:48\'
+WHERE "sales"."id" IN (\'24\')')
+ 4 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE "sales" SET "tanggal_nota" = \'2025-08-26\', "customer" = \'2\', "sales" = \'2\', "payment_a" = 2385000, "payment_b" = 1341369, "payment_system" = \'Tunai\', "metode_bayar" = NULL, "tenor" = 25, "dp" = NULL, "catatan_kredit" = \'\', "total" = 37263690000000000, "grand_total" = 3726369, "status" = \'selesai\', "updated_at" = \'2025-08-26 06:05:48\'
+WHERE "sales"."id" IN (\'24\')')
+ 5 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE "sales" SET "tanggal_nota" = :tanggal_nota:, "customer" = :customer:, "sales" = :sales:, "payment_a" = :payment_a:, "payment_b" = :payment_b:, "payment_system" = :payment_system:, "metode_bayar" = :metode_bayar:, "tenor" = :tenor:, "dp" = :dp:, "catatan_kredit" = :catatan_kredit:, "total" = :total:, "grand_total" = :grand_total:, "status" = :status:, "updated_at" = :updated_at:
+WHERE "sales"."id" IN :sales.id:', [...], false)
+ 6 SYSTEMPATH\Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+ 7 SYSTEMPATH\BaseModel.php(1031): CodeIgniter\Model->doUpdate([...], [...])
+ 8 SYSTEMPATH\Model.php(863): CodeIgniter\BaseModel->update([...], [...])
+ 9 APPPATH\Controllers\Penjualan.php(90): CodeIgniter\Model->update('24', [...])
+10 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Penjualan->update('24')
+11 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+12 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-08-26 06:06:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-08-26 06:06:32 --> ErrorException: pg_query(): Query failed: ERROR:  numeric field overflow
+DETAIL:  A field with precision 18, scale 2 must round to an absolute value less than 10^16. in C:\xampp\htdocs\webadmin3\system\Database\Postgre\Connection.php:206
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'pg_query(): Que...', 'C:\\xampp\\htdocs...', 206)
+#1 C:\xampp\htdocs\webadmin3\system\Database\Postgre\Connection.php(206): pg_query(Object(PgSql\Connection), 'UPDATE "sales" ...')
+#2 C:\xampp\htdocs\webadmin3\system\Database\BaseConnection.php(738): CodeIgniter\Database\Postgre\Connection->execute('UPDATE "sales" ...')
+#3 C:\xampp\htdocs\webadmin3\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE "sales" ...')
+#4 C:\xampp\htdocs\webadmin3\system\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE "sales" ...', Array, false)
+#5 C:\xampp\htdocs\webadmin3\system\Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+#6 C:\xampp\htdocs\webadmin3\system\BaseModel.php(1031): CodeIgniter\Model->doUpdate(Array, Array)
+#7 C:\xampp\htdocs\webadmin3\system\Model.php(863): CodeIgniter\BaseModel->update(Array, Array)
+#8 C:\xampp\htdocs\webadmin3\app\Controllers\Penjualan.php(90): CodeIgniter\Model->update('24', Array)
+#9 C:\xampp\htdocs\webadmin3\system\CodeIgniter.php(933): App\Controllers\Penjualan->update('24')
+#10 C:\xampp\htdocs\webadmin3\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+#11 C:\xampp\htdocs\webadmin3\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\webadmin3\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#13 C:\xampp\htdocs\webadmin3\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#14 C:\xampp\htdocs\webadmin3\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#15 {main}
+CRITICAL - 2025-08-26 06:06:32 --> CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  numeric field overflow
+DETAIL:  A field with precision 18, scale 2 must round to an absolute value less than 10^16.
+[Method: POST, Route: penjualan/update/24]
+in SYSTEMPATH\Database\BaseConnection.php on line 692.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE "sales" SET "tanggal_nota" = :tanggal_nota:, "customer" = :customer:, "sales" = :sales:, "payment_a" = :payment_a:, "payment_b" = :payment_b:, "payment_system" = :payment_system:, "metode_bayar" = :metode_bayar:, "tenor" = :tenor:, "dp" = :dp:, "catatan_kredit" = :catatan_kredit:, "total" = :total:, "grand_total" = :grand_total:, "status" = :status:, "updated_at" = :updated_at:
+WHERE "sales"."id" IN :sales.id:', [...], false)
+ 2 SYSTEMPATH\Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(1031): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH\Model.php(863): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH\Controllers\Penjualan.php(90): CodeIgniter\Model->update('24', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Penjualan->update('24')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-26 06:06:32 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  numeric field overflow
+DETAIL:  A field with precision 18, scale 2 must round to an absolute value less than 10^16.
+in SYSTEMPATH\Database\Postgre\Connection.php on line 211.
+ 1 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\Postgre\Connection->execute('UPDATE "sales" SET "tanggal_nota" = \'2025-08-26\', "customer" = \'2\', "sales" = \'2\', "payment_a" = 2385000, "payment_b" = 1341369, "payment_system" = \'Tunai\', "metode_bayar" = NULL, "tenor" = 26, "dp" = NULL, "catatan_kredit" = \'\', "total" = 37263690000000000, "grand_total" = 3726369, "status" = \'selesai\', "updated_at" = \'2025-08-26 06:06:32\'
+WHERE "sales"."id" IN (\'24\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE "sales" SET "tanggal_nota" = \'2025-08-26\', "customer" = \'2\', "sales" = \'2\', "payment_a" = 2385000, "payment_b" = 1341369, "payment_system" = \'Tunai\', "metode_bayar" = NULL, "tenor" = 26, "dp" = NULL, "catatan_kredit" = \'\', "total" = 37263690000000000, "grand_total" = 3726369, "status" = \'selesai\', "updated_at" = \'2025-08-26 06:06:32\'
+WHERE "sales"."id" IN (\'24\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE "sales" SET "tanggal_nota" = :tanggal_nota:, "customer" = :customer:, "sales" = :sales:, "payment_a" = :payment_a:, "payment_b" = :payment_b:, "payment_system" = :payment_system:, "metode_bayar" = :metode_bayar:, "tenor" = :tenor:, "dp" = :dp:, "catatan_kredit" = :catatan_kredit:, "total" = :total:, "grand_total" = :grand_total:, "status" = :status:, "updated_at" = :updated_at:
+WHERE "sales"."id" IN :sales.id:', [...], false)
+ 4 SYSTEMPATH\Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+ 5 SYSTEMPATH\BaseModel.php(1031): CodeIgniter\Model->doUpdate([...], [...])
+ 6 SYSTEMPATH\Model.php(863): CodeIgniter\BaseModel->update([...], [...])
+ 7 APPPATH\Controllers\Penjualan.php(90): CodeIgniter\Model->update('24', [...])
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Penjualan->update('24')
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-26 06:06:32 --> [Caused by] ErrorException: pg_query(): Query failed: ERROR:  numeric field overflow
+DETAIL:  A field with precision 18, scale 2 must round to an absolute value less than 10^16.
+in SYSTEMPATH\Database\Postgre\Connection.php on line 206.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'pg_query(): Query failed: ERROR:  numeric field overflow
+DETAIL:  A field with precision 18, scale 2 must round to an absolute value less than 10^16.', 'C:\\xampp\\htdocs\\webadmin3\\system\\Database\\Postgre\\Connection.php', 206)
+ 2 SYSTEMPATH\Database\Postgre\Connection.php(206): pg_query(Object(PgSql\Connection), 'UPDATE "sales" SET "tanggal_nota" = \'2025-08-26\', "customer" = \'2\', "sales" = \'2\', "payment_a" = 2385000, "payment_b" = 1341369, "payment_system" = \'Tunai\', "metode_bayar" = NULL, "tenor" = 26, "dp" = NULL, "catatan_kredit" = \'\', "total" = 37263690000000000, "grand_total" = 3726369, "status" = \'selesai\', "updated_at" = \'2025-08-26 06:06:32\'
+WHERE "sales"."id" IN (\'24\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\Postgre\Connection->execute('UPDATE "sales" SET "tanggal_nota" = \'2025-08-26\', "customer" = \'2\', "sales" = \'2\', "payment_a" = 2385000, "payment_b" = 1341369, "payment_system" = \'Tunai\', "metode_bayar" = NULL, "tenor" = 26, "dp" = NULL, "catatan_kredit" = \'\', "total" = 37263690000000000, "grand_total" = 3726369, "status" = \'selesai\', "updated_at" = \'2025-08-26 06:06:32\'
+WHERE "sales"."id" IN (\'24\')')
+ 4 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE "sales" SET "tanggal_nota" = \'2025-08-26\', "customer" = \'2\', "sales" = \'2\', "payment_a" = 2385000, "payment_b" = 1341369, "payment_system" = \'Tunai\', "metode_bayar" = NULL, "tenor" = 26, "dp" = NULL, "catatan_kredit" = \'\', "total" = 37263690000000000, "grand_total" = 3726369, "status" = \'selesai\', "updated_at" = \'2025-08-26 06:06:32\'
+WHERE "sales"."id" IN (\'24\')')
+ 5 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE "sales" SET "tanggal_nota" = :tanggal_nota:, "customer" = :customer:, "sales" = :sales:, "payment_a" = :payment_a:, "payment_b" = :payment_b:, "payment_system" = :payment_system:, "metode_bayar" = :metode_bayar:, "tenor" = :tenor:, "dp" = :dp:, "catatan_kredit" = :catatan_kredit:, "total" = :total:, "grand_total" = :grand_total:, "status" = :status:, "updated_at" = :updated_at:
+WHERE "sales"."id" IN :sales.id:', [...], false)
+ 6 SYSTEMPATH\Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+ 7 SYSTEMPATH\BaseModel.php(1031): CodeIgniter\Model->doUpdate([...], [...])
+ 8 SYSTEMPATH\Model.php(863): CodeIgniter\BaseModel->update([...], [...])
+ 9 APPPATH\Controllers\Penjualan.php(90): CodeIgniter\Model->update('24', [...])
+10 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Penjualan->update('24')
+11 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+12 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-08-26 06:09:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 06:09:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 06:09:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 06:13:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 06:13:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-08-26 06:13:32 --> ErrorException: pg_query(): Query failed: ERROR:  numeric field overflow
+DETAIL:  A field with precision 18, scale 2 must round to an absolute value less than 10^16. in C:\xampp\htdocs\webadmin3\system\Database\Postgre\Connection.php:206
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'pg_query(): Que...', 'C:\\xampp\\htdocs...', 206)
+#1 C:\xampp\htdocs\webadmin3\system\Database\Postgre\Connection.php(206): pg_query(Object(PgSql\Connection), 'UPDATE "sales" ...')
+#2 C:\xampp\htdocs\webadmin3\system\Database\BaseConnection.php(738): CodeIgniter\Database\Postgre\Connection->execute('UPDATE "sales" ...')
+#3 C:\xampp\htdocs\webadmin3\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE "sales" ...')
+#4 C:\xampp\htdocs\webadmin3\system\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE "sales" ...', Array, false)
+#5 C:\xampp\htdocs\webadmin3\system\Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+#6 C:\xampp\htdocs\webadmin3\system\BaseModel.php(1031): CodeIgniter\Model->doUpdate(Array, Array)
+#7 C:\xampp\htdocs\webadmin3\system\Model.php(863): CodeIgniter\BaseModel->update(Array, Array)
+#8 C:\xampp\htdocs\webadmin3\app\Controllers\Penjualan.php(90): CodeIgniter\Model->update('24', Array)
+#9 C:\xampp\htdocs\webadmin3\system\CodeIgniter.php(933): App\Controllers\Penjualan->update('24')
+#10 C:\xampp\htdocs\webadmin3\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+#11 C:\xampp\htdocs\webadmin3\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\webadmin3\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#13 C:\xampp\htdocs\webadmin3\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#14 C:\xampp\htdocs\webadmin3\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#15 {main}
+CRITICAL - 2025-08-26 06:13:32 --> CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  numeric field overflow
+DETAIL:  A field with precision 18, scale 2 must round to an absolute value less than 10^16.
+[Method: POST, Route: penjualan/update/24]
+in SYSTEMPATH\Database\BaseConnection.php on line 692.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE "sales" SET "tanggal_nota" = :tanggal_nota:, "customer" = :customer:, "sales" = :sales:, "payment_a" = :payment_a:, "payment_b" = :payment_b:, "payment_system" = :payment_system:, "metode_bayar" = :metode_bayar:, "tenor" = :tenor:, "dp" = :dp:, "catatan_kredit" = :catatan_kredit:, "total" = :total:, "grand_total" = :grand_total:, "status" = :status:, "updated_at" = :updated_at:
+WHERE "sales"."id" IN :sales.id:', [...], false)
+ 2 SYSTEMPATH\Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(1031): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH\Model.php(863): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH\Controllers\Penjualan.php(90): CodeIgniter\Model->update('24', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Penjualan->update('24')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-26 06:13:32 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  numeric field overflow
+DETAIL:  A field with precision 18, scale 2 must round to an absolute value less than 10^16.
+in SYSTEMPATH\Database\Postgre\Connection.php on line 211.
+ 1 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\Postgre\Connection->execute('UPDATE "sales" SET "tanggal_nota" = \'2025-08-26\', "customer" = \'2\', "sales" = \'2\', "payment_a" = 2385000, "payment_b" = 1341369, "payment_system" = \'Tunai\', "metode_bayar" = NULL, "tenor" = 25, "dp" = NULL, "catatan_kredit" = \'\', "total" = 37263690000000000, "grand_total" = 3726369, "status" = \'selesai\', "updated_at" = \'2025-08-26 06:13:32\'
+WHERE "sales"."id" IN (\'24\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE "sales" SET "tanggal_nota" = \'2025-08-26\', "customer" = \'2\', "sales" = \'2\', "payment_a" = 2385000, "payment_b" = 1341369, "payment_system" = \'Tunai\', "metode_bayar" = NULL, "tenor" = 25, "dp" = NULL, "catatan_kredit" = \'\', "total" = 37263690000000000, "grand_total" = 3726369, "status" = \'selesai\', "updated_at" = \'2025-08-26 06:13:32\'
+WHERE "sales"."id" IN (\'24\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE "sales" SET "tanggal_nota" = :tanggal_nota:, "customer" = :customer:, "sales" = :sales:, "payment_a" = :payment_a:, "payment_b" = :payment_b:, "payment_system" = :payment_system:, "metode_bayar" = :metode_bayar:, "tenor" = :tenor:, "dp" = :dp:, "catatan_kredit" = :catatan_kredit:, "total" = :total:, "grand_total" = :grand_total:, "status" = :status:, "updated_at" = :updated_at:
+WHERE "sales"."id" IN :sales.id:', [...], false)
+ 4 SYSTEMPATH\Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+ 5 SYSTEMPATH\BaseModel.php(1031): CodeIgniter\Model->doUpdate([...], [...])
+ 6 SYSTEMPATH\Model.php(863): CodeIgniter\BaseModel->update([...], [...])
+ 7 APPPATH\Controllers\Penjualan.php(90): CodeIgniter\Model->update('24', [...])
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Penjualan->update('24')
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-26 06:13:32 --> [Caused by] ErrorException: pg_query(): Query failed: ERROR:  numeric field overflow
+DETAIL:  A field with precision 18, scale 2 must round to an absolute value less than 10^16.
+in SYSTEMPATH\Database\Postgre\Connection.php on line 206.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'pg_query(): Query failed: ERROR:  numeric field overflow
+DETAIL:  A field with precision 18, scale 2 must round to an absolute value less than 10^16.', 'C:\\xampp\\htdocs\\webadmin3\\system\\Database\\Postgre\\Connection.php', 206)
+ 2 SYSTEMPATH\Database\Postgre\Connection.php(206): pg_query(Object(PgSql\Connection), 'UPDATE "sales" SET "tanggal_nota" = \'2025-08-26\', "customer" = \'2\', "sales" = \'2\', "payment_a" = 2385000, "payment_b" = 1341369, "payment_system" = \'Tunai\', "metode_bayar" = NULL, "tenor" = 25, "dp" = NULL, "catatan_kredit" = \'\', "total" = 37263690000000000, "grand_total" = 3726369, "status" = \'selesai\', "updated_at" = \'2025-08-26 06:13:32\'
+WHERE "sales"."id" IN (\'24\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\Postgre\Connection->execute('UPDATE "sales" SET "tanggal_nota" = \'2025-08-26\', "customer" = \'2\', "sales" = \'2\', "payment_a" = 2385000, "payment_b" = 1341369, "payment_system" = \'Tunai\', "metode_bayar" = NULL, "tenor" = 25, "dp" = NULL, "catatan_kredit" = \'\', "total" = 37263690000000000, "grand_total" = 3726369, "status" = \'selesai\', "updated_at" = \'2025-08-26 06:13:32\'
+WHERE "sales"."id" IN (\'24\')')
+ 4 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE "sales" SET "tanggal_nota" = \'2025-08-26\', "customer" = \'2\', "sales" = \'2\', "payment_a" = 2385000, "payment_b" = 1341369, "payment_system" = \'Tunai\', "metode_bayar" = NULL, "tenor" = 25, "dp" = NULL, "catatan_kredit" = \'\', "total" = 37263690000000000, "grand_total" = 3726369, "status" = \'selesai\', "updated_at" = \'2025-08-26 06:13:32\'
+WHERE "sales"."id" IN (\'24\')')
+ 5 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE "sales" SET "tanggal_nota" = :tanggal_nota:, "customer" = :customer:, "sales" = :sales:, "payment_a" = :payment_a:, "payment_b" = :payment_b:, "payment_system" = :payment_system:, "metode_bayar" = :metode_bayar:, "tenor" = :tenor:, "dp" = :dp:, "catatan_kredit" = :catatan_kredit:, "total" = :total:, "grand_total" = :grand_total:, "status" = :status:, "updated_at" = :updated_at:
+WHERE "sales"."id" IN :sales.id:', [...], false)
+ 6 SYSTEMPATH\Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+ 7 SYSTEMPATH\BaseModel.php(1031): CodeIgniter\Model->doUpdate([...], [...])
+ 8 SYSTEMPATH\Model.php(863): CodeIgniter\BaseModel->update([...], [...])
+ 9 APPPATH\Controllers\Penjualan.php(90): CodeIgniter\Model->update('24', [...])
+10 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Penjualan->update('24')
+11 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+12 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-08-26 06:19:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 06:19:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-08-26 06:19:40 --> ErrorException: pg_query(): Query failed: ERROR:  invalid input syntax for type bigint: &quot;&quot;
+LINE 1: ...r', &quot;metode_bayar&quot; = NULL, &quot;tenor&quot; = '27', &quot;dp&quot; = '', &quot;catat...
+                                                             ^ in C:\xampp\htdocs\webadmin3\system\Database\Postgre\Connection.php:206
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'pg_query(): Que...', 'C:\\xampp\\htdocs...', 206)
+#1 C:\xampp\htdocs\webadmin3\system\Database\Postgre\Connection.php(206): pg_query(Object(PgSql\Connection), 'UPDATE "sales" ...')
+#2 C:\xampp\htdocs\webadmin3\system\Database\BaseConnection.php(738): CodeIgniter\Database\Postgre\Connection->execute('UPDATE "sales" ...')
+#3 C:\xampp\htdocs\webadmin3\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE "sales" ...')
+#4 C:\xampp\htdocs\webadmin3\system\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE "sales" ...', Array, false)
+#5 C:\xampp\htdocs\webadmin3\system\Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+#6 C:\xampp\htdocs\webadmin3\system\BaseModel.php(1031): CodeIgniter\Model->doUpdate(Array, Array)
+#7 C:\xampp\htdocs\webadmin3\system\Model.php(863): CodeIgniter\BaseModel->update(Array, Array)
+#8 C:\xampp\htdocs\webadmin3\app\Controllers\Penjualan.php(108): CodeIgniter\Model->update('24', Array)
+#9 C:\xampp\htdocs\webadmin3\system\CodeIgniter.php(933): App\Controllers\Penjualan->update('24')
+#10 C:\xampp\htdocs\webadmin3\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+#11 C:\xampp\htdocs\webadmin3\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\webadmin3\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#13 C:\xampp\htdocs\webadmin3\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#14 C:\xampp\htdocs\webadmin3\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#15 {main}
+CRITICAL - 2025-08-26 06:19:40 --> CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  invalid input syntax for type bigint: &quot;&quot;
+LINE 1: ...r', &quot;metode_bayar&quot; = NULL, &quot;tenor&quot; = '27', &quot;dp&quot; = '', &quot;catat...
+                                                             ^
+[Method: POST, Route: penjualan/update/24]
+in SYSTEMPATH\Database\BaseConnection.php on line 692.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE "sales" SET "tanggal_nota" = :tanggal_nota:, "customer" = :customer:, "sales" = :sales:, "payment_a" = :payment_a:, "payment_b" = :payment_b:, "payment_system" = :payment_system:, "metode_bayar" = :metode_bayar:, "tenor" = :tenor:, "dp" = :dp:, "catatan_kredit" = :catatan_kredit:, "total" = :total:, "grand_total" = :grand_total:, "status" = :status:, "updated_at" = :updated_at:
+WHERE "sales"."id" IN :sales.id:', [...], false)
+ 2 SYSTEMPATH\Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(1031): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH\Model.php(863): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH\Controllers\Penjualan.php(108): CodeIgniter\Model->update('24', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Penjualan->update('24')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-26 06:19:40 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  invalid input syntax for type bigint: &quot;&quot;
+LINE 1: ...r', &quot;metode_bayar&quot; = NULL, &quot;tenor&quot; = '27', &quot;dp&quot; = '', &quot;catat...
+                                                             ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 211.
+ 1 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\Postgre\Connection->execute('UPDATE "sales" SET "tanggal_nota" = \'2025-08-26\', "customer" = \'2\', "sales" = \'2\', "payment_a" = 2385000, "payment_b" = 1341369, "payment_system" = \'Transfer\', "metode_bayar" = NULL, "tenor" = \'27\', "dp" = \'\', "catatan_kredit" = \'\', "total" = \'37263690000000000\', "grand_total" = 3726369, "status" = \'selesai\', "updated_at" = \'2025-08-26 06:19:40\'
+WHERE "sales"."id" IN (\'24\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE "sales" SET "tanggal_nota" = \'2025-08-26\', "customer" = \'2\', "sales" = \'2\', "payment_a" = 2385000, "payment_b" = 1341369, "payment_system" = \'Transfer\', "metode_bayar" = NULL, "tenor" = \'27\', "dp" = \'\', "catatan_kredit" = \'\', "total" = \'37263690000000000\', "grand_total" = 3726369, "status" = \'selesai\', "updated_at" = \'2025-08-26 06:19:40\'
+WHERE "sales"."id" IN (\'24\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE "sales" SET "tanggal_nota" = :tanggal_nota:, "customer" = :customer:, "sales" = :sales:, "payment_a" = :payment_a:, "payment_b" = :payment_b:, "payment_system" = :payment_system:, "metode_bayar" = :metode_bayar:, "tenor" = :tenor:, "dp" = :dp:, "catatan_kredit" = :catatan_kredit:, "total" = :total:, "grand_total" = :grand_total:, "status" = :status:, "updated_at" = :updated_at:
+WHERE "sales"."id" IN :sales.id:', [...], false)
+ 4 SYSTEMPATH\Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+ 5 SYSTEMPATH\BaseModel.php(1031): CodeIgniter\Model->doUpdate([...], [...])
+ 6 SYSTEMPATH\Model.php(863): CodeIgniter\BaseModel->update([...], [...])
+ 7 APPPATH\Controllers\Penjualan.php(108): CodeIgniter\Model->update('24', [...])
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Penjualan->update('24')
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-26 06:19:40 --> [Caused by] ErrorException: pg_query(): Query failed: ERROR:  invalid input syntax for type bigint: &quot;&quot;
+LINE 1: ...r', &quot;metode_bayar&quot; = NULL, &quot;tenor&quot; = '27', &quot;dp&quot; = '', &quot;catat...
+                                                             ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 206.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'pg_query(): Query failed: ERROR:  invalid input syntax for type bigint: &quot;&quot;
+LINE 1: ...r\', &quot;metode_bayar&quot; = NULL, &quot;tenor&quot; = \'27\', &quot;dp&quot; = \'\', &quot;catat...
+                                                             ^', 'C:\\xampp\\htdocs\\webadmin3\\system\\Database\\Postgre\\Connection.php', 206)
+ 2 SYSTEMPATH\Database\Postgre\Connection.php(206): pg_query(Object(PgSql\Connection), 'UPDATE "sales" SET "tanggal_nota" = \'2025-08-26\', "customer" = \'2\', "sales" = \'2\', "payment_a" = 2385000, "payment_b" = 1341369, "payment_system" = \'Transfer\', "metode_bayar" = NULL, "tenor" = \'27\', "dp" = \'\', "catatan_kredit" = \'\', "total" = \'37263690000000000\', "grand_total" = 3726369, "status" = \'selesai\', "updated_at" = \'2025-08-26 06:19:40\'
+WHERE "sales"."id" IN (\'24\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\Postgre\Connection->execute('UPDATE "sales" SET "tanggal_nota" = \'2025-08-26\', "customer" = \'2\', "sales" = \'2\', "payment_a" = 2385000, "payment_b" = 1341369, "payment_system" = \'Transfer\', "metode_bayar" = NULL, "tenor" = \'27\', "dp" = \'\', "catatan_kredit" = \'\', "total" = \'37263690000000000\', "grand_total" = 3726369, "status" = \'selesai\', "updated_at" = \'2025-08-26 06:19:40\'
+WHERE "sales"."id" IN (\'24\')')
+ 4 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE "sales" SET "tanggal_nota" = \'2025-08-26\', "customer" = \'2\', "sales" = \'2\', "payment_a" = 2385000, "payment_b" = 1341369, "payment_system" = \'Transfer\', "metode_bayar" = NULL, "tenor" = \'27\', "dp" = \'\', "catatan_kredit" = \'\', "total" = \'37263690000000000\', "grand_total" = 3726369, "status" = \'selesai\', "updated_at" = \'2025-08-26 06:19:40\'
+WHERE "sales"."id" IN (\'24\')')
+ 5 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE "sales" SET "tanggal_nota" = :tanggal_nota:, "customer" = :customer:, "sales" = :sales:, "payment_a" = :payment_a:, "payment_b" = :payment_b:, "payment_system" = :payment_system:, "metode_bayar" = :metode_bayar:, "tenor" = :tenor:, "dp" = :dp:, "catatan_kredit" = :catatan_kredit:, "total" = :total:, "grand_total" = :grand_total:, "status" = :status:, "updated_at" = :updated_at:
+WHERE "sales"."id" IN :sales.id:', [...], false)
+ 6 SYSTEMPATH\Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+ 7 SYSTEMPATH\BaseModel.php(1031): CodeIgniter\Model->doUpdate([...], [...])
+ 8 SYSTEMPATH\Model.php(863): CodeIgniter\BaseModel->update([...], [...])
+ 9 APPPATH\Controllers\Penjualan.php(108): CodeIgniter\Model->update('24', [...])
+10 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Penjualan->update('24')
+11 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+12 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-08-26 06:21:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 06:21:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-08-26 06:21:47 --> ErrorException: pg_query(): Query failed: ERROR:  invalid input syntax for type bigint: &quot;&quot;
+LINE 1: ...r', &quot;metode_bayar&quot; = NULL, &quot;tenor&quot; = '26', &quot;dp&quot; = '', &quot;catat...
+                                                             ^ in C:\xampp\htdocs\webadmin3\system\Database\Postgre\Connection.php:206
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'pg_query(): Que...', 'C:\\xampp\\htdocs...', 206)
+#1 C:\xampp\htdocs\webadmin3\system\Database\Postgre\Connection.php(206): pg_query(Object(PgSql\Connection), 'UPDATE "sales" ...')
+#2 C:\xampp\htdocs\webadmin3\system\Database\BaseConnection.php(738): CodeIgniter\Database\Postgre\Connection->execute('UPDATE "sales" ...')
+#3 C:\xampp\htdocs\webadmin3\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE "sales" ...')
+#4 C:\xampp\htdocs\webadmin3\system\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE "sales" ...', Array, false)
+#5 C:\xampp\htdocs\webadmin3\system\Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+#6 C:\xampp\htdocs\webadmin3\system\BaseModel.php(1031): CodeIgniter\Model->doUpdate(Array, Array)
+#7 C:\xampp\htdocs\webadmin3\system\Model.php(863): CodeIgniter\BaseModel->update(Array, Array)
+#8 C:\xampp\htdocs\webadmin3\app\Controllers\Penjualan.php(108): CodeIgniter\Model->update('24', Array)
+#9 C:\xampp\htdocs\webadmin3\system\CodeIgniter.php(933): App\Controllers\Penjualan->update('24')
+#10 C:\xampp\htdocs\webadmin3\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+#11 C:\xampp\htdocs\webadmin3\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\webadmin3\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#13 C:\xampp\htdocs\webadmin3\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#14 C:\xampp\htdocs\webadmin3\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#15 {main}
+CRITICAL - 2025-08-26 06:21:47 --> CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  invalid input syntax for type bigint: &quot;&quot;
+LINE 1: ...r', &quot;metode_bayar&quot; = NULL, &quot;tenor&quot; = '26', &quot;dp&quot; = '', &quot;catat...
+                                                             ^
+[Method: POST, Route: penjualan/update/24]
+in SYSTEMPATH\Database\BaseConnection.php on line 692.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE "sales" SET "tanggal_nota" = :tanggal_nota:, "customer" = :customer:, "sales" = :sales:, "payment_a" = :payment_a:, "payment_b" = :payment_b:, "payment_system" = :payment_system:, "metode_bayar" = :metode_bayar:, "tenor" = :tenor:, "dp" = :dp:, "catatan_kredit" = :catatan_kredit:, "total" = :total:, "grand_total" = :grand_total:, "status" = :status:, "updated_at" = :updated_at:
+WHERE "sales"."id" IN :sales.id:', [...], false)
+ 2 SYSTEMPATH\Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(1031): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH\Model.php(863): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH\Controllers\Penjualan.php(108): CodeIgniter\Model->update('24', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Penjualan->update('24')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-26 06:21:47 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  invalid input syntax for type bigint: &quot;&quot;
+LINE 1: ...r', &quot;metode_bayar&quot; = NULL, &quot;tenor&quot; = '26', &quot;dp&quot; = '', &quot;catat...
+                                                             ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 211.
+ 1 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\Postgre\Connection->execute('UPDATE "sales" SET "tanggal_nota" = \'2025-08-26\', "customer" = \'2\', "sales" = \'2\', "payment_a" = 2385000, "payment_b" = 1341369, "payment_system" = \'Transfer\', "metode_bayar" = NULL, "tenor" = \'26\', "dp" = \'\', "catatan_kredit" = \'\', "total" = \'37263690000000000\', "grand_total" = 3726369, "status" = \'selesai\', "updated_at" = \'2025-08-26 06:21:47\'
+WHERE "sales"."id" IN (\'24\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE "sales" SET "tanggal_nota" = \'2025-08-26\', "customer" = \'2\', "sales" = \'2\', "payment_a" = 2385000, "payment_b" = 1341369, "payment_system" = \'Transfer\', "metode_bayar" = NULL, "tenor" = \'26\', "dp" = \'\', "catatan_kredit" = \'\', "total" = \'37263690000000000\', "grand_total" = 3726369, "status" = \'selesai\', "updated_at" = \'2025-08-26 06:21:47\'
+WHERE "sales"."id" IN (\'24\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE "sales" SET "tanggal_nota" = :tanggal_nota:, "customer" = :customer:, "sales" = :sales:, "payment_a" = :payment_a:, "payment_b" = :payment_b:, "payment_system" = :payment_system:, "metode_bayar" = :metode_bayar:, "tenor" = :tenor:, "dp" = :dp:, "catatan_kredit" = :catatan_kredit:, "total" = :total:, "grand_total" = :grand_total:, "status" = :status:, "updated_at" = :updated_at:
+WHERE "sales"."id" IN :sales.id:', [...], false)
+ 4 SYSTEMPATH\Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+ 5 SYSTEMPATH\BaseModel.php(1031): CodeIgniter\Model->doUpdate([...], [...])
+ 6 SYSTEMPATH\Model.php(863): CodeIgniter\BaseModel->update([...], [...])
+ 7 APPPATH\Controllers\Penjualan.php(108): CodeIgniter\Model->update('24', [...])
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Penjualan->update('24')
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-26 06:21:47 --> [Caused by] ErrorException: pg_query(): Query failed: ERROR:  invalid input syntax for type bigint: &quot;&quot;
+LINE 1: ...r', &quot;metode_bayar&quot; = NULL, &quot;tenor&quot; = '26', &quot;dp&quot; = '', &quot;catat...
+                                                             ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 206.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'pg_query(): Query failed: ERROR:  invalid input syntax for type bigint: &quot;&quot;
+LINE 1: ...r\', &quot;metode_bayar&quot; = NULL, &quot;tenor&quot; = \'26\', &quot;dp&quot; = \'\', &quot;catat...
+                                                             ^', 'C:\\xampp\\htdocs\\webadmin3\\system\\Database\\Postgre\\Connection.php', 206)
+ 2 SYSTEMPATH\Database\Postgre\Connection.php(206): pg_query(Object(PgSql\Connection), 'UPDATE "sales" SET "tanggal_nota" = \'2025-08-26\', "customer" = \'2\', "sales" = \'2\', "payment_a" = 2385000, "payment_b" = 1341369, "payment_system" = \'Transfer\', "metode_bayar" = NULL, "tenor" = \'26\', "dp" = \'\', "catatan_kredit" = \'\', "total" = \'37263690000000000\', "grand_total" = 3726369, "status" = \'selesai\', "updated_at" = \'2025-08-26 06:21:47\'
+WHERE "sales"."id" IN (\'24\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\Postgre\Connection->execute('UPDATE "sales" SET "tanggal_nota" = \'2025-08-26\', "customer" = \'2\', "sales" = \'2\', "payment_a" = 2385000, "payment_b" = 1341369, "payment_system" = \'Transfer\', "metode_bayar" = NULL, "tenor" = \'26\', "dp" = \'\', "catatan_kredit" = \'\', "total" = \'37263690000000000\', "grand_total" = 3726369, "status" = \'selesai\', "updated_at" = \'2025-08-26 06:21:47\'
+WHERE "sales"."id" IN (\'24\')')
+ 4 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE "sales" SET "tanggal_nota" = \'2025-08-26\', "customer" = \'2\', "sales" = \'2\', "payment_a" = 2385000, "payment_b" = 1341369, "payment_system" = \'Transfer\', "metode_bayar" = NULL, "tenor" = \'26\', "dp" = \'\', "catatan_kredit" = \'\', "total" = \'37263690000000000\', "grand_total" = 3726369, "status" = \'selesai\', "updated_at" = \'2025-08-26 06:21:47\'
+WHERE "sales"."id" IN (\'24\')')
+ 5 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE "sales" SET "tanggal_nota" = :tanggal_nota:, "customer" = :customer:, "sales" = :sales:, "payment_a" = :payment_a:, "payment_b" = :payment_b:, "payment_system" = :payment_system:, "metode_bayar" = :metode_bayar:, "tenor" = :tenor:, "dp" = :dp:, "catatan_kredit" = :catatan_kredit:, "total" = :total:, "grand_total" = :grand_total:, "status" = :status:, "updated_at" = :updated_at:
+WHERE "sales"."id" IN :sales.id:', [...], false)
+ 6 SYSTEMPATH\Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+ 7 SYSTEMPATH\BaseModel.php(1031): CodeIgniter\Model->doUpdate([...], [...])
+ 8 SYSTEMPATH\Model.php(863): CodeIgniter\BaseModel->update([...], [...])
+ 9 APPPATH\Controllers\Penjualan.php(108): CodeIgniter\Model->update('24', [...])
+10 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Penjualan->update('24')
+11 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+12 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-08-26 06:25:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 06:25:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-08-26 06:25:11 --> ErrorException: pg_query(): Query failed: ERROR:  invalid input syntax for type bigint: &quot;&quot;
+LINE 1: ...r', &quot;metode_bayar&quot; = NULL, &quot;tenor&quot; = '27', &quot;dp&quot; = '', &quot;catat...
+                                                             ^ in C:\xampp\htdocs\webadmin3\system\Database\Postgre\Connection.php:206
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'pg_query(): Que...', 'C:\\xampp\\htdocs...', 206)
+#1 C:\xampp\htdocs\webadmin3\system\Database\Postgre\Connection.php(206): pg_query(Object(PgSql\Connection), 'UPDATE "sales" ...')
+#2 C:\xampp\htdocs\webadmin3\system\Database\BaseConnection.php(738): CodeIgniter\Database\Postgre\Connection->execute('UPDATE "sales" ...')
+#3 C:\xampp\htdocs\webadmin3\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE "sales" ...')
+#4 C:\xampp\htdocs\webadmin3\system\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE "sales" ...', Array, false)
+#5 C:\xampp\htdocs\webadmin3\system\Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+#6 C:\xampp\htdocs\webadmin3\system\BaseModel.php(1031): CodeIgniter\Model->doUpdate(Array, Array)
+#7 C:\xampp\htdocs\webadmin3\system\Model.php(863): CodeIgniter\BaseModel->update(Array, Array)
+#8 C:\xampp\htdocs\webadmin3\app\Controllers\Penjualan.php(109): CodeIgniter\Model->update('24', Array)
+#9 C:\xampp\htdocs\webadmin3\system\CodeIgniter.php(933): App\Controllers\Penjualan->update('24')
+#10 C:\xampp\htdocs\webadmin3\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+#11 C:\xampp\htdocs\webadmin3\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\webadmin3\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#13 C:\xampp\htdocs\webadmin3\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#14 C:\xampp\htdocs\webadmin3\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#15 {main}
+CRITICAL - 2025-08-26 06:25:11 --> CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  invalid input syntax for type bigint: &quot;&quot;
+LINE 1: ...r', &quot;metode_bayar&quot; = NULL, &quot;tenor&quot; = '27', &quot;dp&quot; = '', &quot;catat...
+                                                             ^
+[Method: POST, Route: penjualan/update/24]
+in SYSTEMPATH\Database\BaseConnection.php on line 692.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE "sales" SET "tanggal_nota" = :tanggal_nota:, "customer" = :customer:, "sales" = :sales:, "payment_a" = :payment_a:, "payment_b" = :payment_b:, "payment_system" = :payment_system:, "metode_bayar" = :metode_bayar:, "tenor" = :tenor:, "dp" = :dp:, "catatan_kredit" = :catatan_kredit:, "total" = :total:, "grand_total" = :grand_total:, "status" = :status:, "updated_at" = :updated_at:
+WHERE "sales"."id" IN :sales.id:', [...], false)
+ 2 SYSTEMPATH\Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(1031): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH\Model.php(863): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH\Controllers\Penjualan.php(109): CodeIgniter\Model->update('24', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Penjualan->update('24')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-26 06:25:11 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  invalid input syntax for type bigint: &quot;&quot;
+LINE 1: ...r', &quot;metode_bayar&quot; = NULL, &quot;tenor&quot; = '27', &quot;dp&quot; = '', &quot;catat...
+                                                             ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 211.
+ 1 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\Postgre\Connection->execute('UPDATE "sales" SET "tanggal_nota" = \'2025-08-26\', "customer" = \'2\', "sales" = \'2\', "payment_a" = 2385000, "payment_b" = 1341369, "payment_system" = \'Transfer\', "metode_bayar" = NULL, "tenor" = \'27\', "dp" = \'\', "catatan_kredit" = \'\', "total" = \'37263690000000000\', "grand_total" = 3726369, "status" = \'selesai\', "updated_at" = \'2025-08-26 06:25:11\'
+WHERE "sales"."id" IN (\'24\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE "sales" SET "tanggal_nota" = \'2025-08-26\', "customer" = \'2\', "sales" = \'2\', "payment_a" = 2385000, "payment_b" = 1341369, "payment_system" = \'Transfer\', "metode_bayar" = NULL, "tenor" = \'27\', "dp" = \'\', "catatan_kredit" = \'\', "total" = \'37263690000000000\', "grand_total" = 3726369, "status" = \'selesai\', "updated_at" = \'2025-08-26 06:25:11\'
+WHERE "sales"."id" IN (\'24\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE "sales" SET "tanggal_nota" = :tanggal_nota:, "customer" = :customer:, "sales" = :sales:, "payment_a" = :payment_a:, "payment_b" = :payment_b:, "payment_system" = :payment_system:, "metode_bayar" = :metode_bayar:, "tenor" = :tenor:, "dp" = :dp:, "catatan_kredit" = :catatan_kredit:, "total" = :total:, "grand_total" = :grand_total:, "status" = :status:, "updated_at" = :updated_at:
+WHERE "sales"."id" IN :sales.id:', [...], false)
+ 4 SYSTEMPATH\Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+ 5 SYSTEMPATH\BaseModel.php(1031): CodeIgniter\Model->doUpdate([...], [...])
+ 6 SYSTEMPATH\Model.php(863): CodeIgniter\BaseModel->update([...], [...])
+ 7 APPPATH\Controllers\Penjualan.php(109): CodeIgniter\Model->update('24', [...])
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Penjualan->update('24')
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-26 06:25:11 --> [Caused by] ErrorException: pg_query(): Query failed: ERROR:  invalid input syntax for type bigint: &quot;&quot;
+LINE 1: ...r', &quot;metode_bayar&quot; = NULL, &quot;tenor&quot; = '27', &quot;dp&quot; = '', &quot;catat...
+                                                             ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 206.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'pg_query(): Query failed: ERROR:  invalid input syntax for type bigint: &quot;&quot;
+LINE 1: ...r\', &quot;metode_bayar&quot; = NULL, &quot;tenor&quot; = \'27\', &quot;dp&quot; = \'\', &quot;catat...
+                                                             ^', 'C:\\xampp\\htdocs\\webadmin3\\system\\Database\\Postgre\\Connection.php', 206)
+ 2 SYSTEMPATH\Database\Postgre\Connection.php(206): pg_query(Object(PgSql\Connection), 'UPDATE "sales" SET "tanggal_nota" = \'2025-08-26\', "customer" = \'2\', "sales" = \'2\', "payment_a" = 2385000, "payment_b" = 1341369, "payment_system" = \'Transfer\', "metode_bayar" = NULL, "tenor" = \'27\', "dp" = \'\', "catatan_kredit" = \'\', "total" = \'37263690000000000\', "grand_total" = 3726369, "status" = \'selesai\', "updated_at" = \'2025-08-26 06:25:11\'
+WHERE "sales"."id" IN (\'24\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\Postgre\Connection->execute('UPDATE "sales" SET "tanggal_nota" = \'2025-08-26\', "customer" = \'2\', "sales" = \'2\', "payment_a" = 2385000, "payment_b" = 1341369, "payment_system" = \'Transfer\', "metode_bayar" = NULL, "tenor" = \'27\', "dp" = \'\', "catatan_kredit" = \'\', "total" = \'37263690000000000\', "grand_total" = 3726369, "status" = \'selesai\', "updated_at" = \'2025-08-26 06:25:11\'
+WHERE "sales"."id" IN (\'24\')')
+ 4 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE "sales" SET "tanggal_nota" = \'2025-08-26\', "customer" = \'2\', "sales" = \'2\', "payment_a" = 2385000, "payment_b" = 1341369, "payment_system" = \'Transfer\', "metode_bayar" = NULL, "tenor" = \'27\', "dp" = \'\', "catatan_kredit" = \'\', "total" = \'37263690000000000\', "grand_total" = 3726369, "status" = \'selesai\', "updated_at" = \'2025-08-26 06:25:11\'
+WHERE "sales"."id" IN (\'24\')')
+ 5 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE "sales" SET "tanggal_nota" = :tanggal_nota:, "customer" = :customer:, "sales" = :sales:, "payment_a" = :payment_a:, "payment_b" = :payment_b:, "payment_system" = :payment_system:, "metode_bayar" = :metode_bayar:, "tenor" = :tenor:, "dp" = :dp:, "catatan_kredit" = :catatan_kredit:, "total" = :total:, "grand_total" = :grand_total:, "status" = :status:, "updated_at" = :updated_at:
+WHERE "sales"."id" IN :sales.id:', [...], false)
+ 6 SYSTEMPATH\Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+ 7 SYSTEMPATH\BaseModel.php(1031): CodeIgniter\Model->doUpdate([...], [...])
+ 8 SYSTEMPATH\Model.php(863): CodeIgniter\BaseModel->update([...], [...])
+ 9 APPPATH\Controllers\Penjualan.php(109): CodeIgniter\Model->update('24', [...])
+10 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Penjualan->update('24')
+11 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+12 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-08-26 06:25:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 06:25:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 06:25:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 06:25:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 06:25:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 06:25:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 06:25:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 06:25:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-08-26 06:25:41 --> ErrorException: pg_query(): Query failed: ERROR:  invalid input syntax for type bigint: &quot;&quot;
+LINE 1: ...i', &quot;metode_bayar&quot; = NULL, &quot;tenor&quot; = '25', &quot;dp&quot; = '', &quot;catat...
+                                                             ^ in C:\xampp\htdocs\webadmin3\system\Database\Postgre\Connection.php:206
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'pg_query(): Que...', 'C:\\xampp\\htdocs...', 206)
+#1 C:\xampp\htdocs\webadmin3\system\Database\Postgre\Connection.php(206): pg_query(Object(PgSql\Connection), 'UPDATE "sales" ...')
+#2 C:\xampp\htdocs\webadmin3\system\Database\BaseConnection.php(738): CodeIgniter\Database\Postgre\Connection->execute('UPDATE "sales" ...')
+#3 C:\xampp\htdocs\webadmin3\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE "sales" ...')
+#4 C:\xampp\htdocs\webadmin3\system\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE "sales" ...', Array, false)
+#5 C:\xampp\htdocs\webadmin3\system\Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+#6 C:\xampp\htdocs\webadmin3\system\BaseModel.php(1031): CodeIgniter\Model->doUpdate(Array, Array)
+#7 C:\xampp\htdocs\webadmin3\system\Model.php(863): CodeIgniter\BaseModel->update(Array, Array)
+#8 C:\xampp\htdocs\webadmin3\app\Controllers\Penjualan.php(109): CodeIgniter\Model->update('24', Array)
+#9 C:\xampp\htdocs\webadmin3\system\CodeIgniter.php(933): App\Controllers\Penjualan->update('24')
+#10 C:\xampp\htdocs\webadmin3\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+#11 C:\xampp\htdocs\webadmin3\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\webadmin3\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#13 C:\xampp\htdocs\webadmin3\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#14 C:\xampp\htdocs\webadmin3\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#15 {main}
+CRITICAL - 2025-08-26 06:25:41 --> CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  invalid input syntax for type bigint: &quot;&quot;
+LINE 1: ...i', &quot;metode_bayar&quot; = NULL, &quot;tenor&quot; = '25', &quot;dp&quot; = '', &quot;catat...
+                                                             ^
+[Method: POST, Route: penjualan/update/24]
+in SYSTEMPATH\Database\BaseConnection.php on line 692.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE "sales" SET "tanggal_nota" = :tanggal_nota:, "customer" = :customer:, "sales" = :sales:, "payment_a" = :payment_a:, "payment_b" = :payment_b:, "payment_system" = :payment_system:, "metode_bayar" = :metode_bayar:, "tenor" = :tenor:, "dp" = :dp:, "catatan_kredit" = :catatan_kredit:, "total" = :total:, "grand_total" = :grand_total:, "status" = :status:, "updated_at" = :updated_at:
+WHERE "sales"."id" IN :sales.id:', [...], false)
+ 2 SYSTEMPATH\Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(1031): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH\Model.php(863): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH\Controllers\Penjualan.php(109): CodeIgniter\Model->update('24', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Penjualan->update('24')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-26 06:25:41 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  invalid input syntax for type bigint: &quot;&quot;
+LINE 1: ...i', &quot;metode_bayar&quot; = NULL, &quot;tenor&quot; = '25', &quot;dp&quot; = '', &quot;catat...
+                                                             ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 211.
+ 1 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\Postgre\Connection->execute('UPDATE "sales" SET "tanggal_nota" = \'2025-08-26\', "customer" = \'2\', "sales" = \'2\', "payment_a" = 2385000, "payment_b" = 1341369, "payment_system" = \'Tunai\', "metode_bayar" = NULL, "tenor" = \'25\', "dp" = \'\', "catatan_kredit" = \'\', "total" = \'37263690000000000\', "grand_total" = 3726369, "status" = \'selesai\', "updated_at" = \'2025-08-26 06:25:41\'
+WHERE "sales"."id" IN (\'24\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE "sales" SET "tanggal_nota" = \'2025-08-26\', "customer" = \'2\', "sales" = \'2\', "payment_a" = 2385000, "payment_b" = 1341369, "payment_system" = \'Tunai\', "metode_bayar" = NULL, "tenor" = \'25\', "dp" = \'\', "catatan_kredit" = \'\', "total" = \'37263690000000000\', "grand_total" = 3726369, "status" = \'selesai\', "updated_at" = \'2025-08-26 06:25:41\'
+WHERE "sales"."id" IN (\'24\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE "sales" SET "tanggal_nota" = :tanggal_nota:, "customer" = :customer:, "sales" = :sales:, "payment_a" = :payment_a:, "payment_b" = :payment_b:, "payment_system" = :payment_system:, "metode_bayar" = :metode_bayar:, "tenor" = :tenor:, "dp" = :dp:, "catatan_kredit" = :catatan_kredit:, "total" = :total:, "grand_total" = :grand_total:, "status" = :status:, "updated_at" = :updated_at:
+WHERE "sales"."id" IN :sales.id:', [...], false)
+ 4 SYSTEMPATH\Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+ 5 SYSTEMPATH\BaseModel.php(1031): CodeIgniter\Model->doUpdate([...], [...])
+ 6 SYSTEMPATH\Model.php(863): CodeIgniter\BaseModel->update([...], [...])
+ 7 APPPATH\Controllers\Penjualan.php(109): CodeIgniter\Model->update('24', [...])
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Penjualan->update('24')
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-26 06:25:41 --> [Caused by] ErrorException: pg_query(): Query failed: ERROR:  invalid input syntax for type bigint: &quot;&quot;
+LINE 1: ...i', &quot;metode_bayar&quot; = NULL, &quot;tenor&quot; = '25', &quot;dp&quot; = '', &quot;catat...
+                                                             ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 206.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'pg_query(): Query failed: ERROR:  invalid input syntax for type bigint: &quot;&quot;
+LINE 1: ...i\', &quot;metode_bayar&quot; = NULL, &quot;tenor&quot; = \'25\', &quot;dp&quot; = \'\', &quot;catat...
+                                                             ^', 'C:\\xampp\\htdocs\\webadmin3\\system\\Database\\Postgre\\Connection.php', 206)
+ 2 SYSTEMPATH\Database\Postgre\Connection.php(206): pg_query(Object(PgSql\Connection), 'UPDATE "sales" SET "tanggal_nota" = \'2025-08-26\', "customer" = \'2\', "sales" = \'2\', "payment_a" = 2385000, "payment_b" = 1341369, "payment_system" = \'Tunai\', "metode_bayar" = NULL, "tenor" = \'25\', "dp" = \'\', "catatan_kredit" = \'\', "total" = \'37263690000000000\', "grand_total" = 3726369, "status" = \'selesai\', "updated_at" = \'2025-08-26 06:25:41\'
+WHERE "sales"."id" IN (\'24\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\Postgre\Connection->execute('UPDATE "sales" SET "tanggal_nota" = \'2025-08-26\', "customer" = \'2\', "sales" = \'2\', "payment_a" = 2385000, "payment_b" = 1341369, "payment_system" = \'Tunai\', "metode_bayar" = NULL, "tenor" = \'25\', "dp" = \'\', "catatan_kredit" = \'\', "total" = \'37263690000000000\', "grand_total" = 3726369, "status" = \'selesai\', "updated_at" = \'2025-08-26 06:25:41\'
+WHERE "sales"."id" IN (\'24\')')
+ 4 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE "sales" SET "tanggal_nota" = \'2025-08-26\', "customer" = \'2\', "sales" = \'2\', "payment_a" = 2385000, "payment_b" = 1341369, "payment_system" = \'Tunai\', "metode_bayar" = NULL, "tenor" = \'25\', "dp" = \'\', "catatan_kredit" = \'\', "total" = \'37263690000000000\', "grand_total" = 3726369, "status" = \'selesai\', "updated_at" = \'2025-08-26 06:25:41\'
+WHERE "sales"."id" IN (\'24\')')
+ 5 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE "sales" SET "tanggal_nota" = :tanggal_nota:, "customer" = :customer:, "sales" = :sales:, "payment_a" = :payment_a:, "payment_b" = :payment_b:, "payment_system" = :payment_system:, "metode_bayar" = :metode_bayar:, "tenor" = :tenor:, "dp" = :dp:, "catatan_kredit" = :catatan_kredit:, "total" = :total:, "grand_total" = :grand_total:, "status" = :status:, "updated_at" = :updated_at:
+WHERE "sales"."id" IN :sales.id:', [...], false)
+ 6 SYSTEMPATH\Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+ 7 SYSTEMPATH\BaseModel.php(1031): CodeIgniter\Model->doUpdate([...], [...])
+ 8 SYSTEMPATH\Model.php(863): CodeIgniter\BaseModel->update([...], [...])
+ 9 APPPATH\Controllers\Penjualan.php(109): CodeIgniter\Model->update('24', [...])
+10 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Penjualan->update('24')
+11 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+12 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-08-26 06:31:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 06:33:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 06:34:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 06:34:00 --> POST barang_id: ["2"]
+DEBUG - 2025-08-26 06:34:00 --> POST qty: ["3.00"]
+DEBUG - 2025-08-26 06:34:00 --> Barang ditemukan: {"id":"2","category_id":"3","satuan_id":null,"jenis_id":null,"pelengkap_id":null,"gondola_id":null,"merk_id":null,"warna_sinar_id":null,"ukuran_barang_id":null,"voltase_id":null,"dimensi_id":null,"warna_body_id":null,"warna_bibir_id":null,"kaki_id":null,"model_id":null,"fiting_id":null,"daya_id":null,"jumlah_mata_id":null,"name":"LAPTOP Asus","price":"1242123.00","stock":"12","created_at":"2025-07-10 05:42:42","updated_at":"2025-07-22 11:38:27","deleted_at":null,"recovered_at":null,"batas_tanggal_sistem":null,"mode_batas_tanggal":"automatic","otoritas":null,"nama_ky":"geni"}
+DEBUG - 2025-08-26 06:34:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 06:34:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 06:34:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 06:34:11 --> POST barang_id: ["2"]
+DEBUG - 2025-08-26 06:34:11 --> POST qty: ["3.00"]
+DEBUG - 2025-08-26 06:34:11 --> Barang ditemukan: {"id":"2","category_id":"3","satuan_id":null,"jenis_id":null,"pelengkap_id":null,"gondola_id":null,"merk_id":null,"warna_sinar_id":null,"ukuran_barang_id":null,"voltase_id":null,"dimensi_id":null,"warna_body_id":null,"warna_bibir_id":null,"kaki_id":null,"model_id":null,"fiting_id":null,"daya_id":null,"jumlah_mata_id":null,"name":"LAPTOP Asus","price":"1242123.00","stock":"12","created_at":"2025-07-10 05:42:42","updated_at":"2025-07-22 11:38:27","deleted_at":null,"recovered_at":null,"batas_tanggal_sistem":null,"mode_batas_tanggal":"automatic","otoritas":null,"nama_ky":"geni"}
+DEBUG - 2025-08-26 06:34:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 06:34:12 --> POST barang_id: ["2"]
+DEBUG - 2025-08-26 06:34:12 --> POST qty: ["3.00"]
+DEBUG - 2025-08-26 06:34:12 --> Barang ditemukan: {"id":"2","category_id":"3","satuan_id":null,"jenis_id":null,"pelengkap_id":null,"gondola_id":null,"merk_id":null,"warna_sinar_id":null,"ukuran_barang_id":null,"voltase_id":null,"dimensi_id":null,"warna_body_id":null,"warna_bibir_id":null,"kaki_id":null,"model_id":null,"fiting_id":null,"daya_id":null,"jumlah_mata_id":null,"name":"LAPTOP Asus","price":"1242123.00","stock":"12","created_at":"2025-07-10 05:42:42","updated_at":"2025-07-22 11:38:27","deleted_at":null,"recovered_at":null,"batas_tanggal_sistem":null,"mode_batas_tanggal":"automatic","otoritas":null,"nama_ky":"geni"}
+DEBUG - 2025-08-26 06:34:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 06:34:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 06:45:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 06:45:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 06:45:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 06:47:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 08:03:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 08:05:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 08:06:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 08:06:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 08:07:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 08:09:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 08:11:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 08:17:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 08:17:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 08:17:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 08:17:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 08:21:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 08:23:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 08:23:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 08:26:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 08:27:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 08:27:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 08:27:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 08:28:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 08:28:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 08:29:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 08:29:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 08:29:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 08:29:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 08:30:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 08:32:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 08:32:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 08:32:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 08:32:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 08:32:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 08:33:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 08:33:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 08:33:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 08:33:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 08:38:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 08:39:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 08:40:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 08:40:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-26 08:40:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

@@ -77,6 +77,7 @@ $routes->group('', ['filter' => 'auth'], static function ($routes) {
     $routes->post('penjualan/addItem/(:num)', 'Penjualan::addItem/$1'); // Tambah item ke penjualan
     $routes->get('penjualan/deleteItem/(:num)', 'Penjualan::deleteItem/$1'); // Hapus item dari penjualan
     $routes->get('penjualan/finalize/(:num)', 'Penjualan::finalize/$1'); // Finalisasi penjualan
+    $routes->post('penjualan/update/(:num)', 'Penjualan::update/$1'); // Update penjualan
 
     // Batas Tanggal
     $routes->get('batas-tanggal', 'BatasTanggal::index');

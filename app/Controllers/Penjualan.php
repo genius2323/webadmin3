@@ -7,35 +7,157 @@ use App\Models\PenjualanModel;
 
 class Penjualan extends BaseController
 {
+    // Method khusus untuk update barang pada nota penjualan
+    public function updateBarang($id)
+    {
+        $db = \Config\Database::connect();
+        $db2 = \Config\Database::connect('db2');
+        $salesItemModel = new \App\Models\SalesItemsModel();
+        $barangIds = $this->request->getPost('barang_id');
+        $qtys = $this->request->getPost('qty');
+        $barangModel = new \App\Models\MasterBarangModel();
+        // Hapus item lama
+        $db->table('sales_items')->where('sales_id', $id)->delete();
+        $db2->table('sales_items')->where('sales_id', $id)->delete();
+        // Simpan item baru
+        for ($i = 0; $i < count($barangIds); $i++) {
+            $barang = $barangModel->find($barangIds[$i]);
+            $subtotal = $barang ? $barang['price'] * $qtys[$i] : 0;
+            $item = [
+                'sales_id'     => $id,
+                'product_id'   => $barangIds[$i],
+                'product_code' => $barang['kode_barang'] ?? '',
+                'product_name' => $barang['name'] ?? '',
+                'qty'          => $qtys[$i],
+                'unit'         => $barang['satuan_name'] ?? '',
+                'price'        => $barang['price'] ?? 0,
+                'discount'     => 0,
+                'total'        => $subtotal
+            ];
+            $itemId = $salesItemModel->insert($item, true);
+            if ($itemId) {
+                $itemDb2 = $item;
+                $itemDb2['id'] = $itemId;
+                $db2->table('sales_items')->insert($itemDb2);
+            }
+        }
+        return redirect()->to('/penjualan/edit/' . $id)->with('success', 'Barang berhasil diupdate di kedua database!');
+    }
+
     public function update($id)
     {
+        // --- Awal patch: definisi variabel penting ---
+        $db = \Config\Database::connect();
+        $db2 = \Config\Database::connect('db2');
         $salesModel = new \App\Models\SalesModel();
+        $maxNum = 999999999999999.99;
+        $maxTenor = 9999;
+        $salesItemModel = new \App\Models\SalesItemsModel();
+        $deletedBarang = $this->request->getPost('deleted'); // array barang_id yang dihapus
+        $barangIds = $this->request->getPost('barang_id');
+        $qtys = $this->request->getPost('qty');
+        $barangModel = new \App\Models\MasterBarangModel();
+        // --- Akhir patch: definisi variabel penting ---
+
+        // PATCH: Proses barang (soft delete + insert/update)
+        // Soft delete barang yang dihapus
+        if (!empty($deletedBarang)) {
+            foreach ($deletedBarang as $barangIdDel) {
+                $db->table('sales_items')->where(['sales_id' => $id, 'product_id' => $barangIdDel, 'deleted_at' => null])->update(['deleted_at' => date('Y-m-d H:i:s')]);
+                $db2->table('sales_items')->where(['sales_id' => $id, 'product_id' => $barangIdDel, 'deleted_at' => null])->update(['deleted_at' => date('Y-m-d H:i:s')]);
+            }
+        }
+        // Insert/update barang baru (tidak dihapus)
+        for ($i = 0; $i < count($barangIds); $i++) {
+            if (!empty($deletedBarang) && in_array($barangIds[$i], $deletedBarang)) {
+                continue;
+            }
+            $barang = $barangModel->find($barangIds[$i]);
+            $subtotal = $barang ? $barang['price'] * $qtys[$i] : 0;
+            $item = [
+                'sales_id'     => $id,
+                'product_id'   => $barangIds[$i],
+                'product_code' => $barang['kode_barang'] ?? '',
+                'product_name' => $barang['name'] ?? '',
+                'qty'          => $qtys[$i],
+                'unit'         => $barang['satuan_name'] ?? '',
+                'price'        => $barang['price'] ?? 0,
+                'discount'     => 0,
+                'total'        => $subtotal,
+                'deleted_at'   => null
+            ];
+            $itemId = $salesItemModel->insert($item, true);
+            if ($itemId) {
+                $itemDb2 = $item;
+                $itemDb2['id'] = $itemId;
+                $db2->table('sales_items')->insert($itemDb2);
+            }
+        }
+        // --- Patch: proses data nota ---
+        $oldData = $salesModel->find($id);
+        $payment_a = preg_replace('/[^\d.]/', '', $this->request->getPost('payment_a'));
+        $payment_a = ($payment_a === '' || $payment_a === null) ? ($oldData['payment_a'] ?? null) : (float)$payment_a;
+        $payment_a = ($payment_a !== null && $payment_a > $maxNum ? $maxNum : $payment_a);
+        $payment_b = preg_replace('/[^\d.]/', '', $this->request->getPost('payment_b'));
+        $payment_b = ($payment_b === '' || $payment_b === null) ? ($oldData['payment_b'] ?? null) : (float)$payment_b;
+        $payment_b = ($payment_b !== null && $payment_b > $maxNum ? $maxNum : $payment_b);
+        $grand_total = preg_replace('/[^\d.]/', '', $this->request->getPost('grand_total'));
+        $grand_total = ($grand_total === '' || $grand_total === null) ? ($oldData['grand_total'] ?? null) : (float)$grand_total;
+        $grand_total = ($grand_total !== null && $grand_total > $maxNum ? $maxNum : $grand_total);
+        $total = preg_replace('/[^\d.]/', '', $this->request->getPost('total'));
+        $total = ($total === '' || $total === null) ? ($oldData['total'] ?? null) : (float)$total;
+        $total = ($total !== null && $total > $maxNum ? $maxNum : $total);
+        $dp = preg_replace('/[^\d.]/', '', $this->request->getPost('dp'));
+        $dp = ($dp === '' || $dp === null) ? ($oldData['dp'] ?? null) : (float)$dp;
+        $dp = ($dp !== null && $dp > $maxNum ? $maxNum : $dp);
+        $tenor = preg_replace('/[^\d.]/', '', $this->request->getPost('tenor'));
+        $tenor = ($tenor === '' || $tenor === null) ? ($oldData['tenor'] ?? null) : (int)$tenor;
+        $tenor = ($tenor !== null && $tenor > $maxTenor ? $maxTenor : $tenor);
+        $status_pembayaran = ($payment_a >= $grand_total && $grand_total > 0) ? 'Lunas' : 'Kredit';
+        $tanggal_nota = $this->request->getPost('tanggal_nota');
+        if ($tanggal_nota && strpos($tanggal_nota, '/') !== false) {
+            $tanggal_nota = \DateTime::createFromFormat('d/m/Y', $tanggal_nota)->format('Y-m-d');
+        }
+        $customer_id = $this->request->getPost('customer_id');
+        $sales_id = $this->request->getPost('sales_id');
+        if ($customer_id === '' || $customer_id === null) {
+            $customer_id = $oldData['customer'] ?? $oldData['customer_id'] ?? null;
+        }
+        if ($sales_id === '' || $sales_id === null) {
+            $sales_id = $oldData['sales'] ?? $oldData['sales_id'] ?? null;
+        }
         $data = [
-            'tanggal_nota' => $this->request->getPost('tanggal_nota'),
-            'customer' => $this->request->getPost('customer_id'),
-            'sales' => $this->request->getPost('sales_id'),
-            'payment_a' => $this->request->getPost('payment_a'),
+            'tanggal_nota' => $tanggal_nota,
+            'customer' => (isset($customer_id) && $customer_id !== '' ? $customer_id : null),
+            'sales' => (isset($sales_id) && $sales_id !== '' ? $sales_id : null),
+            'payment_a' => $payment_a,
+            'payment_b' => $payment_b,
             'payment_system' => $this->request->getPost('payment_system'),
             'metode_bayar' => $this->request->getPost('metode_bayar'),
-            'tenor' => $this->request->getPost('tenor'),
+            'tenor' => $tenor,
             'jatuh_tempo' => $this->request->getPost('jatuh_tempo'),
-            'dp' => $this->request->getPost('dp'),
+            'dp' => $dp,
             'catatan_kredit' => $this->request->getPost('catatan_kredit'),
-            'total' => $this->request->getPost('total'),
-            'grand_total' => $this->request->getPost('grand_total'),
+            'total' => $total,
+            'grand_total' => $grand_total,
             'status' => 'selesai',
+            'status_pembayaran' => $status_pembayaran,
         ];
+        $salesModel->skipValidation(true);
         $salesModel->update($id, $data);
-        // Update juga di database kedua (db2)
-        $db2 = \Config\Database::connect('db2');
         $db2->table('sales')->where('id', $id)->update($data);
-        // TODO: update sales_items jika ada perubahan barang
-        return redirect()->to('/penjualan/datapenjualan')->with('success', 'Nota penjualan berhasil diupdate di kedua database!');
+
+        // --- End patch: barang sudah diproses di atas, tidak perlu ulang ---
+        return redirect()->to('/datapenjualan')->with('success', 'Nota penjualan berhasil diupdate di kedua database!');
     }
     public function edit($id)
     {
         $penjualanModel = new \App\Models\PenjualanModel();
         $salesModel = new \App\Models\SalesModel();
+        $db = \Config\Database::connect();
+        $db2 = \Config\Database::connect('db2');
+        $maxNum = 999999999999999.99;
+        $maxTenor = 9999;
         $penjualan = $salesModel->find($id);
         if (!$penjualan) {
             return redirect()->to('/penjualan/datapenjualan')->with('error', 'Data penjualan tidak ditemukan.');
@@ -61,15 +183,18 @@ class Penjualan extends BaseController
         $productModel = new \App\Models\MasterBarangModel();
         $items = [];
         foreach ($itemsRaw as $item) {
-            $barang = $productModel->find($item['product_id']);
-            $items[] = [
-                'barang_id' => $item['product_id'],
-                'nama_barang' => $barang['name'] ?? '',
-                'harga' => $item['price'],
-                'qty' => $item['qty'],
-                'subtotal' => $item['qty'] * $item['price'],
-                'gambar' => $barang['gambar'] ?? '',
-            ];
+            // Filter hanya barang yang belum dihapus (deleted_at == null)
+            if (!isset($item['deleted_at']) || $item['deleted_at'] === null) {
+                $barang = $productModel->find($item['product_id']);
+                $items[] = [
+                    'barang_id' => $item['product_id'],
+                    'nama_barang' => $barang['name'] ?? '',
+                    'harga' => $item['price'],
+                    'qty' => $item['qty'],
+                    'subtotal' => $item['qty'] * $item['price'],
+                    'gambar' => $barang['gambar'] ?? '',
+                ];
+            }
         }
         $data = [
             'title' => 'Edit Nota Penjualan',
@@ -179,25 +304,27 @@ class Penjualan extends BaseController
 
     public function create()
     {
+        $session = session();
+        $nama_ky = $session->get('user_nama') ?? $session->get('user_username') ?? $session->get('nama') ?? $session->get('username') ?? 'unknown';
         $nomor_nota = 'INV-' . date('Ymd') . '-' . strtoupper(substr(md5(uniqid(rand(), true)), 0, 5));
         $tanggal_nota = date('Y-m-d');
-        $salesModel = new \App\Models\SalesModel();
-        $draftData = [
+        $data = [
             'nomor_nota' => $nomor_nota,
             'tanggal_nota' => $tanggal_nota,
             'status' => 'draft',
+            'nama_ky' => $nama_ky,
         ];
-        $salesModel->skipValidation(true);
-        $draftId = $salesModel->insert($draftData);
-        $salesModel->skipValidation(false);
-        if (!$draftId) {
-            $errorMsg = $salesModel->errors() ? json_encode($salesModel->errors()) : 'Gagal insert draft nota.';
-            file_put_contents(ROOTPATH . 'writable/logs/penjualan_status.log', "CREATE-ERROR: " . $errorMsg . "\n", FILE_APPEND);
-            return redirect()->back()->with('error', 'Gagal menyimpan draft nota: ' . $errorMsg);
-        }
-        // Selesai, redirect ke halaman POS dengan nomor nota baru
-        return redirect()->to('/penjualan/pos?nomor_nota=' . urlencode($draftData['nomor_nota']))->with('success', 'Draft nota berhasil dibuat!');
+        // Insert ke database utama
         $db = \Config\Database::connect();
+        $db->table('sales')->insert($data);
+        $insertId = $db->insertID();
+        // Insert ke database kedua (db1_akuntansi) dengan id yang sama
+        $db2 = \Config\Database::connect('db2');
+        $dataDb2 = $data;
+        $dataDb2['id'] = $insertId;
+        $db2->table('sales')->insert($dataDb2);
+        // Selesai, redirect ke halaman POS dengan nomor nota baru
+        return redirect()->to('/penjualan/pos?nomor_nota=' . urlencode($data['nomor_nota']))->with('success', 'Draft nota berhasil dibuat di dua database!');
         $db2 = \Config\Database::connect('db2');
         $session = session();
         $nama_ky = $session->get('user_nama') ?? $session->get('user_username') ?? $session->get('nama') ?? $session->get('username') ?? 'unknown';
@@ -390,17 +517,20 @@ class Penjualan extends BaseController
         $total_post = $this->request->getPost('total');
         $grand_total_post = $this->request->getPost('grand_total');
         $payment_a = $this->request->getPost('payment_a');
+        $payment_b = $this->request->getPost('payment_b');
         $payment_system = $this->request->getPost('payment_system');
         $tenor = $this->request->getPost('tenor');
         $jatuh_tempo = $this->request->getPost('jatuh_tempo');
         // Jika total tidak dikirim, gunakan grand_total
         $total_val = ($total_post !== null && $total_post !== '') ? $total_post : $grand_total_post;
         $grand_total_val = ($grand_total_post !== null && $grand_total_post !== '') ? $grand_total_post : $total_post;
+        $status_pembayaran = ($payment_a >= $grand_total_val && $grand_total_val > 0) ? 'Lunas' : 'Kredit';
         $data = [
             'tanggal_nota' => $tanggal_nota,
             'customer' => intOrNull($this->request->getPost('customer_id')),
             'sales' => intOrNull($this->request->getPost('sales_id')),
             'payment_a' => intOrNull($payment_a),
+            'payment_b' => intOrNull($payment_b),
             'payment_system' => $payment_system,
             'metode_bayar' => $this->request->getPost('metode_bayar'),
             'tenor' => intOrNull($tenor),
@@ -410,14 +540,62 @@ class Penjualan extends BaseController
             'total' => intOrNull($total_val),
             'grand_total' => intOrNull($grand_total_val),
             'status' => 'selesai',
+            'status_pembayaran' => $status_pembayaran,
         ];
-        $salesModel->skipValidation(true);
-        $salesModel->where('nomor_nota', $nomor_nota)->set($data)->update();
-        $salesModel->skipValidation(false);
-        // Update juga di database kedua (db2)
-        $db2 = \Config\Database::connect('db2');
-        $db2->table('sales')->where('nomor_nota', $nomor_nota)->update($data);
+        // Cek apakah nota sudah ada di database utama
+        $existing = $salesModel->where('nomor_nota', $nomor_nota)->first();
+        if ($existing) {
+            // Jika sudah ada, update saja di kedua database
+            $salesModel->skipValidation(true);
+            $salesModel->where('nomor_nota', $nomor_nota)->set($data)->update();
+            $salesModel->skipValidation(false);
+            $db2 = \Config\Database::connect('db2');
+            $db2->table('sales')->where('nomor_nota', $nomor_nota)->update($data);
+        } else {
+            // Jika belum ada, insert ke database utama dan ambil id
+            $salesModel->skipValidation(true);
+            $insertId = $salesModel->insert($data);
+            $salesModel->skipValidation(false);
+            // Insert ke db2 dengan id yang sama
+            $db2 = \Config\Database::connect('db2');
+            $dataDb2 = $data;
+            $dataDb2['id'] = $insertId;
+            $db2->table('sales')->insert($dataDb2);
+        }
         // Simpan item (jika ada logic item, tambahkan di sini untuk kedua db)
+        $barangIds = $this->request->getPost('barang_id');
+        $qtys = $this->request->getPost('qty');
+        $barangModel = new \App\Models\MasterBarangModel();
+        $salesItemModel = new \App\Models\SalesItemsModel();
+        // Ambil sales_id (id nota) dari database utama
+        $salesId = $existing ? $existing['id'] : ($insertId ?? null);
+        $db = \Config\Database::connect();
+        // Hapus item lama
+        if ($salesId) {
+            $db->table('sales_items')->where('sales_id', $salesId)->delete();
+            $db2->table('sales_items')->where('sales_id', $salesId)->delete();
+            for ($i = 0; $i < count($barangIds); $i++) {
+                $barang = $barangModel->find($barangIds[$i]);
+                $subtotal = $barang ? $barang['price'] * $qtys[$i] : 0;
+                $item = [
+                    'sales_id'     => $salesId,
+                    'product_id'   => $barangIds[$i],
+                    'product_code' => $barang['kode_barang'] ?? '',
+                    'product_name' => $barang['name'] ?? '',
+                    'qty'          => $qtys[$i],
+                    'unit'         => $barang['satuan_name'] ?? '',
+                    'price'        => $barang['price'] ?? 0,
+                    'discount'     => 0,
+                    'total'        => $subtotal
+                ];
+                $itemId = $salesItemModel->insert($item, true);
+                if ($itemId) {
+                    $itemDb2 = $item;
+                    $itemDb2['id'] = $itemId;
+                    $db2->table('sales_items')->insert($itemDb2);
+                }
+            }
+        }
         // Redirect ke halaman data penjualan
         return redirect()->to('/datapenjualan')->with('success', 'Nota berhasil disimpan di kedua database!');
     }

@@ -174,20 +174,39 @@
                                         <th id="grandTotal" style="text-align:right;">Rp 0</th>
                                         <th></th>
                                     </tr>
+                                </tfoot>
+                            </table>
+                            <div class="mb-3">
+                                <div class="input-group">
+                                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalBarang" id="btnPilihBarang">Pilih Barang</button>
+                                </div>
+                            </div>
+                            <table class="table table-bordered align-middle">
+                                <tbody>
                                     <tr>
-                                        <td colspan="4" class="text-end">Pembayaran</td>
-                                        <td colspan="2">
-                                            <input type="number" min="0" class="form-control" id="paymentAInput" name="payment_a" placeholder="Masukkan pembayaran customer">
-                                            <span id="badgeStatus" class="badge ms-2"></span>
+                                        <td colspan="4" class="text-end align-middle">Pembayaran</td>
+                                        <td colspan="2" class="text-end align-middle">
+                                            <input type="text" inputmode="numeric" class="form-control text-end" id="paymentAInput" name="payment_a" placeholder="Masukkan pembayaran customer">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4" class="text-end align-middle">Status Pembayaran</td>
+                                        <td colspan="2" class="text-end align-middle">
+                                            <span id="badgeStatus" class="badge d-flex justify-content-center align-items-center" style="height:38px;min-width:90px;font-size:1rem;"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4" class="text-end align-middle">Sisa Pelunasan</td>
+                                        <td colspan="2" class="text-end align-middle">
+                                            <span id="sisaPelunasan" class="fw-bold text-danger">Rp 0</span>
                                         </td>
                                     </tr>
                                     <tr id="rowMetodeBayar" style="display:none;">
-                                        <td colspan="4" class="text-end">Metode Pembayaran</td>
-                                        <td colspan="2">
+                                        <td colspan="4" class="text-end align-middle">Metode Pembayaran</td>
+                                        <td colspan="2" class="align-middle">
                                             <select class="form-select" id="paymentSystemInput" name="payment_system">
-                                                <option value="Cash">Cash</option>
+                                                <option value="Tunai">Tunai</option>
                                                 <option value="Transfer">Transfer</option>
-                                                <option value="Debit">Debit</option>
                                             </select>
                                         </td>
                                     </tr>
@@ -203,13 +222,9 @@
                                             <input type="text" class="form-control" id="jatuhTempoInput" name="jatuh_tempo" readonly>
                                         </td>
                                     </tr>
-                                </tfoot>
+                                </tbody>
                             </table>
-                            <div class="mb-3">
-                                <div class="input-group">
-                                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalBarang" id="btnPilihBarang">Pilih Barang</button>
-                                </div>
-                            </div>
+
                         </div>
                         <div class="d-flex justify-content-end">
                             <button type="submit" class="btn btn-primary btn-lg animate__animated animate__pulse animate__infinite">Simpan Nota</button>
@@ -238,6 +253,44 @@
                         </div>
                     </form>
                     <script>
+                        // Format input pembayaran dengan Rp dan ribuan, simpan angka saja
+                        const paymentAInput = document.getElementById('paymentAInput');
+                        paymentAInput.addEventListener('input', function(e) {
+                            let value = this.value.replace(/[^\d]/g, '');
+                            if (value === '') value = '0';
+                            this.value = parseInt(value).toLocaleString('id-ID');
+                            document.getElementById('paymentAInputHidden').value = value;
+                            updateSisaPelunasan();
+                        });
+                        // Hidden input untuk simpan angka
+                        if (!document.getElementById('paymentAInputHidden')) {
+                            const hidden = document.createElement('input');
+                            hidden.type = 'hidden';
+                            hidden.name = 'payment_a';
+                            hidden.id = 'paymentAInputHidden';
+                            hidden.value = paymentAInput.value.replace(/[^\d]/g, '');
+                            paymentAInput.form.appendChild(hidden);
+                        }
+                        // Sisa Pelunasan dan payment_b
+                        function updateSisaPelunasan() {
+                            let pembayaran = parseInt(document.getElementById('paymentAInputHidden').value) || 0;
+                            let grandTotal = parseInt(document.getElementById('grandTotalInput').value) || 0;
+                            let sisa = grandTotal - pembayaran;
+                            document.getElementById('sisaPelunasan').textContent = 'Rp ' + sisa.toLocaleString('id-ID');
+                            // Simpan sisa ke payment_b
+                            let paymentBInput = document.getElementById('paymentBInputHidden');
+                            if (!paymentBInput) {
+                                paymentBInput = document.createElement('input');
+                                paymentBInput.type = 'hidden';
+                                paymentBInput.name = 'payment_b';
+                                paymentBInput.id = 'paymentBInputHidden';
+                                paymentAInput.form.appendChild(paymentBInput);
+                            }
+                            paymentBInput.value = sisa;
+                        }
+                        paymentAInput.addEventListener('input', updateSisaPelunasan);
+                        document.getElementById('grandTotalInput').addEventListener('input', updateSisaPelunasan);
+                        updateSisaPelunasan();
                         // Helper ambil nilai tanggal nota
                         function getTanggalNotaYmd() {
                             let tgl = document.getElementById('tanggal_nota').value;
@@ -250,7 +303,7 @@
                         }
                         // Update badge dan field pembayaran
                         function updatePaymentStatus() {
-                            let paymentA = parseInt(document.getElementById('paymentAInput').value) || 0;
+                            let paymentA = parseInt(document.getElementById('paymentAInputHidden').value) || 0;
                             let grandTotal = parseInt(document.getElementById('grandTotalInput').value) || 0;
                             let badge = document.getElementById('badgeStatus');
                             let rowMetode = document.getElementById('rowMetodeBayar');
@@ -258,19 +311,19 @@
                             let rowJatuhTempo = document.getElementById('rowJatuhTempo');
                             if (paymentA >= grandTotal && grandTotal > 0) {
                                 badge.textContent = 'LUNAS';
-                                badge.className = 'badge bg-success ms-2';
+                                badge.className = 'badge bg-success d-flex justify-content-center align-items-center';
                                 rowMetode.style.display = '';
                                 rowTenor.style.display = 'none';
                                 rowJatuhTempo.style.display = 'none';
                             } else if (paymentA > 0 && paymentA < grandTotal) {
                                 badge.textContent = 'KREDIT';
-                                badge.className = 'badge bg-warning text-dark ms-2';
-                                rowMetode.style.display = 'none';
+                                badge.className = 'badge bg-warning text-dark d-flex justify-content-center align-items-center';
+                                rowMetode.style.display = '';
                                 rowTenor.style.display = '';
                                 rowJatuhTempo.style.display = '';
                             } else {
                                 badge.textContent = '';
-                                badge.className = 'badge ms-2';
+                                badge.className = 'badge';
                                 rowMetode.style.display = 'none';
                                 rowTenor.style.display = 'none';
                                 rowJatuhTempo.style.display = 'none';

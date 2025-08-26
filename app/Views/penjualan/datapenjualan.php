@@ -121,6 +121,7 @@
                             <th style="text-align:center;">Sales</th>
                             <th style="text-align:center;">Total</th>
                             <th style="text-align:center;">Status</th>
+                            <th style="text-align:center;">Status Pembayaran</th>
                             <th style="text-align:center;">Aksi</th>
                         </tr>
                     </thead>
@@ -139,7 +140,7 @@
                                     <td style="text-align:center;white-space:nowrap;"> <?= esc(date('d/m/Y', strtotime($row['tanggal_nota']))) ?> </td>
                                     <td style="text-align:center;white-space:nowrap;"> <?= esc($row['nama_customer']) ?> </td>
                                     <td style="text-align:center;white-space:nowrap;"> <?= esc($row['nama_sales']) ?> </td>
-                                    <td style="text-align:right;white-space:nowrap;">Rp <?= number_format($row['grand_total'], 0, ',', '.') ?> </td>
+                                    <td style="text-align:right;white-space:nowrap;">Rp <?= number_format($row['grand_total'] ?? 0, 0, ',', '.') ?> </td>
                                     <td style="text-align:center;">
                                         <?php
                                         $status = strtolower(trim($row['status']));
@@ -149,6 +150,15 @@
                                         elseif ($status === 'batal') $badgeClass = 'danger';
                                         ?>
                                         <span class="badge bg-<?= $badgeClass ?>"><?= ucfirst($status) ?></span>
+                                    </td>
+                                    <td style="text-align:center;">
+                                        <?php
+                                        $payment_b = isset($row['payment_b']) ? (int)$row['payment_b'] : 0;
+                                        $grand_total = isset($row['grand_total']) ? (int)$row['grand_total'] : 0;
+                                        $payment_status = ($payment_b <= 0 && $grand_total > 0) ? 'Lunas' : 'Kredit';
+                                        $badgeClassPay = ($payment_status === 'Lunas') ? 'success' : 'warning';
+                                        ?>
+                                        <span class="badge bg-<?= $badgeClassPay ?>"> <?= $payment_status ?> </span>
                                     </td>
                                     <td class="text-center" style="white-space: nowrap !important;">
                                         <a href="<?= site_url('penjualan/detail/' . $row['id']) ?>" class="btn btn-sm btn-info" title="Detail"><i data-feather="eye"></i></a>

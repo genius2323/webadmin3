@@ -28,7 +28,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
                         <?php endif; ?>
-                        <form action="<?= site_url('mastersatuan/store') ?>" method="post" autocomplete="off">
+                        <form action="<?= site_url('mastersatuan/save') ?>" method="post" autocomplete="off">
                             <?= csrf_field() ?>
                             <div class="mb-3">
                                 <label for="name" class="form-label">Nama Satuan <span class="text-danger">*</span></label>
