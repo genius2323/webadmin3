@@ -59,17 +59,23 @@ class Penjualan extends BaseController
         $barangModel = new \App\Models\MasterBarangModel();
         // --- Akhir patch: definisi variabel penting ---
 
-        // PATCH: Proses barang (soft delete + insert/update)
-        // Soft delete barang yang dihapus
+        // PATCH: Proses barang (soft delete dulu, baru insert barang baru)
+        // 1. Soft delete barang yang dihapus
         if (!empty($deletedBarang)) {
             foreach ($deletedBarang as $barangIdDel) {
                 $db->table('sales_items')->where(['sales_id' => $id, 'product_id' => $barangIdDel, 'deleted_at' => null])->update(['deleted_at' => date('Y-m-d H:i:s')]);
                 $db2->table('sales_items')->where(['sales_id' => $id, 'product_id' => $barangIdDel, 'deleted_at' => null])->update(['deleted_at' => date('Y-m-d H:i:s')]);
             }
         }
-        // Insert/update barang baru (tidak dihapus)
+        // 2. Insert barang baru (deleted_at null)
+        // Ambil semua barang lama yang masih aktif
+        $existingItems = $salesItemModel->where(['sales_id' => $id, 'deleted_at' => null])->findAll();
+        $existingProductIds = array_map(function ($item) {
+            return $item['product_id'];
+        }, $existingItems);
         for ($i = 0; $i < count($barangIds); $i++) {
-            if (!empty($deletedBarang) && in_array($barangIds[$i], $deletedBarang)) {
+            // Insert hanya jika barang belum ada di database (barang baru)
+            if (in_array($barangIds[$i], $existingProductIds)) {
                 continue;
             }
             $barang = $barangModel->find($barangIds[$i]);
@@ -142,6 +148,7 @@ class Penjualan extends BaseController
             'grand_total' => $grand_total,
             'status' => 'selesai',
             'status_pembayaran' => $status_pembayaran,
+            'status_sisa_pelunasan' => ($payment_b > 0 ? ($payment_b < 0 ? 'Lebih' : 'Kurang') : ''),
         ];
         $salesModel->skipValidation(true);
         $salesModel->update($id, $data);
@@ -177,6 +184,8 @@ class Penjualan extends BaseController
             ->get()->getResultArray();
         $salesList = $db->table('mastersales')->where('deleted_at', null)->get()->getResultArray();
         $barangList = $db->table('products')->where('deleted_at', null)->get()->getResultArray();
+        $batasTanggal = model('App\Models\SystemDateLimitsModel')->getBatasTanggal();
+        file_put_contents(ROOTPATH . 'writable/logs/batas_tanggal.log', "EDITPOS: min=" . ($batasTanggal['min'] ?? 'null') . "\n", FILE_APPEND);
         // Ambil item barang dari sales_items dan join ke products
         $salesItemModel = new \App\Models\SalesItemsModel();
         $itemsRaw = $salesItemModel->where('sales_id', $id)->findAll();
@@ -196,6 +205,7 @@ class Penjualan extends BaseController
                 ];
             }
         }
+        $batasTanggal = model('App\Models\SystemDateLimitsModel')->getBatasTanggal();
         $data = [
             'title' => 'Edit Nota Penjualan',
             'penjualan' => $penjualan,
@@ -203,6 +213,7 @@ class Penjualan extends BaseController
             'salesList' => $salesList,
             'barangList' => $barangList,
             'items' => $items,
+            'batasTanggal' => $batasTanggal,
         ];
         return view('penjualan/editpos', $data);
     }
@@ -491,6 +502,7 @@ class Penjualan extends BaseController
             ->get()->getResultArray();
         $barangList = $db->table('products')->where('deleted_at', null)->get()->getResultArray();
         $batasTanggal = model('App\Models\SystemDateLimitsModel')->getBatasTanggal();
+        file_put_contents(ROOTPATH . 'writable/logs/batas_tanggal.log', "POS: min=" . ($batasTanggal['min'] ?? 'null') . "\n", FILE_APPEND);
         return view('penjualan/pos', [
             'salesList' => $salesList,
             'customerList' => $customerList,
@@ -541,6 +553,7 @@ class Penjualan extends BaseController
             'grand_total' => intOrNull($grand_total_val),
             'status' => 'selesai',
             'status_pembayaran' => $status_pembayaran,
+            'status_sisa_pelunasan' => (intOrNull($payment_b) > 0 ? 'Kurang' : (intOrNull($payment_b) < 0 ? 'Lebih' : '')),
         ];
         // Cek apakah nota sudah ada di database utama
         $existing = $salesModel->where('nomor_nota', $nomor_nota)->first();

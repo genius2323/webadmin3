@@ -33,7 +33,10 @@ class SalesModel extends Model
         'dp',
         'catatan_kredit',
         'status',
-        'nama_ky'
+        'nama_ky',
+        'status_pembayaran',
+        'status_sisa_pelunasan',
+        'jatuh_tempo'
     ];
 
     // Dates

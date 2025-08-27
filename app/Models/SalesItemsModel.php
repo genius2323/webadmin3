@@ -13,8 +13,16 @@ class SalesItemsModel extends Model
     protected $useSoftDeletes   = true;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'sales_id', 'product_id', 'product_code', 'product_name', 
-        'qty', 'unit', 'price', 'discount', 'total'
+        'sales_id',
+        'product_id',
+        'product_code',
+        'product_name',
+        'qty',
+        'unit',
+        'price',
+        'discount',
+        'total',
+        'deleted_at'
     ];
 
     // Dates

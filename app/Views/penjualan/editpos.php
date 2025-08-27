@@ -34,37 +34,90 @@
                             </div>
                             <div class="col-md-3">
                                 <label class="form-label">Tanggal</label>
-                                <input type="text" name="tanggal_nota" id="tanggal_nota" class="form-control border-primary" style="background:#f8f9fa; cursor:pointer; color:#212529;" value="<?= isset($penjualan['tanggal_nota']) ? date('d/m/Y', strtotime($penjualan['tanggal_nota'])) : date('d/m/Y') ?>" required readonly>
+                                <?php
+                                $modeBatas = $mode_batas_tanggal ?? 'manual';
+                                $today = date('Y-m-d');
+                                if ($modeBatas === 'automatic') {
+                                    $minDate = date('Y-m-d', strtotime('-2 days'));
+                                } else {
+                                    $minDate = !empty($batasTanggal['min']) ? $batasTanggal['min'] : $today;
+                                }
+                                $maxDate = $today;
+                                ?>
+                                <input type="text" name="tanggal_nota" id="tanggal_nota" class="form-control border-primary" style="background:#f8f9fa; cursor:pointer; color:#212529;" value="<?= date('d/m/Y') ?>" required readonly>
                                 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
                                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
                                 <script>
-                                    // Realtime update subtotal & grand total untuk qty yang sudah ada di tabel (edit)
-                                    document.addEventListener('DOMContentLoaded', function() {
-                                        document.querySelectorAll('#tableBarang input[name="qty[]"]').forEach(function(input) {
-                                            input.addEventListener('input', function() {
-                                                var tr = input.closest('tr');
-                                                var harga = parseInt(tr.querySelector('.subtotal').dataset.value) / parseInt(input.value || 1);
-                                                var jumlah = parseInt(input.value) || 1;
-                                                if (!jumlah || jumlah < 1) input.value = 1;
-                                                var subtotal = harga * jumlah;
-                                                tr.querySelector('.subtotal').dataset.value = subtotal;
-                                                tr.querySelector('.subtotal').innerText = 'Rp ' + subtotal.toLocaleString('id-ID');
-                                                input.value = jumlah;
-                                                updateGrandTotal();
-                                            });
-                                        });
-                                        updateGrandTotal();
-                                    });
                                     document.addEventListener('DOMContentLoaded', function() {
                                         flatpickr('#tanggal_nota', {
                                             dateFormat: 'd/m/Y',
                                             disableMobile: true,
-                                            minDate: null,
-                                            maxDate: null,
+                                            minDate: <?= $minDate ? "'" . date('d/m/Y', strtotime($minDate)) . "'" : 'null' ?>,
+                                            maxDate: <?= $maxDate ? "'" . date('d/m/Y', strtotime($maxDate)) . "'" : 'null' ?>,
                                             allowInput: false
                                         });
                                     });
                                 </script>
+                                <input type="hidden" id="mode_batas_tanggal" name="mode_batas_tanggal" value="<?= esc($mode_batas_tanggal ?? 'manual') ?>">
+                                <input type="hidden" id="batas_tanggal_sistem" name="batas_tanggal_sistem" value="<?= esc($batasTanggal['min'] ?? '') ?>">
+                                <style>
+                                    /* DARK MODE TABLE TEXT OVERRIDES - versi ringkas */
+                                    body.dark-mode #tableBarang td.td-nama-barang,
+                                    body.dark-mode #tableBarang td.td-nama-barang *,
+                                    body.dark-mode .table td.td-nama-barang,
+                                    body.dark-mode .table td.td-nama-barang * {
+                                        color: #fff !important;
+                                        font-weight: 600 !important;
+                                        opacity: 1 !important;
+                                    }
+
+                                    body.dark-mode #tableBarang *,
+                                    body.dark-mode .table *,
+                                    body.dark-mode .sales-modal-table *,
+                                    body.dark-mode .form-control,
+                                    body.dark-mode .table .form-control {
+                                        color: #fff !important;
+                                        background-color: #222 !important;
+                                        border-color: #26334d !important;
+                                    }
+
+                                    body.dark-mode .btn-danger {
+                                        background-color: #d9534f !important;
+                                        color: #fff !important;
+                                        border-color: #d9534f !important;
+                                    }
+
+                                    body.dark-mode .table,
+                                    body.dark-mode .table th,
+                                    body.dark-mode .table td,
+                                    body.dark-mode .table tfoot th,
+                                    body.dark-mode .table tfoot td {
+                                        border-color: #26334d !important;
+                                        background-color: #181f2a !important;
+                                    }
+
+                                    @keyframes fadeIn {
+                                        from {
+                                            opacity: 0;
+                                            transform: translateY(-10px);
+                                        }
+
+                                        to {
+                                            opacity: 1;
+                                            transform: translateY(0);
+                                        }
+                                    }
+
+                                    .input-group-text.bg-primary {
+                                        border-top-left-radius: .375rem;
+                                        border-bottom-left-radius: .375rem;
+                                    }
+
+                                    .form-control.border-primary:focus {
+                                        border-color: #0d6efd;
+                                        box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, .25);
+                                    }
+                                </style>
                             </div>
                             <div class="col-md-3">
                                 <label class="form-label">Customer</label>
@@ -117,10 +170,29 @@
                                             <tr data-barang-id="<?= esc($item['barang_id']) ?>">
                                                 <td><img src="/public/assets/img/no-image.png" style="width:40px;height:40px;object-fit:cover;border-radius:6px;"></td>
                                                 <td class="td-nama-barang"><?= esc($item['nama_barang']) ?></td>
-                                                <td>Rp <?= number_format($item['harga'], 0, ',', '.') ?></td>
-                                                <td><input type="number" name="qty[]" value="<?= esc($item['qty']) ?>" min="1" class="form-control form-control-sm jumlah-input" style="width:70px;display:inline-block;"><input type="hidden" name="barang_id[]" value="<?= esc($item['barang_id']) ?>"></td>
+                                                <td style="text-align:right;">Rp <?= number_format($item['harga'], 0, ',', '.') ?></td>
+                                                <td class="text-center align-middle" style="vertical-align:middle;">
+                                                    <div class="d-flex flex-column align-items-center justify-content-center" style="height:100%;">
+                                                        <div class="input-group input-group-sm justify-content-center" style="width:110px;">
+                                                            <button type="button" class="btn btn-outline-secondary btn-qty-minus" tabindex="-1">-</button>
+                                                            <input type="text" name="qty[]" value="<?= esc($item['qty']) ?>" min="1" class="form-control jumlah-input" style="text-align:center;appearance:none;-webkit-appearance:none;moz-appearance:textfield;" inputmode="numeric" autocomplete="off">
+                                                            <button type="button" class="btn btn-outline-secondary btn-qty-plus" tabindex="-1">+</button>
+                                                            <script>
+                                                                document.getElementById('form-edit-pos').addEventListener('submit', function(e) {
+                                                                    document.querySelectorAll('#tableBarang input[name="qty[]"]').forEach(function(input) {
+                                                                        let val = parseInt(input.value);
+                                                                        if (!val || val < 1) {
+                                                                            input.value = 1;
+                                                                        }
+                                                                    });
+                                                                });
+                                                            </script>
+                                                        </div>
+                                                    </div>
+                                                    <input type="hidden" name="barang_id[]" value="<?= esc($item['barang_id']) ?>">
+                                                </td>
                                                 <td class="subtotal" data-value="<?= esc($item['harga'] * $item['qty']) ?>" style="text-align:right;">Rp <?= number_format($item['harga'] * $item['qty'], 0, ',', '.') ?></td>
-                                                <td><button type="button" class="btn btn-danger btn-sm btn-hapus-barang"><i class="fas fa-trash"></i></button></td>
+                                                <td class="text-center align-middle"><button type="button" class="btn btn-danger btn-sm btn-hapus-barang"><i class="fas fa-trash"></i></button></td>
                                             </tr>
                                         <?php endforeach; ?>
                                     <?php endif; ?>
@@ -157,6 +229,7 @@
                                     <tr>
                                         <td colspan="6" class="text-end align-middle">Sisa Pelunasan</td>
                                         <td colspan="2" class="text-end align-middle">
+                                            <span id="badgeSisaPelunasan" class="badge ms-2"></span>
                                             <span id="sisaPelunasan" class="fw-bold text-danger">Rp <?= number_format($penjualan['payment_b'] ?? 0, 0, ',', '.') ?></span>
                                         </td>
                                     </tr>
@@ -213,7 +286,34 @@
                             let pembayaran = parseInt(document.getElementById('paymentAInputHidden').value) || 0;
                             let grandTotal = parseInt(document.getElementById('grandTotalInput').value) || 0;
                             let sisa = grandTotal - pembayaran;
-                            document.getElementById('sisaPelunasan').textContent = 'Rp ' + sisa.toLocaleString('id-ID');
+                            let sisaPelunasanEl = document.getElementById('sisaPelunasan');
+                            let badgeStatusEl = document.getElementById('badgeStatus');
+                            let badgeSisaEl = document.getElementById('badgeSisaPelunasan');
+                            if (sisa > 0) {
+                                // Kurang
+                                sisaPelunasanEl.textContent = 'Rp ' + sisa.toLocaleString('id-ID');
+                                sisaPelunasanEl.className = 'fw-bold text-danger';
+                                badgeStatusEl.textContent = 'Kurang';
+                                badgeStatusEl.className = 'badge bg-danger d-flex justify-content-center align-items-center';
+                                badgeSisaEl.textContent = 'Kurang';
+                                badgeSisaEl.className = 'badge bg-danger ms-2';
+                            } else if (sisa < 0) {
+                                // Lebih
+                                sisaPelunasanEl.textContent = 'Rp ' + Math.abs(sisa).toLocaleString('id-ID');
+                                sisaPelunasanEl.className = 'fw-bold text-success';
+                                badgeStatusEl.textContent = 'Lebih';
+                                badgeStatusEl.className = 'badge bg-success d-flex justify-content-center align-items-center';
+                                badgeSisaEl.textContent = 'Lebih';
+                                badgeSisaEl.className = 'badge bg-success ms-2';
+                            } else {
+                                // Lunas
+                                sisaPelunasanEl.textContent = 'Rp 0';
+                                sisaPelunasanEl.className = 'fw-bold text-secondary';
+                                badgeStatusEl.textContent = 'LUNAS';
+                                badgeStatusEl.className = 'badge bg-success d-flex justify-content-center align-items-center';
+                                badgeSisaEl.textContent = '';
+                                badgeSisaEl.className = 'badge ms-2';
+                            }
                             // Simpan sisa ke payment_b
                             let paymentBInput = document.getElementById('paymentBInputHidden');
                             if (!paymentBInput) {
@@ -448,16 +548,14 @@
     };
     // Helper untuk soft delete barang
     function softDeleteRow(row) {
-        row.style.opacity = '0.5';
-        row.querySelectorAll('input,button').forEach(el => el.disabled = true);
-        // Tambahkan hidden input deleted[] agar controller tahu barang ini dihapus
-        if (!row.querySelector('input[name="deleted[]"]')) {
-            let deletedInput = document.createElement('input');
-            deletedInput.type = 'hidden';
-            deletedInput.name = 'deleted[]';
-            deletedInput.value = row.getAttribute('data-barang-id');
-            row.appendChild(deletedInput);
-        }
+        // Tambahkan hidden input deleted[] ke form agar controller tahu barang ini dihapus
+        let deletedInput = document.createElement('input');
+        deletedInput.type = 'hidden';
+        deletedInput.name = 'deleted[]';
+        deletedInput.value = row.getAttribute('data-barang-id');
+        document.getElementById('form-edit-pos').appendChild(deletedInput);
+        // Hapus baris dari DOM
+        row.remove();
         updateGrandTotal();
     }
 
@@ -465,7 +563,13 @@
     document.querySelectorAll('#tableBarang .btn-hapus-barang').forEach(function(btn) {
         btn.onclick = function() {
             var row = btn.closest('tr');
-            softDeleteRow(row);
+            // Jika baris hasil render server (ada input hidden barang_id)
+            if (row.querySelector('input[name="barang_id[]"]')) {
+                softDeleteRow(row);
+            } else {
+                row.remove(); // baris baru, hapus langsung
+                updateGrandTotal();
+            }
         };
     });
 
@@ -507,32 +611,53 @@
                     <td><img src='/public/assets/img/no-image.png' style='width:40px;height:40px;object-fit:cover;border-radius:6px;'></td>
                     <td class="td-nama-barang">${barangName}</td>
                     <td>Rp ${parseInt(barangPrice).toLocaleString('id-ID')}</td>
-                    <td><input type="number" name="qty[]" value="1" min="1" class="form-control form-control-sm jumlah-input" style="width:70px;display:inline-block;"><input type="hidden" name="barang_id[]" value="${barangId}"></td>
+                    <td class="text-center align-middle" style="vertical-align:middle;">
+                        <div class="d-flex flex-column align-items-center justify-content-center" style="height:100%;">
+                            <div class="input-group input-group-sm justify-content-center" style="width:110px;">
+                                <button type="button" class="btn btn-outline-secondary btn-qty-minus" tabindex="-1">-</button>
+                                <input type="text" name="qty[]" value="1" min="1" class="form-control jumlah-input" style="text-align:center;appearance:none;-webkit-appearance:none;moz-appearance:textfield;" inputmode="numeric" pattern="[0-9]*" autocomplete="off">
+                                <button type="button" class="btn btn-outline-secondary btn-qty-plus" tabindex="-1">+</button>
+                            </div>
+                        </div>
+                        <input type="hidden" name="barang_id[]" value="${barangId}">
+                    </td>
                     <td class="subtotal" data-value="${barangPrice}" style="text-align:right;">Rp ${parseInt(barangPrice).toLocaleString('id-ID')}</td>
-                    <td><button type="button" class="btn btn-danger btn-sm btn-hapus-barang"><i class="fas fa-trash"></i></button></td>`;
+                    <td class="text-center align-middle"><button type="button" class="btn btn-danger btn-sm btn-hapus-barang"><i class="fas fa-trash"></i></button></td>`;
             newRow.querySelector('.btn-hapus-barang').onclick = function() {
-                // Soft delete: tandai baris sebagai deleted, jangan hapus dari DOM
-                newRow.style.opacity = '0.5';
-                newRow.querySelectorAll('input,button').forEach(el => el.disabled = true);
-                // Tambahkan hidden input deleted[] agar controller tahu barang ini dihapus
-                let deletedInput = document.createElement('input');
-                deletedInput.type = 'hidden';
-                deletedInput.name = 'deleted[]';
-                deletedInput.value = newRow.getAttribute('data-barang-id');
-                newRow.appendChild(deletedInput);
+                // Baris baru, hapus langsung dari DOM tanpa soft delete
+                newRow.remove();
                 updateGrandTotal();
-                // Optionally, bisa tambahkan tombol undo
             };
             // Qty inline edit (identik dengan POS)
-            newRow.querySelector('.jumlah-input').addEventListener('input', function() {
-                var jumlah = parseInt(this.value);
-                if (!jumlah || jumlah < 1) this.value = 1;
+            var qtyInput = newRow.querySelector('.jumlah-input');
+            var btnMinus = newRow.querySelector('.btn-qty-minus');
+            var btnPlus = newRow.querySelector('.btn-qty-plus');
+
+            function updateQty() {
+                var jumlah = parseInt(qtyInput.value) || 1;
+                if (jumlah < 1) jumlah = 1;
+                qtyInput.value = jumlah;
                 var harga = parseInt(barangPrice);
-                var subtotal = (parseInt(this.value) || 1) * harga;
+                var subtotal = jumlah * harga;
                 newRow.querySelector('.subtotal').dataset.value = subtotal;
                 newRow.querySelector('.subtotal').innerText = 'Rp ' + subtotal.toLocaleString('id-ID');
-                newRow.querySelector('input[name="qty[]"]').value = this.value;
                 updateGrandTotal();
+            }
+            qtyInput.addEventListener('input', updateQty);
+            btnMinus.addEventListener('click', function() {
+                var val = parseInt(qtyInput.value) || 1;
+                if (val > 1) qtyInput.value = val - 1;
+                qtyInput.dispatchEvent(new Event('input'));
+            });
+            btnPlus.addEventListener('click', function() {
+                var val = parseInt(qtyInput.value) || 1;
+                qtyInput.value = val + 1;
+                qtyInput.dispatchEvent(new Event('input'));
+            });
+            qtyInput.addEventListener('keydown', function(e) {
+                if (!((e.key >= '0' && e.key <= '9') || ['Backspace', 'ArrowLeft', 'ArrowRight', 'Tab'].includes(e.key))) {
+                    e.preventDefault();
+                }
             });
             tbody.appendChild(newRow);
             updateGrandTotal();
@@ -565,6 +690,7 @@
         document.getElementById('totalInput').value = total;
         document.getElementById('grandTotalInput').value = total;
         updateSisaPelunasan();
+        updatePaymentStatus(); // patch: update badge status pembayaran setiap qty/total berubah
     }
     // Validasi tanggal dengan batas tanggal
     const tanggalNota = document.getElementById('tanggalNota');

@@ -198,6 +198,7 @@
                                     <tr>
                                         <td colspan="4" class="text-end align-middle">Sisa Pelunasan</td>
                                         <td colspan="2" class="text-end align-middle">
+                                            <span id="badgeSisaPelunasan" class="badge ms-2"></span>
                                             <span id="sisaPelunasan" class="fw-bold text-danger">Rp 0</span>
                                         </td>
                                     </tr>
@@ -276,7 +277,27 @@
                             let pembayaran = parseInt(document.getElementById('paymentAInputHidden').value) || 0;
                             let grandTotal = parseInt(document.getElementById('grandTotalInput').value) || 0;
                             let sisa = grandTotal - pembayaran;
-                            document.getElementById('sisaPelunasan').textContent = 'Rp ' + sisa.toLocaleString('id-ID');
+                            let sisaPelunasanEl = document.getElementById('sisaPelunasan');
+                            let badgeSisaEl = document.getElementById('badgeSisaPelunasan');
+                            if (sisa > 0) {
+                                // Kurang
+                                sisaPelunasanEl.textContent = 'Rp ' + sisa.toLocaleString('id-ID');
+                                sisaPelunasanEl.className = 'fw-bold text-danger';
+                                badgeSisaEl.textContent = 'Kurang';
+                                badgeSisaEl.className = 'badge bg-danger ms-2';
+                            } else if (sisa < 0) {
+                                // Lebih
+                                sisaPelunasanEl.textContent = 'Rp ' + Math.abs(sisa).toLocaleString('id-ID');
+                                sisaPelunasanEl.className = 'fw-bold text-success';
+                                badgeSisaEl.textContent = 'Lebih';
+                                badgeSisaEl.className = 'badge bg-success ms-2';
+                            } else {
+                                // Lunas
+                                sisaPelunasanEl.textContent = 'Rp 0';
+                                sisaPelunasanEl.className = 'fw-bold text-secondary';
+                                badgeSisaEl.textContent = '';
+                                badgeSisaEl.className = 'badge ms-2';
+                            }
                             // Simpan sisa ke payment_b
                             let paymentBInput = document.getElementById('paymentBInputHidden');
                             if (!paymentBInput) {
@@ -542,26 +563,56 @@
             var newRow = document.createElement('tr');
             newRow.setAttribute('data-barang-id', barangId);
             newRow.innerHTML = `
-                    
-                    <td><img src='/public/assets/img/no-image.png' style='width:40px;height:40px;object-fit:cover;border-radius:6px;'></td>
-                    <td class="td-nama-barang">${barangName}</td>
-                    <td>Rp ${parseInt(barangPrice).toLocaleString('id-ID')}</td>
-                    <td><input type="number" name="qty[]" value="1" min="1" class="form-control form-control-sm jumlah-input" style="width:70px;display:inline-block;"><input type="hidden" name="barang_id[]" value="${barangId}"></td>
-                    <td class="subtotal" data-value="${barangPrice}" style="text-align:right;">Rp ${parseInt(barangPrice).toLocaleString('id-ID')}</td>
-                    <td><button type="button" class="btn btn-danger btn-sm btn-hapus-barang"><i class="fas fa-trash"></i></button></td>`;
+                        <td><img src='/public/assets/img/no-image.png' style='width:40px;height:40px;object-fit:cover;border-radius:6px;'></td>
+                        <td class="td-nama-barang">${barangName}</td>
+                        <td style="text-align:right;">Rp ${parseInt(barangPrice).toLocaleString('id-ID')}</td>
+                        <td class="text-center align-middle" style="vertical-align:middle;">
+                            <div class="d-flex flex-column align-items-center justify-content-center" style="height:100%;">
+                                <div class="input-group input-group-sm justify-content-center" style="width:110px;">
+                                    <button type="button" class="btn btn-outline-secondary btn-qty-minus" tabindex="-1">-</button>
+                                    <input type="text" name="qty[]" value="1" min="1" class="form-control jumlah-input" style="text-align:center;appearance:none;-webkit-appearance:none;moz-appearance:textfield;" inputmode="numeric" pattern="[0-9]*" autocomplete="off">
+                                    <button type="button" class="btn btn-outline-secondary btn-qty-plus" tabindex="-1">+</button>
+                                </div>
+                            </div>
+                            <input type="hidden" name="barang_id[]" value="${barangId}">
+                        </td>
+                        <td class="subtotal" data-value="${barangPrice}" style="text-align:right;">Rp ${parseInt(barangPrice).toLocaleString('id-ID')}</td>
+                        <td class="text-center align-middle"><button type="button" class="btn btn-danger btn-sm btn-hapus-barang"><i class="fas fa-trash"></i></button></td>`;
             newRow.querySelector('.btn-hapus-barang').onclick = function() {
                 newRow.remove();
                 updateGrandTotal();
             };
-            // Qty inline edit
-            newRow.querySelector('.jumlah-input').addEventListener('input', function() {
-                var jumlah = parseInt(this.value) || 1;
+            // Qty inline edit & tombol + -
+            var qtyInput = newRow.querySelector('.jumlah-input');
+            var btnMinus = newRow.querySelector('.btn-qty-minus');
+            var btnPlus = newRow.querySelector('.btn-qty-plus');
+
+            function updateQty() {
+                var jumlah = parseInt(qtyInput.value) || 1;
+                if (jumlah < 1) jumlah = 1;
+                qtyInput.value = jumlah;
                 var harga = parseInt(barangPrice);
                 var subtotal = jumlah * harga;
                 newRow.querySelector('.subtotal').dataset.value = subtotal;
                 newRow.querySelector('.subtotal').innerText = 'Rp ' + subtotal.toLocaleString('id-ID');
-                newRow.querySelector('input[name="qty[]"]').value = jumlah;
                 updateGrandTotal();
+            }
+            qtyInput.addEventListener('input', updateQty);
+            btnMinus.addEventListener('click', function() {
+                var val = parseInt(qtyInput.value) || 1;
+                if (val > 1) qtyInput.value = val - 1;
+                qtyInput.dispatchEvent(new Event('input'));
+            });
+            btnPlus.addEventListener('click', function() {
+                var val = parseInt(qtyInput.value) || 1;
+                qtyInput.value = val + 1;
+                qtyInput.dispatchEvent(new Event('input'));
+            });
+            // Pastikan hanya angka
+            qtyInput.addEventListener('keydown', function(e) {
+                if (!((e.key >= '0' && e.key <= '9') || ['Backspace', 'ArrowLeft', 'ArrowRight', 'Tab'].includes(e.key))) {
+                    e.preventDefault();
+                }
             });
             tbody.appendChild(newRow);
             updateGrandTotal();
@@ -608,7 +659,7 @@
         <td>Rp ${parseInt(barang.price).toLocaleString('id-ID')}</td>
         <td><input type='number' name='qty[]' value='${qty}' min='1' class='form-control form-control-sm qty-table-input' style='width:70px;display:inline-block;'><input type='hidden' name='barang_id[]' value='${barang.id}'></td>
     <td class='subtotal' data-value='${subtotal}' style='text-align:right;'>Rp ${subtotal.toLocaleString('id-ID')}</td>
-        <td><button type='button' class='btn btn-danger btn-sm btn-hapus-barang'><i class='fas fa-trash'></i></button></td>`;
+    <td class='text-center align-middle'><button type='button' class='btn btn-danger btn-sm btn-hapus-barang'><i class='fas fa-trash'></i></button></td>`;
         row.querySelector('.btn-hapus-barang').onclick = function() {
             row.remove();
             updateGrandTotal();

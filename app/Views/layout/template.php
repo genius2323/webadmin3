@@ -125,6 +125,10 @@
                                 <div class="nav-link-icon"><i data-feather="arrow-down-circle"></i></div>
                                 Kas Masuk
                             </a>
+                            <a class="nav-link<?= $uri->getSegment(1) == 'bank-masuk' ? ' active' : '' ?>" href="<?= site_url('bank-masuk') ?>">
+                                <div class="nav-link-icon"><i data-feather="arrow-down-circle"></i></div>
+                                Bank Masuk
+                            </a>
                             <a class="nav-link<?= $uri->getSegment(1) == 'pelunasan-piutang' ? ' active' : '' ?>" href="<?= site_url('pelunasan-piutang') ?>">
                                 <div class="nav-link-icon"><i data-feather="check-circle"></i></div>
                                 Pelunasan Piutang Dagang
@@ -141,6 +145,10 @@
                             <a class="nav-link<?= $uri->getSegment(1) == 'kas-keluar' ? ' active' : '' ?>" href="<?= site_url('kas-keluar') ?>">
                                 <div class="nav-link-icon"><i data-feather="arrow-up-circle"></i></div>
                                 Kas Keluar
+                            </a>
+                            <a class="nav-link<?= $uri->getSegment(1) == 'bank-keluar' ? ' active' : '' ?>" href="<?= site_url('bank-keluar') ?>">
+                                <div class="nav-link-icon"><i data-feather="arrow-down-circle"></i></div>
+                                Bank Keluar
                             </a>
                             <a class="nav-link<?= $uri->getSegment(1) == 'pelunasan-hutang-dagang' ? ' active' : '' ?>" href="<?= site_url('pelunasan-hutang-dagang') ?>">
                                 <div class="nav-link-icon"><i data-feather="check-circle"></i></div>
