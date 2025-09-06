@@ -270,4 +270,12 @@ $routes->group('', ['filter' => 'auth'], static function ($routes) {
     // Otorisasi Klasifikasi Warna Sinar
     $routes->get('otorisasi_klasifikasi/otorisasi_warnasinar', 'Otorisasi_klasifikasi\\OtorisasiWarnaSinar::index');
     $routes->post('otorisasi_klasifikasi/otorisasi_warnasinar/setOtorisasiWarnaSinar', 'Otorisasi_klasifikasi\\OtorisasiWarnaSinar::setOtorisasiWarnaSinar');
+
+    // --- Setting Discount ---
+    $routes->get('discountsettings', 'DiscountSettings::index');
+    $routes->get('discountsettings/create', 'DiscountSettings::create');
+    $routes->post('discountsettings/create', 'DiscountSettings::create');
+    $routes->get('discountsettings/edit/(:num)', 'DiscountSettings::edit/$1');
+    $routes->post('discountsettings/update/(:num)', 'DiscountSettings::update/$1');
+    $routes->get('discountsettings/delete/(:num)', 'DiscountSettings::delete/$1');
 });

@@ -214,6 +214,10 @@
                                 </nav>
                             </div>
                             <div class="sidenav-menu-heading">Fasilitas</div>
+                            <a class="nav-link<?= $uri->getSegment(1) == 'discountsettings' ? ' active' : '' ?>" href="<?= site_url('discountsettings') ?>">
+                                <div class="nav-link-icon"><i data-feather="percent"></i></div>
+                                Setting Discount
+                            </a>
                             <a class="nav-link collapsed<?= in_array($uri->getSegment(1), ['otorisasi_klasifikasi']) ? ' active' : '' ?>" href="#" data-bs-toggle="collapse" data-bs-target="#collapseOtoritas" aria-expanded="false" aria-controls="collapseOtoritas">
                                 <div class="nav-link-icon"><i data-feather="shield"></i></div>
                                 Otoritas

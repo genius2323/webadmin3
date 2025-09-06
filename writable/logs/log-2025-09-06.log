@@ -1,0 +1,230 @@
+DEBUG - 2025-09-06 04:55:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-06 04:56:10 --> LOGIN DEBUG: user=Array
+(
+    [id] => 909
+    [username] => geni1819
+    [password] => $2y$10$5RKKP5rjZ.5HLC9zfCnCa.0ut/80NkKLLEJast1qo16qZbb7lYjDm
+    [nama] => Genius Hartono
+    [alamat] => Canggu
+    [noktp] => 32534535434534
+    [profile_image] => assets/img/profiles/1754360418_f8328bc9d08ca01b89ee.png
+    [birthday] => 2000-05-31
+    [deleted_at] => 
+    [recovered_at] => 
+    [otoritas] => T
+    [created_at] => 2025-07-05 14:20:16
+    [updated_at] => 2025-08-07 14:48:00
+)
+
+DEBUG - 2025-09-06 04:56:10 --> LOGIN DEBUG: userDept=Array
+(
+    [id] => 5
+    [user_id] => 909
+    [department_id] => 3
+    [deleted_at] => 
+)
+
+DEBUG - 2025-09-06 04:56:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-06 04:56:10 --> LOGIN DEBUG: sessionData=Array
+(
+    [user_id] => 909
+    [user_username] => geni1819
+    [user_nama] => Genius Hartono
+    [department_id] => 3
+    [isLoggedIn] => 1
+)
+
+DEBUG - 2025-09-06 04:56:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-06 04:56:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-06 04:56:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-09-06 04:56:20 --> ErrorException: pg_query(): Query failed: ERROR:  column &quot;active&quot; is of type boolean but expression is of type integer
+LINE 1: ...e&quot;, &quot;nota_nominal&quot;, &quot;nota_percent&quot;) VALUES (NULL, 0, NULL, N...
+                                                             ^
+HINT:  You will need to rewrite or cast the expression. in C:\xampp\htdocs\webadmin3\system\Database\Postgre\Connection.php:206
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'pg_query(): Que...', 'C:\\xampp\\htdocs...', 206)
+#1 C:\xampp\htdocs\webadmin3\system\Database\Postgre\Connection.php(206): pg_query(Object(PgSql\Connection), 'INSERT INTO "di...')
+#2 C:\xampp\htdocs\webadmin3\system\Database\BaseConnection.php(738): CodeIgniter\Database\Postgre\Connection->execute('INSERT INTO "di...')
+#3 C:\xampp\htdocs\webadmin3\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO "di...')
+#4 C:\xampp\htdocs\webadmin3\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO "di...', Array, false)
+#5 C:\xampp\htdocs\webadmin3\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#6 C:\xampp\htdocs\webadmin3\system\BaseModel.php(843): CodeIgniter\Model->doInsert(Array)
+#7 C:\xampp\htdocs\webadmin3\system\Model.php(800): CodeIgniter\BaseModel->insert(Array, true)
+#8 C:\xampp\htdocs\webadmin3\app\Controllers\DiscountSettings.php(34): CodeIgniter\Model->insert(Array)
+#9 C:\xampp\htdocs\webadmin3\system\CodeIgniter.php(933): App\Controllers\DiscountSettings->create()
+#10 C:\xampp\htdocs\webadmin3\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiscountSettings))
+#11 C:\xampp\htdocs\webadmin3\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\webadmin3\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#13 C:\xampp\htdocs\webadmin3\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#14 C:\xampp\htdocs\webadmin3\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#15 {main}
+CRITICAL - 2025-09-06 04:56:20 --> CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  column &quot;active&quot; is of type boolean but expression is of type integer
+LINE 1: ...e&quot;, &quot;nota_nominal&quot;, &quot;nota_percent&quot;) VALUES (NULL, 0, NULL, N...
+                                                             ^
+HINT:  You will need to rewrite or cast the expression.
+[Method: GET, Route: discountsettings/create]
+in SYSTEMPATH\Database\BaseConnection.php on line 692.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO "discount_settings" ("discount_type", "active", "value_nominal", "value_percent", "tier_json", "customer_type", "nota_nominal", "nota_percent") VALUES (:discount_type:, :active:, :value_nominal:, :value_percent:, :tier_json:, :customer_type:, :nota_nominal:, :nota_percent:)', [...], false)
+ 2 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(843): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\DiscountSettings.php(34): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DiscountSettings->create()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiscountSettings))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-06 04:56:20 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  column &quot;active&quot; is of type boolean but expression is of type integer
+LINE 1: ...e&quot;, &quot;nota_nominal&quot;, &quot;nota_percent&quot;) VALUES (NULL, 0, NULL, N...
+                                                             ^
+HINT:  You will need to rewrite or cast the expression.
+in SYSTEMPATH\Database\Postgre\Connection.php on line 211.
+ 1 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\Postgre\Connection->execute('INSERT INTO "discount_settings" ("discount_type", "active", "value_nominal", "value_percent", "tier_json", "customer_type", "nota_nominal", "nota_percent") VALUES (NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL)')
+ 2 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO "discount_settings" ("discount_type", "active", "value_nominal", "value_percent", "tier_json", "customer_type", "nota_nominal", "nota_percent") VALUES (NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL)')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO "discount_settings" ("discount_type", "active", "value_nominal", "value_percent", "tier_json", "customer_type", "nota_nominal", "nota_percent") VALUES (:discount_type:, :active:, :value_nominal:, :value_percent:, :tier_json:, :customer_type:, :nota_nominal:, :nota_percent:)', [...], false)
+ 4 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 5 SYSTEMPATH\BaseModel.php(843): CodeIgniter\Model->doInsert([...])
+ 6 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+ 7 APPPATH\Controllers\DiscountSettings.php(34): CodeIgniter\Model->insert([...])
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DiscountSettings->create()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiscountSettings))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-06 04:56:20 --> [Caused by] ErrorException: pg_query(): Query failed: ERROR:  column &quot;active&quot; is of type boolean but expression is of type integer
+LINE 1: ...e&quot;, &quot;nota_nominal&quot;, &quot;nota_percent&quot;) VALUES (NULL, 0, NULL, N...
+                                                             ^
+HINT:  You will need to rewrite or cast the expression.
+in SYSTEMPATH\Database\Postgre\Connection.php on line 206.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'pg_query(): Query failed: ERROR:  column &quot;active&quot; is of type boolean but expression is of type integer
+LINE 1: ...e&quot;, &quot;nota_nominal&quot;, &quot;nota_percent&quot;) VALUES (NULL, 0, NULL, N...
+                                                             ^
+HINT:  You will need to rewrite or cast the expression.', 'C:\\xampp\\htdocs\\webadmin3\\system\\Database\\Postgre\\Connection.php', 206)
+ 2 SYSTEMPATH\Database\Postgre\Connection.php(206): pg_query(Object(PgSql\Connection), 'INSERT INTO "discount_settings" ("discount_type", "active", "value_nominal", "value_percent", "tier_json", "customer_type", "nota_nominal", "nota_percent") VALUES (NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL)')
+ 3 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\Postgre\Connection->execute('INSERT INTO "discount_settings" ("discount_type", "active", "value_nominal", "value_percent", "tier_json", "customer_type", "nota_nominal", "nota_percent") VALUES (NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL)')
+ 4 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO "discount_settings" ("discount_type", "active", "value_nominal", "value_percent", "tier_json", "customer_type", "nota_nominal", "nota_percent") VALUES (NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL)')
+ 5 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO "discount_settings" ("discount_type", "active", "value_nominal", "value_percent", "tier_json", "customer_type", "nota_nominal", "nota_percent") VALUES (:discount_type:, :active:, :value_nominal:, :value_percent:, :tier_json:, :customer_type:, :nota_nominal:, :nota_percent:)', [...], false)
+ 6 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 7 SYSTEMPATH\BaseModel.php(843): CodeIgniter\Model->doInsert([...])
+ 8 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+ 9 APPPATH\Controllers\DiscountSettings.php(34): CodeIgniter\Model->insert([...])
+10 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DiscountSettings->create()
+11 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiscountSettings))
+12 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-09-06 05:00:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-06 05:01:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-06 05:07:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-06 05:07:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-06 05:08:11 --> LOGIN DEBUG: user=Array
+(
+    [id] => 909
+    [username] => geni1819
+    [password] => $2y$10$5RKKP5rjZ.5HLC9zfCnCa.0ut/80NkKLLEJast1qo16qZbb7lYjDm
+    [nama] => Genius Hartono
+    [alamat] => Canggu
+    [noktp] => 32534535434534
+    [profile_image] => assets/img/profiles/1754360418_f8328bc9d08ca01b89ee.png
+    [birthday] => 2000-05-31
+    [deleted_at] => 
+    [recovered_at] => 
+    [otoritas] => T
+    [created_at] => 2025-07-05 14:20:16
+    [updated_at] => 2025-08-07 14:48:00
+)
+
+DEBUG - 2025-09-06 05:08:11 --> LOGIN DEBUG: userDept=Array
+(
+    [id] => 5
+    [user_id] => 909
+    [department_id] => 3
+    [deleted_at] => 
+)
+
+DEBUG - 2025-09-06 05:08:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-06 05:08:11 --> LOGIN DEBUG: sessionData=Array
+(
+    [user_id] => 909
+    [user_username] => geni1819
+    [user_nama] => Genius Hartono
+    [department_id] => 3
+    [isLoggedIn] => 1
+)
+
+DEBUG - 2025-09-06 05:08:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-06 05:08:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-06 05:08:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-06 05:08:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-09-06 05:08:25 --> ErrorException: pg_query(): Query failed: ERROR:  null value in column &quot;discount_type&quot; of relation &quot;discount_settings&quot; violates not-null constraint
+DETAIL:  Failing row contains (1, null, f, null, null, null, null, null, null, 2025-09-06 13:08:25.050393). in C:\xampp\htdocs\webadmin3\system\Database\Postgre\Connection.php:206
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'pg_query(): Que...', 'C:\\xampp\\htdocs...', 206)
+#1 C:\xampp\htdocs\webadmin3\system\Database\Postgre\Connection.php(206): pg_query(Object(PgSql\Connection), 'INSERT INTO "di...')
+#2 C:\xampp\htdocs\webadmin3\system\Database\BaseConnection.php(738): CodeIgniter\Database\Postgre\Connection->execute('INSERT INTO "di...')
+#3 C:\xampp\htdocs\webadmin3\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO "di...')
+#4 C:\xampp\htdocs\webadmin3\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO "di...', Array, false)
+#5 C:\xampp\htdocs\webadmin3\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#6 C:\xampp\htdocs\webadmin3\system\BaseModel.php(843): CodeIgniter\Model->doInsert(Array)
+#7 C:\xampp\htdocs\webadmin3\system\Model.php(800): CodeIgniter\BaseModel->insert(Array, true)
+#8 C:\xampp\htdocs\webadmin3\app\Controllers\DiscountSettings.php(34): CodeIgniter\Model->insert(Array)
+#9 C:\xampp\htdocs\webadmin3\system\CodeIgniter.php(933): App\Controllers\DiscountSettings->create()
+#10 C:\xampp\htdocs\webadmin3\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiscountSettings))
+#11 C:\xampp\htdocs\webadmin3\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\webadmin3\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#13 C:\xampp\htdocs\webadmin3\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#14 C:\xampp\htdocs\webadmin3\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#15 {main}
+CRITICAL - 2025-09-06 05:08:25 --> CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  null value in column &quot;discount_type&quot; of relation &quot;discount_settings&quot; violates not-null constraint
+DETAIL:  Failing row contains (1, null, f, null, null, null, null, null, null, 2025-09-06 13:08:25.050393).
+[Method: GET, Route: discountsettings/create]
+in SYSTEMPATH\Database\BaseConnection.php on line 692.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO "discount_settings" ("discount_type", "active", "value_nominal", "value_percent", "tier_json", "customer_type", "nota_nominal", "nota_percent") VALUES (:discount_type:, :active:, :value_nominal:, :value_percent:, :tier_json:, :customer_type:, :nota_nominal:, :nota_percent:)', [...], false)
+ 2 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(843): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\DiscountSettings.php(34): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DiscountSettings->create()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiscountSettings))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-06 05:08:25 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  null value in column &quot;discount_type&quot; of relation &quot;discount_settings&quot; violates not-null constraint
+DETAIL:  Failing row contains (1, null, f, null, null, null, null, null, null, 2025-09-06 13:08:25.050393).
+in SYSTEMPATH\Database\Postgre\Connection.php on line 211.
+ 1 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\Postgre\Connection->execute('INSERT INTO "discount_settings" ("discount_type", "active", "value_nominal", "value_percent", "tier_json", "customer_type", "nota_nominal", "nota_percent") VALUES (NULL, FALSE, NULL, NULL, NULL, NULL, NULL, NULL)')
+ 2 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO "discount_settings" ("discount_type", "active", "value_nominal", "value_percent", "tier_json", "customer_type", "nota_nominal", "nota_percent") VALUES (NULL, FALSE, NULL, NULL, NULL, NULL, NULL, NULL)')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO "discount_settings" ("discount_type", "active", "value_nominal", "value_percent", "tier_json", "customer_type", "nota_nominal", "nota_percent") VALUES (:discount_type:, :active:, :value_nominal:, :value_percent:, :tier_json:, :customer_type:, :nota_nominal:, :nota_percent:)', [...], false)
+ 4 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 5 SYSTEMPATH\BaseModel.php(843): CodeIgniter\Model->doInsert([...])
+ 6 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+ 7 APPPATH\Controllers\DiscountSettings.php(34): CodeIgniter\Model->insert([...])
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DiscountSettings->create()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiscountSettings))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-06 05:08:25 --> [Caused by] ErrorException: pg_query(): Query failed: ERROR:  null value in column &quot;discount_type&quot; of relation &quot;discount_settings&quot; violates not-null constraint
+DETAIL:  Failing row contains (1, null, f, null, null, null, null, null, null, 2025-09-06 13:08:25.050393).
+in SYSTEMPATH\Database\Postgre\Connection.php on line 206.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'pg_query(): Query failed: ERROR:  null value in column &quot;discount_type&quot; of relation &quot;discount_settings&quot; violates not-null constraint
+DETAIL:  Failing row contains (1, null, f, null, null, null, null, null, null, 2025-09-06 13:08:25.050393).', 'C:\\xampp\\htdocs\\webadmin3\\system\\Database\\Postgre\\Connection.php', 206)
+ 2 SYSTEMPATH\Database\Postgre\Connection.php(206): pg_query(Object(PgSql\Connection), 'INSERT INTO "discount_settings" ("discount_type", "active", "value_nominal", "value_percent", "tier_json", "customer_type", "nota_nominal", "nota_percent") VALUES (NULL, FALSE, NULL, NULL, NULL, NULL, NULL, NULL)')
+ 3 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\Postgre\Connection->execute('INSERT INTO "discount_settings" ("discount_type", "active", "value_nominal", "value_percent", "tier_json", "customer_type", "nota_nominal", "nota_percent") VALUES (NULL, FALSE, NULL, NULL, NULL, NULL, NULL, NULL)')
+ 4 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO "discount_settings" ("discount_type", "active", "value_nominal", "value_percent", "tier_json", "customer_type", "nota_nominal", "nota_percent") VALUES (NULL, FALSE, NULL, NULL, NULL, NULL, NULL, NULL)')
+ 5 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO "discount_settings" ("discount_type", "active", "value_nominal", "value_percent", "tier_json", "customer_type", "nota_nominal", "nota_percent") VALUES (:discount_type:, :active:, :value_nominal:, :value_percent:, :tier_json:, :customer_type:, :nota_nominal:, :nota_percent:)', [...], false)
+ 6 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 7 SYSTEMPATH\BaseModel.php(843): CodeIgniter\Model->doInsert([...])
+ 8 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+ 9 APPPATH\Controllers\DiscountSettings.php(34): CodeIgniter\Model->insert([...])
+10 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DiscountSettings->create()
+11 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiscountSettings))
+12 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
